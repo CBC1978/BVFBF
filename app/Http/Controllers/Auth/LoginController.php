@@ -45,6 +45,9 @@ class LoginController extends Controller
         if($user){
             if (Hash::check($request->password, $user->password)){
                 $request->session()->put('userId', $userId);
+                $request->session()->put('userId', $user->id);
+                $request->session()->put('username', $user->username);
+                
                 return redirect('home');
             }else{
                 return back()->with('fail',"Les mots de passes ne correspondent pas ");

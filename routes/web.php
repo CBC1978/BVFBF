@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/offers', [OffersController::class, 'index'])->name('offers.index');
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout')->middleware('auth');
 
