@@ -36,11 +36,11 @@ class RegisterController extends Controller
         $user->user_phone = $request->user_phone;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->statut = 0;
         $user->code = Helper::random_string(20);
         $user->email = $request->email;
         $user->password =Hash::make( $request->password);
         $user->role = $request->role;
+        $user->status = 0;
         $res = $user->save();
 
         if ($res){

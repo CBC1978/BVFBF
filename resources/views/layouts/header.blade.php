@@ -69,18 +69,18 @@
           <div class="member-login"><img alt="" src="imgs/page/dashboard/profile.png">
             <div class="info-member"> 
               <strong class="color-brand-1">
-              {{-- @if(Auth::check())
+              @if(Auth::check())
               {{ Auth::user()->username }} 
-              @endif --}}
+              @endif 
               </strong>
               <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
                 <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
                   <li><a class="dropdown-item" href="profile.html">Profil</a></li>
-                  {{-- <form action="{{ route('logout') }}" method="POST">
+                  <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="dropdown-item" type="submit">Déconnexion</button>
                 </form>
-                  --}}
+                  
                 </ul>
               </div>
             </div>

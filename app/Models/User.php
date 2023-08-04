@@ -24,10 +24,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'user_phone', // Add new fields here
         'username',   // Add new fields here
         'email',
-        'statut',
         'code',
         'password',
-        'role',       // Add new fields here
+        'role',
+        'status',       // Add new fields here
     ];
 
     /**

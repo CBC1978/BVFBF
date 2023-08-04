@@ -24,7 +24,7 @@ class OtpController extends Controller
         $userId = User::where('code','=',$request->otp)->pluck('id')->first();
         $user = User::find($userId);
 
-        $user->statut = 1;
+        $user->status = 1;
         $user->save();
 
         if ($user){

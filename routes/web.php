@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 |
 */
 
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout')->middleware('auth');
 
 
 Route::post('/admin/update-user-status', [AdminUserGestionController::class, 'updateStatus'])->name('admin.update_user_status');
