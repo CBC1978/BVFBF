@@ -18,7 +18,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function home()
+    public function index()
 {
     $role = session('role'); //  depuis la session
 
