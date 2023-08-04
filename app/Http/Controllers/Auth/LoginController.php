@@ -47,7 +47,8 @@ class LoginController extends Controller
                 $request->session()->put('userId', $userId);
                 $request->session()->put('userId', $user->id);
                 $request->session()->put('username', $user->username);
-                
+                $request->session()->put('role', $user->role);
+                $request->session()->put('status', $user->status);
                 return redirect('home');
             }else{
                 return back()->with('fail',"Les mots de passes ne correspondent pas ");

@@ -24,6 +24,14 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
+Route::post('/admin/update-user-status/{id}', [AdminUserGestionController::class, 'updateStatus'])->name('update_user_status');
+
+Route::get('/a_home', [HomeController::class, 'home'])->middleware('admin.session')->name('a_home');
+
+
 Route::get('/offers', [OffersController::class, 'index'])->name('offers.index');
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout')->middleware('auth');
@@ -38,7 +46,6 @@ Route::get('/a_user_gestion', [AdminUserGestionController::class, 'index'])->nam
 
 
 
-Route::get('/a_home', [AdminUserGestionController::class, 'index'])->name('a_home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/addoffer', [AddOfferController::class, 'index'])->name('add_offer');
 Route::get('/myoffers', [MyOffersController::class, 'index'])->name('myoffers');

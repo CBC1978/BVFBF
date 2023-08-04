@@ -1,7 +1,7 @@
 <div id="preloader-active">
   <div class="preloader d-flex align-items-center justify-content-center">
     <div class="preloader-inner position-relative">
-      <div class="text-center"><img src="imgs/template/loading.gif" alt="jobBox"></div>
+      <div class="text-center"><img src="{{ asset('imgs/template/loading.gif') }}" alt="jobBox"></div>
     </div>
   </div>
 </div>
@@ -20,7 +20,7 @@
   <div class="container">
     <div class="main-header">
       <div class="header-left">
-        <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="imgs/page/dashboard/bvf02.png"></a></div>
+        <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }} href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}" ></a></div>
         <span class="btn btn-grey-small ml-10">Admin Account</span>
       </div>
       <div class="header-search"> 
@@ -36,20 +36,21 @@
               <li><a class="dropdown-item" href="#">20 replies</a></li>
             </ul>
           </div>
-          <div class="member-login"><img alt="" src="imgs/page/dashboard/profile.png">
+          <div class="member-login"><img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}" >
             <div class="info-member"> 
               <strong class="color-brand-1">
-              {{-- @if(Auth::check())
-              {{ Auth::user()->username }} 
-              @endif --}}
+                @if(session('username'))
+                <p> {{ session('username') }} </p>
+            @endif
+                
               </strong>
               <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
                 <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
                   <li><a class="dropdown-item" href="profile.html">Profil</a></li>
-                  {{-- <form action="{{ route('logout') }}" method="POST">
+                  <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="dropdown-item" type="submit">Déconnexion</button>
-                </form> --}}
+                </form>
                  
                 </ul>
               </div>
