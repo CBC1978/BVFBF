@@ -1,6 +1,32 @@
 @extends('layouts.admin')
 @section('content')
 <div class="box-content">
+    <div class="box-content">
+        <form action="{{ route('filter_users') }}" method="GET" class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="status">Filtrer par statut:</label>
+                    <select class="form-control" name="status" id="status">
+                        <option value="">Tous</option>
+                        <option value="0">Base</option>
+                        <option value="1">En cours de validation</option>
+                        <option value="2">Validé</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!--autres champs -->
+            </div>
+            <div class="col-md-3">
+                <!-- autres champs -->
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary mt-4">Filtrer</button>
+            </div>
+        </form>
+    </div>
+
+
     <form id="status-form">
         <div class="mb-3">
             <select class="form-control" id="bulk-status">
@@ -12,7 +38,7 @@
         </div>
     </form>
 
-    <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped" id="user-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -41,6 +67,7 @@
 </div>
 
 <script>
+    
     $(document).ready(function() {
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();
@@ -58,9 +85,22 @@
                         user_ids: selectedUserIds
                     },
                     success: function(response) {
-                        // Mettre à jour les statuts affichés si nécessaire
-                        // Afficher un message de succès
-                        alert(response.message);
+                        // Mettre à jour les statuts affichés dans le tableau
+                        updateStatuses(response.updatedStatuses);
+                        // Vider les cases à cocher
+                        $('input[name="selected_users[]"]:checked').prop('checked', false);
+                        
+                        // Utiliser SweetAlert2 pour afficher un popup de succès
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Succès',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 1500 // Temps d'affichage du popup en ms
+                        }).then(() => {
+                            // Actualiser la page après la fermeture du popup
+                            location.reload();
+                        });
                     },
                     error: function(response) {
                         // En cas d'erreur, afficher un message d'erreur
@@ -69,83 +109,18 @@
                 });
             }
         });
-    });
-</script>
-{{-- 
-@section('content')
-<div class="box-content">
-   
-</div>
 
-<table class="table table-dark table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Statut</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($users as $user)
-        <tr>
-            <td>{{ $user->id }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td>
-                <div class="status-container" data-user-id="{{ $user->id }}">
-                    <select class="form-control status-select">
-                        <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Base</option>
-                        <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>En cours de validation</option>
-                        <option value="2" {{ $user->status == 2 ? 'selected' : '' }}>Validé</option>
-                    </select>
-                    <button class="btn btn-primary update-status">Enregistrer</button>
-                </div>
-            </td>
-            <td>
-                
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-</div>
-<script>
-    $(document).ready(function() {
-        $('.update-status').click(function() {
-            var userId = $(this).closest('.status-container').data('user-id');
-            var newStatus = $(this).siblings('.status-select').val();
-
-            $.ajax({
-                method: 'POST',
-                url: '/update_user_status/' + userId,
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    status: newStatus
-                },
-                success: function(response) {
-                    // on affiche un popup SweetAlert2 pour informer l'utilisateur
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Succès',
-                        text: response.message,
-                        confirmButtonText: 'OK'
-                    });
-                },
-                error: function(response) {
-                    // En cas d'erreur, on affiche un popup d'erreur
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Erreur',
-                        text: 'Une erreur s\'est produite lors de la mise à jour du statut.',
-                        confirmButtonText: 'OK'
-                    });
-                }
+        function updateStatuses(updatedStatuses) {
+            $.each(updatedStatuses, function(userId, newStatus) {
+                var statusContainer = $('.status-container[data-user-id="' + userId + '"]');
+                statusContainer.find('.status-label').text(newStatus);
             });
-        });
+        }
+        
     });
 </script>
- --}}
+
+
+
 
 @endsection

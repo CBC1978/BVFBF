@@ -27,6 +27,10 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
+
 // Route pour la mise à jour groupée des statuts des utilisateurs
 Route::post('/bulk_update_status', [AdminUserGestionController::class, 'bulkUpdateStatus'])->name('bulk_update_status');
 

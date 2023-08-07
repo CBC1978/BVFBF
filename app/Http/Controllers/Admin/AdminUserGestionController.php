@@ -7,6 +7,25 @@ use App\Models\User;
 
 class AdminUserGestionController extends Controller
 {
+    public function filterUsers(Request $request)
+    {
+        $status = $request->input('status');
+    
+        // Récupérer les utilisateurs en fonction du statut sélectionné
+        if ($status === null || $status === '') {
+            // Si aucun statut n'est sélectionné, récupérer tous les utilisateurs
+            $users = User::all();
+        } else {
+            // Sinon, récupérer les utilisateurs avec le statut sélectionné
+            $users = User::where('status', $status)->get();
+        }
+    
+        // Charger la vue avec les utilisateurs filtrés
+        return view('admin.a_user_gestion')->with('users', $users);
+    }
+    //.............................................
+    //
+    
     public function updateStatus(Request $request, $id)
     {
         $user = User::find($id);
