@@ -39,7 +39,6 @@
     </tbody>
 </table>
 </div>
-
 <script>
     $(document).ready(function() {
         $('.update-status').click(function() {
@@ -54,11 +53,27 @@
                     status: newStatus
                 },
                 success: function(response) {
-                    
-                    console.log(response.message); 
+                    // on affiche un popup SweetAlert2 pour informer l'utilisateur
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        text: response.message,
+                        confirmButtonText: 'OK'
+                    });
+                },
+                error: function(response) {
+                    // En cas d'erreur, on affiche un popup d'erreur
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: 'Une erreur s\'est produite lors de la mise à jour du statut.',
+                        confirmButtonText: 'OK'
+                    });
                 }
             });
         });
     });
 </script>
+
+
 @endsection
