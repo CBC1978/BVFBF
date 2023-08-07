@@ -14,7 +14,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dashboard/imgs/template/favicon.svg') }}">
 <link href="{{ asset('css/style.css?version=4.1') }}" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

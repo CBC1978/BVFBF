@@ -15,6 +15,7 @@
 <link href="{{ asset('css/style.css?version=4.1') }}" rel="stylesheet">
 
 <!--  de CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>

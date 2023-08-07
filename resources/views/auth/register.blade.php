@@ -30,7 +30,7 @@
             <div class="text-center"><img src="assets/imgs/template/loading.gif" alt="jobBox"></div>
           </div>
         </div>
-      </div>
+     </div>
 
       <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
       <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
@@ -53,9 +53,7 @@
         </div>
       </div>
       <main class="main">
-
         <div class="box-content">
-
           <div class="row">
             <div class="col-lg-12">
               <div class="section-box">
