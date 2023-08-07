@@ -29,4 +29,13 @@ class AdminUserGestionController extends Controller
     $users = User::all();
     return view('admin.a_user_gestion', compact('users'));
 }
+public function bulkUpdateStatus(Request $request)
+    {
+        $selectedStatus = $request->input('status');
+        $selectedUserIds = $request->input('user_ids');
+
+        User::whereIn('id', $selectedUserIds)->update(['status' => $selectedStatus]);
+
+        return response()->json(['message' => 'Statuts des utilisateurs mis à jour avec succès']);
+    }
 } 
