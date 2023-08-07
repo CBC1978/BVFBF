@@ -14,6 +14,9 @@ use App\Http\Controllers\Offers\OfferDetailsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +29,14 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 */
 
 
+Route::post('/update_user_status/{id}', [AdminUserGestionController::class, 'updateStatus'])->name('update_user_status');
+
 Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
-Route::post('/admin/update-user-status/{id}', [AdminUserGestionController::class, 'updateStatus'])->name('update_user_status');
+//Route::post('/admin/update-user-status/{id}', [AdminUserGestionController::class, 'updateStatus'])->name('update_user_status');
+
+
+// Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
+// Route::post('/admin/update-user-status/{id}', [AdminUserGestionController::class, 'updateStatus'])->name('update_user_status');
 
 Route::get('/a_home', [HomeController::class, 'home'])->middleware('admin.session')->name('a_home');
 

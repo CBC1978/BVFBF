@@ -13,6 +13,7 @@
 <meta name="author" content="">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dashboard/imgs/template/favicon.svg') }}">
 <link href="{{ asset('css/style.css?version=4.1') }}" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    
 
     <!-- CSRF Token -->
