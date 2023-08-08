@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\AdminUserGestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/filter_users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
 
 Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
 
