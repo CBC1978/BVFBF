@@ -26,6 +26,16 @@
         </form>
     </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <form action="{{ route('filter_users') }}" method="GET">
+                <div class="form-group">
+                    <label for="search">Rechercher par nom:</label>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Nom d'utilisateur">
+                </div>
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+            </form>
+        </div>
 
     <form id="status-form">
         <div class="mb-3">
@@ -90,7 +100,7 @@
                         // Vider les cases à cocher
                         $('input[name="selected_users[]"]:checked').prop('checked', false);
                         
-                        // Utiliser SweetAlert2 pour afficher un popup de succès
+                        //  SweetAlert2 pour afficher un popup de succès
                         Swal.fire({
                             icon: 'success',
                             title: 'Succès',
@@ -116,11 +126,27 @@
                 statusContainer.find('.status-label').text(newStatus);
             });
         }
+
+        // Fonction pour gérer la recherche en temps réel
+        $('#search').keyup(function() {
+            var searchText = $(this).val().toLowerCase();
+            filterTableByUsername(searchText);
+        });
+
+        function filterTableByUsername(username) {
+            $('#user-table tbody tr').each(function() {
+                var rowUsername = $(this).find('td:eq(1)').text().toLowerCase();
+                if (rowUsername.indexOf(username) !== -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
         
-    });
+        }});
 </script>
 
 
-
+ 
 
 @endsection
