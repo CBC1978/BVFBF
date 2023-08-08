@@ -1,9 +1,20 @@
 @extends('layouts.admin')
 @section('content')
 <div class="box-content">
-    <div class="box-content">
-        <form action="{{ route('filter_users') }}" method="GET" class="row">
-            <div class="col-md-3">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <!-- Recherche par nom -->
+            <form action="{{ route('filter_users') }}" method="GET">
+                <div class="form-group">
+                    <label for="search">Rechercher par nom:</label>
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Nom d'utilisateur">
+                </div>
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <!-- Filtre par statut -->
+            <form action="{{ route('filter_users') }}" method="GET">
                 <div class="form-group">
                     <label for="status">Filtrer par statut:</label>
                     <select class="form-control" name="status" id="status">
@@ -13,39 +24,21 @@
                         <option value="2">Validé</option>
                     </select>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <!--autres champs -->
-            </div>
-            <div class="col-md-3">
-                <!-- autres champs -->
-            </div>
-            <div class="col-md-3">
-                <button type="submit" class="btn btn-primary mt-4">Filtrer</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <form action="{{ route('filter_users') }}" method="GET">
-                <div class="form-group">
-                    <label for="search">Rechercher par nom:</label>
-                    <input type="text" class="form-control" name="search" id="search" placeholder="Nom d'utilisateur">
-                </div>
-                <button type="submit" class="btn btn-primary">Rechercher</button>
+                <button type="submit" class="btn btn-primary">Filtrer</button>
             </form>
         </div>
+    </div>
 
-    <form id="status-form">
-        <div class="mb-3">
+    <!-- Mise à jour groupée des statuts -->
+    <form id="status-form" class="mb-4">
+        <div class="form-group">
             <select class="form-control" id="bulk-status">
                 <option value="0">Base</option>
                 <option value="1">En cours de validation</option>
                 <option value="2">Validé</option>
             </select>
-            <button type="button" class="btn btn-primary" id="bulk-update">Modifier le statut</button>
         </div>
+        <button type="button" class="btn btn-primary" id="bulk-update">Modifier le statut</button>
     </form>
 
     <table class="table table-dark table-striped" id="user-table">
