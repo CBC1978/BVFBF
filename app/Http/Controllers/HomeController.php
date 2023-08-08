@@ -17,16 +17,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-{
-    $role = session('role'); //  depuis la session
 
-    if ($role === 'admin') {
-        return view('a_home');
-    } else {
-        return view('home');
-    }
-}
+     public function index()
+     {
+         return view('s_home');
+     }
+//     public function index()
+// {
+//     $role = session('role'); //  depuis la session
+
+//     if ($role === 'admin') {
+//         return view('a_home');
+//     } else {
+//         return view('home');
+//     }
+// }
     // public function index()
     // {
     //     return view('home');

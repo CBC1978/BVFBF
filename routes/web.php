@@ -45,6 +45,7 @@ Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUse
 
 Route::get('/a_home', [HomeController::class, 'home'])->middleware('admin.session')->name('a_home');
 
+Route::get('/s_home', [HomeController::class, 'home'])->middleware('admin.session')->name('s_home');
 
 Route::get('/offers', [OffersController::class, 'index'])->name('offers.index');
 
