@@ -15,7 +15,7 @@
 <link href="{{ asset('css/style.css?version=4.1') }}" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

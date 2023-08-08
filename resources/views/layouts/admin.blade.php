@@ -15,6 +15,7 @@
 <link href="{{ asset('css/style.css?version=4.1') }}" rel="stylesheet">
 
 <!--  de CDN -->
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
