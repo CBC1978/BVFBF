@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class C_MyOfferController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('carrier.offers.c_myoffer');
+    }
 }

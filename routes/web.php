@@ -19,6 +19,11 @@ use App\Http\Controllers\Shipper\Offers\S_AddOfferController;
 use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
 use App\Http\Controllers\Shipper\Offers\S_OfferDetailController;
 use App\Http\Controllers\Shipper\Offers\S_OfferController;
+//CHARGEUR
+use App\Http\Controllers\Carrier\Offers\C_AddOfferController;
+use App\Http\Controllers\Carrier\Offers\C_MyOfferController;
+use App\Http\Controllers\Carrier\Offers\C_OfferDetailController;
+use App\Http\Controllers\Carrier\Offers\C_OfferController;
 
 
 /*
@@ -50,6 +55,8 @@ Route::get('/admin/filter-users', [AdminUserGestionController::class, 'filterUse
 Route::get('/a_home', [HomeController::class, 'home'])->middleware('admin.session')->name('a_home');
 
 Route::get('/s_home', [HomeController::class, 'home'])->middleware('admin.session')->name('s_home');
+
+Route::get('/c_home', [HomeController::class, 'home'])->middleware('admin.session')->name('c_home');
 
 Route::get('/offers', [OffersController::class, 'index'])->name('offers.index');
 
@@ -85,3 +92,12 @@ Route::get('/shipper/offers/add', [S_AddOfferController::class, 'index'])->name(
 Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('s_myoffer');
 Route::get('/shipper/offers/offerdetail', [S_OfferDetailController::class, 'index'])->name('s_offerdetail');
 Route::get('/shipper/offers/offer', [S_OfferController::class, 'index'])->name('s_offer');
+
+
+
+//CARRIER................................................................CARRIER.................CARRIER
+Route::get('/carrier/offers/add', [C_AddOfferController::class, 'index'])->name('c_add_offer');
+
+Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
+Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
+Route::get('/carrier/offers/offer', [C_OfferController::class, 'index'])->name('c_offer');

@@ -20,20 +20,16 @@ class HomeController extends Controller
 
      public function index()
      {
-         return view('s_home');
+         $role = session('role'); // Récupérer le rôle depuis la session
+ 
+         if ($role === 'admin') {
+             return view('a_home');
+         } elseif ($role === 'chargeur') {
+             return view('s_home');
+         } elseif ($role === 'transporteur') {
+             return view('c_home');
+         } else {
+             return view('home'); // Par défaut, si le rôle n'est pas reconnu
+         }
      }
-//     public function index()
-// {
-//     $role = session('role'); //  depuis la session
-
-//     if ($role === 'admin') {
-//         return view('a_home');
-//     } else {
-//         return view('home');
-//     }
-// }
-    // public function index()
-    // {
-    //     return view('home');
-    // }
-}
+ }

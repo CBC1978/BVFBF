@@ -6,11 +6,11 @@
         
           <nav class="nav-main-menu">
             <ul class="main-menu">
-              <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
+              <li> <a class="dashboard2 {{ request()->routeIs('c_home') ? 'active' : '' }}" href="{{ route('c_home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
               </li>
-              <li> <a class="dashboard2 {{ request()->routeIs('offers') ? 'active' : '' }}" href="{{ route('offers') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">Offres</span></a>
+              <li> <a class="dashboard2 {{ request()->routeIs('c_offer') ? 'active' : '' }}" href="{{ route('c_offer') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">Offres</span></a>
               </li>
-              <li> <a class="dashboard2 {{ request()->routeIs('myoffers') ? 'active' : '' }}" href="{{ route('myoffers') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Offres</span></a>
+              <li> <a class="dashboard2 {{ request()->routeIs('c_myoffer') ? 'active' : '' }}" href="{{ route('c_myoffer') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Offres</span></a>
               </li>
               <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
               </li>
