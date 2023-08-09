@@ -1,7 +1,7 @@
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
       <div class="preloader-inner position-relative">
-        <div class="text-center"><img src="imgs/template/loading.gif" alt="jobBox"></div>
+        <div class="text-center"><img src="{{ asset('imgs/template/loading.gif') }}" alt="jobBox"></div>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
     <div class="container">
       <div class="main-header">
         <div class="header-left">
-          <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="imgs/page/dashboard/bvf02.png"></a></div><span class="btn btn-grey-small ml-10">Compte Verifié</span>
+          <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div><span class="btn btn-grey-small ml-10">Compte Verifié</span>
         </div>
         <div class="header-search"> 
           <div class="box-search"> 
@@ -58,7 +58,7 @@
         </div>
         
         <div class="header-right">
-          <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('add_offer') ? 'active' : '' }}"  href="{{ route('add_offer') }}">PUBLIER UNE OFFRE</a>
+          <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('s_add_offer') ? 'active' : '' }}"  href="{{ route('s_add_offer') }}">PUBLIER UNE OFFRE</a>
             <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
               <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownNotify">
                 <li><a class="dropdown-item active" href="#">10 notifications</a></li>
@@ -66,7 +66,7 @@
                 <li><a class="dropdown-item" href="#">20 replies</a></li>
               </ul>
             </div>
-            <div class="member-login"><img alt="" src="imgs/page/dashboard/profile.png">
+            <div class="member-login"><img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
               <div class="info-member"> 
                 <strong class="color-brand-1">
                   @if(session('username'))

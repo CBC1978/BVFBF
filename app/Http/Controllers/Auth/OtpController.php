@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Mail\Email\RegisterEmail;
 use App\Mail\Email\ValidatedRegisterEmail;
@@ -12,7 +12,7 @@ class OtpController extends Controller
 {
     public function index()
     {
-        return view('otp');
+        return view('auth.otp');
     }
 
     public function optVerify(Request $request)
@@ -31,7 +31,7 @@ class OtpController extends Controller
             Mail::to( $user->email)->send(new ValidatedRegisterEmail($user->first_name));
             return view('VerifiedAccount');
         }else{
-            return view('otp');
+            return view('auth.otp');
         }
 
     }

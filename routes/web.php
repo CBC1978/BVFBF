@@ -14,7 +14,11 @@ use App\Http\Controllers\Offers\OfferDetailsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
-
+//SHIPPER 
+use App\Http\Controllers\Shipper\Offers\S_AddOfferController;
+use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
+use App\Http\Controllers\Shipper\Offers\S_OfferDetailController;
+use App\Http\Controllers\Shipper\Offers\S_OfferController;
 
 
 /*
@@ -71,3 +75,13 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('registerUser');
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('loginUser');
+
+//SHIPPER................................................................SHIPPER.................SHIPPER
+
+
+
+Route::get('/shipper/offers/add', [S_AddOfferController::class, 'index'])->name('s_add_offer');
+
+Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('s_myoffer');
+Route::get('/shipper/offers/offerdetail', [S_OfferDetailController::class, 'index'])->name('s_offerdetail');
+Route::get('/shipper/offers/offer', [S_OfferController::class, 'index'])->name('s_offer');

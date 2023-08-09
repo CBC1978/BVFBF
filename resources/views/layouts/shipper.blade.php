@@ -30,9 +30,9 @@
   
 </head>
 <body>
-    @include('layouts.s_header')
+    @include('layouts.shipper.s_header')
     <main class="main">
-        @include('layouts.s_sidebar')
+        @include('layouts.shipper.s_sidebar')
 
         <div class="box-content">
             @yield('content')
