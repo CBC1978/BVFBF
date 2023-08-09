@@ -58,7 +58,7 @@
       </div>
       
       <div class="header-right">
-        <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('s_add_offer') ? 'active' : '' }}"  href="{{ route('s_add_offer') }}">PUBLIER UNE OFFRE</a>
+        <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('c_add_offer') ? 'active' : '' }}"  href="{{ route('c_add_offer') }}">PUBLIER UNE OFFRE</a>
           <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
             <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownNotify">
               <li><a class="dropdown-item active" href="#">10 notifications</a></li>

@@ -4,7 +4,7 @@
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
-            <h3 class="mb-35">mes offres</h3>
+            <h3 class="mb-35">mes offres de FRET</h3>
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">

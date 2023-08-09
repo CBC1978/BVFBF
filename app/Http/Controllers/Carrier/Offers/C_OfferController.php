@@ -12,6 +12,6 @@ class C_OfferController extends Controller
 
         $freightOffers = FreightAnnouncement::all();
 
-        return view('shipper.offers.s_offer' , compact('freightOffers'));
+        return view('carrier.offers.c_offer' , compact('freightOffers'));
     }
 }
