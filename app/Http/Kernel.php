@@ -11,6 +11,8 @@ class Kernel extends HttpKernel
         
         'admin.session' => \App\Http\Middleware\AdminSessionMiddleware::class,
         'check.role' => \App\Http\Middleware\CheckRole::class,
+        //'shipper.session' => \App\Http\Middleware\ShipperSessionMiddleware::class,
+        //'carrier.session' => \App\Http\Middleware\CarrierSessionMiddleware::class,
     ];
     /**
      * The application's global HTTP middleware stack.
