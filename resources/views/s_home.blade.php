@@ -99,7 +99,7 @@
                   <div class="card-grid-2 hover-up">
                     <div class="card-grid-2-image-left"><span class="flash"></span>
                       <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                      <div class="right-info"><a class="name-job{{ request()->routeIs('offer_details') ? 'active' : '' }}"  href="{{ route('offer_details') }}">ATX Transit</a>
+                      <div class="right-info"><a class="name-job{{ request()->routeIs('s_offerdetail') ? 'active' : '' }}"  href="{{ route('s_offerdetail') }}">ATX Transit</a>
                         {{-- <span class="location-small">New York, US</span> --}}
                       </div>
                     </div>
