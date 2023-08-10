@@ -160,30 +160,30 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 Route::middleware(['check.role:admin'])->group(function () {
     Route::get('/a_home', [HomeController::class, 'home'])->name('a_home');
-    Route::get('/a_user_gestion', [AdminControllers\AdminUserGestionController::class, 'index'])->name('a_user_gestion');
+    Route::get('/a_user_gestion', [AdminUserGestionController::class, 'index'])->name('a_user_gestion');
     Route::get('/filter_users', [AdminUserGestionController::class, 'filterUsers'])->name('filter_users');
     // ... Autres routes spécifiques à l'administrateur ...
 });
 
 // Routes spécifiques au shipper ........................................
-Route::middleware(['check.role:shipper'])->group(function () {
+//Route::middleware(['check.role:shipper'])->group(function () {
     Route::get('/s_home', [HomeController::class, 'home'])->name('s_home');
     Route::get('/shipper/offers/add', [S_AddOfferController::class, 'index'])->name('s_add_offer');
     Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('s_myoffer');
     Route::get('/shipper/offers/offerdetail', [S_OfferDetailController::class, 'index'])->name('s_offerdetail');
     Route::get('/shipper/offers/offer', [S_OfferController::class, 'index'])->name('s_offer');
     // ... Autres routes spécifiques au shipper ...
-});
+//});
 
 // Routes spécifiques au carrier ....................................
-Route::middleware(['check.role:carrier'])->group(function () {
+//Route::middleware(['check.role:carrier'])->group(function () {
     Route::get('/c_home', [HomeController::class, 'home'])->name('c_home');
     Route::get('/carrier/offers/add', [C_AddOfferController::class, 'index'])->name('c_add_offer');
     Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
     Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
     Route::get('/carrier/offers/offer', [C_OfferController::class, 'index'])->name('c_offer');
     // ... Autres routes spécifiques au carrier ...
-});
+//});
 
 // Routes communes à tous les utilisateurs....................................
 Route::get('/', [LoginController::class, 'index'])->name('login');
