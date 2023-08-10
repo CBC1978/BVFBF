@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -9,7 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-use Session;
+//use Session;
 
 class LoginController extends Controller
 {
@@ -34,6 +35,7 @@ class LoginController extends Controller
         return view('home');
     }
 
+
     public function login(Request $request)
     {
         $request->validate([
@@ -57,4 +59,11 @@ class LoginController extends Controller
             return back()->with('fail',"L'email n'existe pas ");
         }
     }
+    public function logout()
+{
+    Auth::logout(); // Déconnecte l'utilisateur
+    Session::flush(); // Vide la session
+    return redirect()->route('login'); // Redirige vers la page de connexion
+}
+
 }

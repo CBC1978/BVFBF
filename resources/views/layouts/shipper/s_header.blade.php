@@ -66,26 +66,27 @@
                 <li><a class="dropdown-item" href="#">20 replies</a></li>
               </ul>
             </div>
-            <div class="member-login"><img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
+            <div class="member-login">
+              <img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
               <div class="info-member"> 
-                <strong class="color-brand-1">
-                  @if(session('username'))
-                  <p> {{ session('username') }} </p>
-              @endif
-                  
-                </strong>
-                <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
-                  <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
-                    <li><a class="dropdown-item" href="profile.html">Profil</a></li>
-                    <form action="{{ route('logout') }}" method="POST">
-                      @csrf
-                      <button class="dropdown-item" type="submit">Déconnexion</button>
-                  </form>
-                   
-                  </ul>
-                </div>
+                  <strong class="color-brand-1">
+                      @if(Session::has('username'))
+                          <p>{{ Session::get('username') }}</p>
+                      @endif
+                  </strong>
+                  <div class="dropdown">
+                      <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
+                      <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
+                          <li><a class="dropdown-item" href="profile.html">Profil</a></li>
+                          <form action="{{ route('logout') }}" method="POST">
+                              @csrf
+                              <button class="dropdown-item" type="submit">Déconnexion</button>
+                          </form>
+                      </ul>
+                  </div>
               </div>
-            </div>
+          </div>
+          
           </div>
         </div>
       </div>
