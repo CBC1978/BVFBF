@@ -67,7 +67,7 @@
     
  </div>
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
  <script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -75,16 +75,14 @@
 
 <script>
     $(document).ready(function() {
-        // // Initialiser DataTables
-        // var dataTable = $('#user-table').DataTable({
-        //     // Options de configuration de DataTables
-        // });
+      
     
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();
             var selectedUserIds = $('input[name="selected_users[]"]:checked').map(function() {
                 return $(this).val();
             }).get();
+
             if (selectedUserIds.length > 0) {
                 $.ajax({
                     method: 'POST',
@@ -95,9 +93,22 @@
                         user_ids: selectedUserIds
                     },
                     success: function(response) {
-                        // Mettre à jour les statuts affichés si nécessaire
-                        // Afficher un message de succès
-                        alert(response.message);
+                        // Mettre à jour les statuts affichés dans le tableau
+                        updateStatuses(response.updatedStatuses);
+                        // Vider les cases à cocher
+                        $('input[name="selected_users[]"]:checked').prop('checked', false);
+                        
+                        //  SweetAlert2 pour afficher un popup de succès
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Succès',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 1500 // Temps d'affichage du popup en ms
+                        }).then(() => {
+                            // Actualiser la page après la fermeture du popup
+                            location.reload();
+                        });
                     },
                     error: function(response) {
                         // En cas d'erreur, afficher un message d'erreur
@@ -106,11 +117,13 @@
                 });
             }
         });
-    
-        // Gérer la sélection des lignes dans DataTables
-        $('#user-table tbody').on('click', 'tr', function() {
-            $(this).toggleClass('selected');
-        });
+
+        function updateStatuses(updatedStatuses) {
+            $.each(updatedStatuses, function(userId, newStatus) {
+                var statusContainer = $('.status-container[data-user-id="' + userId + '"]');
+                statusContainer.find('.status-label').text(newStatus);
+            });
+        }
 
     // Afficher/masquer les champs de recherche et de filtrage
     $('#toggle-fields').click(function() {
