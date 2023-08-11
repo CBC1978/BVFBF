@@ -25,30 +25,7 @@ class AdminUserGestionController extends Controller
     // }
     //.............................................
     //
-    
-    public function updateStatus(Request $request, $id)
-    {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
-        }
-
-        $newStatus = $request->input('status');
-
-        
-        $user->status = $newStatus;
-        $user->save();
-
-        return response()->json(['message' => 'Statut de l\'utilisateur mis à jour avec succès']);
-    }
-
-    public function index()
-{
-    $users = User::all();
-    return view('admin.a_user_gestion', compact('users'));
-}
-public function bulkUpdateStatus(Request $request)
+    public function bulkUpdateStatus(Request $request)
     {
         $selectedStatus = $request->input('status');
         $selectedUserIds = $request->input('user_ids');
@@ -57,6 +34,14 @@ public function bulkUpdateStatus(Request $request)
 
         return response()->json(['message' => 'Statuts des utilisateurs mis à jour avec succès']);
     }
+    
+
+    public function index()
+{
+    $users = User::all();
+    return view('admin.a_user_gestion', compact('users'));
+}
+
     // ...
 
     public function filterUsers(Request $request)
