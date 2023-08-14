@@ -46,11 +46,7 @@ Route::middleware(['check.role:admin'])->group(function () {
 });
 Route::post('/bulk_update_status', [AdminUserGestionController::class, 'bulkUpdateStatus'])->name('bulk_update_status');
 
-Route::prefix('admin')->group(function () {
-    // ... (other routes)
-    
-    
-});
+
 
 // Routes spécifiques au shipper ........................................
 //Route::middleware(['check.role:shipper'])->group(function () {
