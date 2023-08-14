@@ -6,7 +6,7 @@
         
             <nav class="nav-main-menu">
               <ul class="main-menu">
-                <li> <a class="dashboard2 {{ request()->routeIs('s_home') ? 'active' : '' }}" href="{{ route('s_home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
+                <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('s_offer') ? 'active' : '' }}" href="{{ route('s_offer') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">Offres</span></a>
                 </li>
