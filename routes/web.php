@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin as AdminControllers;
 //announcement
 
 use App\Http\Controllers\Carrier\Announcement\C_AnnouncementController;
+use App\Http\Controllers\Shipper\Announcement\S_AnnouncementController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,9 +100,10 @@ Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(fu
 });
 
 Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(function () {
-    Route::get('/', [C_AnnouncementController::class, 'index'])->name('index');
-    Route::get('user', [C_AnnouncementController::class, 'userAnnouncements'])->name('user');
-    Route::get('create', [C_AnnouncementController::class, 'createAnnouncements'])->name('create');
-    Route::get('{id}', [C_AnnouncementController::class, 'showAnnouncements'])->name('show');
+    Route::get('/', [S_AnnouncementController::class, 'index'])->name('index');
+    Route::get('user', [S_AnnouncementController::class, 'userAnnouncements'])->name('user');
+    Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
+    Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
+    // ... 
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
 });
