@@ -1,4 +1,4 @@
-@extends('layouts.shipper')
+@extends('layouts.carrier')
 
 @section('content')
 
@@ -11,7 +11,7 @@
                         <div class="box-filters-job">
                             <div class="row">
                                 <div class="box-title">
-                                    <h3 class="mb-35">Offres Recentes</h3>
+                                    <h3 class="mb-35">Annonce de Fret</h3>
                                 </div>
                             </div>
                             <div class="row">

@@ -1,16 +1,16 @@
-@extends('layouts.shipper')
+@extends('layouts.carrier')
 
 @section('content')
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
-            <h3 class="mb-35">Ajouter une offre</h3>
+            <h3 class="mb-35">Ajouter une Annonce de Transport</h3>
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
-                    <li> <a class="icon-home" href="index.html">OFFRE</a></li>
-                    <li><span>Ajoute d'offre</span></li>
+                    <li> <a class="icon-home" href="index.html">Annonce de Transport</a></li>
+                    <li><span>Ajoute d'Annonce de Transport</span></li>
                 </ul>
             </div>
         </div>
@@ -27,7 +27,7 @@
                                 <div class="container">
                                     <div class="panel-white mb-30">
                                         <div class="box-padding bg-postjob">
-                                            <h5 class="icon-edu">Fait une offre</h5>
+                                            <h5 class="icon-edu">Fait une Annonce de Transport</h5>
                                             <div class="row mt-30">
                                                 <div class="col-lg-9">
                                                     <div class="row">
@@ -45,7 +45,7 @@
                                                         </div>
                                                         <div class="col-lg-12">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10"> description detaillée de l'offre *</label>
+                                                                <label class="font-sm color-text-mutted mb-10"> description detaillée de l'Annonce de Transport *</label>
                                                                 <textarea class="form-control" name="message" rows="8"> </textarea>
                                                             </div>
                                                         </div>
@@ -62,7 +62,7 @@
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
                                                                 <label class="font-sm color-text-mutted mb-10">Nombre de vehicule</label>
-                                                                <input class="form-control" type="text" placeholder="Nombre de vehicule disponible pour l'offre">
+                                                                <input class="form-control" type="text" placeholder="Nombre de vehicule disponible pour l'Annonce de Transport">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
@@ -97,7 +97,7 @@
                                                         </div>--}}
                                                         <div class="col-lg-12">
                                                             <div class="form-group mt-10">
-                                                                <button class="btn btn-default btn-brand icon-tick">Ajouter nouvelle offre</button>
+                                                                <button class="btn btn-default btn-brand icon-tick">Ajouter nouvelle Annonce de Transport</button>
                                                             </div>
                                                         </div>
                                                     </div>

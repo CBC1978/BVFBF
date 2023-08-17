@@ -43,7 +43,7 @@ class S_AnnouncementController extends Controller
             // Définir les règles de validation pour les champs d'annonce
         ]);
 
-        auth()->user()->freightAnnouncements()->create($data);
+        //auth()->user()->freightAnnouncements()->create($data);(faut que moyen de faire avec les session)
 
         return redirect()->route('shipper.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
     }
