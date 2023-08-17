@@ -10,14 +10,13 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
 //SHIPPER ROUTE
-use App\Http\Controllers\Shipper\Offers\S_AddOfferController;
-use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
-use App\Http\Controllers\Shipper\Offers\S_OfferDetailController;
+
+use App\Http\Controllers\Shipper\Announcement\S_AnnouncementController;
 use App\Http\Controllers\Shipper\Offers\S_OfferController;
+
 //CARRIER ROUTE
-use App\Http\Controllers\Carrier\Offers\C_AddOfferController;
-use App\Http\Controllers\Carrier\Offers\C_MyOfferController;
-use App\Http\Controllers\Carrier\Offers\C_OfferDetailController;
+
+use App\Http\Controllers\Carrier\Announcement\C_AnnouncementController;
 use App\Http\Controllers\Carrier\Offers\C_OfferController;
 
 //regroupement 
@@ -27,8 +26,6 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 //announcement
 
-use App\Http\Controllers\Carrier\Announcement\C_AnnouncementController;
-use App\Http\Controllers\Shipper\Announcement\S_AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +91,9 @@ Route::get('/carrier/announcements/{id}', [C_AnnouncementController::class, 'sho
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [C_AnnouncementController::class, 'index'])->name('index');
     Route::get('user', [C_AnnouncementController::class, 'userAnnouncements'])->name('user');
-    Route::get('create', [C_AnnouncementController::class, 'createAnnouncements'])->name('create');
+    Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
+
+    //Route::get('create', [C_AnnouncementController::class, 'createAnnouncements'])->name('create');
     Route::get('{id}', [C_AnnouncementController::class, 'showAnnouncements'])->name('show');
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
 });
