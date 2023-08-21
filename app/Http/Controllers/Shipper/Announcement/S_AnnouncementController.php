@@ -16,12 +16,30 @@ class S_AnnouncementController extends Controller
     }
 
     // Afficher les annonces de l'utilisateur
-    public function userAnnouncements()
-    {
-        $shipperId = session('shipper_id');
-        $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
-        return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    }
+            public function userAnnouncements()
+        {
+            $shipperId = 2; // Le shipper avec l'ID 2
+            $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
+            return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
+        }
+
+        // Méthode pour gérer l'acceptation ou le refus d'une offre
+        public function handleOffer(Request $request, $offerId)
+        {
+            $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
+            
+            // Vous pouvez ajouter ici la logique pour accepter ou refuser l'offre
+            
+            return redirect()->back()->with('message', 'Offre traitée avec succès.');
+        }
+
+
+    // public function userAnnouncements()
+    // {
+    //     $shipperId = session('shipper_id');
+    //     $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
+    //     return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
+    // }
 
     // Afficher le détail d'une annonce
     public function show($id)
