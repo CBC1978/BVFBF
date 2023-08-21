@@ -16,9 +16,9 @@
                 <label for="status">Filtrer par statut:</label>
                 <select class="form-control" name="status" id="status">
                     <option value="">Tous</option>
-                    <option value="1">Base</option>
-                    <option value="2">En cours de validation</option>
-                    <option value="3">Validé</option>
+                    <option value="0">Email Non Verifié</option>
+                    <option value="1">Email Verifié</option>
+                    <option value="2">Validé comme Admin</option>
                 </select>
             </div>
 
@@ -29,9 +29,9 @@
                  <form id="bulk-status-form" class="mb-4">
                      <div class="form-group">
                          <select class="form-control" id="bulk-status" name="bulk_status">
-                             <option value="0">Base</option>
-                             <option value="1">En cours de validation</option>
-                             <option value="2">Validé</option>
+                             <option value="0">Email Non Verifié</option>
+                             <option value="1">Email Verifié</option>
+                             <option value="2">Validé comme Admin</option>
                          </select>
                      </div>
                      <button type="button" class="btn btn-primary" id="bulk-update">Modifier le statut</button>
@@ -62,13 +62,13 @@
                     $statusLabel = '';
                     switch ($user->status) {
                         case '0':
-                            $statusLabel = 'Base';
+                            $statusLabel = 'Email Non Verifié';
                             break;
                         case '1':
-                            $statusLabel = 'En cours de validation';
+                            $statusLabel = 'Email Verifié';
                             break;
                         case '2':
-                            $statusLabel = 'Validé';
+                            $statusLabel = 'Validé comme Admin';
                             break;
                         default:
                             $statusLabel = 'Inconnu';

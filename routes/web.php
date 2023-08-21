@@ -9,6 +9,9 @@ use App\Http\Controllers\OtpController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
+use App\Http\Controllers\Admin\EntrepriseGestionController;
+
+
 //SHIPPER ROUTE
 
 use App\Http\Controllers\Shipper\Announcement\S_AnnouncementController;
@@ -105,4 +108,23 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
     // ... 
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
+});
+
+
+
+//ADMIN
+//Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('showEntrepriseForm');
+
+//Route::get('/ajouter-entreprise', function () {
+ //   return view('entreprise');
+//});
+
+//Route::post('/ajouter-transporteur', 'EntrepriseGestionController@addCarrier')->name('addCarrier');
+//Route::post('/ajouter-expediteur', 'EntrepriseGestionController@addShipper')->name('addShipper');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
+    Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
+    Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+    // ... Autres routes spécifiques à la gestion des entreprises ...
 });
