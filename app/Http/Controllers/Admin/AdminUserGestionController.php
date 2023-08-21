@@ -8,6 +8,7 @@ use App\Models\User;
 class AdminUserGestionController extends Controller
 {
     
+    
     public function bulkUpdateStatus(Request $request)
     {
         $selectedStatus = $request->input('status');
