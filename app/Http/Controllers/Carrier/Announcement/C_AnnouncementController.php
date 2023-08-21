@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Carrier\Announcement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TransportAnnouncement;
+use App\Models\TransportOffers;
 
 class C_AnnouncementController extends Controller
 
@@ -16,12 +17,30 @@ class C_AnnouncementController extends Controller
     }
 
     // Afficher les annonces de l'utilisateur
-    public function userAnnouncements()
-    {
-        $carrierId = session('carrier_id');
-        $userAnnouncements = TransportAnnouncement::where('fk_carrier_id', $carrierId)->get();
-        return view('carrier.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    }
+    // Dans votre méthode userAnnouncements du contrôleur
+public function userAnnouncements()
+{
+    $carrierId = 5; // Le transporteur avec l'ID 5
+    $userAnnouncements = TransportAnnouncement::where('fk_carrier_id', $carrierId)->get();
+    return view('carrier.announcements.user', ['userAnnouncements' => $userAnnouncements]);
+}
+//  méthode pour gérer l'acceptation ou le refus d'une offre
+public function handleOffer(Request $request, $offerId)
+{
+    $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
+    
+    //  la logique pour accepter ou refuser l'offre
+    
+    return redirect()->back()->with('message', 'Offre traitée avec succès.');
+}
+
+    // public function userAnnouncements()
+    // {
+    //     $carrierId = session('carrier_id');
+    //     $userAnnouncements = TransportAnnouncement::where('fk_carrier_id', $carrierId)->get();
+    //     return view('carrier.announcements.user', ['userAnnouncements' => $userAnnouncements]);
+    // }
+
 
     // Afficher le détail d'une annonce
     public function show($id)

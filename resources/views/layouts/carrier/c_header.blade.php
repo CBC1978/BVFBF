@@ -18,12 +18,12 @@
         <form class="login-register text-start mt-20 pb-30" action="#">
           <div class="form-group">
             <label class="form-label" for="input-1">Prix *</label>
-            <input class="form-control" id="input-1" type="text" required="" name="fullname" placeholder="Steven Job">
+            <input class="form-control" id="input-1" type="text" required="" name="fullname" placeholder="votre meilleur offre">
           </div>
           
           <div class="form-group">
             <label class="form-label" for="des">Description</label>
-            <input class="form-control" id="des" type="text" required="" name="Description" placeholder="Your description...">
+            <input class="form-control" id="des" type="text" required="" name="Description" placeholder="description...">
           </div>
           <div class="form-group">
             <label class="form-label" for="file">Ajouter un document si vous en avez</label>
