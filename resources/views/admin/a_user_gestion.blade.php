@@ -191,40 +191,7 @@ function getStatusValue(statusLabel) {
 }
 
 
-//     function filterTableByCriteria(username, status) {
-//     username = username.toLowerCase(); // Convertir le nom en minuscules pour la comparaison
 
-//     $('#user-table tbody tr').each(function() {
-//         var rowUsername = $(this).find('td:eq(1)').text().toLowerCase();
-//         var rowStatus = $(this).find('td:eq(3) .status-label').text().toLowerCase();
-
-//         var matchesUsername = rowUsername.includes(username);
-//         var matchesStatus = (status === "" || rowStatus === status.toLowerCase()); // Comparer en minuscules
-
-//         if (matchesUsername && matchesStatus) {
-//             $(this).show();
-//         } else {
-//             $(this).hide();
-//         }
-//     });
-// }
-
-
-    // function filterTableByCriteria(username, status) {
-    //     $('#user-table tbody tr').each(function() {
-    //         var rowUsername = $(this).find('td:eq(1)').text().toLowerCase();
-    //         var rowStatus = $(this).find('td:eq(3) .status-label').text().toLowerCase();
-
-    //         var matchesUsername = rowUsername.includes(username);
-    //         var matchesStatus = (status === "" || rowStatus === status);
-
-    //         if (matchesUsername && matchesStatus) {
-    //             $(this).show();
-    //         } else {
-    //             $(this).hide();
-    //         }
-    //     });
-    // }
 });
 </script>
 
