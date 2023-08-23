@@ -17,6 +17,9 @@ class EntrepriseGestionController extends Controller
 
     public function addCarrier(Request $request)
     {
+        // Récupérer l'ID de l'utilisateur depuis le champ hidden
+    $userId = $request->input('user_id');
+    
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
