@@ -36,6 +36,7 @@ class FreightAnnouncement extends Model
         'weight',
         'volume',
         'description',
+        'created_by',
     ];
 
     /**

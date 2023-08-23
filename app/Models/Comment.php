@@ -31,5 +31,6 @@ class Comment extends Model
         'mark',
         'comment',
         'fk_contract_transport_id',
+        'created_by',
     ];
 }

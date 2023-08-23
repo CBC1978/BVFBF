@@ -29,7 +29,6 @@ class Shipper extends Model
      * @var array
      */
     protected $fillable = [
-        
         'company_name',
         'address',
         'phone',
@@ -37,6 +36,7 @@ class Shipper extends Model
         'email',
         'ifu',
         'rccm',
+        'created_by',
         
     ];
 
