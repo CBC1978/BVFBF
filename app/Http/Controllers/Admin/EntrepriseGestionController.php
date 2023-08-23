@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Carrier;
 use App\Models\Shipper;
+use Session;
 
 class EntrepriseGestionController extends Controller
 {
@@ -16,6 +17,9 @@ class EntrepriseGestionController extends Controller
 
     public function addCarrier(Request $request)
     {
+        // Récupérer l'ID de l'utilisateur depuis le champ hidden
+        $userId = $request->input('user_id');
+        // Valider les données du formulaire
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
@@ -24,15 +28,24 @@ class EntrepriseGestionController extends Controller
             'email' => 'required|email',
             'ifu' => 'required|string',
             'rccm' => 'required|string',
+           
         ]);
 
+        // Ajouter l'ID de l'utilisateur
+    $validatedData['created_by'] = $userId;
+        // Créer un nouveau transporteur associé à l'utilisateur
         Carrier::create($validatedData);
 
-        return redirect()->back()->with('success', 'Entreprise de transporteur ajoutée avec succès.');
+        return redirect()->back()->with('success', 'Transporteur ajouté avec succès.');
     }
 
     public function addShipper(Request $request)
     {
+        // Récupérer l'ID de l'utilisateur à partir de la session
+        
+        $userId = $request->input('user_id');
+
+        // Valider les données du formulaire
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
@@ -41,10 +54,16 @@ class EntrepriseGestionController extends Controller
             'email' => 'required|email',
             'ifu' => 'required|string',
             'rccm' => 'required|string',
+         
         ]);
 
+        // Ajouter l'ID de l'utilisateur
+    $validatedData['created_by'] = $userId;
+      
+
+        // Créer un nouvel expéditeur associé à l'utilisateur
         Shipper::create($validatedData);
 
-        return redirect()->back()->with('success', 'Entreprise expéditrice ajoutée avec succès.');
+        return redirect()->back()->with('success', 'Expéditeur ajouté avec succès.');
     }
 }
