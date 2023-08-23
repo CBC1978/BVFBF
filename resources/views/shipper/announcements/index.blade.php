@@ -40,7 +40,7 @@
                                             </div>
                                             <div class="card-2-bottom mt-30">
                                                 <div class="row">
-                                                    {{-- Voir la meilleur offer en temps reel
+                                                    {{-- Voir la meilleur offer en temps
                                                         <div class="col-lg-7 col-7">
                                                         <span class="card-text-price">{{ $announcement->price }}</span><span class="text-muted">F</span>
                                                     </div> --}}
