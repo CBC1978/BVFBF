@@ -24,5 +24,6 @@ class TransportAnnouncement extends Model
         'vehicule_type',
         'weight',
         'description',
+        'created_by',
     ];
 }

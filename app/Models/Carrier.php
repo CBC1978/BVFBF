@@ -27,7 +27,6 @@ class Carrier extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-      
         'company_name',
         'address',
         'phone',
@@ -35,5 +34,7 @@ class Carrier extends Model
         'email',
         'ifu',
         'rccm',
+        'created_by',
+        
     ];
 }

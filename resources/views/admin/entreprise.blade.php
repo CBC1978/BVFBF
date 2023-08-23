@@ -30,7 +30,12 @@
 
                     <label for="rccm">RCCM</label>
                     <input type="text" name="rccm" required>
+<<<<<<< HEAD
 
+=======
+                    
+                    
+>>>>>>> 39d30b1616a91a8203592c986fd28c00871acb4a
                     <button type="submit">Ajouter Transporteur</button>
                 </form>
             </div>
@@ -58,7 +63,12 @@
 
                     <label for="rccm">RCCM</label>
                     <input type="text" name="rccm" required>
+<<<<<<< HEAD
 
+=======
+                    
+                    
+>>>>>>> 39d30b1616a91a8203592c986fd28c00871acb4a
                     <button type="submit">Ajouter Expéditeur</button>
                 </form>
             </div>
@@ -84,7 +94,10 @@
 
         const formulaire = event.target;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39d30b1616a91a8203592c986fd28c00871acb4a
         setTimeout(() => {
             const isSuccess = Math.random() < 0.8;
 
@@ -108,6 +121,7 @@
     }
 </script>
 @endsection
+<<<<<<< HEAD
 {{--
 @extends('layouts.admin')
 @section('content')
@@ -222,3 +236,5 @@
 
 
 @endsection  --}}
+=======
+>>>>>>> 39d30b1616a91a8203592c986fd28c00871acb4a

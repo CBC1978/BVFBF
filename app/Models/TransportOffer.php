@@ -29,6 +29,7 @@ class TransportOffer extends Model
         'fk_carrier_id',
         'price',
         'status',
+        'created_by',
     ];
 
     /**
