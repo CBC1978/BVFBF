@@ -17,9 +17,6 @@ class EntrepriseGestionController extends Controller
 
     public function addCarrier(Request $request)
     {
-        // Récupérer l'ID de l'utilisateur depuis le champ hidden
-        $userId = $request->input('user_id');
-        // Valider les données du formulaire
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
@@ -57,11 +54,6 @@ class EntrepriseGestionController extends Controller
          
         ]);
 
-        // Ajouter l'ID de l'utilisateur
-    $validatedData['created_by'] = $userId;
-      
-
-        // Créer un nouvel expéditeur associé à l'utilisateur
         Shipper::create($validatedData);
 
         return redirect()->back()->with('success', 'Expéditeur ajouté avec succès.');

@@ -13,17 +13,18 @@
           <div class="text-center">
             <p class="font-sm text-brand-2">POSTULER A L'OFFRE </p>
             <h2 class="mt-10 mb-5 text-brand-1 text-capitalize">Faites une proposition</h2>
-            <p class="font-sm text-muted mb-30">Entrer les des information clair et valide pour multiplier vos chances                    </p>
+            <p class="font-sm text-muted mb-30">Entrer des information clair et valide pour multiplier vos chances                    </p>
           </div>
           <form class="login-register text-start mt-20 pb-30" action="#">
             <div class="form-group">
               <label class="form-label" for="input-1">Prix *</label>
-              <input class="form-control" id="input-1" type="text" required="" name="fullname" placeholder="votre meilleur offre">
+              <input class="form-control" id="input-1" type="text" required="" name="prix" placeholder="votre meilleur offre">
             </div>
-            
+
             <div class="form-group">
               <label class="form-label" for="des">Description</label>
-              <input class="form-control" id="des" type="text" required="" name="Description" placeholder=" description...">
+                <input class="form-control" id="des" type="text" required="" name="Description" placeholder=" description...">
+
             </div>
             <div class="form-group">
               <label class="form-label" for="file">Ajouter un document si vous en avez</label>
@@ -43,20 +44,20 @@
       </div>
     </div>
   </div>
-  <header class="header sticky-bar"> 
+  <header class="header sticky-bar">
     <div class="container">
       <div class="main-header">
         <div class="header-left">
           <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div><span class="btn btn-grey-small ml-10">Compte Verifié</span>
         </div>
-        <div class="header-search"> 
-          <div class="box-search"> 
+        <div class="header-search">
+          <div class="box-search">
             <form action="">
               <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
             </form>
           </div>
         </div>
-        
+
         <div class="header-right">
           <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('shipper.announcements.create') ? 'active' : '' }}"  href="{{ route('shipper.announcements.create') }}">PUBLIER UNE ANNONCE DE FRET</a>
             <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
@@ -68,7 +69,7 @@
             </div>
             <div class="member-login">
               <img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
-              <div class="info-member"> 
+              <div class="info-member">
                   <strong class="color-brand-1">
                       @if(Session::has('username'))
                           <p>{{ Session::get('username') }}</p>
@@ -86,10 +87,9 @@
                   </div>
               </div>
           </div>
-          
+
           </div>
         </div>
       </div>
     </div>
   </header>
-  

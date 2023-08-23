@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Carrier\Announcement;
 
 use App\Http\Controllers\Controller;
+use App\Models\TransportOffer;
 use Illuminate\Http\Request;
 use App\Models\TransportAnnouncement;
 use App\Models\TransportOffers;
@@ -28,9 +29,9 @@ public function userAnnouncements()
 public function handleOffer(Request $request, $offerId)
 {
     $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
-    
+
     //  la logique pour accepter ou refuser l'offre
-    
+
     return redirect()->back()->with('message', 'Offre traitée avec succès.');
 }
 
@@ -66,4 +67,18 @@ public function handleOffer(Request $request, $offerId)
 
         return redirect()->route('carrier.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
     }
+
+    public function postuler(Request $request){
+        $request->validate([
+            'prix' => [ 'max:255'],
+            'description' => ['string']
+        ]);
+        $transportOffer = new TransportOffer();
+        $transportOffer->price = $request->
+        dd($request);
+//        echo '<pre>';
+//           print_r($request);
+//        echo '</pre>';
+    }
+
 }
