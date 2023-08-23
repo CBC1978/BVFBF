@@ -16,6 +16,7 @@ class EntrepriseGestionController extends Controller
 
     public function addCarrier(Request $request)
     {
+
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
@@ -42,7 +43,6 @@ class EntrepriseGestionController extends Controller
             'ifu' => 'required|string',
             'rccm' => 'required|string',
         ]);
-
         Shipper::create($validatedData);
 
         return redirect()->back()->with('success', 'Entreprise expéditrice ajoutée avec succès.');

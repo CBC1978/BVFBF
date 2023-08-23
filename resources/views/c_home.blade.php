@@ -4,28 +4,28 @@
 
 @section('content')
 <div class="box-heading">
-    <div class="box-title"> 
+    <div class="box-title">
       <h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3>
     </div>
-    <div class="box-breadcrumb"> 
+    <div class="box-breadcrumb">
       <div class="breadcrumbs">
-        <ul> 
+        <ul>
           <li> <a class="icon-home" href="index.html">Tableau de bord</a></li>
           <li><span>Dashboard</span></li>
-          
+
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="row"> 
+  <div class="row">
     <div class="col-xxl-12 col-xl-12 col-lg-7">
       <div class="section-box">
-        <div class="row"> 
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+        <div class="row">
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>15<span class="font-sm status up">17<span>%</span></span>
                   </h3>
@@ -34,10 +34,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>158<span class="font-sm status up">12<span>%</span></span>
                   </h3>
@@ -46,10 +46,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>68<span class="font-sm status up">25<span>%</span></span>
                   </h3>
@@ -58,10 +58,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>8<span class="font-sm status up">21<span>%</span></span>
                   </h3>
@@ -69,135 +69,104 @@
                 <p class="color-text-paragraph-2">Contrat ce mois</p>
               </div>
             </div>
-          
-          
+
+
 
 <!----------------------------------------------------------------------------
 |FIN  SECTION VU RAPIDE
 |--------------------------------------------------------------------------------
    -->
 
-     
+
     </div>
-  
+
     </div>
   </div>
-    <div class="row"> 
-    <div class="col-lg-12"> 
+    <div class="row">
+    <div class="col-lg-12">
       <div class="section-box">
-        <div class="container"> 
+        <div class="container">
           <div class="panel-white mb-30">
             <div class="box-padding">
               <div class="box-filters-job">
                 <div class="row">
-                  <div class="box-title"> 
-                    <h3 class="mb-35">Offres Recentes</h3>
-                  </div> 
+                  <div class="box-title">
+                    <h3 class="mb-35">Annonces de fret récentes</h3>
+                  </div>
               </div>
               <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <div class="card-grid-2 hover-up">
-                    <div class="card-grid-2-image-left"><span class="flash"></span>
-                      <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                      <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}">ATX Transit</a>
-                        {{-- <span class="location-small">New York, US</span> --}}
-                      </div>
-                    </div>
-                    <div class="card-block-info">
-                      <h6><a href="offer-details.html">BOBO-OUAGADOUGOU</a></h6>
-                      <div class="mt-5"><span class="card-briefcase">Datelimite :</span><span class="card-time">12<span> jours</span></span></div>
-                      <p class="font-sm color-text-paragraph mt-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p>
-                      <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">14 Tonnes</a><a class="btn btn-grey-small mr-5" href="">7 m3</a>
-                      </div>
-                      <div class="card-2-bottom mt-30">
-                        <div class="row">
-                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
-                          <div class="col-lg-5 col-5 text-end">
-                            <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>
+                  @foreach($announcements as $announce)
+                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                          <div class="card-grid-2 hover-up">
+                              <div class="card-grid-2-image-left"><span class="flash"></span>
+                                  <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
+                                  <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}">{{ $announce->company_name }}</a>
+                                      {{-- <span class="location-small">New York, US</span> --}}
+                                  </div>
+                              </div>
+                              <div class="card-block-info">
+                                  <h6><a href="offer-details.html">{{ucfirst($announce->origin)}}-{{ucfirst($announce->destination)}}</a></h6>
+                                  <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce->limit_date)) }}</span></div>
+                                  <p class="font-sm color-text-paragraph mt-15">{{$announce->description}}</p>
+                                  <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">{{$announce->weight}} T</a><a class="btn btn-grey-small mr-5" href="">{{ $announce->volume }} m3</a>
+                                  </div>
+                                  <div class="card-2-bottom mt-30">
+                                      <div class="row">
+                                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
+                                          <div class="col-lg-5 col-5 text-end">
+                                              <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
-                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <div class="card-grid-2 hover-up">
-                    <div class="card-grid-2-image-left"><span class="flash"></span>
-                      <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                      <div class="right-info"><a class="name-job" href="company-details.html">ATX Transit</a>
-                        {{-- <span class="location-small">New York, US</span> --}}
-                      </div>
-                    </div>
-                    <div class="card-block-info">
-                      <h6><a href="offer-details.html">BOBO-OUAGADOUGOU</a></h6>
-                      <div class="mt-5"><span class="card-briefcase">Datelimite :</span><span class="card-time">12<span> jours</span></span></div>
-                      <p class="font-sm color-text-paragraph mt-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p>
-                      <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">14 Tonnes</a><a class="btn btn-grey-small mr-5" href="">7 m3</a>
-                      </div>
-                      <div class="card-2-bottom mt-30">
-                        <div class="row">
-                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
-                          <div class="col-lg-5 col-5 text-end">
-                            <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <div class="card-grid-2 hover-up">
-                    <div class="card-grid-2-image-left"><span class="flash"></span>
-                      <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                      <div class="right-info"><a class="name-job" href="company-details.html">ATX Transit</a>
-                        {{-- <span class="location-small">New York, US</span> --}}
-                      </div>
-                    </div>
-                    <div class="card-block-info">
-                      <h6><a href="offer-details.html">BOBO-OUAGADOUGOU</a></h6>
-                      <div class="mt-5"><span class="card-briefcase">Datelimite :</span><span class="card-time">12<span> jours</span></span></div>
-                      <p class="font-sm color-text-paragraph mt-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p>
-                      <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">14 Tonnes</a><a class="btn btn-grey-small mr-5" href="">7 m3</a>
-                      </div>
-                      <div class="card-2-bottom mt-30">
-                        <div class="row">
-                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
-                          <div class="col-lg-5 col-5 text-end">
-                            <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <div class="card-grid-2 hover-up">
-                    <div class="card-grid-2-image-left"><span class="flash"></span>
-                      <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                      <div class="right-info"><a class="name-job" href="company-details.html">ATX Transit</a>
-                        {{-- <span class="location-small">New York, US</span> --}}
-                      </div>
-                    </div>
-                    <div class="card-block-info">
-                      <h6><a href="offer-details.html">BOBO-OUAGADOUGOU</a></h6>
-                      <div class="mt-5"><span class="card-briefcase">Datelimite :</span><span class="card-time">12<span> jours</span></span></div>
-                      <p class="font-sm color-text-paragraph mt-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p>
-                      <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">14 Tonnes</a><a class="btn btn-grey-small mr-5" href="">7 m3</a>
-                      </div>
-                      <div class="card-2-bottom mt-30">
-                        <div class="row">
-                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
-                          <div class="col-lg-5 col-5 text-end">
-                            <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
+
+
+                      <div class="modal fade" id="ModalApplyJobForm{{$announce->id}}" tabindex="-1" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                              <div class="modal-content apply-job-form">
+                                  <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  <div class="modal-body pl-30 pr-30 pt-50">
+                                      <div class="text-center">
+                                          <p class="font-sm text-brand-2">POSTULER A L'OFFRE </p>
+                                          <h2 class="mt-10 mb-5 text-brand-1 text-capitalize">Faites une proposition</h2>
+                                          <p class="font-sm text-muted mb-30">Entrer les des information clair et valide pour multiplier vos chances</p>
+                                      </div>
+                                      <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post">
+                                          @csrf
+                                          <div class="form-group">
+                                              <label class="form-label" for="input-1">Prix *</label>
+                                              <input class="form-control" id="input-1" type="text" required="" name="price" placeholder="votre meilleur offre">
+                                          </div>
+
+                                          <div class="form-group">
+                                              <label class="form-label" for="des">Description</label>
+                                              <input class="form-control" id="des" type="text" required="" name="description" placeholder="description...">
+                                              <input class="form-control" id="file" name="idUser" value="{{session('userId') }}" type="hidden">
+                                              <input class="form-control" id="file" name="announce" value="{{ $announce->id }}" type="hidden">
+                                          </div>
+                                          {{--          <div class="form-group">--}}
+                                          {{--            <label class="form-label" for="file">Ajouter un document si vous en avez</label>--}}
+                                          {{--            <input class="form-control" id="file" name="resume" type="file">--}}
+                                          {{--          </div>--}}
+                                          <div class="login_footer form-group d-flex justify-content-between">
+                                              <label class="cb-container">
+                                                  <input type="checkbox"><span class="text-small">Conditions generales d'utilisation</span><span class="checkmark"></span>
+                                              </label><a class="text-muted" href="page-contact.html">En savoir plus</a>
+                                          </div>
+                                          <div class="form-group">
+                                              <button class="btn btn-default hover-up w-100" type="submit" name="login">ENVOYER</button>
+                                          </div>
+                                          <div class="text-muted text-center">Avez vous besoin d'aides? <a href="page-contact.html">Contactez nous </a></div>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
               </div>
-              
             </div>
           </div>
         </div>
@@ -206,7 +175,7 @@
   </div>
   <div class="mt-10">
     <div class="section-box">
-      <div class="container"> 
+      <div class="container">
         <div class="panel-white pt-30 pb-30 pl-15 pr-15">
           <div class="box-swiper">
             <div class="swiper-container swiper-group-10 swiper-initialized swiper-horizontal swiper-pointer-events">

@@ -3,7 +3,7 @@
 |--------------------------------------------------------------------------------
          -->
          <div class="nav"><a class="btn btn-expanded"></a>
-        
+
             <nav class="nav-main-menu">
               <ul class="main-menu">
                 <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">A_Accueil</span></a>
@@ -12,12 +12,6 @@
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('admin.entreprise') ? 'active' : '' }}" href="{{ route('admin.entreprise') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">entreprise </span></a>
                 </li>
-                
-                
-                
-                ajouter-entreprise
-                
-                
               </ul>
             </nav>
             {{-- <div class="border-bottom mb-20 mt-20"></div>
@@ -31,7 +25,5 @@
               <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
             </div> --}}
           </div>
-          
         </div>
-        
-   
+
