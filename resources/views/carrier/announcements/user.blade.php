@@ -1,50 +1,52 @@
 @extends('layouts.carrier')
 
 @section('content')
-    <h1>Mes annonces de transport</h1>
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-3">Mes annonces de transport</h3>
+        </div>
+        <div class="box-breadcrumb">
+            <div class="breadcrumbs">
+                <ul>
+                    <li> <a class="icon-home" href="#">Tableau de bord</a></li>
+                    <li><span>Mes annonces</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <table class="table table-bordered">
+        <table class="data-table table table-responsive table-striped">
             <thead>
                 <tr>
-                    <th>Annonce ID</th>
+                    <th>#</th>
                     <th>Origine</th>
                     <th>Destination</th>
-                    <th>Date limite</th>
-                    <th>Type de véhicule</th>
-                    <th>Poids</th>
                     <th>Description</th>
                     <th>Offres</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($userAnnouncements as $announcement)
+                @php
+                $i =1 ;
+                @endphp
+                @foreach ($data as $announce)
+
                     <tr>
-                        <td>{{ $announcement->id }}</td>
-                        <td>{{ $announcement->origin }}</td>
-                        <td>{{ $announcement->destination }}</td>
-                        <td>{{ $announcement->limit_date }}</td>
-                        <td>{{ $announcement->vehicule_type }}</td>
-                        <td>{{ $announcement->weight }}</td>
-                        <td>{{ $announcement->description }}</td>
+                        <td> {{ $i }}</td>
+                        <td>{{ $announce['origin'] }}</td>
+                        <td>{{ $announce['destination'] }}</td>
+                        <td>{{ $announce['description'] }}</td>
                         <td>
-                            {{-- @if ($announcement->offers->count() > 0)
-                                <ul>
-                                    @foreach ($announcement->offers as $offer)
-                                        <li>
-                                            Offre de {{ $offer->sender_name }}: {{ $offer->amount }}
-                                            <form method="post" action="{{ route('handle.offer', ['offerId' => $offer->id]) }}">
-                                                @csrf
-                                                <button type="submit" name="action" value="accept">Accepter</button>
-                                                <button type="submit" name="action" value="refuse">Refuser</button>
-                                            </form>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                            @if($announce['offre'] != 0)
+                                <button class="btn btn-success"> <span class="badge badge-success">{{$announce['offre']}}</span></button>
                             @else
-                                Aucune offre pour le moment.
-                            @endif --}}
+                               <button class="btn btn-danger"> <span class="badge badge-warning">0</span></button>
+                            @endif
                         </td>
                     </tr>
+                    @php
+                        $i++ ;
+                    @endphp
                 @endforeach
             </tbody>
         </table>
