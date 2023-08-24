@@ -68,6 +68,48 @@
             </div>
         </div>
     </div>
+
+
+
+
+  
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h2>Assigner une entreprise à un utilisateur</h2>
+        <form action="{{ route('admin.assigner-entreprise-user') }}" method="post">
+            @csrf
+            <label for="user_id">Utilisateur</label>
+            <select name="user_id" class="form-control">
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+            </select>
+
+            <label for="entreprise_type">Type d'entreprise</label>
+            <select name="entreprise_type" class="form-control">
+                <option value="carrier">Transporteur</option>
+                <option value="shipper">Expéditeur</option>
+            </select>
+
+            <label for="entreprise_id">Entreprise</label>
+            <select name="entreprise_id" class="form-control">
+                @foreach ($carriers as $carrier)
+                    <option value="{{ $carrier->id }}">{{ $carrier->company_name }}</option>
+                @endforeach
+                @foreach ($shippers as $shipper)
+                    <option value="{{ $shipper->id }}">{{ $shipper->company_name }}</option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="btn btn-primary">Assigner Entreprise</button>
+        </form>
+    </div>
 </div>
+
+
+
+
+
+
 @endsection
 
