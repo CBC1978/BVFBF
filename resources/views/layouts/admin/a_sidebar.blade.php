@@ -12,6 +12,8 @@
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('admin.ajouter-entreprise') ? 'active' : '' }}" href="{{ route('admin.ajouter-entreprise') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">entreprise </span></a>
                 </li>
+                <li> <a class="dashboard2 {{ request()->routeIs('annonces.a_annonce') ? 'active' : '' }}" href="{{ route('annonces.a_annonce') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">Annonces Gestion </span></a>
+                </li>
                 
                 
                 
@@ -20,7 +22,7 @@
                 
               </ul>
             </nav>
-            {{-- <div class="border-bottom mb-20 mt-20"></div>
+              <div class="border-bottom mb-20 mt-20"></div>
             <div class="box-profile-completed text-center mb-30">
               <div id="circle-staticstic-demo"></div>
               <h6 class="mb-10">Profile Completed</h6>
@@ -29,7 +31,7 @@
             <div class="sidebar-border-bg mt-50"><span class="text-grey">WE ARE</span><span class="text-hiring">HIRING</span>
               <p class="font-xxs color-text-paragraph mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto</p>
               <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
-            </div> --}}
+            </div>
           </div>
           
         </div>
