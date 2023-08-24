@@ -56,6 +56,8 @@ class EntrepriseGestionController extends Controller
             'rccm' => 'required|string',
          
         ]);
+          // Ajouter l'ID de l'utilisateur
+    $validatedData['created_by'] = $userId;
 
         Shipper::create($validatedData);
 
