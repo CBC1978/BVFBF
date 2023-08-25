@@ -69,60 +69,35 @@ class EntrepriseGestionController extends Controller
 
         return redirect()->back()->with('success', 'Expéditeur ajouté avec succès.');
     }
-    //Voir les utilisateur000000000000000000000000000000000000000000000000000000000
+    //Voir les utilisateur00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     public function assignEntrepriseToUser(Request $request)
-    {
-        $selectedUsers = $request->input('selected_users', []);
-        $carrierIds = $request->input('carrier_id', []);
-        $shipperIds = $request->input('shipper_id', []);
-    
-        foreach ($selectedUsers as $userId) {
-            $user = User::find($userId);
-    
-            if (isset($carrierIds[$userId])) {
-                $user->fk_carrier_id = $carrierIds[$userId];
-            }
-    
-            if (isset($shipperIds[$userId])) {
-                $user->fk_shipper_id = $shipperIds[$userId];
-            }
-    
+{
+    // Récupérer les données du formulaire
+    $selectedUsers = $request->input('selected_users', []);
+    $carrierId = $request->input('carrier_id');
+    $shipperId = $request->input('shipper_id');
+
+    // Parcourir les utilisateurs sélectionnés
+    foreach ($selectedUsers as $userId) {
+        // Récupérer l'utilisateur en utilisant son ID
+        $user = User::find($userId);
+
+        // Attribuer l'entreprise de transport s'il y a un transporteur sélectionné
+        if (!empty($carrierId)) {
+            $user->fk_carrier_id = $carrierId;
             $user->save();
         }
-    
-        return redirect()->back()->with('success', 'Entreprises assignées aux utilisateurs avec succès.');
+
+        // Attribuer l'entreprise d'expédition s'il y a un expéditeur sélectionné
+        if (!empty($shipperId)) {
+            $user->fk_shipper_id = $shipperId;
+            $user->save();
+        }
     }
+
+    // Rediriger avec un message de succès
+    return redirect()->back()->with('success', 'Entreprises assignées aux utilisateurs avec succès.');
+}
+
     
-
-    //00000000000000000000000000000000000000
-//     public function getEntreprises(Request $request, $type)
-// {
-//     if ($type === 'carrier') {
-//         $entreprises = Carrier::all();
-//     } elseif ($type === 'shipper') {
-//         $entreprises = Shipper::all();
-//     }
-
-//     return response()->json($entreprises);
-// }
-    //000000000000000000000
-   
-    // public function assignEntrepriseToUser(Request $request)
-    // {
-    //     $userId = $request->input('user_id');
-    //     $entrepriseType = $request->input('entreprise_type'); // "carrier" ou "shipper"
-    //     $entrepriseId = $request->input('entreprise_id'); // L'ID de l'entreprise sélectionnée
-
-    //     $user = User::find($userId);
-
-    //     if ($entrepriseType === 'carrier') {
-    //         $user->fk_carrier_id = $entrepriseId;
-    //         $user->save();
-    //     } elseif ($entrepriseType === 'shipper') {
-    //         $user->fk_shipper_id = $entrepriseId;
-    //         $user->save();
-    //     }
-
-    //     return redirect()->back()->with('success', 'Assignation d\'entreprise réussie.');
-    // }
 }
