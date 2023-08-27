@@ -6,14 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Carrier;
 use App\Models\Shipper;
+use App\Models\User;
 use Session;
+
 
 class EntrepriseGestionController extends Controller
 {
     public function showEntrepriseForm()
-    {
-        return view('admin.entreprise'); // Charge la vue "entreprise.blade.php"
-    }
+{
+    $users = User::all(); // Récupérer tous les utilisateurs
+    $carriers = Carrier::all(); // Récupérer tous les transporteurs
+    $shippers = Shipper::all(); // Récupérer tous les expéditeurs
+
+    return view('admin.entreprise', compact('users', 'carriers', 'shippers'));
+}
 
     public function addCarrier(Request $request)
     {
@@ -63,4 +69,35 @@ class EntrepriseGestionController extends Controller
 
         return redirect()->back()->with('success', 'Expéditeur ajouté avec succès.');
     }
+    //Voir les utilisateur00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    public function assignEntrepriseToUser(Request $request)
+{
+    // Récupérer les données du formulaire
+    $selectedUsers = $request->input('selected_users', []);
+    $carrierId = $request->input('carrier_id');
+    $shipperId = $request->input('shipper_id');
+
+    // Parcourir les utilisateurs sélectionnés
+    foreach ($selectedUsers as $userId) {
+        // Récupérer l'utilisateur en utilisant son ID
+        $user = User::find($userId);
+
+        // Attribuer l'entreprise de transport s'il y a un transporteur sélectionné
+        if (!empty($carrierId)) {
+            $user->fk_carrier_id = $carrierId;
+            $user->save();
+        }
+
+        // Attribuer l'entreprise d'expédition s'il y a un expéditeur sélectionné
+        if (!empty($shipperId)) {
+            $user->fk_shipper_id = $shipperId;
+            $user->save();
+        }
+    }
+
+    // Rediriger avec un message de succès
+    return redirect()->back()->with('success', 'Entreprises assignées aux utilisateurs avec succès.');
+}
+
+    
 }

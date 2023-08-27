@@ -13,6 +13,7 @@ class AdminUserGestionController extends Controller
     {
         $selectedStatus = $request->input('status');
         $selectedUserIds = $request->input('user_ids');
+        
 
         User::whereIn('id', $selectedUserIds)->update(['status' => $selectedStatus]);
 

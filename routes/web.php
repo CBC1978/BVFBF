@@ -116,12 +116,24 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
 
 //ADMIN
 
+// Route::prefix('admin')->group(function () {
+//     //Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
+//    // Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
+//     //Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+//     // ...
+//     Route::get('/admin/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
+// Route::post('/admin/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
+// Route::post('/admin/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+// // Route pour l'assignation d'entreprise à l'utilisateur
+// //Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
+// //Route::get('/admin/get-entreprises/{type}', [EntrepriseGestionController::class, 'getEntreprises']);
+// Route::post('/admin/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
+// });
 Route::prefix('admin')->group(function () {
-    //Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
-   // Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
-    //Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
     // ...
-    Route::get('/admin/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
-Route::post('/admin/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
-Route::post('/admin/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+    Route::get('/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
+    Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
+    Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+    Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
+    // ...
 });
