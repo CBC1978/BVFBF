@@ -26,16 +26,17 @@ public function userAnnouncements()
 {
     //Obtenir les infos sur l'utilisateur
     $user = User::find(session()->get('userId'));
-    $announces = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
+    $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
                                         ->orderBy('created_at', 'DESC')
                                         ->get();
     //Recupérer les annonces et les offres émises
-    $data = [];
-    foreach ($announces as $announce){
+    $announces = [];
+    foreach ($announcesObject as $announce){
         $item = array(
             'origin'=>$announce->origin,
             'destination'=>$announce->destination,
             'description'=>$announce->description,
+            'limit_date'=>$announce->limit_date,
             'offre'=>0,
         );
         $offre = FreightOffer::where('fk_transport_announcement_id', $announce->id)
@@ -44,9 +45,9 @@ public function userAnnouncements()
             $item['offre'] = count($offre);
         }
 
-        array_push($data, $item);
+        array_push($announces, $item);
     }
-    return view('carrier.announcements.user', compact('data'));
+    return view('carrier.announcements.user', compact('announces'));
 }
 //  méthode pour gérer l'acceptation ou le refus d'une offre
 public function handleOffer(Request $request, $offerId)
