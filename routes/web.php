@@ -124,14 +124,6 @@ Route::prefix('annonces')->group(function () {
 
 });
 
-//Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('showEntrepriseForm');
-
-//Route::get('/ajouter-entreprise', function () {
- //   return view('entreprise');
-//});
-
-//Route::post('/ajouter-transporteur', 'EntrepriseGestionController@addCarrier')->name('addCarrier');
-//Route::post('/ajouter-expediteur', 'EntrepriseGestionController@addShipper')->name('addShipper');
 
 Route::prefix('admin')->group(function () {
     Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
