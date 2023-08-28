@@ -16,8 +16,10 @@ class C_AnnouncementController extends Controller
     // Afficher toutes les annonces
     public function index()
     {
+
         $announcements = TransportAnnouncement::all();
-        return view('carrier.announcements.index', ['announcements' => $announcements]);
+        dd($announcements);
+        //return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
     // Afficher les annonces de l'utilisateur
@@ -108,6 +110,8 @@ public function handleOffer(Request $request, $offerId)
         $transportOffer->status = 0;
         $transportOffer->created_by = $user->id;
         $transportOffer->save();
+        
+      
         return redirect('home')->with('success', "Offre ajouté avec succès");
 
 
