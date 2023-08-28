@@ -118,11 +118,11 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
 //Les routes annonces ADMIN
 Route::prefix('annonces')->group(function () {
     Route::get('/', [AdminAnnoncesController::class, 'affichage'])->name('annonces.a_annonce');
-    Route::post('/filtrer', [AdminAnnoncesController::class, 'filtrerParStatut'])->name('annonces.filtrer');
-    Route::get('/{id}', [AdminAnnoncesController::class,'update'])->name('annonces.update');
-    Route::get('/{id1}', [AdminAnnoncesController::class,'update1'])->name('annonces.update1');
-});
+    Route::put('/filtrer', [AdminAnnoncesController::class, 'filterbyStatus'])->name('annonces.filter');
+    Route::get('/update-freight/{annonce}', [AdminAnnoncesController::class,'updateFreightAnnouncement'])->name('annonces.updateFreight');
+    Route::get('/update-transport/{annonce}', [AdminAnnoncesController::class,'updateTransportAnnouncement'])->name('annonces.updateTransport');
 
+});
 
 //Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('showEntrepriseForm');
 

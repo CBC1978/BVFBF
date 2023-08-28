@@ -20,56 +20,34 @@ class AdminAnnoncesController extends Controller
     }
 
     // Méthode pour filtrer les annonces par status
-    public function filtrerParstatut(Request $request)
+    public function filterbyStatus(Request $request)
     {
         $status = $request->input('status');
 
          $chargeurAnnonces = FreightAnnouncement::query()->where('status', $status)->get();
          $transporteurAnnonces = TransportAnnouncement::query()->where('status', $status)->get(); 
         
-        return view('admin.annonces.a_annonce', compact('chargeurAnnonces', 'transporteurAnnonces'));
+        return view('admin.annonces.filter', compact('chargeurAnnonces', 'transporteurAnnonces'));
     }
 
-    public function update(Request $request, $id)
+    public function updateFreightAnnouncement(FreightAnnouncement $annonce)
     {
-
-
-        $annonce = FreightAnnouncement::find($id);
-
-        if (!$annonce) {
-            return redirect()->route('admin.annonces.a_annonce')->with('error', 'Annonce introuvable');
-        }
-        if ($annonce) {
-            
-        }
-
-        $annonce->status = $request->input('nouveau_status');
-        $annonce->id = $request->input('admin_id');
-        $annonce->updated_at = now(); 
+        // marquer l'annonce comme activée ou désactivée
+        $annonce->status = ($annonce->status == 1) ? 0 : 1;
         $annonce->save();
 
-        return redirect()->route('admin.annonces.edit')->with('success', 'Annonce mise à jour avec succès');
+        return redirect()->route('annonces.a_annonce')->with('success', 'Annonce de chargement mise à jour avec succès.');
     }
 
 
 
-    public function update1(Request $request, $id)
+    public function updateTransportAnnouncement(TransportAnnouncement $annonce)
     {
 
-        $annonce = TransportAnnouncement::find($id);
+        $annonce->status = ($annonce->status == 1) ? 0 : 1;
+        $annonce->save();
 
-     if (!$annonce) {
-        return redirect()->route('admin.annonces.a_annonce')->with('error', 'Annonce introuvable');
-        }
-
-      $annonce->status = $request->input('nouveau_status');
-      $annonce->id = $request->input('admin_id');
-      $annonce->updated_at = now(); 
-      $annonce->save();
-
-     return redirect()->route('admin.annonces.edit')->with('success', 'Annonce mise à jour avec succès');
+        return redirect()->route('annonces.a_annonce')->with('success', 'Annonce de transport mise à jour avec succès.');
     }
-
-
 
 }

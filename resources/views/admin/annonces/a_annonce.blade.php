@@ -1,28 +1,49 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+<a href="/home"><button type="submit"> Retour</button> </a>
+    <div class="container1">
         <h1>Annonces de Fret</h1>
-        
-        <!-- Formulaire de filtrage par status -->
-        <form action="{{ route('annonces.filtrer') }}" method="post">
-            @csrf
-            @method('PUT')
-            <label for="status">Filtrer par status :</label>
-            <select name="status" id="status">
-                <option value="en_attente">En Attente</option>
-                <option value="approuve">Approuvé</option>
-                <option value="rejete">Rejeté</option>
-            </select>
-            <button type="submit">Filtrer</button>
-        </form>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div class="col-md-6">
+             <!-- Bouton pour afficher/masquer les champs de recherche et de filtrage -->
+             <button class="btn btn-primary" id="toggle-fields">Afficher/Masquer les champs</button>
+            <!-- Recherche par nom -->
+            <div class="form-group" id="search-group" style="display: none;">
+                <label for="search">Rechercher par ID:</label>
+                <input type="text" class="form-control" name="search" id="search" placeholder="ID de l'utilisateur">
+            </div>
+            <div class="form-group" id="filter-group" style="display: none;">
+                <!-- Formulaire de filtrage par status -->
+            <form action="{{ route('annonces.filter') }}" method="post" >
+                @csrf
+                @method('PUT')
+
+                <label for="status">Filtrer par statut:</label>
+                <select class="form-control" name="status" id="status">
+                    <option value="1">Activé</option>
+                    <option value="0">Desactivé</option>
+                </select>
+                <button type="submit">Filtrer</button>
+            </form>
+            </div>
+            
+        </div>
         
         <!-- Tableau des annonces -->
+        <div class="container1">
         <table>
+        <h3>La liste des annonces des Chargeurs</h3>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Type</th>
+                    <th>Description</th>
                     <th>status</th>
                     <th>Actions</th>
                 </tr>
@@ -32,72 +53,152 @@
                     <tr>
                         <td>{{ $annonce->id }}</td>
                         <td>Chargeur</td>
-                        <td>{{ $annonce->status }}</td>
+                        <td>{{ $annonce->description }}</td>
                         <td>
-                            <a href="{{ route('annonces.update', $annonce->id) }}">Mettre à jour</a>
+                            @if ($annonce->status == 1) 
+                                Actif
+                            @else
+                                Desactivé
+                            @endif
                         </td>
-                    </tr>
-                @endforeach
-
-                @foreach($transporteurAnnonces as $annonce)
-                    <tr>
-                        <td>{{ $annonce->id }}</td>
-                        <td>Transporteur</td>
-                        <td>{{ $annonce->status }}</td>
                         <td>
-                            <a href="{{ route('annonces.update1', $annonce->id) }}">Mettre à jour</a>
+                            <a href="{{ route('annonces.updateFreight', $annonce->id) }}">Mettre à jour</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        </div>
+        
+        <div class="container1 mt-2">
+        <table>
+        <h3>La liste des annonces des Transporteurs</h3>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                @foreach($transporteurAnnonces as $annonce)
+                    <tr>
+                        <td>{{ $annonce->id }}</td>
+                        <td>Transporteur</td>
+                        <td>{{ $annonce->description }}</td>
+                        <td>
+                            @if ($annonce->status == 1) 
+                                Actif
+                            @else
+                                Desactivé
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('annonces.updateTransport', $annonce->id) }}">Mettre à jour</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        </div>
+        
     </div>
+
+<script>
+    // Afficher/masquer les champs de recherche et de filtrage
+    $('#toggle-fields').click(function() {
+        $('#search-group').toggle();
+        $('#filter-group').toggle();
+    });
+
+    // Récupérer l'élément d'entrée de recherche
+    const searchInput = document.getElementById('search');
+
+    // Ajouter un gestionnaire d'événement pour la saisie dans l'entrée de recherche
+    searchInput.addEventListener('input', function () {
+        const searchID = parseInt(searchInput.value); // ID saisi en tant que nombre
+        
+        // Parcourir toutes les lignes du tableau et les cacher ou afficher en fonction de la recherche
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const idCell = row.querySelector('td:first-child'); // Cellule de l'ID
+            const rowID = parseInt(idCell.textContent); // ID de la ligne en tant que nombre
+            
+            // Vérifier si l'ID de la ligne correspond à l'ID saisi
+            if (isNaN(searchID) || rowID === searchID) {
+                row.style.display = ''; // Afficher la ligne
+            } else {
+                row.style.display = 'none'; // Cacher la ligne
+            }
+        });
+    });
+
+</script>
+
 <style>
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container1 {
+    margin: 20px;
     padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f5f5f5;
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-select {
-    padding: 5px;
-}
-
-button {
-    padding: 5px 10px;
+#toggle-fields {
     background-color: #007bff;
     color: white;
     border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
 }
 
 th, td {
-    padding: 10px;
+    padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
 th {
     background-color: #f2f2f2;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 a {
@@ -105,5 +206,20 @@ a {
     text-decoration: none;
 }
 
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
 </style>
+    
 @endsection
