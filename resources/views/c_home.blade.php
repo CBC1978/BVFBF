@@ -12,12 +12,15 @@
         <ul>
           <li> <a class="icon-home" href="index.html">Tableau de bord</a></li>
           <li><span>Dashboard</span></li>
-
         </ul>
       </div>
     </div>
   </div>
-
+@if(Session::has('success'))
+    <div class="alert alert-success">
+        {{Session::get('success')}}
+    </div>
+@endif
   <div class="row">
     <div class="col-xxl-12 col-xl-12 col-lg-7">
       <div class="section-box">
@@ -122,8 +125,6 @@
                           </div>
                       </div>
 
-
-
                       <div class="modal fade" id="ModalApplyJobForm{{$announce->id}}" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                               <div class="modal-content apply-job-form">
@@ -134,23 +135,19 @@
                                           <h2 class="mt-10 mb-5 text-brand-1 text-capitalize">Faites une proposition</h2>
                                           <p class="font-sm text-muted mb-30">Entrer les des information clair et valide pour multiplier vos chances</p>
                                       </div>
-                                      <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post">
+                                      <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                           @csrf
                                           <div class="form-group">
-                                              <label class="form-label" for="input-1">Prix *</label>
-                                              <input class="form-control" id="input-1" type="text" required="" name="price" placeholder="votre meilleur offre">
+                                              <label class="form-label" for="prix">Prix *</label>
+                                              <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                           </div>
 
                                           <div class="form-group">
-                                              <label class="form-label" for="des">Description</label>
-                                              <input class="form-control" id="des" type="text" required="" name="description" placeholder="description...">
-                                              <input class="form-control" id="file" name="idUser" value="{{session('userId') }}" type="hidden">
-                                              <input class="form-control" id="file" name="announce" value="{{ $announce->id }}" type="hidden">
+                                              <label class="form-label" for="description">Description</label>
+                                              <input class="form-control" id="description" type="text" required="" name="description" placeholder="description...">
+                                              <input class="form-control" id="idUser" name="idUser" value="{{session('userId') }}" type="hidden">
+                                              <input class="form-control" id="announce" name="announce" value="{{ $announce->id }}" type="hidden">
                                           </div>
-                                          {{--          <div class="form-group">--}}
-                                          {{--            <label class="form-label" for="file">Ajouter un document si vous en avez</label>--}}
-                                          {{--            <input class="form-control" id="file" name="resume" type="file">--}}
-                                          {{--          </div>--}}
                                           <div class="login_footer form-group d-flex justify-content-between">
                                               <label class="cb-container">
                                                   <input type="checkbox"><span class="text-small">Conditions generales d'utilisation</span><span class="checkmark"></span>
@@ -166,7 +163,6 @@
                           </div>
                       </div>
                   @endforeach
-              </div>
             </div>
           </div>
         </div>
@@ -218,4 +214,15 @@
   </footer>
 </div>
 </div></div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function (){
+            setTimeout(function(){
+                $("div.alert").remove();
+            }, 3000 ); //3s
+
+        });
+    </script>
 @endsection
