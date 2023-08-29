@@ -30,7 +30,7 @@
                   <h3>15<span class="font-sm status up">17<span>%</span></span>
                   </h3>
                 </div>
-                <p class="color-text-paragraph-2">Nombre de d'annonce</p>
+                <p class="color-text-paragraph-2">Nombre d'annonce</p>
               </div>
             </div>
           </div>

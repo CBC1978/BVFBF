@@ -32,7 +32,7 @@
                     <!-- Champ caché pour stocker l'ID de l'utilisateur -->
                     <input type="hidden" name="user_id" value="{{ Session::get('userId') }}">
                     
-                    <button type="submit">Ajouter Transporteur</button>
+                    <button type="submit" class="btn btn-primary">Ajouter Transporteur</button>
                 </form>
             </div>
             <div class="col-md-6">
@@ -62,8 +62,8 @@
                     
                     <!-- Champ caché pour stocker l'ID de l'utilisateur -->
                     <input type="hidden" name="user_id" value="{{ Session::get('userId') }}">
-                    
-                    <button type="submit">Ajouter Expéditeur</button>
+                 
+                    <button type="submit" class="btn btn-primary" >Ajouter Expéditeur</button>
                 </form>
             </div>
         </div>
@@ -110,6 +110,8 @@
                             <th>ID</th>
                             <th>Nom</th>
                             <th>Email</th>
+                            <th>Entreprise</th>
+                        <th>Source</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -119,6 +121,24 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    @if ($user->fk_carrier_id)
+                                        {{ $carriers->find($user->fk_carrier_id)->company_name }}
+                                    @elseif ($user->fk_shipper_id)
+                                        {{ $shippers->find($user->fk_shipper_id)->company_name }}
+                                    @else
+                                        Aucune entreprise associée
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($user->fk_carrier_id)
+                                        Entreprise transporteur
+                                    @elseif ($user->fk_shipper_id)
+                                        Entreprise expéditeur
+                                    @else
+                                        Aucune entreprise associée
+                                    @endif
+                                </td>
                                 <td><input type="checkbox" class="user-checkbox" name="selected_users[]" value="{{ $user->id }}">
                                     <input type="hidden" name="user_ids[]" value="{{ $user->id }}">
                                 </td>
@@ -131,6 +151,48 @@
         </div>
     </div>
 </div>
+
+<script>
+    
+    // Script pour gérer la soumission du formulaire d'assignation
+    $(document).on('submit', '#assign-user-form', function(e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = form.serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(response) {
+                // Afficher un pop-up de succès avec SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Succès',
+                    text: response.message,
+                    showConfirmButton: false,
+                    timer: 1500 // Temps d'affichage du popup en ms
+                }).then(() => {
+                     // Réinitialiser les cases à cocher
+                     $('.user-checkbox').prop('checked', false);
+                    // Actualiser la page après la fermeture du popup
+                    location.reload();
+                });
+            },
+            error: function(xhr) {
+                // Afficher un pop-up d'erreur en cas d'échec
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'Une erreur s\'est produite. Veuillez réessayer.'
+                });
+            }
+        });
+    });
+    
+</script>
 
 
 @endsection

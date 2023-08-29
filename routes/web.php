@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\HomeController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
 use App\Http\Controllers\Admin\EntrepriseGestionController;
+use App\Http\Controllers\Admin\AdminAnnoncesController;
+
 
 
 //SHIPPER ROUTE
@@ -115,26 +118,25 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
 
 
 
-//ADMIN
 
-// Route::prefix('admin')->group(function () {
-//     //Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
-//    // Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
-//     //Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
-//     // ...
-//     Route::get('/admin/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
-// Route::post('/admin/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
-// Route::post('/admin/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
-// // Route pour l'assignation d'entreprise à l'utilisateur
-// //Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
-// //Route::get('/admin/get-entreprises/{type}', [EntrepriseGestionController::class, 'getEntreprises']);
-// Route::post('/admin/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
-// });
+//Les routes annonces ADMIN
+Route::prefix('annonces')->group(function () {
+    Route::get('/', [AdminAnnoncesController::class, 'affichage'])->name('annonces.a_annonce');
+    Route::put('/filtrer', [AdminAnnoncesController::class, 'filterbyStatus'])->name('annonces.filter');
+    Route::get('/update-freight/{annonce}', [AdminAnnoncesController::class,'updateFreightAnnouncement'])->name('annonces.updateFreight');
+    Route::get('/update-transport/{annonce}', [AdminAnnoncesController::class,'updateTransportAnnouncement'])->name('annonces.updateTransport');
+
+});
+
+
 Route::prefix('admin')->group(function () {
     // ...
     Route::get('/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
     Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
     Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+
+   
+    // ... Autres routes spécifiques à la gestion des entreprises ...
     Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
     // ...
 });

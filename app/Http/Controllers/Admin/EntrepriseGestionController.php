@@ -14,7 +14,14 @@ class EntrepriseGestionController extends Controller
 {
     public function showEntrepriseForm()
 {
-    $users = User::all(); // Récupérer tous les utilisateurs
+    //$users = User::with(['carrier' => function ($query) {
+    //    $query->where('id', $this->fk_carrier_id);
+   // }, 'shipper' => function ($query) {
+   //     $query->where('id', $this->fk_shipper_id);
+   // }])->get();
+
+    $users = User::all();
+
     $carriers = Carrier::all(); // Récupérer tous les transporteurs
     $shippers = Shipper::all(); // Récupérer tous les expéditeurs
 
@@ -43,6 +50,8 @@ class EntrepriseGestionController extends Controller
         Carrier::create($validatedData);
 
         return redirect()->back()->with('success', 'Transporteur ajouté avec succès.');
+        // Renvoyer une réponse JSON avec le message de succès
+    return Response::json(['message' => 'Transporteur ajouté avec succès.']);
     }
 
     public function addShipper(Request $request)
@@ -68,6 +77,8 @@ class EntrepriseGestionController extends Controller
         Shipper::create($validatedData);
 
         return redirect()->back()->with('success', 'Expéditeur ajouté avec succès.');
+        // Renvoyer une réponse JSON avec le message de succès
+    return Response::json(['message' => 'Expéditeur ajouté avec succès.']);
     }
     //Voir les utilisateur00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     public function assignEntrepriseToUser(Request $request)
@@ -97,6 +108,8 @@ class EntrepriseGestionController extends Controller
 
     // Rediriger avec un message de succès
     return redirect()->back()->with('success', 'Entreprises assignées aux utilisateurs avec succès.');
+    // Renvoyer une réponse JSON avec le message de succès
+    return Response::json(['message' => 'Entreprises assignées aux utilisateurs avec succès.']);
 }
 
     
