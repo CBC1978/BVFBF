@@ -1,48 +1,46 @@
 @extends('layouts.shipper')
 
 @section('content')
-    <h1>Mes annonces de fret</h1>
-    <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Annonce ID</th>
-                    <th>Origine</th>
-                    <th>Destination</th>
-                    <th>Date limite</th>
-                    <th>Poids</th>
-                    <th>Volume</th>
-                    <th>Description</th>
-                    <th>Offres</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($userAnnouncements as $announcement)
-                    <tr>
-                        <td>{{ $announcement->id }}</td>
-                        <td>{{ $announcement->origin }}</td>
-                        <td>{{ $announcement->destination }}</td>
-                        <td>{{ $announcement->limit_date }}</td>
-                        <td>{{ $announcement->weight }}</td>
-                        <td>{{ $announcement->volume }}</td>
-                        <td>{{ $announcement->description }}</td>
-                        <td>
-                            <ul>
-                                {{-- @foreach ($announcement->offers as $offer)
-                                    <li>
-                                        Offre de {{ $offer->sender_name }}: {{ $offer->amount }}
-                                        <form method="post" action="{{ route('shipper.handle.offer', ['offerId' => $offer->id]) }}">
-                                            @csrf
-                                            <button type="submit" name="action" value="accept">Accepter</button>
-                                            <button type="submit" name="action" value="refuse">Refuser</button>
-                                        </form>
-                                    </li>
-                                @endforeach --}}
-                            </ul>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-3">Mes annonces de fret</h3>
+        </div>
+        <div class="box-breadcrumb">
+            <div class="breadcrumbs">
+                <ul>
+                    <li> <a class="icon-home" href="#">Tableau de bord</a></li>
+                    <li><span>Mes annonces</span></li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div class="row">
+        @foreach($announces as $announce)
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                <div class="card-grid-2 hover-up">
+                    <div class="card-grid-2-image-left"><span class="flash"></span>
+                        <div class="image-box"><button type="button" class="btn btn-success ">Offres 45</button></div>
+                        <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}"></a>
+                        </div>
+                    </div>
+                    <div class="card-block-info">
+                        <h6><a href="">{{ucfirst($announce['origin'])}}-{{ucfirst($announce['destination'])}}</a></h6>
+                        <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce['limit_date'])) }}</span></div>
+                        <p class="font-sm color-text-paragraph mt-15">{{$announce['description']}}</p>
+                        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">10 T</a><a class="btn btn-grey-small mr-5" href="">20 m3</a>
+                        </div>
+                        <div class="card-2-bottom mt-30">
+                            <div class="row">
+                                <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
+                                <div class="col-lg-5 col-5 text-end">
+                                    <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
 @endsection

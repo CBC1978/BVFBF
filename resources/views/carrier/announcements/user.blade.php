@@ -82,43 +82,4 @@
         @endforeach
     </div>
 
-{{--    <div class="row">--}}
-{{--        <div class="col-lg-12">--}}
-{{--    <div class="container">--}}
-{{--        <table class="data-table table table-responsive table-striped">--}}
-{{--            <thead>--}}
-{{--                <tr>--}}
-{{--                    <th>#</th>--}}
-{{--                    <th>Origine</th>--}}
-{{--                    <th>Destination</th>--}}
-{{--                    <th>Description</th>--}}
-{{--                    <th>Offres</th>--}}
-{{--                </tr>--}}
-{{--            </thead>--}}
-{{--            <tbody>--}}
-{{--                @php--}}
-{{--                $i =1 ;--}}
-{{--                @endphp--}}
-{{--                @foreach ($announces as $announce)--}}
-
-{{--                    <tr>--}}
-{{--                        <td> {{ $i }}</td>--}}
-{{--                        <td>{{ $announce['origin'] }}</td>--}}
-{{--                        <td>{{ $announce['destination'] }}</td>--}}
-{{--                        <td>{{ $announce['description'] }}</td>--}}
-{{--                        <td>--}}
-{{--                            @if($announce['offre'] != 0)--}}
-{{--                                <button class="btn btn-success"> <span class="badge badge-success">{{$announce['offre']}}</span></button>--}}
-{{--                            @else--}}
-{{--                               <button class="btn btn-danger"> <span class="badge badge-warning">0</span></button>--}}
-{{--                            @endif--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
-{{--                    @php--}}
-{{--                        $i++ ;--}}
-{{--                    @endphp--}}
-{{--                @endforeach--}}
-{{--            </tbody>--}}
-{{--        </table>--}}
-{{--    </div>--}}
 @endsection
