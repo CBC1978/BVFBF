@@ -3,19 +3,24 @@
 |--------------------------------------------------------------------------------
          -->
          <div class="nav"><a class="btn btn-expanded"></a>
-        
+
             <nav class="nav-main-menu">
               <ul class="main-menu">
                 <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">A_Accueil</span></a>
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('a_user_gestion') ? 'active' : '' }}" href="{{ route('a_user_gestion') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">User Gestion </span></a>
                 </li>
+<<<<<<< HEAD
                 <li> <a class="dashboard2 {{ request()->routeIs('admin.ajouter-entreprise') ? 'active' : '' }}" href="{{ route('admin.ajouter-entreprise') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">entreprise </span></a>
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('annonces.a_annonce') ? 'active' : '' }}" href="{{ route('annonces.a_annonce') }}"><img src="{{ asset('imgs/page/dashboard/tasks.svg') }}" alt="jobBox"><span class="name">Annonces Gestion </span></a>
                 </li>
                 
                 
+=======
+                <li> <a class="dashboard2 {{ request()->routeIs('admin.entreprise') ? 'active' : '' }}" href="{{ route('admin.entreprise') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">entreprise </span></a>
+                </li>
+>>>>>>> 19cfe9ea4d41949be3d96e3a7ecc71de73d614aa
               </ul>
             </nav>
               <div class="border-bottom mb-20 mt-20"></div>
@@ -29,7 +34,5 @@
               <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
             </div>
           </div>
-          
         </div>
-        
-   
+

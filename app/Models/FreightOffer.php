@@ -30,5 +30,6 @@ class FreightOffer extends Model
         'weight',
         'description',
         'statut',
+        'created_by',
     ];
 }

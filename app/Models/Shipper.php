@@ -29,18 +29,19 @@ class Shipper extends Model
      * @var array
      */
     protected $fillable = [
-        'fk_user_id',
         'company_name',
         'address',
         'phone',
+        'city',
+        'email',
+        'ifu',
+        'rccm',
+        'created_by',
         
     ];
 
     /**
      * Get the user of the shipper.
      */
-    public function Users()
-    {
-        return $this->belongsTo(User::class, 'fk_user_id');
-    }
+    
 }

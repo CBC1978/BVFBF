@@ -3,29 +3,31 @@
 @extends('layouts.shipper')
 
 @section('content')
+
+
 <div class="box-heading">
-    <div class="box-title"> 
+    <div class="box-title">
       <h3 class="mb-35">CHARGEUR :Tableau de Bord</h3>
     </div>
-    <div class="box-breadcrumb"> 
+    <div class="box-breadcrumb">
       <div class="breadcrumbs">
-        <ul> 
+        <ul>
           <li> <a class="icon-home" href="index.html">Tableau de bord</a></li>
           <li><span>Dashboard</span></li>
-          
+
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="row"> 
+  <div class="row">
     <div class="col-xxl-12 col-xl-12 col-lg-7">
       <div class="section-box">
-        <div class="row"> 
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+        <div class="row">
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>15<span class="font-sm status up">17<span>%</span></span>
                   </h3>
@@ -34,10 +36,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>158<span class="font-sm status up">12<span>%</span></span>
                   </h3>
@@ -46,10 +48,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>68<span class="font-sm status up">25<span>%</span></span>
                   </h3>
@@ -58,10 +60,10 @@
               </div>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+          <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
             <div class="card-style-1 hover-up">
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-              <div class="card-info"> 
+              <div class="card-info">
                 <div class="card-title">
                   <h3>8<span class="font-sm status up">21<span>%</span></span>
                   </h3>
@@ -69,30 +71,29 @@
                 <p class="color-text-paragraph-2">Contrat ce mois</p>
               </div>
             </div>
-          
-          
+
+
 
 <!----------------------------------------------------------------------------
 |FIN  SECTION VU RAPIDE
 |--------------------------------------------------------------------------------
    -->
 
-     
+
     </div>
-  
     </div>
   </div>
-    <div class="row"> 
-    <div class="col-lg-12"> 
+    <div class="row">
+    <div class="col-lg-12">
       <div class="section-box">
-        <div class="container"> 
+        <div class="container">
           <div class="panel-white mb-30">
             <div class="box-padding">
               <div class="box-filters-job">
                 <div class="row">
-                  <div class="box-title"> 
+                  <div class="box-title">
                     <h3 class="mb-35">Offres Recentes</h3>
-                  </div> 
+                  </div>
               </div>
               <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
@@ -197,7 +198,7 @@
                 </div>
 
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -206,7 +207,7 @@
   </div>
   <div class="mt-10">
     <div class="section-box">
-      <div class="container"> 
+      <div class="container">
         <div class="panel-white pt-30 pb-30 pl-15 pr-15">
           <div class="box-swiper">
             <div class="swiper-container swiper-group-10 swiper-initialized swiper-horizontal swiper-pointer-events">

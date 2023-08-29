@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
 <div class="box-content">
     <div class="row mb-4">
         <div class="col-md-6">
@@ -10,7 +11,7 @@
                 <label for="search">Rechercher par nom:</label>
                 <input type="text" class="form-control" name="search" id="search" placeholder="Nom d'utilisateur">
             </div>
-            
+
             <!-- Filtre par statut -->
             <div class="form-group" id="filter-group" style="display: none;">
                 <label for="status">Filtrer par statut:</label>
@@ -39,7 +40,7 @@
              </div>
          </div>
      </div>
- 
+
      <table class="table table-dark table-striped" id="user-table">
          <thead>
              <tr>
@@ -51,7 +52,7 @@
              </tr>
          </thead>
          <tbody>
-           
+
         @foreach($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
@@ -81,16 +82,9 @@
         @endforeach
          </tbody>
      </table>
-    
  </div>
-
- 
-
-
 <script>
     $(document).ready(function() {
-      
-    
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();
             var selectedUserIds = $('input[name="selected_users[]"]:checked').map(function() {
@@ -111,7 +105,7 @@
                         updateStatuses(response.updatedStatuses);
                         // Vider les cases à cocher
                         $('input[name="selected_users[]"]:checked').prop('checked', false);
-                        
+
                         //  SweetAlert2 pour afficher un popup de succès
                         Swal.fire({
                             icon: 'success',
@@ -191,40 +185,7 @@ function getStatusValue(statusLabel) {
 }
 
 
-//     function filterTableByCriteria(username, status) {
-//     username = username.toLowerCase(); // Convertir le nom en minuscules pour la comparaison
 
-//     $('#user-table tbody tr').each(function() {
-//         var rowUsername = $(this).find('td:eq(1)').text().toLowerCase();
-//         var rowStatus = $(this).find('td:eq(3) .status-label').text().toLowerCase();
-
-//         var matchesUsername = rowUsername.includes(username);
-//         var matchesStatus = (status === "" || rowStatus === status.toLowerCase()); // Comparer en minuscules
-
-//         if (matchesUsername && matchesStatus) {
-//             $(this).show();
-//         } else {
-//             $(this).hide();
-//         }
-//     });
-// }
-
-
-    // function filterTableByCriteria(username, status) {
-    //     $('#user-table tbody tr').each(function() {
-    //         var rowUsername = $(this).find('td:eq(1)').text().toLowerCase();
-    //         var rowStatus = $(this).find('td:eq(3) .status-label').text().toLowerCase();
-
-    //         var matchesUsername = rowUsername.includes(username);
-    //         var matchesStatus = (status === "" || rowStatus === status);
-
-    //         if (matchesUsername && matchesStatus) {
-    //             $(this).show();
-    //         } else {
-    //             $(this).hide();
-    //         }
-    //     });
-    // }
 });
 </script>
 

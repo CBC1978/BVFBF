@@ -25,7 +25,7 @@ use App\Http\Controllers\Shipper\Offers\S_OfferController;
 use App\Http\Controllers\Carrier\Announcement\C_AnnouncementController;
 use App\Http\Controllers\Carrier\Offers\C_OfferController;
 
-//regroupement 
+//regroupement
 use App\Http\Controllers\Shipper\Offers as ShipperOffers;
 use App\Http\Controllers\Carrier\Offers as CarrierOffers;
 use App\Http\Controllers\Admin as AdminControllers;
@@ -88,17 +88,18 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-//Announcement All in one 
+//Announcement All in one
 //Route::get('/carrier/announcements', [C_AnnouncementController::class, 'index'])->name('carrier.announcements.index');
 Route::get('/carrier/announcements/user', [C_AnnouncementController::class, 'userAnnouncements'])->name('carrier.announcements.user');
 Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
 Route::get('/carrier/announcements/{id}', [C_AnnouncementController::class, 'show'])->name('carrier.announcements.show');
- 
+
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [C_AnnouncementController::class, 'index'])->name('index');
     Route::get('user', [C_AnnouncementController::class, 'userAnnouncements'])->name('user');
     Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
 
+    Route::post('postuler', [C_AnnouncementController::class, 'postuler'])->name('postuler');
     //Route::get('create', [C_AnnouncementController::class, 'createAnnouncements'])->name('create');
     Route::get('{id}', [C_AnnouncementController::class, 'showAnnouncements'])->name('show');
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
@@ -109,9 +110,11 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('user', [S_AnnouncementController::class, 'userAnnouncements'])->name('user');
     Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
-    // ... 
+
+    // ...
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
 });
+
 
 
 
@@ -126,9 +129,13 @@ Route::prefix('annonces')->group(function () {
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/ajouter-entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.ajouter-entreprise');
+    // ...
+    Route::get('/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
     Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
     Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
+
    
     // ... Autres routes spécifiques à la gestion des entreprises ...
+    Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
+    // ...
 });

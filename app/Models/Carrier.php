@@ -27,9 +27,14 @@ class Carrier extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'fk_user_id',
         'company_name',
         'address',
         'phone',
+        'city',
+        'email',
+        'ifu',
+        'rccm',
+        'created_by',
+        
     ];
 }
