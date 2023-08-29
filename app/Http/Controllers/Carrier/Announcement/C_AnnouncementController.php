@@ -18,8 +18,8 @@ class C_AnnouncementController extends Controller
     {
 
         $announcements = TransportAnnouncement::all();
-        dd($announcements);
-        //return view('carrier.announcements.index', ['announcements' => $announcements]);
+       
+        return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
     // Afficher les annonces de l'utilisateur
