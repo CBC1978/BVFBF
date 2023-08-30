@@ -45,7 +45,7 @@
                                                                             <option value="">Sélectionnez un lieu</option>
                                                                             <option value="Po">Po</option>
                                                                             <option value="Bobo">Bobo</option>
-                                                                            <!-- Ajoutez d'autres options pour les lieux -->
+                                                                           
                                                                         </select>
                                                                         @error('origin')
                                                                         <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                                                                             <option value="">Sélectionnez un lieu</option>
                                                                             <option value="Ouaga">Ouaga</option>
                                                                             <option value="Koudougou">Koudougou</option>
-                                                                            <!-- Ajoutez d'autres options pour les lieux -->
+                                                                           
                                                                         </select>
                                                                         @error('destination')
                                                                         <span class="invalid-feedback" role="alert">
@@ -73,7 +73,8 @@
                                                                 <div class="col-lg-6 col-md-6">
                                                                     <div class="form-group mb-30">
                                                                         <label class="font-sm color-text-mutted mb-10">Date limite*</label>
-                                                                        <input class="form-control" type="text" id="limit_date" name="limit_date" required>
+                                                                       
+                                                                        <input class="form-control" type="date" id="limit_date" name="limit_date" required>
                                                                     </div>
                                                                 </div>
                                                                 
