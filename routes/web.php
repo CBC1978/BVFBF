@@ -90,27 +90,26 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Announcement All in one
 //Route::get('/carrier/announcements', [C_AnnouncementController::class, 'index'])->name('carrier.announcements.index');
-Route::get('/carrier/announcements/user', [C_AnnouncementController::class, 'userAnnouncements'])->name('carrier.announcements.user');
-Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
-Route::get('/carrier/announcements/{id}', [C_AnnouncementController::class, 'show'])->name('carrier.announcements.show');
+//Route::get('/carrier/announcements/user', [C_AnnouncementController::class, 'userAnnouncements'])->name('carrier.announcements.user');
+//Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
+//Route::get('/carrier/announcements/{id}', [C_AnnouncementController::class, 'show'])->name('carrier.announcements.show');
 
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [C_AnnouncementController::class, 'index'])->name('index');
     Route::get('user', [C_AnnouncementController::class, 'userAnnouncements'])->name('user');
-    Route::get('/carrier/announcements/create', [C_AnnouncementController::class, 'create'])->name('carrier.announcements.create');
+    Route::get('create', [C_AnnouncementController::class, 'create'])->name('create'); // Utilisez la route 'create' au lieu de 'carrier.announcements.create'
+    Route::post('store', [C_AnnouncementController::class, 'store'])->name('store'); // Ajoutez une route pour le stockage
 
     Route::post('postuler', [C_AnnouncementController::class, 'postuler'])->name('postuler');
-    //Route::get('create', [C_AnnouncementController::class, 'createAnnouncements'])->name('create');
-    Route::get('{id}', [C_AnnouncementController::class, 'showAnnouncements'])->name('show');
-    // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
+    Route::get('{id}', [C_AnnouncementController::class, 'show'])->name('show'); // Utilisez la route 'show' au lieu de 'showAnnouncements'
 });
+
 
 Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(function () {
     Route::get('/', [S_AnnouncementController::class, 'index'])->name('index');
     Route::get('user', [S_AnnouncementController::class, 'userAnnouncements'])->name('user');
     Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
-    Route::post('postuler', [S_AnnouncementController::class, 'postuler'])->name('postuler');
 
     // ...
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
