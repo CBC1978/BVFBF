@@ -27,7 +27,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-  
+
 </head>
 <body>
     @include('layouts.shipper.s_header')
@@ -54,4 +54,5 @@
 <script src="{{asset('js/plugins/charts/Animated.js')}}"></script>
 <script src="{{asset('js/plugins/armcharts5-script.js')}}"></script>
 <script src="{{asset('js/main.js?v=4.1')}}"></script>
+@yield('script')
 </html>

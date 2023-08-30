@@ -110,6 +110,7 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('user', [S_AnnouncementController::class, 'userAnnouncements'])->name('user');
     Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
+    Route::post('postuler', [S_AnnouncementController::class, 'postuler'])->name('postuler');
 
     // ...
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
