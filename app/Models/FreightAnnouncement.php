@@ -46,5 +46,6 @@ class FreightAnnouncement extends Model
     {
         return $this->belongsTo(Shipper::class, 'fk_shipper_id');
     }
+
 }
 
