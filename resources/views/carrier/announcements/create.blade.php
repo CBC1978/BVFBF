@@ -38,65 +38,66 @@
                                                                 <input type="hidden" name="user_id" value="{{ session('userId') }}">
                                                                 <input type="hidden" name="fk_carrier_id" value="{{ session('fk_carrier_id') }}">
                                                             
-                                                                <div class="col-lg-6 col-md-6">
-                                                                    <div class="form-group mb-30">
-                                                                        <label for="origin">Lieu de départ</label>
-                                                                        <select id="origin" class="form-control @error('origin') is-invalid @enderror" name="origin" required>
-                                                                            <option value="">Sélectionnez un lieu</option>
-                                                                            <option value="Po">Po</option>
-                                                                            <option value="Bobo">Bobo</option>
-                                                                           
-                                                                        </select>
-                                                                        @error('origin')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label for="origin">Lieu de départ</label>
+                                                                            <select id="origin" class="form-control @error('origin') is-invalid @enderror" name="origin" required>
+                                                                                <option value="">Sélectionnez un lieu</option>
+                                                                                <option value="Po">Po</option>
+                                                                                <option value="Bobo">Bobo</option>
+                                                                            </select>
+                                                                            @error('origin')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label for="destination">Lieu de destination</label>
+                                                                            <select id="destination" class="form-control @error('destination') is-invalid @enderror" name="destination" required>
+                                                                                <option value="">Sélectionnez un lieu</option>
+                                                                                <option value="Ouaga">Ouaga</option>
+                                                                                <option value="Koudougou">Koudougou</option>
+                                                                            </select>
+                                                                            @error('destination')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-6 col-md-6">
-                                                                    <div class="form-group mb-30">
-                                                                        <label for="destination">Lieu de départ</label>
-                                                                        <select id="destination" class="form-control @error('destination') is-invalid @enderror" name="destination" required>
-                                                                            <option value="">Sélectionnez un lieu</option>
-                                                                            <option value="Ouaga">Ouaga</option>
-                                                                            <option value="Koudougou">Koudougou</option>
-                                                                           
-                                                                        </select>
-                                                                        @error('destination')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Date limite*</label>
+                                                                            <input class="form-control" type="date" id="limit_date" name="limit_date" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Type de véhicule</label>
+                                                                            <select class="form-control" name="vehicule_type" required>
+                                                                                <option value="">Sélectionnez un type de véhicule</option>
+                                                                                <option value="type1">Type 1</option>
+                                                                                <option value="type2">Type 2</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-6 col-md-6">
-                                                                    <div class="form-group mb-30">
-                                                                        <label class="font-sm color-text-mutted mb-10">Date limite*</label>
-                                                                       
-                                                                        <input class="form-control" type="date" id="limit_date" name="limit_date" required>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Poids</label>
+                                                                            <input class="form-control" type="text" name="weight">
+                                                                        </div>
                                                                     </div>
+                                                                    <!-- Ajoutez d'autres champs côte à côte ici si nécessaire -->
                                                                 </div>
                                                                 
-                                                                
-                                                            <div class="col-lg-6 col-md-6">
-                                                                <div class="form-group mb-30">
-                                                                    <label class="font-sm color-text-mutted mb-10">Type de véhicule</label>
-                                                                    <select class="form-control" name="vehicule_type" required>
-                                                                        <option value="">Sélectionnez un type de véhicule</option>
-                                                                        <option value="type1">Type 1</option>
-                                                                        <option value="type2">Type 2</option>
-                                                                        <!-- Ajoutez d'autres options pour les types de véhicules -->
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6">
-                                                                <div class="form-group mb-30">
-                                                                    <label class="font-sm color-text-mutted mb-10">poids</label>
-                                                                    <input class="form-control" type="text" name="weight">
-                                                                </div>
-                                                            </div>
-                        
                         
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
@@ -108,9 +109,9 @@
                                                     @enderror
                                                 </div>
                         
-                                                <div class="form-group">
+                                               
                                                     <button type="submit" class="btn btn-primary">Ajouter l'annonce</button>
-                                                </div>
+                                              
                                             </form>
                                         </div>
                                     </div>
@@ -177,12 +178,54 @@
 </div>
 </div></div>
 
-<script>
+{{-- <script>
     flatpickr('#limit_date', {
         enableTime: false, // Si vous n'avez pas besoin de sélectionner l'heure
         dateFormat: 'Y-m-d', // Format de la date
     });
-</script>
+</script> --}}
 
+    <script>
+    
+    const form = document.getElementById('announcement-form');
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    
+    const formData = new FormData(form);
+    
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+        });
+        
+        console.log('Response:', response); // Add this line
+        
+        if (response.ok) {
+            await Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'The announcement has been added successfully.',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            
+            form.reset();
+        } else {
+            throw new Error('An error occurred while submitting the form.');
+        }
+    } catch (error) {
+        console.error('Error:', error); // Add this line
+        
+        await Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.message,
+        });
+    }
+});
+
+</script>
     
 @endsection

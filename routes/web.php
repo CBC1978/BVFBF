@@ -111,6 +111,8 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [S_AnnouncementController::class, 'postuler'])->name('postuler');
+    Route::post('store', [S_AnnouncementController::class, 'store'])->name('store'); // Ajoutez une route pour le stockage
+
     // ...
     // ... LES ROUTES ANNONCE CARRIER (TRANSPORTEUR)
 });

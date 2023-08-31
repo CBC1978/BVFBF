@@ -102,12 +102,24 @@ class S_AnnouncementController extends Controller
     // Traitement de la soumission du formulaire d'ajout
     public function store(Request $request)
     {
+        $user = User::find(session('userId'));
+
         $data = $request->validate([
-            // Définir les règles de validation pour les champs d'annonce
+            'origin' => ['required', 'string', 'max:255'],
+            'destination' => ['required', 'string', 'max:255'],
+            'limit_date' => ['required', 'date'],
+            'weight' => ['nullable', 'numeric'],
+            'volume' => ['nullable', 'numeric'],
+            'description' => ['required', 'string'],
+            
         ]);
+    
+        $data['fk_shipper_id'] = session('fk_shipper_id'); //  FK du transporteur si nécessaire
+       $data['created_by'] = session('userId'); // ID de l'utilisateur si nécessaire
+       
+       
+        FreightAnnouncement::create($data);
 
-        //auth()->user()->freightAnnouncements()->create($data);(faut que moyen de faire avec les session)
-
-        return redirect()->route('shipper.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
+        return redirect()->route('shipper.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
     }
 }
