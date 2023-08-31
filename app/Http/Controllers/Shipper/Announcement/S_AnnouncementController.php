@@ -71,20 +71,14 @@ class S_AnnouncementController extends Controller
         // Méthode pour gérer l'acceptation ou le refus d'une offre
         public function handleOffer(Request $request, $offerId)
         {
-            $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
+            $offer = Offer::findOrFail($offerId); 
 
-            // Vous pouvez ajouter ici la logique pour accepter ou refuser l'offre
-
+           
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
 
 
-    // public function userAnnouncements()
-    // {
-    //     $shipperId = session('shipper_id');
-    //     $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
-    //     return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    // }
+    
 
     // Afficher le détail d'une annonce
     public function show($id)
@@ -93,13 +87,13 @@ class S_AnnouncementController extends Controller
         return view('shipper.announcements.show', ['announcement' => $announcement]);
     }
 
-    // Afficher le formulaire d'ajout d'annonce
+   
     public function create()
     {
         return view('shipper.announcements.create');
     }
 
-    // Traitement de la soumission du formulaire d'ajout
+   
     public function store(Request $request)
     {
         $user = User::find(session('userId'));
@@ -114,9 +108,8 @@ class S_AnnouncementController extends Controller
             
         ]);
     
-        $data['fk_shipper_id'] = session('fk_shipper_id'); //  FK du transporteur si nécessaire
-       $data['created_by'] = session('userId'); // ID de l'utilisateur si nécessaire
-       
+        $data['fk_shipper_id'] = session('fk_shipper_id');
+       $data['created_by'] = session('userId'); 
        
         FreightAnnouncement::create($data);
 
