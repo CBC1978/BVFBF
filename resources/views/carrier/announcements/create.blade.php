@@ -178,54 +178,6 @@
 </div>
 </div></div>
 
-{{-- <script>
-    flatpickr('#limit_date', {
-        enableTime: false, // Si vous n'avez pas besoin de sélectionner l'heure
-        dateFormat: 'Y-m-d', // Format de la date
-    });
-</script> --}}
 
-    <script>
-    
-    const form = document.getElementById('announcement-form');
-
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    
-    const formData = new FormData(form);
-    
-    try {
-        const response = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-        });
-        
-        console.log('Response:', response); // Add this line
-        
-        if (response.ok) {
-            await Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'The announcement has been added successfully.',
-                showConfirmButton: false,
-                timer: 1500
-            });
-            
-            form.reset();
-        } else {
-            throw new Error('An error occurred while submitting the form.');
-        }
-    } catch (error) {
-        console.error('Error:', error); // Add this line
-        
-        await Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: error.message,
-        });
-    }
-});
-
-</script>
     
 @endsection

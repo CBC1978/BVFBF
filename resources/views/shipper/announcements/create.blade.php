@@ -106,7 +106,7 @@
                                                                             @enderror
                                                                         </div>
                                                                     </div>
-                                                                    <!-- Add more fields here if necessary -->
+                                                                   
                                                                 </div>
                                                                 
                                                                 <div class="form-group">
