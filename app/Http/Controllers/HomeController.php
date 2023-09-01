@@ -31,6 +31,7 @@ class HomeController extends Controller
              ")
              ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
              ->orderBy('freight_announcement.id', 'DESC')
+             ->limit(10)
              ->get();
 
          $transports = DB::table('transport_announcement')
@@ -39,6 +40,7 @@ class HomeController extends Controller
                        carrier.company_name")
              ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
              ->orderBy('transport_announcement.id', 'DESC')
+             ->limit(10)
              ->get();
 //         dd($transports);
 

@@ -9,13 +9,22 @@ use App\Models\TransportOffer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\FreightAnnouncement;
+use Illuminate\Support\Facades\DB;
 
 class S_AnnouncementController extends Controller
 {
     // Afficher toutes les annonces
     public function index()
     {
-        $announcements = FreightAnnouncement::all();
+        $announcements = DB::table('freight_announcement')
+            ->selectRaw("
+             freight_announcement.id,freight_announcement.origin,freight_announcement.destination,freight_announcement.limit_date,
+             freight_announcement.weight, freight_announcement.volume,freight_announcement.description,
+             shipper.company_name
+             ")
+            ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
+            ->orderBy('freight_announcement.id', 'DESC')
+            ->get();
         return view('shipper.announcements.index', ['announcements' => $announcements]);
     }
 
@@ -25,7 +34,6 @@ class S_AnnouncementController extends Controller
             'prix' => [ 'max:255', 'number'],
             'description' => ['string']
         ]);
-//        dd($request);
         $user = User::find($request->idUser);
 
         $freightOffer = new FreightOffer();
@@ -41,7 +49,7 @@ class S_AnnouncementController extends Controller
 
     }
 
-    // Afficher les annonces de l'utilisateur
+            // Afficher les annonces de l'utilisateur
             public function userAnnouncements()
         {
             $user = User::find(session()->get('userId'));
@@ -77,14 +85,6 @@ class S_AnnouncementController extends Controller
 
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
-
-
-    // public function userAnnouncements()
-    // {
-    //     $shipperId = session('shipper_id');
-    //     $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
-    //     return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    // }
 
     // Afficher le détail d'une annonce
     public function show($id)

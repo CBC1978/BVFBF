@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\TransportAnnouncement;
 use App\Models\TransportOffers;
+use Illuminate\Support\Facades\DB;
 use Opcodes\LogViewer\Log;
 
 class C_AnnouncementController extends Controller
@@ -17,15 +18,21 @@ class C_AnnouncementController extends Controller
     public function index()
     {
 
-        $announcements = TransportAnnouncement::all();
-       
+        $announcements =  DB::table('transport_announcement')
+                ->selectRaw("transport_announcement.id, transport_announcement.origin, transport_announcement.destination, transport_announcement.limit_date,
+                        transport_announcement.weight, transport_announcement.vehicule_type, transport_announcement.description,
+                       carrier.company_name")
+                ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
+                ->orderBy('transport_announcement.id', 'DESC')
+                ->get();
+
         return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
     // Afficher les annonces de l'utilisateur
     // Dans votre méthode userAnnouncements du contrôleur
-public function userAnnouncements()
-{
+    public function userAnnouncements()
+    {
     //Obtenir les infos sur l'utilisateur
     $user = User::find(session()->get('userId'));
     $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
@@ -60,14 +67,6 @@ public function handleOffer(Request $request, $offerId)
 
     return redirect()->back()->with('message', 'Offre traitée avec succès.');
 }
-
-    // public function userAnnouncements()
-    // {
-    //     $carrierId = session('carrier_id');
-    //     $userAnnouncements = TransportAnnouncement::where('fk_carrier_id', $carrierId)->get();
-    //     return view('carrier.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    // }
-
 
     // Afficher le détail d'une annonce
     public function show($id)
@@ -110,8 +109,8 @@ public function handleOffer(Request $request, $offerId)
         $transportOffer->status = 0;
         $transportOffer->created_by = $user->id;
         $transportOffer->save();
-        
-      
+
+
         return redirect('home')->with('success', "Offre ajouté avec succès");
 
 
