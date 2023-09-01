@@ -123,128 +123,128 @@
         
     </div>
 
-<script>
-    // Afficher/masquer les champs de recherche et de filtrage
-    $('#toggle-fields').click(function() {
-        $('#search-group').toggle();
-        $('#filter-group').toggle();
-    });
+    <script>
+        // Afficher/masquer les champs de recherche et de filtrage
+        $('#toggle-fields').click(function() {
+            $('#search-group').toggle();
+            $('#filter-group').toggle();
+        });
 
-    // Récupérer l'élément d'entrée de recherche
-    const searchInput = document.getElementById('search');
+        // Récupérer l'élément d'entrée de recherche
+        const searchInput = document.getElementById('search');
 
-    // Ajouter un gestionnaire d'événement pour la saisie dans l'entrée de recherche
-    searchInput.addEventListener('input', function () {
-        const searchID = parseInt(searchInput.value); // ID saisi en tant que nombre
-        
-        // Parcourir toutes les lignes du tableau et les cacher ou afficher en fonction de la recherche
-        const rows = document.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-            const idCell = row.querySelector('td:first-child'); // Cellule de l'ID
-            const rowID = parseInt(idCell.textContent); // ID de la ligne en tant que nombre
+        // Ajouter un gestionnaire d'événement pour la saisie dans l'entrée de recherche
+        searchInput.addEventListener('input', function () {
+            const searchID = parseInt(searchInput.value); // ID saisi en tant que nombre
             
-            // Vérifier si l'ID de la ligne correspond à l'ID saisi
-            if (isNaN(searchID) || rowID === searchID) {
-                row.style.display = ''; // Afficher la ligne
-            } else {
-                row.style.display = 'none'; // Cacher la ligne
-            }
+            // Parcourir toutes les lignes du tableau et les cacher ou afficher en fonction de la recherche
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const idCell = row.querySelector('td:first-child'); // Cellule de l'ID
+                const rowID = parseInt(idCell.textContent); // ID de la ligne en tant que nombre
+                
+                // Vérifier si l'ID de la ligne correspond à l'ID saisi
+                if (isNaN(searchID) || rowID === searchID) {
+                    row.style.display = ''; // Afficher la ligne
+                } else {
+                    row.style.display = 'none'; // Cacher la ligne
+                }
+            });
         });
-    });
 
-</script>
-
-<script>
-        $(document).ready(function (){
-            setTimeout(function(){
-                $("div.alert").remove();
-            }, 3000 ); //3s
-
-        });
     </script>
 
-<style>
+    <script>
+            $(document).ready(function (){
+                setTimeout(function(){
+                    $("div.alert").remove();
+                }, 3000 ); //3s
 
-body {
-    font-family: Arial, sans-serif;
-}
+            });
+        </script>
 
-.container1 {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-}
+    <style>
 
-#toggle-fields {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    body {
+        font-family: Arial, sans-serif;
+    }
 
-.form-group {
-    margin-bottom: 15px;
-}
+    .container1 {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+    }
 
-.form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-}
+    #toggle-fields {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
 
-th, td {
-    padding: 8px;
-    text-align: left;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
 
-th {
-    background-color: #f2f2f2;
-}
+    table, th, td {
+        border: 1px solid #ddd;
+    }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
 
-a {
-    color: #007bff;
-    text-decoration: none;
-}
+    th {
+        background-color: #f2f2f2;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
 
 
-.alert-success {
-    background-color: #dff0d8;
-    color: #3c763d;
-    border: 1px solid #d6e9c6;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
+    .alert-success {
+        background-color: #dff0d8;
+        color: #3c763d;
+        border: 1px solid #d6e9c6;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
 
-.mt-2 {
-    margin-top: 20px;
-}
+    .mt-2 {
+        margin-top: 20px;
+    }
 
-</style>
+    </style>
     
 @endsection

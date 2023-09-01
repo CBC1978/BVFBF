@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\profile\AdminProfileController1;
+use App\Http\Controllers\shipper\profile\ShipperProfileController1;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +14,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
 use App\Http\Controllers\Admin\EntrepriseGestionController;
 use App\Http\Controllers\Admin\AdminAnnoncesController;
+use App\Http\Controllers\carrier\profile\CarrierProfileController;
+use App\Http\Controllers\shipper\profile\ShipperProfile1Controller;
+
+
 
 
 use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
@@ -144,3 +150,20 @@ Route::prefix('admin')->group(function () {
 });
 
 
+<<<<<<< HEAD
+Route::prefix('carrier')->group(function () {
+    Route::get('/profile', [CarrierProfileController::class,'affichage'])->name('carrier.profile.affichage');
+    Route::get('profile/update', [CarrierProfileController::class,'update'])->name('carrier.profile.update');
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/profile', [AdminProfileController1::class,'affichage'])->name('admin.profile.affichage');
+    Route::get('profile/update', [AdminProfileController1::class,'update'])->name('admin.profile.update');
+});
+
+Route::prefix('shipper')->group(function () {
+    Route::get('/profile', [ShipperProfileController1::class,'affichage'])->name('shipper.profile.affichage');
+    Route::get('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
+});
+=======
+>>>>>>> 72fae6eba288d844d14266acdcf8e2704a157dad

@@ -50,4 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function carrier()
+    {
+        return $this->belongsTo(Carrier::class, 'fk_carrier_id');
+    }
 }
+
