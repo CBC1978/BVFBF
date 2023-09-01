@@ -23,6 +23,9 @@
                         <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}"></a>
                         </div>
                     </div>
+                    <a href="{{ route('shipper.offers.myoffer') }}">Mes offres de FRET</a>
+                    
+
                     <div class="card-block-info">
                         <h6><a href="">{{ucfirst($announce['origin'])}}-{{ucfirst($announce['destination'])}}</a></h6>
                         <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce['limit_date'])) }}</span></div>
