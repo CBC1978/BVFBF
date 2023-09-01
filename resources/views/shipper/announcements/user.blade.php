@@ -19,12 +19,16 @@
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                 <div class="card-grid-2 hover-up">
                     <div class="card-grid-2-image-left"><span class="flash"></span>
-                        <div class="image-box"><button type="button" class="btn btn-success ">Offres 45</button></div>
+                        <div class="image-box">
+                            @if($announce['offre'] > 0)
+                                <a href="{{ route("shipper.announcements.myoffer", ['id'=>$announce['id']]) }}" ><button type="button" class="btn btn-success ">{{$announce['offre']}} Offres</button></a>
+                            @elseif($announce['offre'] == 0 )
+                                <button type="button" class="btn btn-danger "> {{$announce['offre']}} Offres </button>
+                            @endif
+                        </div>
                         <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}"></a>
                         </div>
                     </div>
-                    <a href="{{ route('shipper.offers.myoffer') }}">Mes offres de FRET</a>
-                    
 
                     <div class="card-block-info">
                         <h6><a href="">{{ucfirst($announce['origin'])}}-{{ucfirst($announce['destination'])}}</a></h6>
