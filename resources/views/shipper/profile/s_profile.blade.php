@@ -26,13 +26,13 @@
                             @endif
                 </li>
             </ul>
-        <a href="{{ route('carrier.profile.affichage') }}"><button type="submit">Refresh</button></a>
+        <a href="{{ route('shipper.profile.affichage') }}"><button type="submit">Refresh</button></a>
         </div>
 
         <a id="edit-profile-button" href="#">Edit Profile</a>
 
         <div id="edit-profile-form" style="display: none;">
-            <form id="update-profile-form" method="get" action="{{ route('carrier.profile.update') }}">
+            <form id="update-profile-form" method="get" action="{{ route('shipper.profile.update') }}">
                 @csrf
                 @method('get')
 
@@ -46,47 +46,6 @@
             </form>
         </div>
     </div>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const editProfileButton = document.getElementById("edit-profile-button");
-                    const editProfileForm = document.getElementById("edit-profile-form");
-                    const updateProfileForm = document.getElementById("update-profile-form");
-
-                    editProfileButton.addEventListener("click", function(event) {
-                        event.preventDefault();
-                        editProfileForm.style.display = "block";
-                    });
-
-                    updateProfileForm.addEventListener("submit", function(event) {
-                        event.preventDefault();
-
-                        const formData = new FormData(updateProfileForm);
-
-                        fetch(updateProfileForm.action, {
-                            method: "GET", // Utilisez la méthode POST pour la mise à jour
-                            body: formData,
-                            headers: {
-                                "X-CSRF-TOKEN": formData.get("_token"),
-                            },
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.message) {
-                                alert(data.message);
-                                editProfileForm.style.display = "none";
-                                location.reload();
-                            } else if (data.error) {
-                                alert(data.error);
-                            }
-                        })
-                        .catch(error => {
-                            alert("An error occurred while updating the profile");
-                        });
-                    });
-                });
-            </script>
-
 
 <style>
   /* Style pour le conteneur principal */

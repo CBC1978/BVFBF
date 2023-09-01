@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\carrier\profile;
+namespace App\Http\Controllers\shipper\profile;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 
-class CarrierProfileController extends Controller
+class ShipperProfileController1 extends Controller
 {
     //
+    
     public function affichage(){
         if (session()->has('username')) {
             $username = session('username');
             $user = User::where('username', $username)->first(); // Recherchez l'utilisateur par son nom d'utilisateur
             
             if ($user) {
-                return view('carrier.profile.c_profile', compact('user'));
+                return view('shipper.profile.s_profile', compact('user'));
             } 
 }
 }
@@ -51,7 +52,4 @@ public function update(Request $request){
         return response()->json(['success' => false]);
     }
 }
-
-
-   
 }
