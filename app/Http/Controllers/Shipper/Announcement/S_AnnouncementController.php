@@ -104,6 +104,7 @@ class S_AnnouncementController extends Controller
             'limit_date' => ['required', 'date'],
             'weight' => ['nullable', 'numeric'],
             'volume' => ['nullable', 'numeric'],
+            'price' => ['nullable', 'numeric'],
             'description' => ['required', 'string'],
             
         ]);

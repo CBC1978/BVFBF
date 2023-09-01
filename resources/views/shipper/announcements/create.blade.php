@@ -5,11 +5,19 @@
     <div class="box-heading">
         <div class="box-title">
             <h3 class="mb-35">Ajouter une Annonce de Fret</h3>
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a class="icon-home" href="index.html">Annonce de Fret</a></li>
+                    <li><a class="icon-home" >Annonce de Fret</a></li>
                     <li><span>Ajouter une Annonce de Fret</span></li>
                 </ul>
             </div>
@@ -44,8 +52,14 @@
                                                                             <label for="origin">Lieu de départ</label>
                                                                             <select id="origin" class="form-control @error('origin') is-invalid @enderror" name="origin" required>
                                                                                 <option value="">Sélectionnez un lieu</option>
-                                                                                <option value="Po">Po</option>
-                                                                                <option value="Bobo">Bobo</option>
+                                                                                <option value="Ouagadougou">Ouagadougou</option>
+                                                                                <option value="Bobo-Dioulasso">Bobo-Dioulasso</option>
+                                                                                <option value="Koudougou">Koudougou</option>
+                                                                                <option value="Banfora">Banfora</option>
+                                                                                <option value="Dédougou">Dédougou</option>
+                                                                                <option value="Ouahigouya">Ouahigouya</option>
+                                                                                <option value="Fada N'gourma">Fada N'gourma</option>
+                                                                                <option value="Tenkodogo">Tenkodogo</option>
                                                                             </select>
                                                                             @error('origin')
                                                                             <span class="invalid-feedback" role="alert">
@@ -59,8 +73,14 @@
                                                                             <label for="destination">Lieu de destination</label>
                                                                             <select id="destination" class="form-control @error('destination') is-invalid @enderror" name="destination" required>
                                                                                 <option value="">Sélectionnez un lieu</option>
-                                                                                <option value="Ouaga">Ouaga</option>
+                                                                                <option value="Ouagadougou">Ouagadougou</option>
+                                                                                <option value="Bobo-Dioulasso">Bobo-Dioulasso</option>
                                                                                 <option value="Koudougou">Koudougou</option>
+                                                                                <option value="Banfora">Banfora</option>
+                                                                                <option value="Dédougou">Dédougou</option>
+                                                                                <option value="Ouahigouya">Ouahigouya</option>
+                                                                                <option value="Fada N'gourma">Fada N'gourma</option>
+                                                                                <option value="Tenkodogo">Tenkodogo</option>
                                                                             </select>
                                                                             @error('destination')
                                                                             <span class="invalid-feedback" role="alert">
@@ -106,6 +126,17 @@
                                                                             @enderror
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label for="price">Price</label>
+                                                                            <input type="text" id="price" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
+                                                                            @error('price')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
                                                                    
                                                                 </div>
                                                                 
@@ -122,6 +153,7 @@
                                                                 <div class="form-group">
                                                                     <button type="submit" class="btn btn-primary">Ajouter l'annonce</button>
                                                                 </div>
+    
                                                             </form>
                                                         </div>
                                                     </div>
@@ -139,5 +171,61 @@
     </div>
 </div>
 
+
+<script>
+    $(document).ready(function() {
+        
+        $('.alert').delay(2000).fadeOut(400, function() {
+            $(this).alert('close');
+        });
+    });
+</script>
+
+{{-- <script>
+   
+    $(document).on('submit', '#announcement-form', function(e) {
+        e.preventDefault();
+
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = form.serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            success: function(response) {
+                if (response.success) {
+                   
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Succès',
+                        text: 'L\'annonce a été ajoutée avec succès.',
+                        showConfirmButton: false,
+                        timer: 1500 
+                    }).then(() => {
+                       
+                        form[0].reset();
+                    });
+                } else {
+                   
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur de validation',
+                        html: response.errors.join('<br>'),
+                    });
+                }
+            },
+            error: function(xhr) {
+               
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'Une erreur s\'est produite. Veuillez réessayer.'
+                });
+            }
+        });
+    });
+</script> --}}
 
 @endsection
