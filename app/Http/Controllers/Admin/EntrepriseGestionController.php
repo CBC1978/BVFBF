@@ -80,7 +80,7 @@ class EntrepriseGestionController extends Controller
         // Renvoyer une réponse JSON avec le message de succès
     return Response::json(['message' => 'Expéditeur ajouté avec succès.']);
     }
-    //Voir les utilisateur00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    //Voir les utilisateur
     public function assignEntrepriseToUser(Request $request)
 {
     // Récupérer les données du formulaire

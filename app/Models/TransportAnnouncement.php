@@ -26,4 +26,10 @@ class TransportAnnouncement extends Model
         'description',
         'created_by',
     ];
+
+    public function carrier()
+{
+    return $this->belongsTo(Carrier::class, 'fk_carrier_id');
+}
+
 }

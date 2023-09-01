@@ -42,6 +42,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Entreprise</th>
                     <th>Type</th>
                     <th>Description</th>
                     <th>status</th>
@@ -52,6 +53,13 @@
                 @foreach($chargeurAnnonces as $annonce)
                     <tr>
                         <td>{{ $annonce->id }}</td>
+                        <td>
+                            @if ($annonce->fk_shipper_id)
+                                {{ $annonce->shipper->company_name }}
+                            @else
+                                Aucune entreprise associée
+                            @endif
+                        </td>
                         <td>Chargeur</td>
                         <td>{{ $annonce->description }}</td>
                         <td>
@@ -76,6 +84,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Entreprise</th>
                     <th>Type</th>
                     <th>Description</th>
                     <th>status</th>
@@ -87,6 +96,13 @@
                 @foreach($transporteurAnnonces as $annonce)
                     <tr>
                         <td>{{ $annonce->id }}</td>
+                        <td>
+                            @if ($annonce->fk_carrier_id)
+                                {{ $annonce->carrier->company_name }}
+                            @else
+                                Aucune entreprise associée
+                            @endif
+                        </td>
                         <td>Transporteur</td>
                         <td>{{ $annonce->description }}</td>
                         <td>
@@ -137,6 +153,15 @@
     });
 
 </script>
+
+<script>
+        $(document).ready(function (){
+            setTimeout(function(){
+                $("div.alert").remove();
+            }, 3000 ); //3s
+
+        });
+    </script>
 
 <style>
 

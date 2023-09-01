@@ -79,13 +79,18 @@ class S_AnnouncementController extends Controller
         // Méthode pour gérer l'acceptation ou le refus d'une offre
         public function handleOffer(Request $request, $offerId)
         {
-            $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
+            $offer = Offer::findOrFail($offerId); 
 
-            // Vous pouvez ajouter ici la logique pour accepter ou refuser l'offre
-
+           
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
 
+<<<<<<< HEAD
+=======
+
+    
+
+>>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
     // Afficher le détail d'une annonce
     public function show($id)
     {
@@ -93,21 +98,33 @@ class S_AnnouncementController extends Controller
         return view('shipper.announcements.show', ['announcement' => $announcement]);
     }
 
-    // Afficher le formulaire d'ajout d'annonce
+   
     public function create()
     {
         return view('shipper.announcements.create');
     }
 
-    // Traitement de la soumission du formulaire d'ajout
+   
     public function store(Request $request)
     {
+        $user = User::find(session('userId'));
+
         $data = $request->validate([
-            // Définir les règles de validation pour les champs d'annonce
+            'origin' => ['required', 'string', 'max:255'],
+            'destination' => ['required', 'string', 'max:255'],
+            'limit_date' => ['required', 'date'],
+            'weight' => ['nullable', 'numeric'],
+            'volume' => ['nullable', 'numeric'],
+            'price' => ['nullable', 'numeric'],
+            'description' => ['required', 'string'],
+            
         ]);
+    
+        $data['fk_shipper_id'] = session('fk_shipper_id');
+       $data['created_by'] = session('userId'); 
+       
+        FreightAnnouncement::create($data);
 
-        //auth()->user()->freightAnnouncements()->create($data);(faut que moyen de faire avec les session)
-
-        return redirect()->route('shipper.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
+        return redirect()->route('shipper.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
     }
 }

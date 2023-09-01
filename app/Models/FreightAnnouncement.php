@@ -35,6 +35,7 @@ class FreightAnnouncement extends Model
         'limit_date',
         'weight',
         'volume',
+        'price',
         'description',
         'created_by',
     ];
@@ -46,5 +47,6 @@ class FreightAnnouncement extends Model
     {
         return $this->belongsTo(Shipper::class, 'fk_shipper_id');
     }
+
 }
 

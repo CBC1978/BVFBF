@@ -13,8 +13,7 @@ use Opcodes\LogViewer\Log;
 
 class C_AnnouncementController extends Controller
 
-{
-    // Afficher toutes les annonces
+{// Afficher toutes les annonces
     public function index()
     {
 
@@ -29,10 +28,15 @@ class C_AnnouncementController extends Controller
         return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
+<<<<<<< HEAD
     // Afficher les annonces de l'utilisateur
     // Dans votre méthode userAnnouncements du contrôleur
     public function userAnnouncements()
     {
+=======
+public function userAnnouncements()
+{
+>>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
     //Obtenir les infos sur l'utilisateur
     $user = User::find(session()->get('userId'));
     $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
@@ -61,37 +65,49 @@ class C_AnnouncementController extends Controller
 //  méthode pour gérer l'acceptation ou le refus d'une offre
 public function handleOffer(Request $request, $offerId)
 {
-    $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
-
-    //  la logique pour accepter ou refuser l'offre
+    $offer = Offer::findOrFail($offerId); 
+    
 
     return redirect()->back()->with('message', 'Offre traitée avec succès.');
 }
 
+<<<<<<< HEAD
     // Afficher le détail d'une annonce
+=======
+    
+>>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
     public function show($id)
     {
         $announcement = TransportAnnouncement::findOrFail($id);
         return view('carrier.announcements.show', ['announcement' => $announcement]);
     }
 
-    // Afficher le formulaire d'ajout d'annonce
-    public function create()
-    {
-        return view('carrier.announcements.create');
-    }
+    
+   // Afficher le formulaire d'ajout d'annonce
+   public function create()
+   {  
+       return view('carrier.announcements.create');
+   }
 
-    // Traitement de la soumission du formulaire d'ajout
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            // Définir les règles de validation pour les champs d'annonce
-        ]);
+   // Traitement de la soumission du formulaire d'ajout
+   public function store(Request $request)
+   {
+       $data = $request->validate([
+           'origin' => ['required'],
+           'destination' => ['required'],
+           'limit_date' => ['required', 'date'],
+           'vehicule_type' => ['required'],
+           'weight' => ['nullable'],
+           'description' => ['required', 'string'],
+       ]);
 
-        auth()->user()->transportAnnouncements()->create($data);
-
-        return redirect()->route('carrier.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
-    }
+       $data['fk_carrier_id'] = session('fk_carrier_id'); 
+       $data['created_by'] = session('userId'); 
+       //dd($data);
+       TransportAnnouncement::create($data);
+       
+       return redirect()->route('carrier.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
+   }
 
     public function postuler(Request $request){
 
