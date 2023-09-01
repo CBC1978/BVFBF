@@ -7,10 +7,10 @@
             <h3 class="mb-35">Ajouter une Annonce de Fret</h3>
             @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              
+                <h5>  {{ session('success') }}</h5>
                     <span aria-hidden="true">&times;</span>
-                </button>
+              
             </div>
             @endif
         </div>

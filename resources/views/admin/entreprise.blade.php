@@ -4,6 +4,14 @@
 <div class="box-content">
     <div id="forms-container">
         <div class="row">
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              
+                <h5>  {{ session('success') }}</h5>
+                    <span aria-hidden="true">&times;</span>
+              
+            </div>
+            @endif
             <div class="col-md-6">
                 <h2>Ajouter une entreprise de transporteur</h2>
                 <form action="{{ route('admin.ajouter-transporteur') }}" method="post">
@@ -151,7 +159,14 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function() {
+        
+        $('.alert').delay(2000).fadeOut(400, function() {
+            $(this).alert('close');
+        });
+    });
+</script>
 <script>
     
     // Script pour gérer la soumission du formulaire d'assignation

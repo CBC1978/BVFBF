@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\EntrepriseGestionController;
 use App\Http\Controllers\Admin\AdminAnnoncesController;
 
 
+use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
+
 
 //SHIPPER ROUTE
 
@@ -141,3 +143,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
     // ...
 });
+
+Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('shipper.offers.myoffer');
