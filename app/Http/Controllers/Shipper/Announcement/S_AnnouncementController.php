@@ -63,6 +63,7 @@ class S_AnnouncementController extends Controller
                     'destination'=>$announce->destination,
                     'description'=>$announce->description,
                     'limit_date'=>$announce->limit_date,
+                    'id'=>$announce->id,
                     'offre'=>0,
                 );
                 $offre = TransportOffer::where('fk_freight_announcement_id', $announce->id)
@@ -79,9 +80,9 @@ class S_AnnouncementController extends Controller
         // Méthode pour gérer l'acceptation ou le refus d'une offre
         public function handleOffer(Request $request, $offerId)
         {
-            $offer = Offer::findOrFail($offerId); 
+            $offer = Offer::findOrFail($offerId);
 
-           
+
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
 
@@ -93,13 +94,13 @@ class S_AnnouncementController extends Controller
         return view('shipper.announcements.show', ['announcement' => $announcement]);
     }
 
-   
+
     public function create()
     {
         return view('shipper.announcements.create');
     }
 
-   
+
     public function store(Request $request)
     {
         $user = User::find(session('userId'));
@@ -112,14 +113,28 @@ class S_AnnouncementController extends Controller
             'volume' => ['nullable', 'numeric'],
             'price' => ['nullable', 'numeric'],
             'description' => ['required', 'string'],
-            
+
         ]);
-    
+
         $data['fk_shipper_id'] = session('fk_shipper_id');
-       $data['created_by'] = session('userId'); 
-       
+       $data['created_by'] = session('userId');
+
         FreightAnnouncement::create($data);
 
         return redirect()->route('shipper.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
+    }
+
+    public function offer($id)
+    {
+        $annonce = FreightAnnouncement::find(intval($id));
+        $offers = DB::table('transport_offer')
+            ->selectRaw("
+             transport_offer.id,transport_offer.price,transport_offer.status,transport_offer.description,
+             carrier.company_name
+             ")
+            ->join('carrier','transport_offer.fk_carrier_id' ,"=",'carrier.id')
+            ->get();
+        return view('shipper.offers.s_myoffer', compact(['annonce','offers']));
+
     }
 }

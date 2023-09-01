@@ -113,6 +113,7 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [S_AnnouncementController::class, 'create'])->name('create');
     Route::get('{id}', [S_AnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [S_AnnouncementController::class, 'postuler'])->name('postuler');
+    Route::get('myoffer/{id}', [S_AnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
     Route::post('store', [S_AnnouncementController::class, 'store'])->name('store'); // Ajoutez une route pour le stockage
 
     // ...
@@ -137,11 +138,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/entreprise', [EntrepriseGestionController::class, 'showEntrepriseForm'])->name('admin.entreprise');
     Route::post('/ajouter-transporteur', [EntrepriseGestionController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
     Route::post('/ajouter-expediteur', [EntrepriseGestionController::class, 'addShipper'])->name('admin.ajouter-expediteur');
-
-   
     // ... Autres routes spécifiques à la gestion des entreprises ...
     Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
     // ...
 });
 
-Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('shipper.offers.myoffer');
+

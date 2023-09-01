@@ -31,9 +31,9 @@ class C_AnnouncementController extends Controller
 
     // Afficher les annonces de l'utilisateur
     // Dans votre méthode userAnnouncements du contrôleur
+
     public function userAnnouncements()
     {
-
 
 
     //Obtenir les infos sur l'utilisateur
@@ -49,6 +49,7 @@ class C_AnnouncementController extends Controller
             'destination'=>$announce->destination,
             'description'=>$announce->description,
             'limit_date'=>$announce->limit_date,
+            'id'=>$announce->id,
             'offre'=>0,
         );
         $offre = FreightOffer::where('fk_transport_announcement_id', $announce->id)
@@ -64,8 +65,8 @@ class C_AnnouncementController extends Controller
 //  méthode pour gérer l'acceptation ou le refus d'une offre
 public function handleOffer(Request $request, $offerId)
 {
-    $offer = Offer::findOrFail($offerId); 
-    
+    $offer = Offer::findOrFail($offerId);
+
 
     return redirect()->back()->with('message', 'Offre traitée avec succès.');
 }
@@ -77,10 +78,10 @@ public function handleOffer(Request $request, $offerId)
         return view('carrier.announcements.show', ['announcement' => $announcement]);
     }
 
-    
+
    // Afficher le formulaire d'ajout d'annonce
    public function create()
-   {  
+   {
        return view('carrier.announcements.create');
    }
 
@@ -96,11 +97,11 @@ public function handleOffer(Request $request, $offerId)
            'description' => ['required', 'string'],
        ]);
 
-       $data['fk_carrier_id'] = session('fk_carrier_id'); 
-       $data['created_by'] = session('userId'); 
+       $data['fk_carrier_id'] = session('fk_carrier_id');
+       $data['created_by'] = session('userId');
        //dd($data);
        TransportAnnouncement::create($data);
-       
+
        return redirect()->route('carrier.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
    }
 
