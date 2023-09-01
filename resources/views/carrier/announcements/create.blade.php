@@ -44,8 +44,14 @@
                                                                             <label for="origin">Lieu de départ</label>
                                                                             <select id="origin" class="form-control @error('origin') is-invalid @enderror" name="origin" required>
                                                                                 <option value="">Sélectionnez un lieu</option>
-                                                                                <option value="Po">Po</option>
-                                                                                <option value="Bobo">Bobo</option>
+                                                                                <option value="Ouagadougou">Ouagadougou</option>
+                                                                                <option value="Bobo-Dioulasso">Bobo-Dioulasso</option>
+                                                                                <option value="Koudougou">Koudougou</option>
+                                                                                <option value="Banfora">Banfora</option>
+                                                                                <option value="Dédougou">Dédougou</option>
+                                                                                <option value="Ouahigouya">Ouahigouya</option>
+                                                                                <option value="Fada N'gourma">Fada N'gourma</option>
+                                                                                <option value="Tenkodogo">Tenkodogo</option>
                                                                             </select>
                                                                             @error('origin')
                                                                             <span class="invalid-feedback" role="alert">
@@ -59,8 +65,14 @@
                                                                             <label for="destination">Lieu de destination</label>
                                                                             <select id="destination" class="form-control @error('destination') is-invalid @enderror" name="destination" required>
                                                                                 <option value="">Sélectionnez un lieu</option>
-                                                                                <option value="Ouaga">Ouaga</option>
+                                                                                <option value="Ouagadougou">Ouagadougou</option>
+                                                                                <option value="Bobo-Dioulasso">Bobo-Dioulasso</option>
                                                                                 <option value="Koudougou">Koudougou</option>
+                                                                                <option value="Banfora">Banfora</option>
+                                                                                <option value="Dédougou">Dédougou</option>
+                                                                                <option value="Ouahigouya">Ouahigouya</option>
+                                                                                <option value="Fada N'gourma">Fada N'gourma</option>
+                                                                                <option value="Tenkodogo">Tenkodogo</option>
                                                                             </select>
                                                                             @error('destination')
                                                                             <span class="invalid-feedback" role="alert">
@@ -82,8 +94,11 @@
                                                                             <label class="font-sm color-text-mutted mb-10">Type de véhicule</label>
                                                                             <select class="form-control" name="vehicule_type" required>
                                                                                 <option value="">Sélectionnez un type de véhicule</option>
-                                                                                <option value="type1">Type 1</option>
-                                                                                <option value="type2">Type 2</option>
+                                                                                <option value="camion">Camion</option>
+                                                                                <option value="fourgon">Fourgon</option>
+                                                                                <option value="remorque">Remorque</option>
+                                                                                <option value="camion-citerne">Camion-citerne</option>
+                                                                                <option value="véhicule-utilitaire">Véhicule utilitaire</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
