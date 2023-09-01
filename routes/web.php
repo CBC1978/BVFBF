@@ -12,6 +12,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\AdminUserGestionController;
 use App\Http\Controllers\Admin\EntrepriseGestionController;
 use App\Http\Controllers\Admin\AdminAnnoncesController;
+use App\Http\Controllers\carrier\profile\CarrierProfileController;
+
 
 
 
@@ -139,4 +141,10 @@ Route::prefix('admin')->group(function () {
     // ... Autres routes spécifiques à la gestion des entreprises ...
     Route::post('/assigner-entreprise-user', [EntrepriseGestionController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
     // ...
+});
+
+
+Route::prefix('carrier')->group(function () {
+    Route::get('/profile', [CarrierProfileController::class,'affichage'])->name('carrier.profile.affichage');
+    Route::put('profile/update', [CarrierProfileController::class,'update'])->name('carrier.profile.update');
 });
