@@ -85,12 +85,7 @@ class S_AnnouncementController extends Controller
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
 
-<<<<<<< HEAD
-=======
 
-    
-
->>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
     // Afficher le détail d'une annonce
     public function show($id)
     {

@@ -28,15 +28,14 @@ class C_AnnouncementController extends Controller
         return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
-<<<<<<< HEAD
+
     // Afficher les annonces de l'utilisateur
     // Dans votre méthode userAnnouncements du contrôleur
     public function userAnnouncements()
     {
-=======
-public function userAnnouncements()
-{
->>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
+
+
+
     //Obtenir les infos sur l'utilisateur
     $user = User::find(session()->get('userId'));
     $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
@@ -71,11 +70,7 @@ public function handleOffer(Request $request, $offerId)
     return redirect()->back()->with('message', 'Offre traitée avec succès.');
 }
 
-<<<<<<< HEAD
-    // Afficher le détail d'une annonce
-=======
-    
->>>>>>> 3ad5de1570d25f8e966936b87dd5addb7d4ee1aa
+
     public function show($id)
     {
         $announcement = TransportAnnouncement::findOrFail($id);
