@@ -157,28 +157,16 @@
                                               <input class="form-control" id="idUser" name="idUser" value="{{session('userId') }}" type="hidden">
                                               <input class="form-control" id="announce" name="announce" value="{{ $transport->id }}" type="hidden">
                                           </div>
-{{--                                          <div class="login_footer form-group d-flex justify-content-between">--}}
-{{--                                              <label class="cb-container">--}}
-{{--                                                  <input type="checkbox"><span class="text-small">Conditions generales d'utilisation</span><span class="checkmark"></span>--}}
-{{--                                              </label><a class="text-muted" href="page-contact.html">En savoir plus</a>--}}
-{{--                                          </div>--}}
                                           <div class="form-group">
                                               <button class="btn btn-default hover-up w-100" type="submit" name="login">ENVOYER</button>
                                           </div>
-{{--                                          <div class="text-muted text-center">Avez vous besoin d'aides? <a href="page-contact.html">Contactez nous </a></div>--}}
                                       </form>
                                   </div>
                               </div>
                           </div>
                       </div>
-
                   @endforeach
-
-
-
-
               </div>
-
             </div>
           </div>
         </div>

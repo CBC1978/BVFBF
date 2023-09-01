@@ -27,82 +27,95 @@
                                 <div class="container">
                                     <div class="panel-white mb-30">
                                         <div class="box-padding bg-postjob">
-                                            <h5 class="icon-edu">Fait une Annonce de Transport</h5>
                                             <div class="row mt-30">
                                                 <div class="col-lg-9">
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Résumer en 14 mots *</label>
-                                                                <input class="form-control" type="text" placeholder="Mettrez que des mots clé">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Date limite*</label>
-                                                                <input class="form-control" type="date" name="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10"> description detaillée de l'Annonce de Transport *</label>
-                                                                <textarea class="form-control" name="message" rows="8"> </textarea>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Type de vehicule *</label>
-                                                                <select class="form-control">
-                                                                    <option value="1">Remote</option>
-                                                                    <option value="1">Office</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Nombre de vehicule</label>
-                                                                <input class="form-control" type="text" placeholder="Nombre de vehicule disponible pour l'Annonce de Transport">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Volume</label>
-                                                                <input class="form-control" type="text" placeholder="En metre cube">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Poids</label>
-                                                                <input class="form-control" type="text" placeholder="En kilogramme">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Prix</label>
-                                                                <input class="form-control" type="text" placeholder="">
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <div class="box-upload">
-                                                                    <div class="add-file-upload">
-                                                                        <input class="fileupload" type="file" name="file">
-                                                                    </div><a class="btn btn-default">Ajouter un fichier</a>
+                                                            <h5 class="icon-edu">Fait une Annonce de Transport</h5>
+                                                            <form method="POST" action="{{ route('carrier.announcements.store') }}">
+                                                                @csrf
+                                                            
+                                                                <input type="hidden" name="user_id" value="{{ session('userId') }}">
+                                                                <input type="hidden" name="fk_carrier_id" value="{{ session('fk_carrier_id') }}">
+                                                            
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label for="origin">Lieu de départ</label>
+                                                                            <select id="origin" class="form-control @error('origin') is-invalid @enderror" name="origin" required>
+                                                                                <option value="">Sélectionnez un lieu</option>
+                                                                                <option value="Po">Po</option>
+                                                                                <option value="Bobo">Bobo</option>
+                                                                            </select>
+                                                                            @error('origin')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label for="destination">Lieu de destination</label>
+                                                                            <select id="destination" class="form-control @error('destination') is-invalid @enderror" name="destination" required>
+                                                                                <option value="">Sélectionnez un lieu</option>
+                                                                                <option value="Ouaga">Ouaga</option>
+                                                                                <option value="Koudougou">Koudougou</option>
+                                                                            </select>
+                                                                            @error('destination')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div> 
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30 box-file-uploaded d-flex align-items-center"><span>ajouter fichier.pdf</span><a class="btn btn-delete">Delete</a></div>
-                                                        </div>--}}
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group mt-10">
-                                                                <button class="btn btn-default btn-brand icon-tick">Ajouter nouvelle Annonce de Transport</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Date limite*</label>
+                                                                            <input class="form-control" type="date" id="limit_date" name="limit_date" required>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Type de véhicule</label>
+                                                                            <select class="form-control" name="vehicule_type" required>
+                                                                                <option value="">Sélectionnez un type de véhicule</option>
+                                                                                <option value="type1">Type 1</option>
+                                                                                <option value="type2">Type 2</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-30">
+                                                                            <label class="font-sm color-text-mutted mb-10">Poids</label>
+                                                                            <input class="form-control" type="text" name="weight">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Ajoutez d'autres champs côte à côte ici si nécessaire -->
+                                                                </div>
+                                                                
+                        
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
+                                                    @error('description')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
-                                            </div>
+                        
+                                               
+                                                    <button type="submit" class="btn btn-primary">Ajouter l'annonce</button>
+                                              
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -164,4 +177,7 @@
   </footer>
 </div>
 </div></div>
+
+
+    
 @endsection

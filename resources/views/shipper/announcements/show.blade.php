@@ -10,7 +10,7 @@
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a class="icon-home" href="">offres</a></li>
+                    <li><a class="icon-home" href="">annonce</a></li>
                     <li><span>Details</span></li>
                 </ul>
             </div>

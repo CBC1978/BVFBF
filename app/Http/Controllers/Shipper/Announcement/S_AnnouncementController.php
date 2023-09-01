@@ -9,13 +9,22 @@ use App\Models\TransportOffer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\FreightAnnouncement;
+use Illuminate\Support\Facades\DB;
 
 class S_AnnouncementController extends Controller
 {
     // Afficher toutes les annonces
     public function index()
     {
-        $announcements = FreightAnnouncement::all();
+        $announcements = DB::table('freight_announcement')
+            ->selectRaw("
+             freight_announcement.id,freight_announcement.origin,freight_announcement.destination,freight_announcement.limit_date,
+             freight_announcement.weight, freight_announcement.volume,freight_announcement.description,
+             shipper.company_name
+             ")
+            ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
+            ->orderBy('freight_announcement.id', 'DESC')
+            ->get();
         return view('shipper.announcements.index', ['announcements' => $announcements]);
     }
 
@@ -25,7 +34,6 @@ class S_AnnouncementController extends Controller
             'prix' => [ 'max:255', 'number'],
             'description' => ['string']
         ]);
-//        dd($request);
         $user = User::find($request->idUser);
 
         $freightOffer = new FreightOffer();
@@ -41,7 +49,7 @@ class S_AnnouncementController extends Controller
 
     }
 
-    // Afficher les annonces de l'utilisateur
+            // Afficher les annonces de l'utilisateur
             public function userAnnouncements()
         {
             $user = User::find(session()->get('userId'));
@@ -55,6 +63,7 @@ class S_AnnouncementController extends Controller
                     'destination'=>$announce->destination,
                     'description'=>$announce->description,
                     'limit_date'=>$announce->limit_date,
+                    'id'=>$announce->id,
                     'offre'=>0,
                 );
                 $offre = TransportOffer::where('fk_freight_announcement_id', $announce->id)
@@ -71,20 +80,12 @@ class S_AnnouncementController extends Controller
         // Méthode pour gérer l'acceptation ou le refus d'une offre
         public function handleOffer(Request $request, $offerId)
         {
-            $offer = Offer::findOrFail($offerId); // Supposons que votre modèle d'offre soit 'Offer'
+            $offer = Offer::findOrFail($offerId);
 
-            // Vous pouvez ajouter ici la logique pour accepter ou refuser l'offre
 
             return redirect()->back()->with('message', 'Offre traitée avec succès.');
         }
 
-
-    // public function userAnnouncements()
-    // {
-    //     $shipperId = session('shipper_id');
-    //     $userAnnouncements = FreightAnnouncement::where('fk_shipper_id', $shipperId)->get();
-    //     return view('shipper.announcements.user', ['userAnnouncements' => $userAnnouncements]);
-    // }
 
     // Afficher le détail d'une annonce
     public function show($id)
@@ -93,21 +94,47 @@ class S_AnnouncementController extends Controller
         return view('shipper.announcements.show', ['announcement' => $announcement]);
     }
 
-    // Afficher le formulaire d'ajout d'annonce
+
     public function create()
     {
         return view('shipper.announcements.create');
     }
 
-    // Traitement de la soumission du formulaire d'ajout
+
     public function store(Request $request)
     {
+        $user = User::find(session('userId'));
+
         $data = $request->validate([
-            // Définir les règles de validation pour les champs d'annonce
+            'origin' => ['required', 'string', 'max:255'],
+            'destination' => ['required', 'string', 'max:255'],
+            'limit_date' => ['required', 'date'],
+            'weight' => ['nullable', 'numeric'],
+            'volume' => ['nullable', 'numeric'],
+            'price' => ['nullable', 'numeric'],
+            'description' => ['required', 'string'],
+
         ]);
 
-        //auth()->user()->freightAnnouncements()->create($data);(faut que moyen de faire avec les session)
+        $data['fk_shipper_id'] = session('fk_shipper_id');
+       $data['created_by'] = session('userId');
 
-        return redirect()->route('shipper.announcements.index')->with('success', 'Annonce ajoutée avec succès.');
+        FreightAnnouncement::create($data);
+
+        return redirect()->route('shipper.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
+    }
+
+    public function offer($id)
+    {
+        $annonce = FreightAnnouncement::find(intval($id));
+        $offers = DB::table('transport_offer')
+            ->selectRaw("
+             transport_offer.id,transport_offer.price,transport_offer.status,transport_offer.description,
+             carrier.company_name
+             ")
+            ->join('carrier','transport_offer.fk_carrier_id' ,"=",'carrier.id')
+            ->get();
+        return view('shipper.offers.s_myoffer', compact(['annonce','offers']));
+
     }
 }
