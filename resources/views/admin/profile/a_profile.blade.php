@@ -6,47 +6,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carrier-profil</title>
+    <title>admin-profil</title>
+
+    <style>
+        body {
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        }
+    </style>
+
 </head>
 <body>
     <div class="container2">
         <h1>  {{ $user->username}} Profile</h1>
+
+        <div class="profile-img">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""/>
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                        <input type="file" name="file"/>
+                        </div>
+                    </div>
+
+        @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+        @endif
         <div class="affichage">
             <ul>
-                <li>username: {{$user->name}}</li>
-                <li>first name: {{$user->first_name }}</li>
-                <li>username: {{ $user->username}}</li>
-                <li>contact: {{$user->user_phone }}</li>
-                <li>MAIl: {{$user->email }}</li>
-                <li>code: {{$user->code}}</li>
-                <li>company name:  @if ($user->fk_carrier_id)
-                                {{ $user->carrier->company_name }}
-                            @else
-                                Aucune entreprise associée
+            <div class="col-md-15">
+                <div class="card mb-3">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">last Name: </h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                            <h5>{{$user->name}}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">first name:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                         <h5> {{$user->first_name }}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">username:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                         <h5>{{ $user->username}}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">contact:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                        <h5>{{$user->user_phone }} </h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">Mail:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                         <h5>{{$user->email }}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">code:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                        <h5> {{$user->code}}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        <h5 class="mb-0">company name:</h5>
+                        </div>
+                        <div class="col-sm-5 text-secondary">
+                          <h5> 
+                            @if ($user->fk_shipper_id) 
+                            {{ $user->shipper->company_name }} 
+                            @else 
+                            Aucune entreprise associée
                             @endif
-                </li>
+                         </h5> 
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </ul>
         <a href="{{ route('admin.profile.affichage') }}"><button type="submit">Refresh</button></a>
         </div>
 
         <a id="edit-profile-button" href="#">Edit Profile</a>
-
         <div id="edit-profile-form" style="display: none;">
-            <form id="update-profile-form" method="get" action="{{ route('admin.profile.update') }}">
-                @csrf
-                @method('get')
+                <form id="" action="{{ route('admin.profile.update') }}" method="post">
+                    @csrf
+                    @method('post') 
 
-                <input type="text" name="name" value="{{$user->name}}">
-                <input type="text" name="first_name" value="{{$user->first_name }}">
-                <input type="tel" name="user_phone" value="{{$user->user_phone }}">
-                <input type="email" name="email" value="{{ $user->username}}">
-                <input type="text" name="code" value="{{$user->code}}">
-                <input type="text" name="status" value="{{$user->role}}">
-                <button type="submit">Update Profile</button>
-            </form>
+                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
+                    <input type="text" name="first_name" id="first_name" value="{{old('first_name', $user->first_name)}}">
+                    <input type="text" name="username" id="username" value="{{old('username', $user->username)}}">
+                    <input type="tel" name="user_phone" id="user_phone" value="{{old('user_phone', $user->user_phone) }}">
+                    <input type="email" name="email" id="email" value="{{ old('email', $user->email)}}">
+                    <button type="submit">Update Profile</button>
+                </form>
         </div>
-    </div>
 
+
+</div>
+         <script>
+                $(document).ready(function () {
+                    $("#edit-profile-button").click(function () {
+                        $("#edit-profile-form").toggle();
+                    });
+                });
+                
+                $(document).ready(function (){
+                setTimeout(function(){
+                    $("div.alert").remove();
+                }, 3000 ); //3s
+
+            });
+        </script>
 <style>
   /* Style pour le conteneur principal */
 .container2 {
@@ -102,7 +198,7 @@ li {
     text-align: left;
 }
 
-/* Style pour les champs du formulaire */
+/* Style pour les champs de mon formulaire */
 input[type="text"],
 input[type="tel"],
 input[type="email"] {
@@ -128,7 +224,7 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Style pour le lien "Refresh" */
+/* Style pour mon lien "Refresh" */
 a[href="#"] {
     text-decoration: none;
     color: #007BFF;
@@ -141,6 +237,7 @@ a[href="#"]:hover {
 }
 
 </style>
+
 
 
 

@@ -150,20 +150,18 @@ Route::prefix('admin')->group(function () {
 });
 
 
-<<<<<<< HEAD
 Route::prefix('carrier')->group(function () {
     Route::get('/profile', [CarrierProfileController::class,'affichage'])->name('carrier.profile.affichage');
-    Route::get('profile/update', [CarrierProfileController::class,'update'])->name('carrier.profile.update');
+    Route::post('profile/update', [CarrierProfileController::class,'update'])->name('carrier.profile.update');
 });
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/profile', [AdminProfileController1::class,'affichage'])->name('admin.profile.affichage');
-    Route::get('profile/update', [AdminProfileController1::class,'update'])->name('admin.profile.update');
+    Route::post('profile/update', [AdminProfileController1::class,'update'])->name('admin.profile.update');
 });
 
 Route::prefix('shipper')->group(function () {
     Route::get('/profile', [ShipperProfileController1::class,'affichage'])->name('shipper.profile.affichage');
-    Route::get('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
+    Route::post('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
 });
-=======
->>>>>>> 72fae6eba288d844d14266acdcf8e2704a157dad

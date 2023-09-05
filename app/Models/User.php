@@ -54,5 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Carrier::class, 'fk_carrier_id');
     }
+    public function shipper()
+    {
+        return $this->belongsTo(shipper::class, 'fk_shipper_id');
+    }
 }
 
