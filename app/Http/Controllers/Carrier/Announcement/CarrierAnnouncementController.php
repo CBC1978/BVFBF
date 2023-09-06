@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Carrier\Announcement;
 
 use App\Http\Controllers\Controller;
@@ -11,10 +12,9 @@ use App\Models\TransportOffers;
 use Illuminate\Support\Facades\DB;
 use Opcodes\LogViewer\Log;
 
-class C_AnnouncementController extends Controller
-
-{// Afficher toutes les annonces
-    public function index()
+class CarrierAnnouncementController extends Controller
+{
+    public function displayTransportAnnouncement()
     {
 
         $announcements =  DB::table('transport_announcement')
@@ -28,11 +28,7 @@ class C_AnnouncementController extends Controller
         return view('carrier.announcements.index', ['announcements' => $announcements]);
     }
 
-
-    // Afficher les annonces de l'utilisateur
-    // Dans votre méthode userAnnouncements du contrôleur
-
-    public function userAnnouncements()
+    public function userConnectedAnnouncement()
     {
 
 
@@ -63,7 +59,7 @@ class C_AnnouncementController extends Controller
     return view('carrier.announcements.user', compact('announces'));
 }
 //  méthode pour gérer l'acceptation ou le refus d'une offre
-public function handleOffer(Request $request, $offerId)
+public function offerManagementHandleOffer(Request $request, $offerId)
 {
     $offer = Offer::findOrFail($offerId);
 
@@ -79,14 +75,14 @@ public function handleOffer(Request $request, $offerId)
     }
 
 
-   // Afficher le formulaire d'ajout d'annonce
-   public function create()
+   // Affiche le formulaire d'ajout d'annonce
+   public function displayAnnouncementForm()
    {
        return view('carrier.announcements.create');
    }
 
    // Traitement de la soumission du formulaire d'ajout
-   public function store(Request $request)
+   public function handleSubmittedAnnouncement(Request $request)
    {
        $data = $request->validate([
            'origin' => ['required'],
@@ -105,7 +101,7 @@ public function handleOffer(Request $request, $offerId)
        return redirect()->route('carrier.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
    }
 
-    public function postuler(Request $request){
+    public function positOffer(Request $request){
 
         $request->validate([
             'prix' => [ 'max:255', 'number'],
@@ -127,5 +123,4 @@ public function handleOffer(Request $request, $offerId)
 
 
     }
-
 }
