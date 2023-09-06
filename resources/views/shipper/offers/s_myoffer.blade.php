@@ -50,7 +50,8 @@
                             <div class="card-price"><strong>{{$offer->price}} FCFA</strong><span class="hour"></span></div>
                         </div>
                     </div>
-                @endforeach
+        
+                    @endforeach
             </div>
             <div class="paginations">
 
