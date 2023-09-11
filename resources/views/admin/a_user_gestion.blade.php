@@ -41,8 +41,8 @@
          </div>
      </div>
 
-     <table class="table table-dark table-striped" id="user-table">
-         <thead>
+     <table class="table" id="user-table">
+         <thead class="thead-dark">
              <tr>
                  <th>ID</th>
                  <th>Nom</th>

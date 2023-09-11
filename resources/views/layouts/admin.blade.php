@@ -43,7 +43,7 @@
 <body>
     @include('layouts.admin.admin_header')
     <main class="main">
-      @include('layouts.admin.aadmin_sidebar')  
+      @include('layouts.admin.admin_sidebar')  
 
         <div class="box-content">
             @yield('content')
