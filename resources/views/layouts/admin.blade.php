@@ -41,9 +41,9 @@
   
 </head>
 <body>
-    @include('layouts.admin.a_header')
+    @include('layouts.admin.admin_header')
     <main class="main">
-      @include('layouts.admin.a_sidebar')  
+      @include('layouts.admin.aadmin_sidebar')  
 
         <div class="box-content">
             @yield('content')

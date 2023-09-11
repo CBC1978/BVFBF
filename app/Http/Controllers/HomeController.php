@@ -47,11 +47,11 @@ class HomeController extends Controller
          $role = session('role'); // Récupérer le rôle depuis la session
 
          if ($role === 'admin') {
-             return view('a_home');
+             return view('admin_home');
          } elseif ($role === 'chargeur') {
-             return view('s_home', compact('transports'));
+             return view('shipper_home', compact('transports'));
          } elseif ($role === 'transporteur') {
-             return view('c_home' , compact('announcements'));
+             return view('carrier_home' , compact('announcements'));
          } else {
              return view('home'); // Par défaut, si le rôle n'est pas reconnu
          }

@@ -124,17 +124,37 @@ class ShipperAnnouncementController extends Controller
        return redirect()->route('shipper.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
    }
 
+   
    public function offer($id)
    {
        $annonce = FreightAnnouncement::find(intval($id));
        $offers = DB::table('transport_offer')
            ->selectRaw("
-            transport_offer.id,transport_offer.price,transport_offer.status,transport_offer.description,
-            carrier.company_name
-            ")
-           ->join('carrier','transport_offer.fk_carrier_id' ,"=",'carrier.id')
+               transport_offer.id,
+               transport_offer.price,
+               transport_offer.status,
+               transport_offer.description,
+               carrier.company_name
+           ")
+           ->join('carrier', 'transport_offer.fk_carrier_id', '=', 'carrier.id')
+           ->where('transport_offer.fk_freight_announcement_id', $id) // Filtre par l'annonce spécifique
            ->get();
-       return view('shipper.offers.s_myoffer', compact(['annonce','offers']));
-
+       return view('shipper.offers.s_myoffer', compact(['annonce', 'offers']));
    }
+   
+
+
+//    public function offer($id)
+//    {
+//        $annonce = FreightAnnouncement::find(intval($id));
+//        $offers = DB::table('transport_offer')
+//            ->selectRaw("
+//             transport_offer.id,transport_offer.price,transport_offer.status,transport_offer.description,
+//             carrier.company_name
+//             ")
+//            ->join('carrier','transport_offer.fk_carrier_id' ,"=",'carrier.id')
+//            ->get();
+//        return view('shipper.offers.s_myoffer', compact(['annonce','offers']));
+
+//    }
 }

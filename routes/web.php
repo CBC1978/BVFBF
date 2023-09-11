@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\OtpController;
+
+use App\Http\Controllers\Auth\OtpController;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -61,7 +62,7 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 // Routes spécifiques au shipper ........................................
 //Route::middleware(['check.role:shipper'])->group(function () {
-    Route::get('/s_home', [HomeController::class, 'home'])->name('s_home');
+    Route::get('/shipper_home', [HomeController::class, 'home'])->name('shipper_home');
     Route::get('/shipper/offers/add', [S_AddOfferController::class, 'index'])->name('s_add_offer');
     Route::get('/shipper/offers/myoffer', [S_MyOfferController::class, 'index'])->name('s_myoffer');
     Route::get('/shipper/offers/offerdetail', [S_OfferDetailController::class, 'index'])->name('s_offerdetail');
@@ -71,7 +72,7 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 // Routes spécifiques au carrier ....................................
 //Route::middleware(['check.role:carrier'])->group(function () {
-    Route::get('/c_home', [HomeController::class, 'home'])->name('c_home');
+    Route::get('/carrier_home', [HomeController::class, 'home'])->name('carrier_home');
     Route::get('/carrier/offers/add', [C_AddOfferController::class, 'index'])->name('c_add_offer');
     Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
     Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
@@ -84,7 +85,7 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('loginUser');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/otp', [OtpController::class, 'index'])->name('otp');
-Route::post('/otp', [OtpController::class, 'optVerify'])->name('otpVerify');
+Route::post('/otp', [OtpController::class, 'otpVerify'])->name('otpVerify');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('registerUser');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -133,7 +134,7 @@ Route::prefix('annonces')->group(function () {
 Route::post('/bulk_update_status', [AdminController::class, 'bulkUpdateUserStatus'])->name('bulk_update_status');
 
 Route::middleware(['check.role:admin'])->group(function () {
-    Route::get('/a_home', [HomeController::class, 'home'])->name('a_home');
+    Route::get('/admin_home', [HomeController::class, 'home'])->name('admin_home');
     Route::get('/a_user_gestion', [AdminController::class, 'displayUser'])->name('a_user_gestion');
     Route::get('/filter_users', [AdminController::class, 'filterUsers'])->name('filter_users');
 
