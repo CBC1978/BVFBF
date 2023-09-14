@@ -85,6 +85,29 @@
  </div>
 <script>
     $(document).ready(function() {
+        $('#user-table').DataTable({
+            "paging": true, // Activer la pagination
+            "searching": true, // Activer la recherche
+            "ordering": true, // Activer le tri
+            "lengthMenu": [10, 25, 50, 100], // Personnalisez le nombre d'éléments par page
+            "pageLength": 10, // Nombre d'éléments par page par défaut
+            "language": { // Personnalisez les libellés de pagination
+                "lengthMenu": "Afficher _MENU_ éléments par page",
+                "zeroRecords": "Aucun enregistrement trouvé",
+                "info": "Page _PAGE_ sur _PAGES_",
+                "infoEmpty": "Aucun enregistrement disponible",
+                "infoFiltered": "(filtré de _MAX_ enregistrements au total)",
+                "search": "Rechercher :",
+                "paginate": {
+                    "first": "Premier",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précédent"
+                }
+            }
+            // Autres options de configuration...
+        });
+
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();
             var selectedUserIds = $('input[name="selected_users[]"]:checked').map(function() {
@@ -183,8 +206,6 @@ function getStatusValue(statusLabel) {
             return ''; // Retourner une valeur vide par défaut
     }
 }
-
-
 
 });
 </script>

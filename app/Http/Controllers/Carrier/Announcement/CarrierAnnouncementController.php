@@ -100,6 +100,26 @@ public function offerManagementHandleOffer(Request $request, $offerId)
 
        return redirect()->route('carrier.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
    }
+   public function offer($id)
+   {
+
+    $transportAnnouncement = TransportAnnouncement::find(intval($id));
+    $freightOffers = DB::table('freight_offer')
+        ->selectRaw("
+            freight_offer.id,
+            freight_offer.price,
+            freight_offer.weight,
+            freight_offer.description,
+            freight_offer.status,
+            freight_offer.created_by,
+            shipper.company_name
+        ")
+        ->join('shipper', 'freight_offer.fk_shipper_id', '=', 'shipper.id')
+        ->where('freight_offer.fk_transport_announcement_id', $id) // Filtre par l'annonce de transport spécifique
+        ->get();
+       return view('carrier.offers.c_myoffer', compact(['transportAnnouncement', 'freightOffers']));
+   }
+   
 
     public function positOffer(Request $request){
 

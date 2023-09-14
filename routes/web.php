@@ -23,6 +23,8 @@ use App\Http\Controllers\shipper\profile\ShipperProfile1Controller;
 
 use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
 
+use App\Http\Controllers\Carrier\Offers\C_MyOfferController;
+
 
 //SHIPPER ROUTE
 
@@ -103,6 +105,7 @@ Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(fu
     Route::get('create', [CarrierAnnouncementController::class, 'displayAnnouncementForm'])->name('create'); 
     Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); // Ajoutez une route pour le stockage
 
+    Route::get('myoffer/{id}', [CarrierAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
     Route::post('postuler', [CarrierAnnouncementController::class, 'positOffer'])->name('postuler');
     Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show'); // 
 });
@@ -114,7 +117,7 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [ShipperAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
-    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
+    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); // Ajoutez une route pour le stockage
 
     // ...
@@ -155,16 +158,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/profile', [AdminController::class,'displayProfile'])->name('admin.profile.affichage');
     Route::get('profile/update', [AdminController::class,'updateUserProfile'])->name('admin.profile.update');
 });
-
-
-
-
-
-
-
-
-
-
 
 
 Route::prefix('carrier')->group(function () {
