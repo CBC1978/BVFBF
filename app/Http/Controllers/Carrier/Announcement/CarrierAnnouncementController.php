@@ -143,4 +143,13 @@ public function offerManagementHandleOffer(Request $request, $offerId)
 
 
     }
+    public function myrequest()
+    {
+        // Récupérez l'ID du transporteur à partir de la session
+    $carrierId = session('fk_carrier_id');
+
+    // Récupérez toutes les offres de transport liées à ce transporteur
+    $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
+    return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
+    }
 }

@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use App\Models\FreightAnnouncement;
 use Illuminate\Support\Facades\DB;
 
+
+use Opcodes\LogViewer\Log;
+
 class ShipperAnnouncementController extends Controller
 {
    // Afficher toutes les annonces
@@ -141,20 +144,17 @@ class ShipperAnnouncementController extends Controller
            ->get();
        return view('shipper.offers.s_myoffer', compact(['annonce', 'offers']));
    }
+   public function myrequest()
+   {
+    // Récupérez l'ID du chargeur à partir de la session
+   $shipperId = session('fk_shipper_id');
+
+   // Récupérez toutes les offres de chargeur liées à ce chargeur
+   $offers = ShipperOffer::where('fk_shipper_id', $shipperId)->get();
+   return view('shipper.offers.shipper_myrequest', ['offers' => $offers]);
+   }
    
 
 
-//    public function offer($id)
-//    {
-//        $annonce = FreightAnnouncement::find(intval($id));
-//        $offers = DB::table('transport_offer')
-//            ->selectRaw("
-//             transport_offer.id,transport_offer.price,transport_offer.status,transport_offer.description,
-//             carrier.company_name
-//             ")
-//            ->join('carrier','transport_offer.fk_carrier_id' ,"=",'carrier.id')
-//            ->get();
-//        return view('shipper.offers.s_myoffer', compact(['annonce','offers']));
 
-//    }
 }

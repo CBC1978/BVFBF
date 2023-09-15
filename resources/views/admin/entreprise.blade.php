@@ -112,7 +112,8 @@
         <div class="col-md-12">
            
                 @csrf
-                <table class="table" id="user-table">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="user-table">
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
@@ -157,6 +158,7 @@
                
             </form>
         </div>
+    </div>
     </div>
 </div>
 <script>

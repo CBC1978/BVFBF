@@ -40,8 +40,9 @@
              </div>
          </div>
      </div>
-
-     <table class="table" id="user-table">
+     <div class="table-responsive">
+      
+     <table class="table table-bordered table-hover" id="user-table">
          <thead class="thead-dark">
              <tr>
                  <th>ID</th>
@@ -83,6 +84,7 @@
          </tbody>
      </table>
  </div>
+</div>
 <script>
     $(document).ready(function() {
         $('#user-table').DataTable({
