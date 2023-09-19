@@ -14,6 +14,7 @@ class EntrepriseGestionController extends Controller
 {
     public function showEntrepriseForm()
 {
+
     //$users = User::with(['carrier' => function ($query) {
     //    $query->where('id', $this->fk_carrier_id);
    // }, 'shipper' => function ($query) {
@@ -32,7 +33,7 @@ class EntrepriseGestionController extends Controller
     {
         // Récupérer l'ID de l'utilisateur depuis le champ hidden
     $userId = $request->input('user_id');
-    
+
         $validatedData = $request->validate([
             'company_name' => 'required|string',
             'address' => 'required|string',
@@ -41,7 +42,7 @@ class EntrepriseGestionController extends Controller
             'email' => 'required|email',
             'ifu' => 'required|string',
             'rccm' => 'required|string',
-           
+
         ]);
 
         // Ajouter l'ID de l'utilisateur
@@ -57,7 +58,7 @@ class EntrepriseGestionController extends Controller
     public function addShipper(Request $request)
     {
         // Récupérer l'ID de l'utilisateur à partir de la session
-        
+
         $userId = $request->input('user_id');
 
         // Valider les données du formulaire
@@ -69,7 +70,7 @@ class EntrepriseGestionController extends Controller
             'email' => 'required|email',
             'ifu' => 'required|string',
             'rccm' => 'required|string',
-         
+
         ]);
           // Ajouter l'ID de l'utilisateur
     $validatedData['created_by'] = $userId;
@@ -112,5 +113,5 @@ class EntrepriseGestionController extends Controller
     return Response::json(['message' => 'Entreprises assignées aux utilisateurs avec succès.']);
 }
 
-    
+
 }
