@@ -112,8 +112,9 @@
         <div class="col-md-12">
            
                 @csrf
-                <table class="table table-dark table-striped" id="user-table">
-                    <thead>
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="user-table">
+                    <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
@@ -124,7 +125,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($users->sortByDesc('id') as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
@@ -157,6 +158,7 @@
                
             </form>
         </div>
+    </div>
     </div>
 </div>
 <script>

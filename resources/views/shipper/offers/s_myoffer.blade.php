@@ -4,7 +4,7 @@
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
-            <h3 class="mb-35">mes offres de FRET</h3>
+            <h3 class="mb-35">mes offres de transport</h3>
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
@@ -50,7 +50,8 @@
                             <div class="card-price"><strong>{{$offer->price}} FCFA</strong><span class="hour"></span></div>
                         </div>
                     </div>
-                @endforeach
+        
+                    @endforeach
             </div>
             <div class="paginations">
 

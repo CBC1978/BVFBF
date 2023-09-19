@@ -50,13 +50,13 @@
         <div class="header-left">
           <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div><span class="btn btn-grey-small ml-10">Compte Verifié</span>
         </div>
-        <div class="header-search">
+        {{-- <div class="header-search">
           <div class="box-search">
             <form action="">
               <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
             </form>
           </div>
-        </div>
+        </div> --}}
 
         <div class="header-right">
           <div class="block-signin"><a class="btn btn-default icon-edit hover-up{{ request()->routeIs('shipper.announcements.create') ? 'active' : '' }}"  href="{{ route('shipper.announcements.create') }}">PUBLIER UNE ANNONCE DE FRET</a>

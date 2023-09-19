@@ -38,9 +38,9 @@
 
 </head>
 <body>
-    @include('layouts.carrier.c_header')
+    @include('layouts.carrier.carrier_header')
     <main class="main">
-        @include('layouts.carrier.c_sidebar')
+        @include('layouts.carrier.carrier_sidebar')
 
         <div class="box-content">
             @yield('content')

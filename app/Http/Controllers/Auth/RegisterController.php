@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
         if ($res){
             Mail::to( $user->email)->send(new RegisterEmail($user->first_name,'Valider votre inscription',  $user->code));
-            return view('otp');
+            return view('auth.otp');
         }else{
             echo 'bad';
         }

@@ -40,9 +40,10 @@
              </div>
          </div>
      </div>
-
-     <table class="table table-dark table-striped" id="user-table">
-         <thead>
+     <div class="table-responsive">
+      
+     <table class="table table-bordered table-hover" id="user-table">
+         <thead class="thead-dark">
              <tr>
                  <th>ID</th>
                  <th>Nom</th>
@@ -53,7 +54,7 @@
          </thead>
          <tbody>
 
-        @foreach($users as $user)
+        @foreach($users->sortByDesc('id') as $user)
         <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->name }}</td>
@@ -83,8 +84,12 @@
          </tbody>
      </table>
  </div>
+</div>
 <script>
-    $(document).ready(function() {
+   
+            // Autres options de configuration...
+        });
+
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();
             var selectedUserIds = $('input[name="selected_users[]"]:checked').map(function() {
@@ -183,8 +188,6 @@ function getStatusValue(statusLabel) {
             return ''; // Retourner une valeur vide par défaut
     }
 }
-
-
 
 });
 </script>

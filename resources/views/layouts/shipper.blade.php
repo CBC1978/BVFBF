@@ -39,9 +39,9 @@
 
 </head>
 <body>
-    @include('layouts.shipper.s_header')
+    @include('layouts.shipper.shipper_header')
     <main class="main">
-        @include('layouts.shipper.s_sidebar')
+        @include('layouts.shipper.shipper_sidebar')
 
         <div class="box-content">
             @yield('content')

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use App\Http\Controllers\Controller;
 use App\Mail\Email\RegisterEmail;
 use App\Mail\Email\ValidatedRegisterEmail;
 use App\Models\User;
@@ -15,7 +17,7 @@ class OtpController extends Controller
         return view('auth.otp');
     }
 
-    public function optVerify(Request $request)
+    public function otpVerify(Request $request)
     {
         $request->validate([
             'otp' => ['required', 'string','min:19', 'max:255'],
@@ -29,7 +31,7 @@ class OtpController extends Controller
 
         if ($user){
             Mail::to( $user->email)->send(new ValidatedRegisterEmail($user->first_name));
-            return view('VerifiedAccount');
+            return view('auth.VerifiedAccount');
         }else{
             return view('auth.otp');
         }
