@@ -26,7 +26,7 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
-   
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -38,12 +38,12 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-  
+    @yield('styles')
 </head>
 <body>
     @include('layouts.admin.admin_header')
     <main class="main">
-      @include('layouts.admin.admin_sidebar')  
+      @include('layouts.admin.admin_sidebar')
 
         <div class="box-content">
             @yield('content')
