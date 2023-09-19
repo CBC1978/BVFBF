@@ -5,7 +5,6 @@ use App\Http\Controllers\shipper\profile\ShipperProfileController1;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\Auth\OtpController;
@@ -103,13 +102,22 @@ Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(fu
     Route::get('/', [CarrierAnnouncementController::class, 'displayTransportAnnouncement'])->name('index');
     Route::get('user', [CarrierAnnouncementController::class, 'userConnectedAnnouncement'])->name('user');
     Route::get('create', [CarrierAnnouncementController::class, 'displayAnnouncementForm'])->name('create'); 
-    Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); // Ajoutez une route pour le stockage
+    Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
 
+   // Route::post('offer.manage/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
+
+   //Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
+
+   Route::post('manage-offer/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
+   
     Route::get('myoffer/{id}', [CarrierAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
     Route::get('myrequest', [CarrierAnnouncementController::class, 'myrequest'])->name('carrier_myrequest');
     Route::post('postuler', [CarrierAnnouncementController::class, 'positOffer'])->name('postuler');
-    Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show'); // 
+    Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show'); 
+
 });
+//Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
+
 
 
 Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(function () {
@@ -119,9 +127,9 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
     Route::get('myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper_myrequest');
-    // ...
+    
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
-    Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); // Ajoutez une route pour le stockage
+    Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
 
     // ...
     // ... L

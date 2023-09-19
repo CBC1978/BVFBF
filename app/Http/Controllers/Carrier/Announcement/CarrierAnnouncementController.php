@@ -32,7 +32,7 @@ class CarrierAnnouncementController extends Controller
     {
 
 
-    //Obtenir les infos sur l'utilisateur
+    //Obtenir les infos 
     $user = User::find(session()->get('userId'));
     $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
                                         ->orderBy('created_at', 'DESC')
@@ -58,7 +58,7 @@ class CarrierAnnouncementController extends Controller
     }
     return view('carrier.announcements.user', compact('announces'));
 }
-//  méthode pour gérer l'acceptation ou le refus d'une offre
+//  Méthode pour  gérer l'acceptation ou le refus d'une offre
 public function offerManagementHandleOffer(Request $request, $offerId)
 {
     $offer = Offer::findOrFail($offerId);
@@ -145,11 +145,35 @@ public function offerManagementHandleOffer(Request $request, $offerId)
     }
     public function myrequest()
     {
-        // Récupérez l'ID du transporteur à partir de la session
+       
     $carrierId = session('fk_carrier_id');
 
     // Récupérez toutes les offres de transport liées à ce transporteur
     $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
     return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }
+
+
+    public function manageOffer(Request $request, $id)
+    {
+        $action = $request->input('action');
+    
+        // Récupérer l'offre en fonction de l'ID
+        $freightOffer = FreightOffer::findOrFail($id);
+    
+        if ($action === 'accept') {
+           
+            $freightOffer->status = 1;
+        } elseif ($action === 'refuse') {
+           
+            $freightOffer->status = 2;
+        }
+    
+        // Sauvegarde des  modifications
+        $freightOffer->save();
+    
+        return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
+    }
+    
+    
 }
