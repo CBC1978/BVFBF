@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Carrier;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -53,7 +54,14 @@ class LoginController extends Controller
                 $request->session()->put('status', $user->status);
                 $request->session()->put('fk_carrier_id', $user->fk_carrier_id);
                 $request->session()->put('fk_shipper_id', $user->fk_shipper_id);
-               
+              
+           // Récupérer le nom de l'entreprise à partir de la table 'carrier'
+        if ($user->fk_carrier_id) {
+            $carrier = Carrier::find($user->fk_carrier_id);
+            if ($carrier) {
+                $request->session()->put('company_name', $carrier->company_name);
+            }
+        }
                 
                 return redirect('home');
             }else{
