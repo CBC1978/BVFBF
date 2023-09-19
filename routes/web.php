@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\EntrepriseGestionController;
 use App\Http\Controllers\Admin\AdminAnnoncesController;
 use App\Http\Controllers\carrier\profile\CarrierProfileController;
 use App\Http\Controllers\shipper\profile\ShipperProfile1Controller;
+use App\Http\Controllers\carrier\parameter\CarrierSettingsController;
+
+
 
 
 
@@ -153,6 +156,8 @@ Route::prefix('admin')->group(function () {
 Route::prefix('carrier')->group(function () {
     Route::get('/profile', [CarrierProfileController::class,'affichage'])->name('carrier.profile.affichage');
     Route::post('profile/update', [CarrierProfileController::class,'update'])->name('carrier.profile.update');
+    Route::get('parameter/carrierSettings', [CarrierSettingsController::class,'displayCarrierSettings'])->name('carrier.parameter.displayCarrierSettings');
+    route::post('parameter/carriersettings-update', [CarrierSettingsController::class, 'updateCarrierSettings'])->name('carrier.parameter.updateCarrierSettings');
 });
 
 
