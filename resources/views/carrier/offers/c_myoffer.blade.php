@@ -4,27 +4,72 @@
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
-            <h3 class="mb-35">mes offres</h3>
+            <h3 class="mb-35">mes offres de fret</h3>
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
-                    <li> <a class="icon-home" href="index.html">OFFRE</a></li>
+                    <li> <a class="icon-home" href="">OFFRE</a></li>
                     <li><span>mes offres </span></li>
                 </ul>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-style-2 hover-up">
+                <div class="card-head">
+                    <div class="card-image"> <img src="{{asset('assets/imgs/page/dashboard/img1.png')}}" alt="jobBox"></div>
+                    <div class="card-title">
+                      <h5> Itinéraire: {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</h5>
+                      <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</span>
+                      <p>Description:{{ $transportAnnouncement->description }}</p>
+                  </div>
+              </div>
+              <div class="card-price"><strong>{{ $transportAnnouncement->price }} F CFA</strong><span class="hour">/T</span></div>
+          </div>
+        </div>
+    </div>
+ <div class="row">
+  <div class="col-lg-12">
+    <div class="section-box">
+      <div class="container">
+        <div class="panel-white mb-30">
+          <div class="box-padding">
+            <div class="row display-list">
+                @foreach($freightOffers as $freightOffer)
+                    <div class="col-lg-6">
+                        <div class="card-style-2 hover-up">
+                            <div class="card-head">
+                                <div class="card-image"> <img src="{{asset('assets/imgs/page/dashboard/img1.png')}}" alt="jobBox"></div>
+                                <div class="card-title">
+                                    <h6>{{ $freightOffer->description }}</h6><span class="location">{{ $freightOffer->company_name }}</span>
+                                </div>
+                            </div>
+                            <div class="card-tags"> <a class="btn btn-tag btn-success">Accepter</a><a class="btn btn-tag btn-info">Echanger</a><a class="btn btn-tag btn-danger">Refuser</a>
+                            </div>
+                            <div class="card-price"><strong>{{$freightOffer->price}} FCFA</strong><span class="hour"></span></div>
+                        </div>
+                    </div>
+        
+                    @endforeach
+            </div>
+            <div class="paginations">
 
- 
-
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 
   <div class="mt-10">
     <div class="section-box">
-      <div class="container"> 
+      <div class="container">
         <div class="panel-white pt-30 pb-30 pl-15 pr-15">
           <div class="box-swiper">
             <div class="swiper-container swiper-group-10 swiper-initialized swiper-horizontal swiper-pointer-events">

@@ -12,6 +12,9 @@
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.user') ? 'active' : '' }}" href="{{ route('shipper.announcements.user') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Annonces</span></a>
                 </li>
+                <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.shipper_myrequest') ? 'active' : '' }}" href="{{ route('shipper.announcements.shipper_myrequest') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Demandes</span></a>
+                </li>
+                
                 <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
                 </li>
                 
