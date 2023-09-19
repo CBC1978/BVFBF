@@ -107,7 +107,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
                                                                             <label class="font-sm color-text-mutted mb-10">Poids</label>
-                                                                            <input class="form-control" type="text" name="weight">
+                                                                            <input class="form-control" type="text" placeholder="En tonnes " name="weight">
                                                                         </div>
                                                                     </div>
                                                                     <!-- Ajoutez d'autres champs côte à côte ici si nécessaire -->

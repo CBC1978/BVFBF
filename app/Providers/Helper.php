@@ -12,4 +12,9 @@
             $str = substr($str, 0, $length);
             return $str;
         }
+        public static function random_int($min, $max)
+    {
+        return random_int($min, $max);
+    }
+    
     }

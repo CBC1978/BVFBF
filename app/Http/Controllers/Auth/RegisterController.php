@@ -36,7 +36,7 @@ class RegisterController extends Controller
         $user->user_phone = $request->user_phone;
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->code = Helper::random_string(20);
+        $user->code = Helper::random_int(4, 9999);
         $user->email = $request->email;
         $user->password =Hash::make( $request->password);
         $user->role = $request->role;

@@ -20,7 +20,7 @@ class OtpController extends Controller
     public function otpVerify(Request $request)
     {
         $request->validate([
-            'otp' => ['required', 'string','min:19', 'max:255'],
+            'otp' => ['required', 'string','min:4', 'max:255'],
         ]);
 
         $userId = User::where('code','=',$request->otp)->pluck('id')->first();
