@@ -57,7 +57,7 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 // Routes spécifiques à l'administrateur ........................................
 
-    Route::get('/chat',function () { return view('chat.index'); });
+    Route::get('/chat',function () { return view('chat.shipper'); });
 
 
 
