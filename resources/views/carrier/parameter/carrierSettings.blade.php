@@ -21,6 +21,11 @@
   </head>
   <body>
     <header class="header sticky-bar"> 
+    <div class="box-heading">
+        <div class="box-title">
+            <h3 class="mb-35">Settings</h3>
+        </div>
+    </div>
       <div class="container">
         <div class="main-header">
           <div class="header-left">
@@ -97,121 +102,182 @@
         </div>
       </div>
     </div>
-   <main>
-   <form id="profile-update-form" action="{{ route('carrier.profile.update') }}" method="post">
-      @csrf
-      @method('post')
+   <main class="main">
+      
+      <div class="box-content">
+            <div class="box-heading">
+              <div class="box-title"> 
+                <h3 class="mb-35">Setting</h3>
+              </div>
+              <div class="box-breadcrumb"> 
+                <div class="breadcrumbs">
+                  <ul> 
+                    <li> <a class="icon-home" href="index.html">Admin</a></li>
+                    <li><span>Setting</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <form id="profile-update-form" action="{{ route('carrier.profile.update') }}" method="post">
+              @csrf
+              @method('post')
 
-      <div class="row"> 
-          <div class="col-xxl-9 col-xl-8 col-lg-8">
+              <div class="row"> 
+                  <div class="col-xxl-12 col-xl-8 col-lg-8">
+                    <div class="section-box">
+                      <div class="container">
+                          <div class="panel-white mb-20">
+                            <div class="box-padding">
+
+                              <h6 class="color-text-paragraph-2">Update your profile</h6>
+                                <div class="box-profile-image"> 
+                                <div class="img-profile"> <img src="{{ asset('imgs/page/dashboard/img3.png') }}"  alt="jobBox"></div>
+                                <div class="info-profile"> <a class="btn btn-default">Company Logo / Brand</a></div>
+                              </div>
+                              <div class="row"> 
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30"> 
+                                    <label class="font-sm color-text-mutted mb-10">Last name *</label>
+                                    <input type="text" name="name" id="name" placeholder="Last_name" value="{{ old('name', $user->name) }}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">first name *</label>
+                                    <input type="text" name="first_name" id="first_name" placeholder="First_name" value="{{old('first_name', $user->first_name)}}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">Company Name *</label>
+                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">Email *</label>
+                                    <input type="email" name="email" id="email" placeholder="https://alithemes.com" value="{{ old('email', $user->email)}}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">Contact number</label>
+                                    <input type="tel" name="user_phone" id="user_phone" placeholder="01 - 234 567 89" value="{{old('user_phone', $user->user_phone) }}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">username</label>
+                                    <input type="text" name="username" id="username" placeholder="User_Name" value="{{old('username', $user->username)}}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">Company Name *</label>
+                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                  <div class="form-group mb-30">
+                                    <label class="font-sm color-text-mutted mb-10">Catégorie </label>
+                                    <input type="text" placeholder="Transporteur" value="Transporteur">
+                                  </div>
+                              </div>
+                              <h6 class="color-text-paragraph-2">Contact Information</h6>
+                            <div class="row mt-30">
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30"> 
+                                  <label class="font-sm color-text-mutted mb-10">Country</label>
+                                  <input  type="text" placeholder="Burkina Faso" value="">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30">
+                                  <label class="font-sm color-text-mutted mb-10">City</label>
+                                  <input  type="text" placeholder="Ouagadougou" value="{{ old('city',$user->carrier->city) }}">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30">
+                                  <label class="font-sm color-text-mutted mb-10">Complete Address</label>
+                                  <input  type="text" name="address" id="address" placeholder="205 Avenue Père Joseph Wresinski, Suite 810, Ouaga, 60601, BF"  value="@if ($user->fk_carrier_id) {{ $user->carrier->address }} @else Aucune adresse associée @endif">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30">
+                                  <label class="font-sm color-text-mutted mb-10">Find On Map</label>
+                                  <input  type="text" placeholder="205 North Michigan Avenue, Suite 810, Chicago, 60601, USA">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30"> 
+                                  <label class="font-sm color-text-mutted mb-10">Latitude</label>
+                                  <input  type="text" placeholder="41.881832">
+                                </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-30">
+                                  <label class="font-sm color-text-mutted mb-10">Longitude</label>
+                                  <input  type="text" placeholder=" -87.623177">
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="form-group mb-30">
+                                  <label class="font-sm color-text-mutted mb-10">Google Map</label>
+                                  <div class="box-map"> 
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.4860084541583!2d-87.62575418429162!3d41.88608087922149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca8b34afe61%3A0x6caeb5f721ca846!2s205%20N%20Michigan%20Ave%20Suit%20810%2C%20Chicago%2C%20IL%2060601%2C%20Hoa%20K%E1%BB%B3!5e1!3m2!1svi!2s!4v1663165156864!5m2!1svi!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-12"> 
+                                <div class="form-group mt-10">
+                                  <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </form>
+          <div class="col-xxl-12 col-xl-4 col-lg-4">
             <div class="section-box">
-              <div class="container">
-                  <div class="panel-white mb-20">
-                    <div class="box-padding">
-
-                      <h6 class="color-text-paragraph-2">Update your profile</h6>
-                        <div class="box-profile-image"> 
-                        <div class="img-profile"> <img src="{{ asset('imgs/page/dashboard/img3.png') }}"  alt="jobBox"></div>
-                        <div class="info-profile"> <a class="btn btn-default">Company Logo / Brand</a></div>
-                      </div>
-                      <div class="row"> 
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30"> 
-                            <label class="font-sm color-text-mutted mb-10">Last name *</label>
-                            <input type="text" name="name" id="name" placeholder="Last_name" value="{{ old('name', $user->name) }}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">first name *</label>
-                            <input type="text" name="first_name" id="first_name" placeholder="First_name" value="{{old('first_name', $user->first_name)}}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                            <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Email *</label>
-                            <input type="email" name="email" id="email" placeholder="https://alithemes.com" value="{{ old('email', $user->email)}}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Contact number</label>
-                            <input type="tel" name="user_phone" id="user_phone" placeholder="01 - 234 567 89" value="{{old('user_phone', $user->user_phone) }}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">username</label>
-                            <input type="text" name="username" id="username" placeholder="User_Name" value="{{old('username', $user->username)}}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                            <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Catégorie </label>
-                            <input type="text" placeholder="Transporteur" value="Transporteur">
-                          </div>
-                      </div>
-                      <h6 class="color-text-paragraph-2">Contact Information</h6>
-                    <div class="row mt-30">
-                      <div class="col-lg-6 col-md-6">
+              <div class="container"> 
+                <div class="panel-white">
+                  <div class="panel-head"> 
+                    <h5>Social Network</h5><a class="menudrop" id="dropdownMenu3" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
+                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu3">
+                      <li><a class="dropdown-item active" href="#">Add new</a></li>
+                      <li><a class="dropdown-item" href="#">Settings</a></li>
+                      <li><a class="dropdown-item" href="#">Actions</a></li>
+                    </ul>
+                  </div>
+                  <div class="panel-body pt-20">
+                    <div class="row">
+                      <div class="col-lg-12"> 
                         <div class="form-group mb-30"> 
-                          <label class="font-sm color-text-mutted mb-10">Country</label>
-                          <input  type="text" placeholder="Burkina Faso" value="">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group mb-30">
-                          <label class="font-sm color-text-mutted mb-10">City</label>
-                          <input  type="text" placeholder="Ouagadougou" value="{{ old('city',$user->carrier->city) }}">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group mb-30">
-                          <label class="font-sm color-text-mutted mb-10">Complete Address</label>
-                          <input  type="text" name="address" id="address" placeholder="205 Avenue Père Joseph Wresinski, Suite 810, Ouaga, 60601, BF"  value="@if ($user->fk_carrier_id) {{ $user->carrier->address }} @else Aucune adresse associée @endif">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group mb-30">
-                          <label class="font-sm color-text-mutted mb-10">Find On Map</label>
-                          <input  type="text" placeholder="205 North Michigan Avenue, Suite 810, Chicago, 60601, USA">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group mb-30"> 
-                          <label class="font-sm color-text-mutted mb-10">Latitude</label>
-                          <input  type="text" placeholder="41.881832">
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="form-group mb-30">
-                          <label class="font-sm color-text-mutted mb-10">Longitude</label>
-                          <input  type="text" placeholder=" -87.623177">
+                          <label class="font-sm color-text-mutted mb-10">Facebook</label>
+                          <input class="form-control" type="text" placeholder="https://www.facebook.com">
                         </div>
                       </div>
                       <div class="col-lg-12">
                         <div class="form-group mb-30">
-                          <label class="font-sm color-text-mutted mb-10">Google Map</label>
-                          <div class="box-map"> 
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.4860084541583!2d-87.62575418429162!3d41.88608087922149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca8b34afe61%3A0x6caeb5f721ca846!2s205%20N%20Michigan%20Ave%20Suit%20810%2C%20Chicago%2C%20IL%2060601%2C%20Hoa%20K%E1%BB%B3!5e1!3m2!1svi!2s!4v1663165156864!5m2!1svi!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                          </div>
+                          <label class="font-sm color-text-mutted mb-10">Twitter</label>
+                          <input class="form-control" type="text" placeholder="https://twitter.com">
+                        </div>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="form-group mb-30">
+                          <label class="font-sm color-text-mutted mb-10">Instagram</label>
+                          <input class="form-control" type="text" placeholder="https://www.instagram.com">
                         </div>
                       </div>
                       <div class="col-lg-12"> 
-                        <div class="form-group mt-10">
-                          <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
+                        <div class="form-group mt-0">
+                          <button class="btn btn-default btn-brand icon-tick">Save Change</button>
                         </div>
                       </div>
                     </div>
@@ -221,42 +287,58 @@
             </div>
           </div>
 
-   </form>
-
    
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('profile-update-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('profile-update-form').addEventListener('submit', function(event) {
+                event.preventDefault();
 
-        // Récupérer les données du formulaire
-        var formData = new FormData(this);
+                // Récupérer les données du formulaire
+                var formData = new FormData(this);
 
-        // Envoyer les données au serveur en utilisant AJAX
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Profile updated successfully') {
-                // Mettez à jour l'interface utilisateur pour refléter la réussite
-                alert('Profile updated successfully');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+                // Envoyer les données au serveur en utilisant AJAX
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === 'Profile updated successfully') {
+                        // Mettez à jour l'interface utilisateur pour refléter la réussite
+                        alert('Profile updated successfully');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
         });
-    });
-});
-</script>
+        </script>
 
-
-
+        <footer class="footer mt-20">
+          <div class="container">
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-md-6 col-sm-12 mb-25 text-center text-md-start">
+                  <p class="font-sm color-text-paragraph-2">© 2022 - <a class="color-brand-2" href="https://themeforest.net/item/jobbox-job-portal-html-bootstrap-5-template/39217891" target="_blank">JobBox </a>Dashboard <span> Made by  </span><a class="color-brand-2" href="http://alithemes.com" target="_blank"> AliThemes</a></p>
+                </div>
+                <div class="col-md-6 col-sm-12 text-center text-md-end mb-25">
+                  <ul class="menu-footer">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
    </main>
     <script src="{{ asset('js/vendor/modernizr-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery-3.6.0.min.js') }}" ></script>

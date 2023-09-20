@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Carrier;
+use App\Models\Shipper;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -54,23 +55,30 @@ class LoginController extends Controller
                 $request->session()->put('status', $user->status);
                 $request->session()->put('fk_carrier_id', $user->fk_carrier_id);
                 $request->session()->put('fk_shipper_id', $user->fk_shipper_id);
-              
-           // Récupérer le nom de l'entreprise à partir de la table 'carrier'
-        if ($user->fk_carrier_id) {
-            $carrier = Carrier::find($user->fk_carrier_id);
-            if ($carrier) {
-                $request->session()->put('company_name', $carrier->company_name);
-            }
-        }
+                
+                // Récupérer le nom de l'entreprise à partir de la table 'carrier' ou 'shipper'
+                if ($user->fk_carrier_id) {
+                    $carrier = Carrier::find($user->fk_carrier_id);
+                    if ($carrier) {
+                        $request->session()->put('company_name', $carrier->company_name);
+                    }
+                } elseif ($user->fk_shipper_id) {
+                    $shipper = Shipper::find($user->fk_shipper_id);
+                    if ($shipper) {
+                        $request->session()->put('company_name', $shipper->company_name);
+                    }
+                }
                 
                 return redirect('home');
-            }else{
-                return back()->with('fail',"Les mots de passes ne correspondent pas ");
+            } else {
+                return back()->with('fail', "Les mots de passe ne correspondent pas ");
             }
-        }else{
-            return back()->with('fail',"L'email n'existe pas ");
+        } else {
+            return back()->with('fail', "L'email n'existe pas ");
         }
     }
+    
+    
     public function logout()
 {
     Auth::logout(); // Déconnecte l'utilisateur

@@ -48,7 +48,12 @@
     <div class="container">
       <div class="main-header">
         <div class="header-left">
-          <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div><span class="btn btn-grey-small ml-10">Compte Verifié</span>
+          <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div>
+          <strong class="color-brand-1">
+                      @if(Session::has('company_name'))
+                          <p> Entreprise : {{ Session::get('company_name') }}</p>
+                      @endif
+                  </strong>
         </div>
         {{-- <div class="header-search">
           <div class="box-search">

@@ -129,17 +129,14 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [ShipperAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
-<<<<<<< HEAD
+
    
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
-=======
-    Route::get('myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper_myrequest');
 
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
->>>>>>> b14d11677f00fe309121e54e1463699b9016fcc3
     // ...
     // ... L
 });
@@ -193,5 +190,5 @@ Route::prefix('carrier')->group(function () {
 
 Route::prefix('shipper')->group(function () {
     Route::get('/profile', [ShipperProfileController1::class,'affichage'])->name('shipper.profile.affichage');
-    Route::get('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
+    Route::post('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
 });
