@@ -144,17 +144,14 @@ class ShipperAnnouncementController extends Controller
            ->get();
        return view('shipper.offers.s_myoffer', compact(['annonce', 'offers']));
    }
-   public function myrequest()
-   {
-    // Récupérez l'ID du chargeur à partir de la session
-   $shipperId = session('fk_shipper_id');
 
-   // Récupérez toutes les offres de chargeur liées à ce chargeur
-   $offers = ShipperOffer::where('fk_shipper_id', $shipperId)->get();
+   public function myrequest(){
+    $shipperId = session('fk_shipper_id');
+
+    // Récupérez toutes les offres de chargeur liées à ce chargeur
+   $offers =FreightOffer::where('fk_shipper_id', $shipperId)->get();
    return view('shipper.offers.shipper_myrequest', ['offers' => $offers]);
    }
+
    
-
-
-
 }

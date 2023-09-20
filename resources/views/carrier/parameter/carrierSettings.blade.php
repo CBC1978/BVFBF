@@ -35,7 +35,7 @@
           </div>
           <div class="header-menu d-none d-md-block">
             <ul> 
-              <li>        <a href="{{ route('c_home') }}">Home </a></li>
+              <li>        <a href="">Home </a></li>
               <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-about.html">About us </a></li>
               <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-contact.html">Contact</a></li>
             </ul>
@@ -147,12 +147,6 @@
                         </div>
                         <div class="col-lg-6 col-md-6">
                           <div class="form-group mb-30">
-                            <label class="font-sm color-text-mutted mb-10">Website</label>
-                            <input class="form-control" type="text" placeholder="https://alithemes.com">
-                          </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <div class="form-group mb-30">
                             <label class="font-sm color-text-mutted mb-10">username</label>
                             <input type="text" name="username" id="username" placeholder="User_Name" value="{{old('username', $user->username)}}">
                           </div>
@@ -169,32 +163,7 @@
                             <input type="text" placeholder="Transporteur" value="Transporteur">
                           </div>
                       </div>
-                      <div class="col-lg-12"> 
-                        <div class="form-group mt-10">
-                          <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-   </form>
-
-   <form id="contact-info-form" action="{{ route('carrier.profile.update') }}" method="post">
-      @csrf
-      @method('post')
-
-      <div class="row"> 
-          <div class="col-xxl-9 col-xl-8 col-lg-8">
-            <div class="section-box">
-              <div class="container">
-
-              <div class="panel-white mb-30">
-                  <div class="box-padding">
-                    <h6 class="color-text-paragraph-2">Contact Information</h6>
+                      <h6 class="color-text-paragraph-2">Contact Information</h6>
                     <div class="row mt-30">
                       <div class="col-lg-6 col-md-6">
                         <div class="form-group mb-30"> 
@@ -208,13 +177,13 @@
                           <input  type="text" placeholder="Ouagadougou" value="{{ old('city',$user->carrier->city) }}">
                         </div>
                       </div>
-                      <div class="col-lg-12">
+                      <div class="col-lg-6 col-md-6">
                         <div class="form-group mb-30">
                           <label class="font-sm color-text-mutted mb-10">Complete Address</label>
                           <input  type="text" name="address" id="address" placeholder="205 Avenue Père Joseph Wresinski, Suite 810, Ouaga, 60601, BF"  value="@if ($user->fk_carrier_id) {{ $user->carrier->address }} @else Aucune adresse associée @endif">
                         </div>
                       </div>
-                      <div class="col-lg-12">
+                      <div class="col-lg-6 col-md-6">
                         <div class="form-group mb-30">
                           <label class="font-sm color-text-mutted mb-10">Find On Map</label>
                           <input  type="text" placeholder="205 North Michigan Avenue, Suite 810, Chicago, 60601, USA">
@@ -241,18 +210,20 @@
                         </div>
                       </div>
                       <div class="col-lg-12"> 
-                        <div class="form-group mt-0">
-                          <button class="btn btn-default btn-brand icon-tick">Save Change</button>
+                        <div class="form-group mt-10">
+                          <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
                         </div>
                       </div>
                     </div>
                   </div>
-
+                </div>
               </div>
             </div>
           </div>
 
    </form>
+
+   
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
