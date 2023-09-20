@@ -53,10 +53,11 @@
         <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div>
         
          <span class="btn btn-grey-small ml-10">
-               @if(Session::has('username'))
-              <p>{{ Session::get('username') }}</p>
+               @if(Session::has('company_name'))
+              <p>{{ Session::get('company_name') }}</p>
                @endif
          </span>
+        
       </div>
       {{-- <div class="header-search">
         <div class="box-search">

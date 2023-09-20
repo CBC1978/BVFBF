@@ -105,7 +105,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
                                                                             <label for="weight">Poids</label>
-                                                                            <input type="text" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}">
+                                                                            <input type="text" placeholder="En tonnes" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}">
                                                                             @error('weight')
                                                                                 <span class="invalid-feedback" role="alert">
                                                                                     <strong>{{ $message }}</strong>
@@ -118,7 +118,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
                                                                             <label for="volume">Volume</label>
-                                                                            <input type="text" id="volume" class="form-control @error('volume') is-invalid @enderror" name="volume" value="{{ old('volume') }}">
+                                                                            <input type="text" id="volume" placeholder="metre cube" class="form-control @error('volume') is-invalid @enderror" name="volume" value="{{ old('volume') }}">
                                                                             @error('volume')
                                                                                 <span class="invalid-feedback" role="alert">
                                                                                     <strong>{{ $message }}</strong>
@@ -129,7 +129,7 @@
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
                                                                             <label for="price">Price</label>
-                                                                            <input type="text" id="price" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
+                                                                            <input type="text" id="price" placeholder="en FCFA " class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
                                                                             @error('price')
                                                                                 <span class="invalid-feedback" role="alert">
                                                                                     <strong>{{ $message }}</strong>

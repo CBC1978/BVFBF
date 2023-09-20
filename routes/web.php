@@ -60,7 +60,7 @@ use App\Http\Controllers\Admin as AdminControllers;
 
 // Routes spécifiques à l'administrateur ........................................
 
-
+    Route::get('/chat',function () { return view('chat.shipper'); });
 
 
 
@@ -104,19 +104,19 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [CarrierAnnouncementController::class, 'displayTransportAnnouncement'])->name('index');
     Route::get('user', [CarrierAnnouncementController::class, 'userConnectedAnnouncement'])->name('user');
-    Route::get('create', [CarrierAnnouncementController::class, 'displayAnnouncementForm'])->name('create'); 
-    Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
+    Route::get('create', [CarrierAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
+    Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
    // Route::post('offer.manage/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
    //Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
 
    Route::post('manage-offer/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
-   
+
     Route::get('myoffer/{id}', [CarrierAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
     Route::get('myrequest', [CarrierAnnouncementController::class, 'myrequest'])->name('carrier_myrequest');
     Route::post('postuler', [CarrierAnnouncementController::class, 'positOffer'])->name('postuler');
-    Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show'); 
+    Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show');
 
 });
 //Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
@@ -129,9 +129,17 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [ShipperAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
+<<<<<<< HEAD
    
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
+=======
+    Route::get('myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper_myrequest');
+
+    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
+    Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
+
+>>>>>>> b14d11677f00fe309121e54e1463699b9016fcc3
     // ...
     // ... L
 });
@@ -143,7 +151,7 @@ Route::prefix('annonces')->group(function () {
     Route::put('/filtrer', [AdminController::class, 'announcementFilterbyStatus'])->name('annonces.filter');
     Route::get('/update-freight/{annonce}', [AdminController::class,'updateFreightAnnouncementStatus'])->name('annonces.updateFreight');
     Route::get('/update-transport/{annonce}', [AdminController::class,'updateTransportAnnouncementStatus'])->name('annonces.updateTransport');
-    
+
 });
 Route::post('/bulk_update_status', [AdminController::class, 'bulkUpdateUserStatus'])->name('bulk_update_status');
 
@@ -160,7 +168,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/entreprise', [AdminController::class, 'displayEntreprise'])->name('admin.entreprise');
     Route::post('/ajouter-transporteur', [AdminController::class, 'addCarrier'])->name('admin.ajouter-transporteur');
     Route::post('/ajouter-expediteur', [AdminController::class, 'addShipper'])->name('admin.ajouter-expediteur');
-   
+
     Route::post('/assigner-entreprise-user', [AdminController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
   // ... Autres routes spécifiques à la gestion des entreprises ...
 });
