@@ -49,7 +49,7 @@
       <div class="main-header">
         <div class="header-left">
           <div class="header-logo"><a class="d-flex" {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img alt="jobBox" src="{{ asset('imgs/page/dashboard/bvf02.png') }}"></a></div>
-          <strong class="color-brand-1">
+          <strong class="btn btn-grey-small ml-10">
                       @if(Session::has('company_name'))
                           <p> Entreprise : {{ Session::get('company_name') }}</p>
                       @endif

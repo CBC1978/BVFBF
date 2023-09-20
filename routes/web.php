@@ -133,20 +133,17 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
    
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
-<<<<<<< HEAD
-=======
+
 
    // Route::get('myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper_myrequest');
->>>>>>> 542705edfe001a936125222112b5f37b6ecbe6db
 
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
-<<<<<<< HEAD
-    // ...
-=======
 
->>>>>>> 542705edfe001a936125222112b5f37b6ecbe6db
+    // ...
+
+
     // ... L
 });
 Route::get('shipper/myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper.announcements.shipperMyrequest');
