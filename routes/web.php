@@ -46,6 +46,11 @@ use App\Http\Controllers\Admin as AdminControllers;
 //announcement
 
 
+
+
+use App\Http\Controllers\Chat\CarrierChatController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,11 +145,6 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
-
-    // ...
-
-
-    // ... L
 });
 Route::get('shipper/myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper.announcements.shipperMyrequest');
 
@@ -173,7 +173,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajouter-expediteur', [AdminController::class, 'addShipper'])->name('admin.ajouter-expediteur');
 
     Route::post('/assigner-entreprise-user', [AdminController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
-  // ... Autres routes spécifiques à la gestion des entreprises ...
+  // ... Autres routes spécifiques à la gestion des entreprises ... 
 });
 
 Route::prefix('admin')->group(function () {
@@ -198,3 +198,13 @@ Route::prefix('shipper')->group(function () {
     Route::get('/profile', [ShipperProfileController1::class,'affichage'])->name('shipper.profile.affichage');
     Route::post('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
 });
+
+
+//Route::get('/carrier-chat', [CarrierChatController::class, 'index'])->name('carrier-chat');
+Route::get('/carrier-chat/{offer_id}', [CarrierChatController::class, 'index'])->name('carrier-chat');
+
+Route::post('/sendMessage/{offer_id}', [CarrierChatController::class, 'sendMessage'])->name('sendMessage');
+
+
+
+//Route::post('/sendMessage/{offer_id}', 'CarrierChatController@sendMessage')->name('sendMessage');
