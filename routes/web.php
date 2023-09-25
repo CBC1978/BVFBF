@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\carrier\profile\CarrierProfileController;
 use App\Http\Controllers\shipper\profile\ShipperProfile1Controller;
 use App\Http\Controllers\carrier\parameter\CarrierSettingsController;
+use App\Http\Controllers\admin\parameter\AdminSettingsController;
 
 
 
@@ -42,6 +43,7 @@ use App\Http\Controllers\Carrier\Offers\C_OfferController;
 use App\Http\Controllers\Shipper\Offers as ShipperOffers;
 use App\Http\Controllers\Carrier\Offers as CarrierOffers;
 use App\Http\Controllers\Admin as AdminControllers;
+use App\Http\Controllers\shipper\parameter\ShipperSettingsController;
 
 //announcement
 
@@ -179,6 +181,9 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/profile', [AdminController::class,'displayProfile'])->name('admin.profile.affichage');
     Route::get('profile/update', [AdminController::class,'updateUserProfile'])->name('admin.profile.update');
+    Route::get('parameter/adminSettings',[AdminSettingsController::class, 'displayAdminSettings'])->name('admin.parameter.displayAdminSettings');
+    Route::get('parameter/adminSettings-update',[AdminSettingsController::class, 'updateAdminSettings'])->name('admin.parameter.updateAdminSettings');
+
 });
 
 
@@ -197,4 +202,7 @@ Route::prefix('carrier')->group(function () {
 Route::prefix('shipper')->group(function () {
     Route::get('/profile', [ShipperProfileController1::class,'affichage'])->name('shipper.profile.affichage');
     Route::post('profile/update', [ShipperProfileController1::class,'update'])->name('shipper.profile.update');
+    Route::get('parameter/shipperSettings',[ShipperSettingsController::class, 'displayShipperSettings'])->name('shipper.parameter.displayShipperSettings');
+    Route::get('parameter/shipperSettings-update',[ShipperSettingsController::class, 'updateShipperSettings'])->name('shipper.parameter.updateShipperSettings');
+
 });

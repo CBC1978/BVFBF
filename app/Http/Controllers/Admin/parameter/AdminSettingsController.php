@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\carrier\parameter;
+namespace App\Http\Controllers\admin\parameter;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class CarrierSettingsController extends Controller
+class AdminSettingsController extends Controller
 {
     //
-    public function displayCarrierSettings(){
+    public function displayAdminSettings(){
         if (session()->has('username')) {
             $username = session('username');
             $user = User::where('username', $username)->first(); // Je recherche l'utilisateur par son nom d'utilisateur
             
             if ($user) {
-                return view('carrier.parameter.CarrierSettings', compact('user'));
+                return view('admin.parameter.AdminSettings', compact('user'));
             } 
 }
     }
 
 
-    public function updateCarrierSettings(Request $request)
+    public function updateAdminSettings(Request $request)
     {
          // Validez les données respect de consigne pur chaq champ
          $request->validate([
@@ -53,7 +53,7 @@ class CarrierSettingsController extends Controller
                 'city' => $request->input('city'),
                 'address' => $request->input('address'),
             ]);
-            return redirect()->route('carrier.parameter.displayCarrierSettings')->with('success', 'donnéés mise à jour avec succès.');
+            return redirect()->back()->with('success', 'donnéés mise à jour avec succès.');
 
         } 
        
