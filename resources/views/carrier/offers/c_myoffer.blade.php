@@ -48,18 +48,19 @@
                             </div>
                             <form action="{{ route('carrier.announcements.offer.manage', ['id' => $freightOffer->id]) }}" method="POST">
                               @csrf
-                              <!-- Ajoutez un champ pour indiquer l'action -->
+                            
                               <input type="hidden" name="action" value="accept">
                               <button type="submit" class="btn btn-tag btn-success">Accepter</button>
                           </form>
 
                           <form action="{{ route('carrier.announcements.offer.manage', ['id' => $freightOffer->id]) }}" method="POST">
                               @csrf
-                              <!-- Ajoutez un champ pour indiquer l'action -->
+                              
                               <input type="hidden" name="action" value="refuse">
                               <button type="submit" class="btn btn-tag btn-danger">Refuser</button>
                           </form>
-                          
+
+                          <div class="card-tags"> <a href="{{ route('carrier-chat', ['offer_id' => $freightOffer->id]) }}" class="btn btn-tag btn-info">Echanger</a> </div>
                             
                             <div class="card-price"><strong>{{$freightOffer->price}} FCFA</strong><span class="hour"></span></div>
                         </div>
