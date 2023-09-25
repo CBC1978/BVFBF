@@ -94,11 +94,16 @@
                                                                             <label class="font-sm color-text-mutted mb-10">Type de véhicule</label>
                                                                             <select class="form-control" name="vehicule_type" required>
                                                                                 <option value="">Sélectionnez un type de véhicule</option>
-                                                                                <option value="camion">Camion</option>
-                                                                                <option value="fourgon">Fourgon</option>
-                                                                                <option value="remorque">Remorque</option>
-                                                                                <option value="camion-citerne">Camion-citerne</option>
-                                                                                <option value="véhicule-utilitaire">Véhicule utilitaire</option>
+                                                                                <option value="Porte voiture">Porte voiture</option>
+                                                                                <option value="Semi remorque frigo">Semi remorque frigo</option>
+                                                                                <option value="Ensemble articulé/citerne">Ensemble articulé/citerne</option>
+                                                                                <option value="Ensemble articulé/benne">Ensemble articulé/benne</option>
+                                                                                <option value="Ensemble articulé/carrosserie rigide">Ensemble articulé/carrosserie rigide</option>
+                                                                                <option value="Ensemble articulé/porte char">Ensemble articulé/porte char</option>
+                                                                                <option value="Camion Citerne">Camion Citerne</option>
+                                                                                <option value="Camion isole à plateau">Camion isole à plateau</option>
+                                                                                <option value="Camion isole à ridelle">Camion isole à ridelle</option>
+                                                                                <option value="Semi remorque à ridelle">Semi remorque à ridelle</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -142,9 +147,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 
   <div class="mt-10">

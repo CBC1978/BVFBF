@@ -38,11 +38,11 @@
                                 <td>{{ $offer->description }}</td>
                                 <td>
                                     @if($offer->status == 0)
-                                        En attente
+                                    <button type="button" class="btn btn-primary "> En attente </button>
                                     @elseif($offer->status == 1)
-                                        Accepté
+                                    <button type="button" class="btn btn-success ">  Accepter </button>
                                     @else
-                                        Refusé
+                                    <button type="button" class="btn btn-danger ">Refusé </button>
                                     @endif
                                 </td>
                                 <td>
