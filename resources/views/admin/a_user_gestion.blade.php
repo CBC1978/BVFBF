@@ -88,7 +88,7 @@
 <script>
    
             // Autres options de configuration...
-        
+
 
         $('#bulk-update').click(function() {
             var selectedStatus = $('#bulk-status').val();

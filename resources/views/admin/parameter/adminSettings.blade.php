@@ -1,4 +1,4 @@
-@extends('layouts.carrier')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -17,7 +17,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon.svg">
     <link href="assets/css/style.css?version=4.1" rel="stylesheet">
-    <title>Carrier Settings</title>
+    <title>Admin Settings</title>
   </head>
   <body>
     @if(session('success'))
@@ -35,7 +35,7 @@
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{ asset('imgs/page/dashboard/logo.svg') }}" ></a></div><span class="btn btn-grey-small ml-10">Carrier area</span>
+            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{ asset('imgs/page/dashboard/logo.svg') }}" ></a></div><span class="btn btn-grey-small ml-10">Admin area</span>
           </div>
           <div class="header-search"> 
             <div class="box-search"> 
@@ -118,13 +118,13 @@
               <div class="box-breadcrumb"> 
                 <div class="breadcrumbs">
                   <ul> 
-                    <li> <a class="icon-home" href="index.html">Admin</a></li>
+                    <li> <a class="icon-home" href="index.html">Accueil</a></li>
                     <li><span>Setting</span></li>
                   </ul>
                 </div>
               </div>
             </div>
-          <form id="profile-update-form" action="{{ route('carrier.profile.update') }}" method="post">
+          <form id="profile-update-form" action="{{ route('admin.parameter.displayAdminSettings') }}" method="post">
               @csrf
               @method('post')
 
@@ -156,7 +156,7 @@
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
+                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="@if ($user->fk_shipper_id){{ $user->shipper->company_name }} @else Aucune entreprise associée @endif">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -180,13 +180,13 @@
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->carrier->company_name)}}">
+                                    <input type="text" name="company_name" id="company_name" placeholder="" value="@if ($user->fk_shipper_id){{ $user->shipper->company_name }} @else Aucune entreprise associée @endif">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">Catégorie </label>
-                                    <input type="text" placeholder="Transporteur" value="Transporteur">
+                                    <input type="text" placeholder="ADMIN" value="ADMIN">
                                   </div>
                               </div>
                               <h6 class="color-text-paragraph-2">Contact Information</h6>
@@ -200,13 +200,13 @@
                               <div class="col-lg-6 col-md-6">
                                 <div class="form-group mb-30">
                                   <label class="font-sm color-text-mutted mb-10">City</label>
-                                  <input  type="text" placeholder="Ouagadougou" value="{{ old('city',$user->carrier->city) }}">
+                                  <input  type="text" placeholder="Ouagadougou" value="">
                                 </div>
                               </div>
                               <div class="col-lg-6 col-md-6">
                                 <div class="form-group mb-30">
                                   <label class="font-sm color-text-mutted mb-10">Complete Address</label>
-                                  <input  type="text" name="address" id="address" placeholder="205 Avenue Père Joseph Wresinski, Suite 810, Ouaga, 60601, BF"  value="@if ($user->fk_carrier_id) {{ $user->carrier->address }} @else Aucune adresse associée @endif">
+                                  <input  type="text" name="address" id="address" placeholder="205 Avenue Père Joseph Wresinski, Suite 810, Ouaga, 60601, BF"  value="">
                                 </div>
                               </div>
                               <div class="col-lg-6 col-md-6">
