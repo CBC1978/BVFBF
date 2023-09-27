@@ -35,22 +35,9 @@
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{ asset('imgs/page/dashboard/logo.svg') }}" ></a></div><span class="btn btn-grey-small ml-10">Admin area</span>
+            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{ asset('imgs/page/dashboard/bvf02.png') }}" ></a></div><span class="btn btn-grey-small ml-10">Admin area</span>
           </div>
-          <div class="header-search"> 
-            <div class="box-search"> 
-              <form action="">
-                <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
-              </form>
-            </div>
-          </div>
-          <div class="header-menu d-none d-md-block">
-            <ul> 
-              <li>        <a href="">Home </a></li>
-              <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-about.html">About us </a></li>
-              <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-contact.html">Contact</a></li>
-            </ul>
-          </div>
+        
           <div class="header-right">
             <div class="block-signin"><a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a>
               <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>

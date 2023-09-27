@@ -29,22 +29,9 @@
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{ asset('imgs/page/dashboard/logo.svg') }}" ></a></div><span class="btn btn-grey-small ml-10">Shipper area</span>
+            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox"  src="{{asset('imgs/page/dashboard/bvf02.png')}}" ></a></div><span class="btn btn-grey-small ml-10">Shipper area</span>
           </div>
-          <div class="header-search"> 
-            <div class="box-search"> 
-              <form action="">
-                <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
-              </form>
-            </div>
-          </div>
-          <div class="header-menu d-none d-md-block">
-            <ul> 
-              <li>        <a href="">Home </a></li>
-              <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-about.html">About us </a></li>
-              <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-contact.html">Contact</a></li>
-            </ul>
-          </div>
+          
           <div class="header-right">
             <div class="block-signin"><a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a>
               <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
@@ -61,7 +48,7 @@
                       <p>{{ Session::get('username') }}</p>
                     @endif
                     </strong>
-                  <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Compte Transporteur</a>
+                  <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Compte Chargeur</a>
                     <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
                       <li><a class="dropdown-item" href="profile.html">Profiles</a></li>
                       <li><a class="dropdown-item" href="my-resume.html">CV Manager</a></li>
