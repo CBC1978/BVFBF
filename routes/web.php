@@ -136,6 +136,7 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('create', [ShipperAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
+    Route::post('manage-offer/{id}', [ShipperAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
    
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
@@ -210,6 +211,8 @@ Route::prefix('shipper')->group(function () {
 
 //Route::get('/carrier-chat', [CarrierChatController::class, 'index'])->name('carrier-chat');
 Route::get('/carrier-chat/{offer_id}', [CarrierChatController::class, 'index'])->name('carrier-chat');
+
+Route::get('/shipper-chat/{offer_id}', [CarrierChatController::class, 'index'])->name('shipper-chat');
 
 Route::post('/sendMessage/{offer_id}', [CarrierChatController::class, 'sendMessage'])->name('sendMessage');
 

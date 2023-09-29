@@ -153,5 +153,24 @@ class ShipperAnnouncementController extends Controller
    return view('shipper.offers.shipper_myrequest', ['offers' => $offers]);
    }
 
+   public function manageOffer(Request $request, $id)
+   {
+       $action = $request->input('action');
    
+       // Récupérer l'offre en fonction de l'ID
+       $transportOffer = TransportOffer::findOrFail($id);
+   
+       if ($action === 'accept') {
+          
+           $transportOffer->status = 1;
+       } elseif ($action === 'refuse') {
+          
+           $transportOffer->status = 2;
+       }
+   
+       // Sauvegarde des  modifications
+       $transportOffer->save();
+   
+       return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
+   }
 }

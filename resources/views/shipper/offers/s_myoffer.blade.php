@@ -36,18 +36,32 @@
         <div class="panel-white mb-30">
           <div class="box-padding">
             <div class="row display-list">
-                @foreach($offers as $offer)
+                @foreach($offers as $transportOffer)
                     <div class="col-lg-6">
                         <div class="card-style-2 hover-up">
                             <div class="card-head">
                                 <div class="card-image"> <img src="{{asset('assets/imgs/page/dashboard/img1.png')}}" alt="jobBox"></div>
                                 <div class="card-title">
-                                    <h6>{{ $offer->description }}</h6><span class="location">{{ $offer->company_name }}</span>
+                                    <h6>{{ $transportOffer->description }}</h6><span class="location">{{ $transportOffer->company_name }}</span>
                                 </div>
                             </div>
-                            <div class="card-tags"> <a class="btn btn-tag btn-success">Accepter</a><a class="btn btn-tag btn-info">Echanger</a><a class="btn btn-tag btn-danger">Refuser</a>
-                            </div>
-                            <div class="card-price"><strong>{{$offer->price}} FCFA</strong><span class="hour"></span></div>
+                              <form action="{{ route('shipper.announcements.offer.manage', ['id' => $transportOffer->id]) }}" method="POST">
+                                @csrf
+                              
+                                <input type="hidden" name="action" value="accept">
+                                <button type="submit" class="btn btn-tag btn-success">Accepter</button>
+                            </form>
+
+                            <form action="{{ route('shipper.announcements.offer.manage', ['id' => $transportOffer->id]) }}" method="POST">
+                                @csrf
+                                
+                                <input type="hidden" name="action" value="refuse">
+                                <button type="submit" class="btn btn-tag btn-danger">Refuser</button>
+                            </form>
+
+                            <div class="card-tags"> <a href="{{ route('shipper-chat', ['offer_id' => $transportOffer->id]) }}" class="btn btn-tag btn-info">Echanger</a> </div>
+                            
+                            <div class="card-price"><strong>{{$transportOffer->price}} FCFA</strong><span class="hour"></span></div>
                         </div>
                     </div>
         
