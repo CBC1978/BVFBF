@@ -56,16 +56,16 @@
                                                     <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <label class="form-label" for="prix">Prix *</label>
+                                                            <label class="form-label" for="prix">Prix <span class="required">*</span></label>
                                                             <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="form-label" for="prix">Poids *</label>
+                                                            <label class="form-label" for="prix">Poids <span class="required">*</span></label>
                                                             <input class="form-control" type="number" name="weight" id="weight" placeholder="Le poids approximatif">
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label class="form-label" for="description">Description</label>
+                                                            <label class="form-label" for="description">Description<span class="required">*</span></label>
                                                             <input class="form-control" id="description" type="text" required="" name="description" placeholder="description...">
                                                             <input class="form-control" id="idUser" name="idUser" value="{{session('userId') }}" type="hidden">
                                                             <input class="form-control" id="announce" name="announce" value="{{ $announce->id }}" type="hidden">
@@ -87,5 +87,12 @@
         </div>
     </div>
 </div>
+<style>
+    .required {
+        color: red;
+        margin-left: 4px; /* Espacement entre le texte et l'étoile */
+    }
+
+</style>
 
 @endsection

@@ -33,26 +33,26 @@
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Résumer en 14 mots *</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Résumer en 14 mots <span class="required">*</span></label>
                                                                 <input class="form-control" type="text" placeholder="Mettrez que des mots clé">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Date limite*</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Date limite<span class="required">*</span></label>
                                                                 <input class="form-control" type="date" name="">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-12">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10"> description detaillée de l'offre *</label>
+                                                                <label class="font-sm color-text-mutted mb-10"> description detaillée de l'offre <span class="required">*</span></label>
                                                                 <textarea class="form-control" name="message" rows="8"> </textarea>
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Type de vehicule *</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Type de vehicule <span class="required">*</span></label>
                                                                 <select class="form-control">
                                                                     <option value="1">Remote</option>
                                                                     <option value="1">Office</option>
@@ -61,7 +61,8 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Nombre de vehicule</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Nombre de vehicule<l<span class="required">*</span></label>
+ <span class="required">*</span></label>
                                                                 <input class="form-control" type="text" placeholder="Nombre de vehicule disponible pour l'offre">
                                                             </div>
                                                         </div>
@@ -73,13 +74,13 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Poids</label>
-                                                                <input class="form-control" type="text" placeholder="En kilogramme">
+                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
+                                                                <input class="form-control" type="text" placeholder="En Tonne(T)">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Prix</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span></label>
                                                                 <input class="form-control" type="text" placeholder="">
                                                             </div>
                                                         </div>
@@ -161,6 +162,13 @@
         </div>
       </div>
     </div>
+    <style>
+        .required {
+            color: red;
+            margin-left: 4px; /* Espacement entre le texte et l'étoile */
+        }
+
+    </style>
   </footer>
 </div>
 </div></div>

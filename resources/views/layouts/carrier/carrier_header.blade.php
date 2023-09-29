@@ -19,12 +19,12 @@
         <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post">
              @csrf
             <div class="form-group">
-            <label class="form-label" for="input-1" >Prix *</label>
+            <label class="form-label" for="input-1" >Prix <span class="required">*</span></label>
             <input class="form-control" id="input-1" type="text" required="" name="prix" placeholder="votre meilleur offre">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="des">Description</label>
+            <label class="form-label" for="des">Description<span class="required">*</span></label>
                 <input class="form-control" id="des" type="text" required="" name="description" placeholder="description...">
                 <input class="form-control" id="file" name="idUser" value="{{session('userId') }}" type="hidden">
           </div>
@@ -99,4 +99,11 @@
       </div>
     </div>
   </div>
+  <style>
+    .required {
+    color: red;         /* couleur étoile */
+    margin-left: 4px; /* Espacement entre le texte et l'étoile */
+}
+
+</style>
 </header>
