@@ -30,7 +30,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>15<span class="font-sm status up">17<span>%</span></span>
+                  <h3>00<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de d'annonce</p>
@@ -42,7 +42,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>158<span class="font-sm status up">12<span>%</span></span>
+                  <h3>00<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de offres</p>
@@ -54,7 +54,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>68<span class="font-sm status up">25<span>%</span></span>
+                  <h3>00<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de contrat</p>
@@ -66,7 +66,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>8<span class="font-sm status up">21<span>%</span></span>
+                  <h3>00<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Contrat ce mois</p>
