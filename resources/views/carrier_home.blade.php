@@ -115,7 +115,7 @@
                                   </div>
                                   <div class="card-2-bottom mt-30">
                                       <div class="row">
-                                          <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
+                                          <div class="col-lg-7 col-7"><span class="card-text-price">{{$announce->price}}.FCFA</span><span class="text-muted"></span></div>
                                           <div class="col-lg-5 col-5 text-end">
                                               <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
                                           </div>
@@ -138,12 +138,13 @@
                                       <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                           @csrf
                                           <div class="form-group">
-                                              <label class="form-label" for="prix">Prix *</label>
+                                              <label class="form-label" for="prix">Prix<span class="required">*</span></label>
+</label>
                                               <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                           </div>
 
                                           <div class="form-group">
-                                              <label class="form-label" for="description">Description</label>
+                                              <label class="form-label" for="description">Description<span class="required">*</span></label>
                                               <input class="form-control" id="description" type="text" required="" name="description" placeholder="description...">
                                               <input class="form-control" id="idUser" name="idUser" value="{{session('userId') }}" type="hidden">
                                               <input class="form-control" id="announce" name="announce" value="{{ $announce->id }}" type="hidden">
@@ -162,6 +163,13 @@
                               </div>
                           </div>
                       </div>
+                      <style>
+        .required {
+            color: red;
+            margin-left: 4px; /* Espacement entre le texte et l'étoile */
+        }
+
+    </style>
                   @endforeach
             </div>
           </div>

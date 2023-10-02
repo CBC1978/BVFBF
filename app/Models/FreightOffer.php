@@ -32,4 +32,14 @@ class FreightOffer extends Model
         'statut',
         'created_by',
     ];
+
+    public function Carrier()
+    {
+        return $this->belongsTo(Carrier::class, 'fk_carrier_id');
+    }
+
+    public function Shipper()
+    {
+        return $this->belongsTo(Shipper::class, 'fk_shipper_id');
+    }
 }

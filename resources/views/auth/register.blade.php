@@ -73,7 +73,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label class="form-label" for="name">Nom *</label>
+                                <label class="form-label" for="name">Nom <span class="required">*</span></label>
                                 <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" required="" name="name" value="{{ old('name') }}" placeholder="Steven Job">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="first_name">Prenom *</label>
+                                <label class="form-label" for="first_name">Prenom <span class="required">*</span></label>
                                 <input class="form-control @error('first_name') is-invalid @enderror" id="first_name" type="text" required="" name="first_name" value="{{ old('first_name') }}" placeholder="Steven Job">
                                 @error('first_name')
                                     <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="user_phone">Telephone *</label>
+                                <label class="form-label" for="user_phone">Telephone <span class="required">*</span></label>
                                 <input class="form-control @error('user_phone') is-invalid @enderror" id="user_phone" type="text" required="" name="user_phone" value="{{ old('user_phone') }}" placeholder="Steven Job">
                                 @error('user_phone')
                                     <span class="invalid-feedback" role="alert">
@@ -100,7 +100,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="email">Email *</label>
+                                <label class="form-label" for="email">Email <span class="required">*</span></label>
                                 <input class="form-control @error('email') is-invalid @enderror" id="email" type="email" required="" name="email" value="{{ old('email') }}" placeholder="stevenjob@gmail.com">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -109,7 +109,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="username">Nom d'utilisateur*</label>
+                                <label class="form-label" for="username">Nom d'utilisateur<span class="required">*</span></label>
                                 <input class="form-control @error('username') is-invalid @enderror" id="username" type="text" required="" name="username" value="{{ old('username') }}" placeholder="Steven Job">
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -118,7 +118,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="password">Mot de passe *</label>
+                                <label class="form-label" for="password">Mot de passe <span class="required">*</span></label>
                                 <input class="form-control @error('password') is-invalid @enderror" id="password" type="password" required="" name="password" placeholder="************">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -127,7 +127,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="password_confirmation">Confirmer le mot de passe *</label>
+                                <label class="form-label" for="password_confirmation">Confirmer le mot de passe <span class="required">*</span></label>
                                 <input class="form-control" id="password_confirmation" type="password" required="" name="password_confirmation" placeholder="************">
                             </div>
                             <div class="form-group">
@@ -164,7 +164,13 @@
       </div>
     </div>
   </div>
+  <style>
+    .required {
+    color: red;         /* couleur étoile */
+    margin-left: 4px; /* Espacement entre le texte et l'étoile */
+}
 
+</style>
 
 
 </div>

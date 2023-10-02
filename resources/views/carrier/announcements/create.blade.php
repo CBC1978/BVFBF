@@ -5,12 +5,21 @@
     <div class="box-heading">
         <div class="box-title">
             <h3 class="mb-35">Ajouter une Annonce de Transport</h3>
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                
+                        <h5>  {{ session('success') }}</h5>
+                        <span aria-hidden="true">&times;</span>
+                
+                </div>
+            @endif
+
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
                     <li> <a class="icon-home" href="index.html">Annonce de Transport</a></li>
-                    <li><span>Ajoute d'Annonce de Transport</span></li>
+                    <li><span>Ajout d'Annonce de Transport</span></li>
                 </ul>
             </div>
         </div>
@@ -85,7 +94,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label class="font-sm color-text-mutted mb-10">Date limite*</label>
+                                                                            <label class="font-sm color-text-mutted mb-10">Date limite<span class="required">*</span></label>
                                                                             <input class="form-control" type="date" id="limit_date" name="limit_date" required>
                                                                         </div>
                                                                     </div>
@@ -111,7 +120,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label class="font-sm color-text-mutted mb-10">Poids</label>
+                                                                            <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
                                                                             <input class="form-control" type="text" placeholder="En tonnes " name="weight">
                                                                         </div>
                                                                     </div>
@@ -120,7 +129,7 @@
                                                                 
                         
                                                 <div class="form-group">
-                                                    <label for="description">Description</label>
+                                                    <label for="description">Description<span class="required">*</span></label>
                                                     <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
                                                     @error('description')
                                                         <span class="invalid-feedback" role="alert">
@@ -173,6 +182,7 @@
       </div>
     </div>
   </div>
+
   <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">
@@ -191,10 +201,26 @@
         </div>
       </div>
     </div>
+
   </footer>
 </div>
 </div></div>
 
+    <style>
+        .required {
+            color: red;
+            margin-left: 4px; /* Espacement entre le texte et l'étoile */
+        }
 
-    
+    </style>
+    <script>
+        $(document).ready(function() {
+            
+            $('.alert').delay(4000).fadeOut(400, function() {
+                $(this).alert('close');
+            });
+        });
+    </script>
+
+
 @endsection

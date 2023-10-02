@@ -51,7 +51,7 @@ use App\Http\Controllers\shipper\parameter\ShipperSettingsController;
 
 
 use App\Http\Controllers\Chat\CarrierChatController;
-
+use App\Http\Controllers\Chat\ShipperChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -212,9 +212,12 @@ Route::prefix('shipper')->group(function () {
 //Route::get('/carrier-chat', [CarrierChatController::class, 'index'])->name('carrier-chat');
 Route::get('/carrier-chat/{offer_id}', [CarrierChatController::class, 'index'])->name('carrier-chat');
 
-Route::get('/shipper-chat/{offer_id}', [CarrierChatController::class, 'index'])->name('shipper-chat');
+Route::get('/shipper-chat/{offer_id}', [ShipperChatController::class, 'index'])->name('shipper-chat');
 
 Route::post('/sendMessage/{offer_id}', [CarrierChatController::class, 'sendMessage'])->name('sendMessage');
+
+Route::post('/sendMessage/{offer_id}', [ShipperChatController::class, 'sendMessage'])->name('sendMessage');
+
 
 Route::get('/carrier-reply-chat/{offer_id}', [CarrierChatController::class, 'reply'])->name('carrier-reply-chat');
 

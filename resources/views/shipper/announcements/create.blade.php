@@ -6,12 +6,12 @@
         <div class="box-title">
             <h3 class="mb-35">Ajouter une Annonce de Fret</h3>
             @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              
-                <h5>  {{ session('success') }}</h5>
-                    <span aria-hidden="true">&times;</span>
-              
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                
+                        <h5>  {{ session('success') }}</h5>
+                        <span aria-hidden="true">&times;</span>
+                
+                </div>
             @endif
         </div>
         <div class="box-breadcrumb">
@@ -93,7 +93,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="limit_date">Date limite</label>
+                                                                            <label for="limit_date">Date limite<span class="required">*</span></label>
                                                                             <input type="date" id="limit_date" class="form-control @error('limit_date') is-invalid @enderror" name="limit_date" value="{{ old('limit_date') }}" required>
                                                                             @error('limit_date')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -104,7 +104,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="weight">Poids</label>
+                                                                            <label for="weight">Poids<span class="required">*</span></label>
                                                                             <input type="text" placeholder="En tonnes" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}">
                                                                             @error('weight')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -128,7 +128,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="price">Price</label>
+                                                                            <label for="price">Price<span class="required">*</span></label>
                                                                             <input type="text" id="price" placeholder="en FCFA " class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
                                                                             @error('price')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -141,7 +141,7 @@
                                                                 </div>
                                                                 
                                                                 <div class="form-group">
-                                                                    <label for="description">Description</label>
+                                                                    <label for="description">Description<span class="required">*</span></label>
                                                                     <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
                                                                     @error('description')
                                                                         <span class="invalid-feedback" role="alert">
@@ -170,6 +170,13 @@
         </div>
     </div>
 </div>
+<style>
+    .required {
+        color: red;
+        margin-left: 4px; /* Espacement entre le texte et l'étoile */
+    }
+
+</style>
 
 
 <script>

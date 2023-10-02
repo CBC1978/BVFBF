@@ -8,7 +8,7 @@
             <button class="btn btn-primary" id="toggle-fields">Afficher/Masquer les champs</button>
             <!-- Recherche par nom -->
             <div class="form-group" id="search-group" style="display: none;">
-                <label for="search">Rechercher par nom:</label>
+                <label for="search">Rechercher par nom*:</label>
                 <input type="text" class="form-control" name="search" id="search" placeholder="Nom d'utilisateur">
             </div>
 

@@ -72,13 +72,12 @@
                 <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</span>
             </div>
         </div>
+        </div>
     </div>
-</div>
-
-@if(Session::has('success'))
-<div class="alert alert-success">
-    {{ Session::get('success') }}
-</div>
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
 @endif
 
 <div class="card chat">
@@ -115,4 +114,12 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        
+        $('.alert').delay(4000).fadeOut(400, function() {
+            $(this).alert('close');
+        });
+    });
+</script>
 @endsection

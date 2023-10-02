@@ -16,25 +16,25 @@
                 <h2>Ajouter une entreprise de transporteur</h2>
                 <form action="{{ route('admin.ajouter-transporteur') }}" method="post">
                     @csrf
-                    <label for="company_name">Nom de l'entreprise</label>
+                    <label for="company_name">Nom de l'entreprise<span class="required">*</span></label>
                     <input type="text" name="company_name" required>
                     
-                    <label for="address">Adresse</label>
+                    <label for="address">Adresse<span class="required">*</span></label>
                     <input type="text" name="address" required>
                     
-                    <label for="phone">Téléphone</label>
+                    <label for="phone">Téléphone<span class="required">*</span></label>
                     <input type="text" name="phone" required>
 
-                    <label for="city">Ville</label>
+                    <label for="city">Ville<span class="required">*</span></label>
                     <input type="text" name="city" required>
                     
-                    <label for="email">Email</label>
+                    <label for="email">Email<span class="required">*</span></label>
                     <input type="email" name="email" required>
                     
-                    <label for="ifu">Numéro IFU</label>
+                    <label for="ifu">Numéro IFU<span class="required">*</span></label>
                     <input type="text" name="ifu" required>
                     
-                    <label for="rccm">RCCM</label>
+                    <label for="rccm">RCCM<span class="required">*</span></label>
                     <input type="text" name="rccm" required>
                     
                     <!-- Champ caché pour stocker l'ID de l'utilisateur -->
@@ -47,25 +47,25 @@
                 <h2>Ajouter une entreprise expéditrice</h2>
                 <form action="{{ route('admin.ajouter-expediteur') }}" method="post">
                     @csrf
-                    <label for="company_name">Nom de l'entreprise</label>
+                    <label for="company_name">Nom de l'entreprise<span class="required">*</span></label>
                     <input type="text" name="company_name" required>
                     
-                    <label for="address">Adresse</label>
+                    <label for="address">Adresse<span class="required">*</span></label>
                     <input type="text" name="address" required>
                     
-                    <label for="phone">Téléphone</label>
+                    <label for="phone">Téléphone<span class="required">*</span></label>
                     <input type="text" name="phone" required>
 
-                    <label for="city">Ville</label>
+                    <label for="city">Ville<span class="required">*</span></label>
                     <input type="text" name="city" required>
                     
-                    <label for="email">Email</label>
+                    <label for="email">Email<span class="required">*</span></label>
                     <input type="email" name="email" required>
                     
-                    <label for="ifu">Numéro IFU</label>
+                    <label for="ifu">Numéro IFU<span class="required">*</span></label>
                     <input type="text" name="ifu" required>
                     
-                    <label for="rccm">RCCM</label>
+                    <label for="rccm">RCCM<span class="required">*</span></label>
                     <input type="text" name="rccm" required>
                     
                     <!-- Champ caché pour stocker l'ID de l'utilisateur -->
@@ -161,6 +161,13 @@
     </div>
     </div>
 </div>
+<style>
+    .required {
+    color: red;         /* couleur étoile */
+    margin-left: 4px; /* Espacement entre le texte et l'étoile */
+}
+
+</style>
 <script>
     $(document).ready(function() {
         
