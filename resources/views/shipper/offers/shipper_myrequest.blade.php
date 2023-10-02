@@ -28,6 +28,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Statut</th>
                             <th scope="col">Actions</th>
+                            <th scope="col">Messagerie</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,11 +47,19 @@
                                     @endif
                                 </td>
                                 <td>
+                                   
                                     @if($offer->status == 1)
                                         <a 
                                         {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
                                          class="btn btn-primary">Generer le contrat</a>
                                     @endif
+                                </td>
+                                <td>
+                                    
+                                    {{-- @if($offer->status => 1) --}}
+                                        
+                                    <a href="{{ route('carrier-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
+                                    {{-- @endif --}}
                                 </td>
                             </tr>
                         @endforeach

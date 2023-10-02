@@ -45,6 +45,7 @@ class CarrierAnnouncementController extends Controller
             'destination'=>$announce->destination,
             'description'=>$announce->description,
             'limit_date'=>$announce->limit_date,
+            
             'id'=>$announce->id,
             'offre'=>0,
         );

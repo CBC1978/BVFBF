@@ -216,6 +216,7 @@ Route::get('/shipper-chat/{offer_id}', [CarrierChatController::class, 'index'])-
 
 Route::post('/sendMessage/{offer_id}', [CarrierChatController::class, 'sendMessage'])->name('sendMessage');
 
+Route::get('/carrier-reply-chat/{offer_id}', [CarrierChatController::class, 'reply'])->name('carrier-reply-chat');
 
 
 //Route::post('/sendMessage/{offer_id}', 'CarrierChatController@sendMessage')->name('sendMessage');
