@@ -120,7 +120,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
+                                                                            <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span> <span >(Tonnes)</span> </label>
                                                                             <input class="form-control" type="text" placeholder="En tonnes " name="weight">
                                                                         </div>
                                                                     </div>

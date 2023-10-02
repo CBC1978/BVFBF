@@ -104,7 +104,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="weight">Poids<span class="required">*</span></label>
+                                                                            <label for="weight">Poids<span class="required">*</span><span >(Tonnes)</span></label>
                                                                             <input type="text" placeholder="En tonnes" id="weight" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}">
                                                                             @error('weight')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -117,7 +117,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="volume">Volume</label>
+                                                                            <label for="volume">Volume <span>(m3)</span></label>
                                                                             <input type="text" id="volume" placeholder="metre cube" class="form-control @error('volume') is-invalid @enderror" name="volume" value="{{ old('volume') }}">
                                                                             @error('volume')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -128,7 +128,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group mb-30">
-                                                                            <label for="price">Price<span class="required">*</span></label>
+                                                                            <label for="price">Prix<span class="required">*</span> <span>(FCFA)</span></label>
                                                                             <input type="text" id="price" placeholder="en FCFA " class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
                                                                             @error('price')
                                                                                 <span class="invalid-feedback" role="alert">

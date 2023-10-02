@@ -115,7 +115,6 @@
                                   </div>
                                   <div class="card-2-bottom mt-30">
                                       <div class="row">
-                                          <div class="col-lg-7 col-7"><span class="card-text-price">{{$announce->price}}.FCFA</span><span class="text-muted"></span></div>
                                           <div class="col-lg-5 col-5 text-end">
                                               <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
                                           </div>
