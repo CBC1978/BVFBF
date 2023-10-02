@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($offers as $key => $offer)
+                        @foreach($offers->sortByDesc('id') as $key => $offer )
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $offer->price }}</td>

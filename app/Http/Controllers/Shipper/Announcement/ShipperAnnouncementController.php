@@ -64,6 +64,8 @@ class ShipperAnnouncementController extends Controller
                    'destination'=>$announce->destination,
                    'description'=>$announce->description,
                    'limit_date'=>$announce->limit_date,
+                   'weight'=>$announce->weight,
+                   'price'=>$announce->price,
                    'id'=>$announce->id,
                    'offre'=>0,
                );
