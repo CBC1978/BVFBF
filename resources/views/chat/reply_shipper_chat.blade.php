@@ -1,4 +1,4 @@
-@extends('layouts.shipper')
+@extends('layouts.carrier')
 
 @section('styles')
 <style>
