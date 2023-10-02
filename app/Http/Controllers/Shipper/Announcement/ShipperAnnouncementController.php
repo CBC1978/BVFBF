@@ -22,9 +22,7 @@ class ShipperAnnouncementController extends Controller
        $announcements = DB::table('freight_announcement')
            ->selectRaw("
             freight_announcement.id,freight_announcement.origin,freight_announcement.destination,freight_announcement.limit_date,
-            freight_announcement.weight, freight_announcement.volume,freight_announcement.description,
-            shipper.company_name
-            ")
+            freight_announcement.weight, freight_announcement.volume,freight_announcement.description,freight_announcement.price,shipper.company_name")
            ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
            ->orderBy('freight_announcement.id', 'DESC')
            ->get();
@@ -66,6 +64,8 @@ class ShipperAnnouncementController extends Controller
                    'destination'=>$announce->destination,
                    'description'=>$announce->description,
                    'limit_date'=>$announce->limit_date,
+                   'weight'=>$announce->weight,
+                   'price'=>$announce->price,
                    'id'=>$announce->id,
                    'offre'=>0,
                );

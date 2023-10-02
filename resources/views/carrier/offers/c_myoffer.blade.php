@@ -5,6 +5,12 @@
     <div class="box-heading">
         <div class="box-title">
             <h3 class="mb-35">mes offres de fret</h3>
+            @if(session('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5>  {{ session('success') }}</h5>
+                <span aria-hidden="true">&times;</span>
+              </div>
+            @endif
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
@@ -126,4 +132,13 @@
   </footer>
 </div>
 </div></div>
+  <script>
+      $(document).ready(function() {
+          
+          $('.alert').delay(2000).fadeOut(400, function() {
+              $(this).alert('close');
+          });
+      });
+  </script>
+
 @endsection

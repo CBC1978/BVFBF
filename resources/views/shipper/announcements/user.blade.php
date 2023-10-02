@@ -34,11 +34,10 @@
                         <h6><a href="">{{ucfirst($announce['origin'])}}-{{ucfirst($announce['destination'])}}</a></h6>
                         <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce['limit_date'])) }}</span></div>
                         <p class="font-sm color-text-paragraph mt-15">{{$announce['description']}}</p>
-                        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">10 T</a><a class="btn btn-grey-small mr-5" href="">20 m3</a>
-                        </div>
+                        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">{{$announce['weight']}} T</a> </div>
                         <div class="card-2-bottom mt-30">
                             <div class="row">
-                                <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div>
+                            <div class="col-lg-7 col-7"><span class="card-text-price">{{ $announce['price']}}.FCFA</span></div> 
 {{--                                <div class="col-lg-5 col-5 text-end">--}}
 {{--                                    <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm">Postuler</div>--}}
 {{--                                </div>--}}

@@ -74,11 +74,14 @@
         </div>
         </div>
     </div>
-    @if(Session::has('success'))
-    <div class="alert alert-success">
-        {{ Session::get('success') }}
-    </div>
-@endif
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                
+                        <h5>  {{ session('success') }}</h5>
+                        <span aria-hidden="true">&times;</span>
+                
+                </div>
+            @endif
 
     <div class="card chat">
         <div class="row g-0">
@@ -120,4 +123,12 @@
 
    
 </div>
+<script>
+    $(document).ready(function() {
+        
+        $('.alert').delay(4000).fadeOut(400, function() {
+            $(this).alert('close');
+        });
+    });
+</script>
 @endsection

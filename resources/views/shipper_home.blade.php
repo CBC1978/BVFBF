@@ -119,7 +119,6 @@
                           </div>
                           <div class="card-2-bottom mt-30">
                             <div class="row">
-                              {{-- <div class="col-lg-7 col-7"><span class="card-text-price">250.500</span><span class="text-muted">F</span></div> --}}
                               <div class="col-lg-5 col-5 text-end">
                                 <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$transport->id}}">Postuler</div>
                               </div>

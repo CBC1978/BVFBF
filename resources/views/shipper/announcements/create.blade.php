@@ -6,12 +6,12 @@
         <div class="box-title">
             <h3 class="mb-35">Ajouter une Annonce de Fret</h3>
             @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              
-                <h5>  {{ session('success') }}</h5>
-                    <span aria-hidden="true">&times;</span>
-              
-            </div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                
+                        <h5>  {{ session('success') }}</h5>
+                        <span aria-hidden="true">&times;</span>
+                
+                </div>
             @endif
         </div>
         <div class="box-breadcrumb">
