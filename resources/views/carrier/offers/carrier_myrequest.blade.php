@@ -47,7 +47,7 @@
                         <td>
                             @if($offer->status == 1)
                                 <a
-                                {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
+                                 href="{{ route('c_contract', ['id' => $offer->id]) }}"
                                  class="btn btn-primary">Generer le contrat</a>
                             @endif
                         </td>

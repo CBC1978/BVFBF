@@ -157,6 +157,7 @@ public function offerManagementHandleOffer(Request $request, $offerId)
 
         // Récupérez toutes les offres de transport liées à ce transporteur
         $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
+//        dd($offers);
         return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }
 
@@ -179,6 +180,12 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         $freightOffer->save();
 
         return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
+    }
+
+    public function contract_carrier($id)
+    {
+        return view('carrier.contract.index');
+
     }
 
 

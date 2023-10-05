@@ -16,11 +16,11 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="requestTable">
                     <thead>
                         <tr>
                             <th scope="col">Numéro</th>
@@ -47,17 +47,17 @@
                                     @endif
                                 </td>
                                 <td>
-                                   
+
                                     @if($offer->status == 1)
-                                        <a 
+                                        <a
                                         {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
                                          class="btn btn-primary">Generer le contrat</a>
                                     @endif
                                 </td>
                                 <td>
-                                    
+
                                     {{-- @if($offer->status => 1) --}}
-                                        
+
                                     <a href="{{ route('carrier-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
                                     {{-- @endif --}}
                                 </td>
@@ -90,5 +90,36 @@
         </div>
     </div>
 </footer>
+
+@endsection
+
+@section('script')
+    <script>
+        new DataTable('#requestTable', {
+            responsive:true,
+            "ordering": true,
+            language:{
+                "decimal":        "",
+                "emptyTable":     "Pas de données disponible",
+                "info":           "Affichage _START_ sur _END_ de _TOTAL_ éléments",
+                "infoEmpty":      "Affichage 0 sur 0 de 0 entries",
+                "infoFiltered":   "(filtrage de _MAX_ total éléments)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Afficher _MENU_ éléments",
+                "loadingRecords": "Chargement...",
+                "processing":     "",
+                "search":         "Recherche:",
+                "zeroRecords":    "Pas de correspondance trouvé",
+                "paginate": {
+                    "first":      "Premier",
+                    "last":       "Dernier",
+                    "next":       "Suivant",
+                    "previous":   "Précédent"
+                },
+            }
+        } );
+
+    </script>
 
 @endsection
