@@ -26,7 +26,8 @@
                     <th scope="col">Description</th>
                     <th scope="col">Statut</th>
                     <th scope="col">Actions</th>
-                    <th>Messagerie</th>
+                    <th scope="col">Notification</th>
+                    <th scope="col">Messagerie</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,15 +49,24 @@
                             @if($offer->status == 1)
                                 <a
                                 {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
-                                 class="btn btn-primary">Generer le contrat</a>
+                                 class="btn btn-primary">Contrat</a>
                             @endif
                         </td>
                         <td>
-
-                            {{-- @if($offer->status => 1) --}}
-
+                            {{-- Vérifiez la valeur de status_message pour décider d'afficher la notification --}}
+                            @if($offer->status_message == 0)
+                                Aucune notification
+                            @elseif($offer->status_message == 2)
+                                Vous avez un message 
+                            @elseif($offer->status_message == 3)
+                                Message lu
+                            @endif
+                        </td>
+                        <td>
+                            {{-- Vérifiez si status_message est égal à 2 avant d'afficher le bouton Echanger --}}
+                            @if($offer->status_message == 2 || $offer->status_message == 3)
                             <a href="{{ route('shipper-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
-                            {{-- @endif --}}
+                        @endif
                         </td>
                     </tr>
                 @endforeach
@@ -92,7 +102,7 @@
     <script>
         new DataTable('#requestTable', {
             responsive:true,
-            "ordering": true,
+            "ordering": false,
             language:{
                 "decimal":        "",
                 "emptyTable":     "Pas de données disponible",
