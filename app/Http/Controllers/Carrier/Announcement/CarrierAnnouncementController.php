@@ -45,12 +45,6 @@ class CarrierAnnouncementController extends Controller
             'destination'=>$announce->destination,
             'description'=>$announce->description,
             'limit_date'=>$announce->limit_date,
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> bc561cf094679fc3e41153d6932df2b633531fcf
             'weight'=>$announce->weight,
             'volume'=>$announce->volume,
             'vehicule_type'=>$announce->vehicule_type,
