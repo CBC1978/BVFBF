@@ -8,6 +8,9 @@ use App\Models\FreightAnnouncement;
 use App\Models\Shipper;
 use App\Models\TransportOffer;
 use Illuminate\Http\Request;
+use App\Models\Carrier;
+use App\Models\User;
+use Session;
 
 class ShipperChatController extends Controller
 {
@@ -97,9 +100,9 @@ class ShipperChatController extends Controller
 
          // Mettre à jour le champ "status_message" de la table "transport_offer" à 2
         $transportOffer = TransportOffer::find($offer_id);
-    if ($transportOffer) {
-        $transportOffer->status_message = 2;
-        $transportOffer->save();
+          if ($transportOffer) {
+           $transportOffer->status_message = 2;
+           $transportOffer->save();
     }
 
     

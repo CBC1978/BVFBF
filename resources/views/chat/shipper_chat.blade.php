@@ -113,7 +113,7 @@
                     <div class="flex-grow-0 py-3 px-4 border-top">
                         <form action="{{ route('sendMessage', ['offer_id' => $transportOffer->id]) }}" method="post">
                             @csrf
-                            <input type="text" class="form-control" placeholder="Type your message" name="message">
+                            <input type="text" class="form-control" placeholder="Entrez votre message" name="message">
                             <button type="submit" class="btn btn-primary">Send</button>
                         </form>
                     </div>

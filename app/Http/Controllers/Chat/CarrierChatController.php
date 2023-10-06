@@ -53,6 +53,11 @@ class CarrierChatController extends Controller
             // Gérer le cas où l'offre n'a pas été trouvée.
             return redirect()->route('error-page');
         }
+
+        if ($freightOffer->status_message == 1) {
+            $freightOffer->status_message = 3;
+            $freightOffer->save();
+}
     
         // Récupérer le nom de l'entreprise du transporteur associé à l'offre de fret
         $carrier = Carrier::find($freightOffer->fk_carrier_id);
@@ -91,6 +96,14 @@ class CarrierChatController extends Controller
                              
    
     $message->save();
+
+    
+    // Mettre à jour le champ "status_message" de la table "freight_offer" à 1
+    $freightOffer = FreightOffer::find($offer_id);
+    if ($freightOffer) {
+        $freightOffer->status_message = 1;
+        $freightOffer->save();
+    }
 
    
     return redirect()->back()->with('success', 'Message envoyé avec succès');
