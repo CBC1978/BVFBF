@@ -16,54 +16,66 @@
             </div>
         </div>
     </div>
-
     <div class="row">
-        <table class="table table-responsive table-striped table-hover" id="requestTable">
-            <thead>
-                <tr>
-                    <th scope="col">Numéro</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Statut</th>
-                    <th scope="col">Actions</th>
-                    <th>Messagerie</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($offers->sortByDesc('id') as $key => $offer)
-                    <tr>
-                        <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $offer->price }}</td>
-                        <td>{{ $offer->description }}</td>
-                        <td>
-                            @if($offer->status == 0)
-                            <button type="button" class="btn btn-primary "> En attente </button>
-                            @elseif($offer->status == 1)
-                            <button type="button" class="btn btn-success ">  Accepter </button>
-                            @else
-                            <button type="button" class="btn btn-danger ">Refusé </button>
-                            @endif
-                        </td>
-                        <td>
-                            @if($offer->status == 1)
-                                <a
-                                 href="{{ route('c_contract', ['id' => $offer->id]) }}"
-                                 class="btn btn-primary">Generer le contrat</a>
-                            @endif
-                        </td>
-                        <td>
+        <div class="col-lg-12">
+            <div class="section-box">
+                <div class="container">
+                    <div class="panel-white mb-30">
+                        <div class="box-padding">
+                            <div class="box-filters-job">
+                                <div class="row">
+                                    <table class="table table-responsive table-striped table-hover" id="requestTable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Numéro</th>
+                                                <th scope="col">Prix</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Statut</th>
+                                                <th scope="col">Actions</th>
+                                                <th>Messagerie</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($offers->sortByDesc('id') as $key => $offer)
+                                                <tr>
+                                                    <th scope="row">{{ $key + 1 }}</th>
+                                                    <td>{{ $offer->price }}</td>
+                                                    <td>{{ $offer->description }}</td>
+                                                    <td>
+                                                        @if($offer->status == 0)
+                                                        <button type="button" class="btn btn-primary "> En attente </button>
+                                                        @elseif($offer->status == 1)
+                                                        <button type="button" class="btn btn-success ">  Accepter </button>
+                                                        @else
+                                                        <button type="button" class="btn btn-danger ">Refusé </button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($offer->status == 1)
+                                                            <a
+                                                             href="{{ route('c_contract', ['id' => $offer->id]) }}"
+                                                             class="btn btn-primary">Generer le contrat</a>
+                                                        @endif
+                                                    </td>
+                                                    <td>
 
-                            {{-- @if($offer->status => 1) --}}
+                                                        {{-- @if($offer->status => 1) --}}
 
-                            <a href="{{ route('shipper-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
-                            {{-- @endif --}}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                                                        <a href="{{ route('shipper-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
+                                                        {{-- @endif --}}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 
 <footer class="footer mt-20">

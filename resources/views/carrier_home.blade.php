@@ -235,7 +235,7 @@
         });
         var searchInput = document.querySelector('input[id^="recherche"]');
         $(searchInput).keyup(function (){
-            var filter, allRoutes, allDesc,allName, allDate, allTonne;
+            var filter, allAnnonces;
 
             filter = searchInput.value.toUpperCase();
             allAnnonces = document.querySelectorAll('#card_annonce');
