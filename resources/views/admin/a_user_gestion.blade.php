@@ -223,3 +223,33 @@ function getStatusValue(statusLabel) {
 </script>
 
 @endsection
+
+@section('script')
+<script>
+    new DataTable('#user-table', {
+        responsive:true,
+        "ordering": true,
+        language:{
+            "decimal":        "",
+            "emptyTable":     "Pas de données disponible",
+            "info":           "Affichage _START_ sur _END_ de _TOTAL_ éléments",
+            "infoEmpty":      "Affichage 0 sur 0 de 0 entries",
+            "infoFiltered":   "(filtrage de _MAX_ total éléments)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Afficher _MENU_ éléments",
+            "loadingRecords": "Chargement...",
+            "processing":     "",
+            "search":         "Recherche:",
+            "zeroRecords":    "Pas de correspondance trouvé",
+            "paginate": {
+                "first":      "Premier",
+                "last":       "Dernier",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
+        }
+    } );
+
+</script>
+@endsection

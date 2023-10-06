@@ -17,64 +17,60 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="section-box">
-                <div class="container">
-                    <div class="panel-white mb-30">
-                        <div class="box-padding">
-                            <div class="box-filters-job">
-                                <div class="row">
-                                    <table class="table table-responsive table-striped table-hover" id="requestTable">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Numéro</th>
-                                                <th scope="col">Prix</th>
-                                                <th scope="col">Description</th>
-                                                <th scope="col">Statut</th>
-                                                <th scope="col">Actions</th>
-                                                <th>Messagerie</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($offers->sortByDesc('id') as $key => $offer)
-                                                <tr>
-                                                    <th scope="row">{{ $key + 1 }}</th>
-                                                    <td>{{ $offer->price }}</td>
-                                                    <td>{{ $offer->description }}</td>
-                                                    <td>
-                                                        @if($offer->status == 0)
-                                                        <button type="button" class="btn btn-primary "> En attente </button>
-                                                        @elseif($offer->status == 1)
-                                                        <button type="button" class="btn btn-success ">  Accepter </button>
-                                                        @else
-                                                        <button type="button" class="btn btn-danger ">Refusé </button>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if($offer->status == 1)
-                                                            <a
-                                                             href="{{ route('c_contract', ['id' => $offer->id]) }}"
-                                                             class="btn btn-primary">Generer le contrat</a>
-                                                        @endif
-                                                    </td>
-                                                    <td>
-
-                                                        {{-- @if($offer->status => 1) --}}
-
-                                                        <a href="{{ route('shipper-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
-                                                        {{-- @endif --}}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <table class="table table-responsive table-striped table-hover" id="requestTable">
+            <thead>
+                <tr>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">Notification</th>
+                    <th scope="col">Messagerie</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($offers->sortByDesc('id') as $key => $offer)
+                    <tr>
+                        <th scope="row">{{ $key + 1 }}</th>
+                        <td>{{ $offer->price }}</td>
+                        <td>{{ $offer->description }}</td>
+                        <td>
+                            @if($offer->status == 0)
+                            <button type="button" class="btn btn-primary "> En attente </button>
+                            @elseif($offer->status == 1)
+                            <button type="button" class="btn btn-success ">  Accepter </button>
+                            @else
+                            <button type="button" class="btn btn-danger ">Refusé </button>
+                            @endif
+                        </td>
+                        <td>
+                            @if($offer->status == 1)
+                                <a
+                                {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
+                                 class="btn btn-primary">Contrat</a>
+                            @endif
+                        </td>
+                        <td>
+                            {{-- Vérifiez la valeur de status_message pour décider d'afficher la notification --}}
+                            @if($offer->status_message == 0)
+                                Aucune notification
+                            @elseif($offer->status_message == 2)
+                                Vous avez un message 
+                            @elseif($offer->status_message == 3)
+                                Message lu
+                            @endif
+                        </td>
+                        <td>
+                            {{-- Vérifiez si status_message est égal à 2 avant d'afficher le bouton Echanger --}}
+                            @if($offer->status_message == 2 || $offer->status_message == 3)
+                            <a href="{{ route('shipper-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
+                        @endif
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -104,7 +100,7 @@
     <script>
         new DataTable('#requestTable', {
             responsive:true,
-            "ordering": true,
+            "ordering": false,
             language:{
                 "decimal":        "",
                 "emptyTable":     "Pas de données disponible",

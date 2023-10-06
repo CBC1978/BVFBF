@@ -225,4 +225,5 @@ Route::get('/carrier-reply-chat/{offer_id}', [CarrierChatController::class, 'rep
 Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'reply'])->name('shipper-reply-chat');
 
 
-//Route::post('/sendMessage/{offer_id}', 'CarrierChatController@sendMessage')->name('sendMessage');
+
+//Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
