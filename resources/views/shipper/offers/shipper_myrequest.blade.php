@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
@@ -28,6 +28,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Statut</th>
                             <th scope="col">Actions</th>
+                            <th scope="col">Notification</th>
                             <th scope="col">Messagerie</th>
                         </tr>
                     </thead>
@@ -47,11 +48,21 @@
                                     @endif
                                 </td>
                                 <td>
-                                   
+
                                     @if($offer->status == 1)
                                         <a 
                                         {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
-                                         class="btn btn-primary">Generer le contrat</a>
+                                         class="btn btn-primary">Contrat</a> 
+                                    @endif
+                                </td>
+                                <td>
+                                    {{-- Vérifiez la valeur de status_message pour décider d'afficher la notification --}}
+                                    @if($offer->status_message == 0)
+                                        Aucune notification
+                                    @elseif($offer->status_message == 2)
+                                        Vous avez un message 
+                                    @elseif($offer->status_message == 3)
+                                        Message lu
                                     @endif
                                 </td>
                                 <td>

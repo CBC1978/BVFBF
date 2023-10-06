@@ -32,7 +32,7 @@ class CarrierAnnouncementController extends Controller
     {
 
 
-    //Obtenir les infos 
+    //Obtenir les infos
     $user = User::find(session()->get('userId'));
     $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
                                         ->orderBy('created_at', 'DESC')
@@ -45,6 +45,12 @@ class CarrierAnnouncementController extends Controller
             'destination'=>$announce->destination,
             'description'=>$announce->description,
             'limit_date'=>$announce->limit_date,
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> bc561cf094679fc3e41153d6932df2b633531fcf
             'weight'=>$announce->weight,
             'volume'=>$announce->volume,
             'vehicule_type'=>$announce->vehicule_type,
@@ -122,7 +128,7 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         ->get();
        return view('carrier.offers.c_myoffer', compact(['transportAnnouncement', 'freightOffers']));
    }
-   
+
 
     public function positOffer(Request $request){
 
@@ -146,37 +152,43 @@ public function offerManagementHandleOffer(Request $request, $offerId)
 
 
     }
+
     public function myrequest()
     {
-       
-    $carrierId = session('fk_carrier_id');
+        $carrierId = session('fk_carrier_id');
 
-    // Récupérez toutes les offres de transport liées à ce transporteur
-    $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
-    return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
+        // Récupérez toutes les offres de transport liées à ce transporteur
+        $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
+//        dd($offers);
+        return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }
-
 
     public function manageOffer(Request $request, $id)
     {
         $action = $request->input('action');
-    
+
         // Récupérer l'offre en fonction de l'ID
         $freightOffer = FreightOffer::findOrFail($id);
-    
+
         if ($action === 'accept') {
-           
+
             $freightOffer->status = 1;
         } elseif ($action === 'refuse') {
-           
+
             $freightOffer->status = 2;
         }
-    
+
         // Sauvegarde des  modifications
         $freightOffer->save();
-    
+
         return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
     }
-    
-    
+
+    public function contract_carrier($id)
+    {
+        return view('carrier.contract.index');
+
+    }
+
+
 }

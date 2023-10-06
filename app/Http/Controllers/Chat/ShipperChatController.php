@@ -8,6 +8,9 @@ use App\Models\FreightAnnouncement;
 use App\Models\Shipper;
 use App\Models\TransportOffer;
 use Illuminate\Http\Request;
+use App\Models\Carrier;
+use App\Models\User;
+use Session;
 
 class ShipperChatController extends Controller
 {
@@ -51,6 +54,11 @@ class ShipperChatController extends Controller
                 // Gérer le cas où l'offre n'a pas été trouvée.
                 return redirect()->route('error-page');
             }
+            // Si status_message est égal à 2, mettez à jour à 3
+            if ($transportOffer->status_message == 2) {
+                $transportOffer->status_message = 3;
+                $transportOffer->save();
+    }
         
             // Récupérer le nom de l'entreprise du chargeur associé à l'offre de fret
             $shipper = Shipper::find($transportOffer->fk_shipper_id);
@@ -89,6 +97,13 @@ class ShipperChatController extends Controller
                                 
     
         $message->save();
+
+         // Mettre à jour le champ "status_message" de la table "transport_offer" à 2
+        $transportOffer = TransportOffer::find($offer_id);
+          if ($transportOffer) {
+           $transportOffer->status_message = 2;
+           $transportOffer->save();
+    }
 
     
         return redirect()->back()->with('success', 'Message envoyé avec succès');

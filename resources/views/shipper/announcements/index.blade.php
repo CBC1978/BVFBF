@@ -1,6 +1,19 @@
 @extends('layouts.carrier')
 
 @section('content')
+<div class="box-heading mb-25">
+    <div class="box-title">
+        <h3 class="mb-35"></h3>
+    </div>
+    <div class="box-breadcrumb">
+        <div class="breadcrumbs">
+            <ul>
+                <li> <a class="icon-home" href="">Tableau de bord</a></li>
+                <li><span>Annonces</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-12">
@@ -9,14 +22,21 @@
                 <div class="panel-white mb-30">
                     <div class="box-padding">
                         <div class="box-filters-job">
-                            <div class="row">
+                            <div class="row mb-35">
                                 <div class="box-title">
-                                    <h3 class="mb-35">Annonce de Fret</h3>
+                                    <div class="row">
+                                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-10">
+                                            <h3>Annonces de fret</h3>
+                                        </div>
+                                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                            <input type="text" id="recherche" placeholder="Recherchez une annonce">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 @foreach($announcements as $announce)
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" id="card_annonce">
                                         <div class="card-grid-2 hover-up">
                                             <div class="card-grid-2-image-left"><span class="flash"></span>
                                                 <div class="image-box"><img src=" {{ asset('imgs/brands/brand-1.png') }}" alt="jobBox"></div>
@@ -31,7 +51,7 @@
                                                 <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">{{$announce->weight}} T</a><a class="btn btn-grey-small mr-5" href="">{{ $announce->volume }} m3</a></div>
                                                 <div class="card-2-bottom mt-30">
                                                     <div class="row">
-                                                       <div class="col-lg-7 col-7"><span class="card-text-price">{{ $announce->price }}FCFA</span><span class="text-muted"></span></div> 
+                                                       <div class="col-lg-7 col-7"><span class="card-text-price">{{ $announce->price }}FCFA</span><span class="text-muted"></span></div>
                                                         <div class="col-lg-5 col-5 text-end">
                                                             <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
                                                         </div>
@@ -93,5 +113,27 @@
     }
 
 </style>
+
+@endsection
+
+@section('script')
+    <script>
+        var searchInput = document.querySelector('input[id^="recherche"]');
+        $(searchInput).keyup(function (){
+            var filter, allAnnonces;
+
+            filter = searchInput.value.toUpperCase();
+            allAnnonces = document.querySelectorAll('#card_annonce');
+            allAnnonces.forEach( item =>{
+                itemValue = item.innerText;
+                console.log(item);
+                if(itemValue.toUpperCase().indexOf(filter) > -1){
+                    item.style.display = 'flex';
+                }else{
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 @endsection

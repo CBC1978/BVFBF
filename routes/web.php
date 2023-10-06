@@ -88,6 +88,7 @@ use App\Http\Controllers\Chat\ShipperChatController;
     Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
     Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
     Route::get('/carrier/offers/offer', [C_OfferController::class, 'index'])->name('c_offer');
+    Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
     // ... Autres routes spécifiques au carrier ...
 //});
 
@@ -138,9 +139,9 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
     Route::post('manage-offer/{id}', [ShipperAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
-   
+
     Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
-    Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store'); 
+    Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
 
    // Route::get('myrequest', [ShipperAnnouncementController::class, 'myrequest'])->name('shipper_myrequest');
@@ -176,7 +177,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/ajouter-expediteur', [AdminController::class, 'addShipper'])->name('admin.ajouter-expediteur');
 
     Route::post('/assigner-entreprise-user', [AdminController::class, 'assignEntrepriseToUser'])->name('admin.assigner-entreprise-user');
-  // ... Autres routes spécifiques à la gestion des entreprises ... 
+  // ... Autres routes spécifiques à la gestion des entreprises ...
 });
 
 Route::prefix('admin')->group(function () {

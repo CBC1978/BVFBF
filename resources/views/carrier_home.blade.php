@@ -72,17 +72,11 @@
                 <p class="color-text-paragraph-2">Contrat ce mois</p>
               </div>
             </div>
-
-
-
 <!----------------------------------------------------------------------------
 |FIN  SECTION VU RAPIDE
 |--------------------------------------------------------------------------------
    -->
-
-
     </div>
-
     </div>
   </div>
     <div class="row">
@@ -92,18 +86,25 @@
           <div class="panel-white mb-30">
             <div class="box-padding">
               <div class="box-filters-job">
-                <div class="row">
+                <div class="row mb-35">
                   <div class="box-title">
-                    <h3 class="mb-35">Annonces de fret récentes</h3>
+                      <div class="row">
+                          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-10">
+                              <h3>Annonces de fret récentes</h3>
+                          </div>
+                          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                              <input type="text" id="recherche" placeholder="Recherchez une annonce">
+                          </div>
+                      </div>
                   </div>
               </div>
               <div class="row">
                   @foreach($announcements as $announce)
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" id="card_annonce">
                           <div class="card-grid-2 hover-up">
                               <div class="card-grid-2-image-left"><span class="flash"></span>
                                   <div class="image-box"><img src="imgs/brands/brand-1.png" alt="jobBox"></div>
-                                  <div class="right-info"><a class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}">{{ $announce->company_name }}</a>
+                                  <div class="right-info"><a  class="name-job{{ request()->routeIs('c_offerdetail') ? 'active' : '' }}"  href="{{ route('c_offerdetail') }}">{{ $announce->company_name }}</a>
                                       {{-- <span class="location-small">New York, US</span> --}}
                                   </div>
                               </div>
@@ -112,12 +113,17 @@
                                   <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce->limit_date)) }}</span></div>
                             
                                   <p class="font-sm color-text-paragraph mt-15">{{$announce->description}}</p>
+<<<<<<< HEAD
                                   <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">{{$announce->weight}} T</a><a class="btn btn-grey-small mr-5" href="">{{ $announce->volume }} m3</a></div>
                                   <p class="font-sm color-text-paragraph mt-15">{{$announce->description}}</p>
                                   
+=======
+                                  <div class="mt-30"><a class="btn btn-grey-small mr-5" href="" >{{$announce->weight}} T</a><a class="btn btn-grey-small mr-5" href="">{{ $announce->volume }} m3</a></div>
+
+>>>>>>> bc561cf094679fc3e41153d6932df2b633531fcf
                                   <div class="card-2-bottom mt-30">
                                       <div class="row">
-                                        
+
                                           {{-- <div class="col-lg-7 col-7"><span class="card-text-price">{{$announce->price}}.FCFA</span><span class="text-muted"></span></div> --}}                                          <div class="col-lg-5 col-5 text-end">
                                               <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
                                           </div>
@@ -233,6 +239,22 @@
                 $("div.alert").remove();
             }, 3000 ); //3s
 
+        });
+        var searchInput = document.querySelector('input[id^="recherche"]');
+        $(searchInput).keyup(function (){
+            var filter, allAnnonces;
+
+            filter = searchInput.value.toUpperCase();
+            allAnnonces = document.querySelectorAll('#card_annonce');
+            allAnnonces.forEach( item =>{
+               itemValue = item.innerText;
+                console.log(item);
+               if(itemValue.toUpperCase().indexOf(filter) > -1){
+                   item.style.display = 'flex';
+               }else{
+                   item.style.display = 'none';
+               }
+            });
         });
     </script>
 @endsection
