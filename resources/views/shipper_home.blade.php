@@ -144,11 +144,11 @@
                                       <form class="login-register text-start mt-20 pb-30" action="{{ route('shipper.announcements.postuler') }}"  method="post" id="formPostuler">
                                           @csrf
                                           <div class="form-group">
-                                              <label class="form-label" for="prix">Prix *</label>
+                                              <label class="form-label" for="price">Prix *</label>
                                               <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                           </div>
                                           <div class="form-group">
-                                              <label class="form-label" for="prix">Poids *</label>
+                                              <label class="form-label" for="weight">Poids *</label>
                                               <input class="form-control" type="number" name="weight" id="weight" placeholder="Le poids approximatif">
                                           </div>
 

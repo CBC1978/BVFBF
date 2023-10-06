@@ -110,8 +110,10 @@
                               <div class="card-block-info">
                                   <h6><a href="offer-details.html">{{ucfirst($announce->origin)}}-{{ucfirst($announce->destination)}}</a></h6>
                                   <div class="mt-5"><span class="card-briefcase">Date d'expiration:</span><span class="card-time">{{ date("d/m/Y",strtotime($announce->limit_date)) }}</span></div>
+                            
                                   <p class="font-sm color-text-paragraph mt-15">{{$announce->description}}</p>
                                   <div class="mt-30"><a class="btn btn-grey-small mr-5" href="">{{$announce->weight}} T</a><a class="btn btn-grey-small mr-5" href="">{{ $announce->volume }} m3</a></div>
+                                  <p class="font-sm color-text-paragraph mt-15">{{$announce->description}}</p>
                                   
                                   <div class="card-2-bottom mt-30">
                                       <div class="row">
@@ -138,7 +140,7 @@
                                       <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                           @csrf
                                           <div class="form-group">
-                                              <label class="form-label" for="prix">Prix<span class="required">*</span></label>
+                                              <label class="form-label" for="price">Prix<span class="required">*</span></label>
 </label>
                                               <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                           </div>

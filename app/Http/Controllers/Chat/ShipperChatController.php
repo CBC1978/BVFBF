@@ -26,7 +26,7 @@ class ShipperChatController extends Controller
             // Récupérer le nom de l'entreprise du transporteur associé à l'offre de fret
             $shipper = Shipper::find($transportOffer->fk_shipper_id);
         
-            // Récupérer les détails de l'annonce de transport liée à cette offre
+            // Récupérer les détails de l'annonce  liée à cette offre
             $freightAnnouncement = FreightAnnouncement::find($transportOffer->fk_freight_announcement_id);
         
             // Récupérer la liste des messages de ce chat
@@ -52,10 +52,10 @@ class ShipperChatController extends Controller
                 return redirect()->route('error-page');
             }
         
-            // Récupérer le nom de l'entreprise du transporteur associé à l'offre de fret
+            // Récupérer le nom de l'entreprise du chargeur associé à l'offre de fret
             $shipper = Shipper::find($transportOffer->fk_shipper_id);
         
-            // Récupérer les détails de l'annonce de transport liée à cette offre
+            // Récupérer les détails de l'annonce liée à cette offre
             $freightAnnouncement = FreightAnnouncement::find($transportOffer->fk_freight_announcement_id);
         
             // Récupérer la liste des messages de ce chat

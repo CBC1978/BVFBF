@@ -55,11 +55,11 @@
                                                     <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <label class="form-label" for="prix">Prix <span class="required">*</span></label>
+                                                            <label class="form-label" for="price">Prix <span class="required">*</span></label>
                                                             <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label class="form-label" for="prix">Poids <span class="required">*</span></label>
+                                                            <label class="form-label" for="price">Poids <span class="required">*</span></label>
                                                             <input class="form-control" type="number" name="weight" id="weight" placeholder="Le poids approximatif">
                                                         </div>
 
