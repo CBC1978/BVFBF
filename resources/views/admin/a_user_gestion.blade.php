@@ -198,7 +198,7 @@ function getStatusValue(statusLabel) {
 
             new DataTable('#user-table', {
                 responsive:true,
-                "ordering": true,
+                "ordering": false,
                 language:{
                     "decimal":        "",
                     "emptyTable":     "Pas de données disponible",
