@@ -47,7 +47,7 @@
                         <td>
                             @if($offer->status == 1)
                                 <a
-                                {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
+                                 href="{{ route('c_contract', ['id' => $offer->id]) }}"
                                  class="btn btn-primary">Contrat</a>
                             @endif
                         </td>
@@ -56,7 +56,7 @@
                             @if($offer->status_message == 0)
                                 Aucune notification
                             @elseif($offer->status_message == 2)
-                                Vous avez un message 
+                                Vous avez un message
                             @elseif($offer->status_message == 3)
                                 Message lu
                             @endif
