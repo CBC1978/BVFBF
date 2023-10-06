@@ -16,7 +16,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <table class="table table-responsive table-striped table-hover" id="requestTable">
             <thead>
@@ -73,7 +72,6 @@
             </tbody>
         </table>
     </div>
-
 </div>
 
 <footer class="footer mt-20">
