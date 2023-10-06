@@ -50,16 +50,16 @@
                                 <td>
 
                                     @if($offer->status == 1)
-                                        <a 
-                                        {{-- href="{{ route('nom_route', ['id' => $offer->id]) }}" --}}
-                                         class="btn btn-primary">Contrat</a> 
+                                    <a
+                                    href=""
+                                    class="btn btn-primary">Contrat</a>
                                     @endif
                                 </td>
                                 <td>
                                     {{-- Vérifiez la valeur de status_message pour décider d'afficher la notification --}}
                                     @if($offer->status_message == 0)
                                         Aucune notification
-                                    @elseif($offer->status_message == 2)
+                                    @elseif($offer->status_message == 1)
                                         Vous avez un message 
                                     @elseif($offer->status_message == 3)
                                         Message lu
@@ -67,11 +67,11 @@
                                 </td>
                                 <td>
                                     
-                                    {{-- @if($offer->status => 1) --}}
-                                        
-                                    <a href="{{ route('carrier-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
-                                    {{-- @endif --}}
-                                </td>
+                                    {{-- Vérifiez si status_message est égal à 2 avant d'afficher le bouton Echanger --}}
+                            @if($offer->status_message == 1 || $offer->status_message == 3)
+                            <a href="{{ route('carrier-reply-chat', ['offer_id' => $offer->id]) }}" class="btn btn-tag btn-info">Echanger</a>
+                        @endif
+                        </td>
                             </tr>
                         @endforeach
                     </tbody>
