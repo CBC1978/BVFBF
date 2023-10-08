@@ -70,6 +70,9 @@
             <div class="card-title">
                 <h5> Itinéraire: {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</h5>
                 <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</span>
+                <h2>Informations sur l'offre de fret</h2>
+                <p>Nom de l'entreprise : {{ $freightOffer->nom_de_l_entreprise }}</p>
+                <p>Montant de l'offre : {{ $freightOffer->montant }}</p>
             </div>
         </div>
         </div>
@@ -106,9 +109,9 @@
                 <div class="flex-grow-0 py-3 px-4 border-top">
                     <form action="{{ route('sendMessage', ['offer_id' => $freightOffer->id]) }}" method="post">
                         @csrf
-                        <input type="text" class="form-control" placeholder="Type your message" name="message">
+                        <input type="text" class="form-control" placeholder="Entrez votre message" name="message">
                         <button type="submit" class="btn btn-primary">Send</button>
-                    </form>
+                    </form> 
                 </div>
             </div>
         </div>

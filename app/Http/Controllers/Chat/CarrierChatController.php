@@ -77,37 +77,39 @@ class CarrierChatController extends Controller
             'chatMessages' => $chatMessages, // Passer la liste des messages à la vue
         ]);
     }
-    //public function sendMessage($offer_id, Request $request)
+
     public function sendMessage(Request $request, $offer_id)
-{
-    // Validez les données du formulaire de message ici si nécessaire
-    $request->validate([
-        'message' => 'required|string',
-    ]);
-
+    {
+        // Valider les données du formulaire de message ici si nécessaire
+        $request->validate([
+            'message' => 'required|string',
+        ]);
     
-
-
-    $message = new Chat();
-    $message->message = $request->input('message');
-    $message->status = 0; // Statut par défaut du message (peut être 0 ou 1)
-    $message->fk_user_id = session('userId');
-    $message->fk_annonce_id = $offer_id;
-                             
-   
-    $message->save();
-
+        // Récupérer l'offre de fret associée
+        $freightOffer = FreightOffer::find($offer_id);
     
-    // Mettre à jour le champ "status_message" de la table "freight_offer" à 1
-    $freightOffer = FreightOffer::find($offer_id);
-    if ($freightOffer) {
-        $freightOffer->status_message = 1;
-        $freightOffer->save();
+       
+    
+        $message = new Chat();
+        $message->message = $request->input('message');
+        $message->status = 0; // Statut par défaut du message (peut être 0 ou 1)
+        $message->fk_user_id = session('userId');
+        $message->fk_annonce_id = $offer_id;
+    
+        $message->save();
+    
+        // Mettre à jour le champ "status_message" de la table "freight_offer" à 1
+        if ($freightOffer) {
+            $freightOffer->status_message = 1;
+            $freightOffer->save();
+        }
+    
+        return view('sendMessage', [
+            'freightOffer' => $freightOffer,
+        ])->with('success', 'Message envoyé avec succès');
+        //return redirect()->back()->with('success', 'Message envoyé avec succès');
     }
-
-   
-    return redirect()->back()->with('success', 'Message envoyé avec succès');
-}
+    
 
     
 }

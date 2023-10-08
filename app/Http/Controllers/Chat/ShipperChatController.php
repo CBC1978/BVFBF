@@ -25,7 +25,8 @@ class ShipperChatController extends Controller
                 // Gérer le cas où l'offre n'a pas été trouvée.
                 return redirect()->route('error-page');
             }
-        
+          // Récupérer le nom de l'entreprise du transporteur associé à l'offre de transport
+        $carrier = Carrier::find($transportOffer->fk_carrier_id);
             // Récupérer le nom de l'entreprise du transporteur associé à l'offre de fret
             $shipper = Shipper::find($transportOffer->fk_shipper_id);
         
@@ -41,6 +42,7 @@ class ShipperChatController extends Controller
                 'transportOffer' => $transportOffer,
                 'freightAnnouncement' => $freightAnnouncement,
                 'shipper' => $shipper,
+                'carrier' => $carrier,
                 'chatMessages' => $chatMessages, // Passer la liste des messages à la vue
             ]);
         }
