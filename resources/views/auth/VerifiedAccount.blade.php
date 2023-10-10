@@ -66,7 +66,7 @@
                                                 <div class="text-center">
                                                     <p class="font-sm text-brand-2"> </p>
                                                     <h2 class="mt-10 mb-5 text-brand-1">Compte vérifié avec succès</h2>
-                                                    <p class="font-sm text-muted mb-30">Un administrateur vous contactera</p>
+                                                    <p class="font-sm text-muted mb-30"></p>
                                                 </div>
                                                 <div class="text-muted text-center"><a  href="{{ route('login') }}">Connexion</a></div>
                                                 <div class="img-2"><img src="imgs/page/login-register/img-3.svg" alt="JobBox"></div>
