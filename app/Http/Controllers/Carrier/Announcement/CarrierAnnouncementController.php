@@ -11,6 +11,7 @@ use App\Models\TransportAnnouncement;
 use App\Models\TransportOffers;
 use Illuminate\Support\Facades\DB;
 use Opcodes\LogViewer\Log;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
 
 class CarrierAnnouncementController extends Controller
 {
@@ -183,6 +184,50 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         return view('carrier.contract.index');
 
     }
+
+
+    // Méthode pour ajouter un driver
+   // public function adddriver(Request $request)
+   // {
+   //     $driver = new Driver;
+   //     $driver->licence_id = $request->licence_id;
+   //     $driver->save();
+
+   //     return response()->json(['message' => 'driver ajouté avec succès']);
+   // }
+
+    // Méthode pour récupérer tous les drivers
+   // public function getAlldrivers()
+   // {
+   //     $drivers = driver::all();
+   //     return response()->json($drivers);
+   // }
+
+    // Méthode pour récupérer un driver spécifique
+   // public function getdriver($id_driver)
+   // {
+   //     $driver = driver::find($id_driver);
+  //      return response()->json($driver);
+  //  }
+
+    // Méthode pour mettre à jour les détails d'un driver
+   // public function updatedriver(Request $request, $id_driver)
+   // {
+   //     $driver = driver::find($id_driver);
+   //    $driver->licence_id = $request->licence_id;
+   //     $driver->save();
+
+   //     return response()->json(['message' => 'driver mis à jour avec succès']);
+    //}
+
+    // Méthode pour supprimer un driver
+    //public function deletedriver($id_driver)
+   // {
+    //    $driver = driver::find($id_driver);
+   //    $driver->delete();
+
+     //   return response()->json(['message' => 'driver supprimé avec succès']);
+   // }
 
 
 }

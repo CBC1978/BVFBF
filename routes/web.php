@@ -227,3 +227,21 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 
 
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
+
+
+// Route pour ajouter un conducteur
+Route::post('/conducteurs', [ConducteurController::class, 'addConducteur']);
+
+// Route pour récupérer tous les conducteurs
+Route::get('/conducteurs', [ConducteurController::class, 'getAllConducteurs']);
+
+// Route pour récupérer un conducteur spécifique
+Route::get('/conducteurs/{id_driver}', [ConducteurController::class, 'getConducteur']);
+
+// Route pour mettre à jour un conducteur
+Route::put('/conducteurs/{id_driver}', [ConducteurController::class, 'updateConducteur']);
+
+// Route pour supprimer un conducteur
+Route::delete('/conducteurs/{id_driver}', [ConducteurController::class, 'deleteConducteur']);
+
+
