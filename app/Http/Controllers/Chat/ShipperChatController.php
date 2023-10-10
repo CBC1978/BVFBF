@@ -37,6 +37,11 @@ class ShipperChatController extends Controller
             $chatMessages = Chat::where('fk_annonce_id', $offer_id)
                 ->orderBy('created_at', 'asc')
                 ->get();
+                // Récupérer le nom de l'utilisateur pour chaque message
+                foreach ($chatMessages as $message) {
+                            $user = User::find($message->fk_user_id);
+                            $message->username = $user ? $user->username : 'Utilisateur inconnu';
+                          }
         
             return view('chat.shipper_chat', [
                 'transportOffer' => $transportOffer,
@@ -60,7 +65,7 @@ class ShipperChatController extends Controller
             if ($transportOffer->status_message == 2) {
                 $transportOffer->status_message = 3;
                 $transportOffer->save();
-    }
+            }
         
             // Récupérer le nom de l'entreprise du chargeur associé à l'offre de fret
             $shipper = Shipper::find($transportOffer->fk_shipper_id);
@@ -72,8 +77,16 @@ class ShipperChatController extends Controller
             $chatMessages = Chat::where('fk_annonce_id', $offer_id)
                 ->orderBy('created_at', 'asc')
                 ->get();
+
+                  // Récupérer le nom de l'utilisateur pour chaque message
+                  foreach ($chatMessages as $message) {
+                    $user = User::find($message->fk_user_id);
+                    $message->username = $user ? $user->username : 'Utilisateur inconnu';
+                  }
+
         
-            return view('chat.shipper_chat', [
+        
+            return view('chat.reply_shipper_chat', [
                 'transportOffer' => $transportOffer,
                 'freightAnnouncement' => $freightAnnouncement,
                 'shipper' => $shipper,
@@ -83,7 +96,7 @@ class ShipperChatController extends Controller
         //public function sendMessage($offer_id, Request $request)
         public function sendMessage(Request $request, $offer_id)
     {
-        // Validez les données du formulaire de message ici si nécessaire
+        // Valider les données du formulaire de message ici si nécessaire
         $request->validate([
             'message' => 'required|string',
         ]);
