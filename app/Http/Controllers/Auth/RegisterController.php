@@ -17,7 +17,8 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+
+    public function register( Request $request)
     {
         $request->validate(
             [
@@ -47,12 +48,8 @@ class RegisterController extends Controller
             Mail::to( $user->email)->send(new RegisterEmail($user->first_name,'Valider votre inscription',  $user->code));
             return view('auth.otp');
         }else{
-            echo 'bad';
+            return view('auth.register');
         }
-
-//        $validated = validated($request);
-//        var_dump($request);
-//        return view('auth.register');
     }
     /*
     |--------------------------------------------------------------------------

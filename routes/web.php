@@ -21,11 +21,6 @@ use App\Http\Controllers\shipper\profile\ShipperProfile1Controller;
 use App\Http\Controllers\carrier\parameter\CarrierSettingsController;
 use App\Http\Controllers\admin\parameter\AdminSettingsController;
 
-
-
-
-
-
 use App\Http\Controllers\Shipper\Offers\S_MyOfferController;
 
 use App\Http\Controllers\Carrier\Offers\C_MyOfferController;
@@ -70,6 +65,10 @@ use App\Http\Controllers\Chat\ShipperChatController;
 // Routes spécifiques à l'administrateur ........................................
 
     Route::get('/chat',function () { return view('chat.shipper'); });
+//    Route::get('/email',
+//        [RegisterController::class, 'register']
+//        function () { return view('email.registerEmail'); }
+//    );
 
 
 
