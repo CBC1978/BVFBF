@@ -90,30 +90,40 @@
         <div class="row g-0">
             <div class="col-12 col-lg-12 col-xl-12 col-md-12">
                 <div class="py-2 px-4 border-bottom d-flex d-lg-block d-md-block d-sm-block">
-                    <!-- titre conversation -->
+                    <div class="card-title">
+                        <h5> Itinéraire: {{ $freightAnnouncement->origin.'--'.$freightAnnouncement->destination }}</h5>
+                        <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($freightAnnouncement->limit_date)) }}</span>
+                        <p>Prix de l'offre : {{ $transportOffer->price }} FCFA</p>
+                        {{-- <p>Expéditeur: {{ $shipper->company_name }}</p> --}}
+                    </div>
                 </div>
                 <div class="position-relative">
                     <div class="chat-messages p-4">
                         @foreach($chatMessages as $message)
-                        <div class="chat-message-{{ $message->fk_user_id === session('user_id') ? 'right' : 'left' }} pb-4">
+                        <div class="chat-message-{{ $message->fk_user_id === session('userId') ? 'right' : 'left' }} pb-4">
                             <div>
                                 <div>
                                     <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                                    {{-- <img src="{{ asset('') }}" class="rounded-circle mr-1" alt="{{  }}" width="40" height="40"> --}}
                                     <div class="text-muted small text-nowrap mt-2">{{ $message->created_at }}</div>
                                 </div>
-                                <div class="flex-shrink-1 bg-light rounded py-2 px-3 {{ $message->fk_user_id === session('userId') ? 'mr-3' : 'ml-3' }}">
-                                    {{-- <div class="font-weight-bold mb-1">{{  }}</div> --}}
+                                <div class="font-weight-bold mb-1">
+                                    @if($message->fk_user_id === session('userId'))
+                                        Vous
+                                    @else
+                                        {{ $message->username }}
+                                    @endif
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3">
                                     {{ $message->message }}
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                    @endforeach
                     </div>
                     <div class="flex-grow-0 py-3 px-4 border-top">
                         <form action="{{ route('sendMessage', ['offer_id' => $transportOffer->id]) }}" method="post">
                             @csrf
-                            <input type="text" class="form-control" placeholder="Type your message" name="message">
+                            <input type="text" class="form-control" placeholder="Entrez votre message" name="message">
                             <button type="submit" class="btn btn-primary">Send</button>
                         </form>
                     </div>

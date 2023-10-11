@@ -18,7 +18,7 @@
           <form class="login-register text-start mt-20 pb-30" action="#">
             <div class="form-group">
               <label class="form-label" for="input-1">Prix <span class="required">*</span></label>
-              <input class="form-control" id="input-1" type="text" required="" name="prix" placeholder="votre meilleur offre">
+              <input class="form-control" id="input-1" type="text" required="" name="price" placeholder="votre meilleur offre">
             </div>
 
             <div class="form-group">

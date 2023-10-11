@@ -1,8 +1,8 @@
+
+@extends('layouts.shipper')
 @php
     $userId = session('userId');
 @endphp
-@extends('layouts.shipper')
-
 @section('styles')
 <style>
     .chat {
@@ -99,6 +99,13 @@
                                 <div>
                                     <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
                                     <div class="text-muted small text-nowrap mt-2">{{ $message->created_at }}</div>
+                                </div>
+                                <div class="font-weight-bold mb-1">
+                                    @if($message->fk_user_id === session('userId'))
+                                        Vous
+                                    @else
+                                        {{ $message->username }}
+                                    @endif
                                 </div>
                                 <div class="flex-shrink-1 bg-light rounded py-2 px-3">
                                     {{ $message->message }}

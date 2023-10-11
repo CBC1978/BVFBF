@@ -38,7 +38,7 @@ class ShipperAnnouncementController extends Controller
    public function positOffer (Request $request)
    {
        $request->validate([
-           'prix' => [ 'max:255', 'number'],
+           'price' => [ 'max:255', 'number'],
            'description' => ['string']
        ]);
        $user = User::find($request->idUser);
@@ -93,8 +93,8 @@ class ShipperAnnouncementController extends Controller
                    'description'=>$announce->description,
                    'limit_date'=>$announce->limit_date,
                    'weight'=>$announce->weight,
-                   'volume'=>$announce->volume,
                    'price'=>$announce->price,
+                   'volume'=>$announce->volume,
                    'id'=>$announce->id,
                    'offre'=>0,
                );
