@@ -46,9 +46,7 @@
                         </td>
                         <td>
                             @if($offer->status == 1)
-                                <a
-                                 href="{{ route('c_contract', ['id' => $offer->id]) }}"
-                                 class="btn btn-primary">Contrat</a>
+                            <a href="{{ route('car-registrations') }}" class="btn btn-secondary">Enregistrer une voiture</a>
                             @endif
                         </td>
                         <td>

@@ -87,54 +87,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($registrations as $registration)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="id_car" id="id_car" value="1" class="form-check"/>
+                                        <input type="checkbox" name="id_car" id="id_car" value="{{ $registration->id }}" class="form-check"/>
                                     </td>
                                     <td>
-                                        <input type="readonly" value="1221"  id="id_registration" class="form-control">
+                                        {{ $registration->registration }}
                                     </td>
-                                    <td>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="id_car" id="id_car" value="2" class="form-check"/>
-                                    </td>
-                                    <td>
-                                        <input type="readonly" value="1222"  id="id_registration" class="form-control">
-                                    </td>
-                                    <td>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="id_car" id="id_car" value="3" class="form-check"/>
-                                    </td>
-                                    <td>
-                                        <input type="readonly" value="1223"  id="id_registration" class="form-control">
-                                    </td>
-                                    <td>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </span>
-                                    </td>
-                                </tr>
+                                {{-- @foreach ($registrations as $registration)
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="id_car" id="id_car" value="{{ $registration->id }}" class="form-check"/>
+                                        </td>
+                                        <td>
+                                            <input type="readonly" value="{{ $registration->registration }}" id="id_registration" class="form-control">
+                                        </td> --}}
+
+                                        <td>
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                </svg>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -260,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-        </div>--}}             {{--FIN COMMENTAIRE--}}
+        </div>
 
 
 
@@ -270,6 +249,7 @@
 
 @section('script')
 
+<<<<<<< HEAD:resources/views/carrier/contract/index.blade.php
                     {{--PARTIE SOUS COMMENTAIRE--}}
 {{-- <script>
 
@@ -426,6 +406,8 @@
 
     </script>
 --}}
+=======
+>>>>>>> 0ec5451014a34a8b52432a3d81800c719875a896:resources/views/carrier/contract/contract_carrier.blade.php
 
 
     <script>
