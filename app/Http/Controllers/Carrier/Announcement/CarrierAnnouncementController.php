@@ -3,13 +3,21 @@
 namespace App\Http\Controllers\Carrier\Announcement;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Email\AnnouncementOffer;
+use App\Mail\Email\OfferReceive;
+use App\Mail\Email\OfferSend;
+use App\Mail\Email\ValidatedRegisterEmail;
+use App\Models\Carrier;
+use App\Models\FreightAnnouncement;
 use App\Models\FreightOffer;
+use App\Models\Shipper;
 use App\Models\TransportOffer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\TransportAnnouncement;
 use App\Models\TransportOffers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Opcodes\LogViewer\Log;
 use SebastianBergmann\CodeCoverage\Driver\Driver;
 
@@ -97,13 +105,21 @@ public function offerManagementHandleOffer(Request $request, $offerId)
            'description' => ['required', 'string'],
        ]);
 
+       $carrierName = Carrier::find(session('fk_carrier_id'));
        $data['fk_carrier_id'] = session('fk_carrier_id');
+
        $data['created_by'] = session('userId');
-       //dd($data);
+       $data['name'] = $carrierName->company_name;
        TransportAnnouncement::create($data);
 
+        // Get all Shipper users
+       $shippersUser = User::where([['fk_shipper_id', '!=', '0'],['status', '2']])->get();
+       foreach ($shippersUser as $shipper){
+           Mail::to($shipper->email)->send(new AnnouncementOffer($data));
+       }
        return redirect()->route('carrier.announcements.create')->with('success', 'Annonce ajoutée avec succès.');
    }
+
    public function offer($id)
    {
 
@@ -127,11 +143,18 @@ public function offerManagementHandleOffer(Request $request, $offerId)
 
     public function positOffer(Request $request){
 
-        $request->validate([
-            'price' => [ 'max:255', 'number'],
-            'description' => ['string']
+     $request->validate([
+            'prix' => [ 'max:255', 'number'],
+            'description' => ['string'],
+
         ]);
         $user = User::find($request->idUser);
+
+        $announce = FreightAnnouncement::find(intval($request->announce));
+        $carrierName = Carrier::find(intval($user->fk_carrier_id));
+        $shipperName = Shipper::find($announce->fk_shipper_id);
+        $shipperUsers = User::where([['fk_shipper_id', $announce->fk_shipper_id],['status', '2']])->get();
+        $carrierUsers = User::where([['fk_carrier_id', $user->fk_carrier_id],['status', '2']])->get();
 
         $transportOffer = new TransportOffer();
         $transportOffer->price = floatval($request->price);
@@ -142,9 +165,21 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         $transportOffer->created_by = $user->id;
         $transportOffer->save();
 
+        $data['price'] = $request->price;
+        $data['description'] = $request->description;
+        $data['announce'] = $announce;
+        $data['sender'] = $carrierName->company_name;
+        $data['receiver'] = $shipperName->company_name;
+
+        //Send mail
+        foreach ($shipperUsers as $shipper){
+            Mail::to($shipper->email)->send(new OfferReceive($data));
+        }
+        foreach ($carrierUsers as $carrier){
+            Mail::to($carrier->email)->send(new OfferSend($data));
+        }
 
         return redirect('home')->with('success', "Offre ajouté avec succès");
-
 
     }
 
