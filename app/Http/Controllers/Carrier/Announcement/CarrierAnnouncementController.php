@@ -179,7 +179,7 @@ public function offerManagementHandleOffer(Request $request, $offerId)
             Mail::to($carrier->email)->send(new OfferSend($data));
         }
 
-//        return redirect('home')->with('success', "Offre ajouté avec succès");
+        return redirect('home')->with('success', "Offre ajouté avec succès");
 
     }
 
