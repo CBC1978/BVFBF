@@ -62,7 +62,7 @@
                                         <tr>
                                             <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 40px;" align="left" bgcolor="#ffffff">
                                                 <h1 class="h3 fw-700" style="padding-top: 0; padding-bottom: 0; font-weight: 700 !important; vertical-align: baseline; font-size: 28px; line-height: 33.6px; margin: 0;" align="left">
-                                                    Cher(e) {{ $name }}
+                                                    Offre reçu de {{$data['name']}}
                                                 </h1>
                                                 <table class="s-4 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                     <tbody>
@@ -74,10 +74,15 @@
                                                     </tbody>
                                                 </table>
                                                 <p class="" style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="left">
-                                                    Félicitations ! Vous avez réussi à créer avec succès votre compte sur la Bourse Virtuelle de Fret. Nous sommes enchantés de vous accueillir parmi notre communauté.
-                                                    Votre compte est désormais actif et vous avez accès à toutes les fonctionnalités de notre plateforme.
+                                                    Découvrez l'offre faite sur votre annonce ! <br>
+                                                    Itinéraire: {{ $data['announce']->origin.' - '.$data['announce']->destination}}<br>
+                                                    Description: {{ $data['announce']->description }}
                                                 </p>
-
+                                                <p class="" style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;" align="left">
+                                                    Détails de l'offre <br>
+                                                    Prix: {{ $data['prix']}}<br>
+                                                    Description: {{ $data['description'] }}
+                                                </p>
                                                 <table class="s-4 w-full" role="presentation" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%">
                                                     <tbody>
                                                     <tr>
@@ -91,7 +96,8 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="line-height: 24px; font-size: 16px; border-radius: 6px; font-weight: 700 !important; margin: 0;" align="center" bgcolor="#0d6efd">
-                                                            <a href="#" style="color: #ffffff; font-size: 16px; font-family: Helvetica, Arial, sans-serif; text-decoration: none; border-radius: 6px; line-height: 20px; display: block; font-weight: 700 !important; white-space: nowrap; background-color: #0d6efd; padding: 12px; border: 1px solid #0d6efd;">Connectez-vous ici</a>
+                                                            <p>Pour en savoir plus sur cette offre, visitez la Bourse Virtuelle de Fret</p>
+                                                            <a href="#" style="color: #ffffff; font-size: 16px; font-family: Helvetica, Arial, sans-serif; text-decoration: none; border-radius: 6px; line-height: 20px; display: block; font-weight: 700 !important; white-space: nowrap; background-color: #0d6efd; padding: 12px; border: 1px solid #0d6efd;">Cliquez ici</a>
                                                         </td>
                                                     </tr>
                                                     <tr>
