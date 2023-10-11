@@ -60,7 +60,7 @@
                                                         
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Type de vehicule *</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Type de vehicule <span class="required">*</span></label>
                                                                 <select class="form-control">
                                                                     <option value="1">Remote</option>
                                                                     <option value="1">Office</option>
@@ -75,19 +75,19 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Volume</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Volume<span class="required">*</span></label>
                                                                 <input class="form-control" type="text" placeholder="En metre cube">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Poids</label>
-                                                                <input class="form-control" type="text" placeholder="En kilogramme">
+                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
+                                                                <input class="form-control" type="text" placeholder="En Tonnes">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Prix</label>
+                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span><span>(En FCFA)</span></label>
                                                                 <input class="form-control" type="text" placeholder="">
                                                             </div>
                                                         </div>
@@ -172,6 +172,15 @@
   </footer>
 </div>
 </div></div>
+
+<style>
+    .required {
+     color: red;
+     margin-left: 4px; /* Espacement entre le texte et l'étoile */
+    }
+
+</style>
+
 <script>
     $(document).ready(function() {
         

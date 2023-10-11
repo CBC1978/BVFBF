@@ -19,7 +19,7 @@
         <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post">
              @csrf
             <div class="form-group">
-            <label class="form-label" for="input-1" >Prix <span class="required">*</span></label>
+            <label class="form-label" for="input-1" >Prix <span class="required">*</span><span>(En FCFA)</span></label>
             <input class="form-control" id="input-1" type="text" required="" name="price" placeholder="votre meilleur offre">
           </div>
 

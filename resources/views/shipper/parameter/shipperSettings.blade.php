@@ -125,13 +125,13 @@
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30"> 
                                     <label class="font-sm color-text-mutted mb-10">Last name *</label>
-                                    <input type="text" name="name" id="name" placeholder="Last_name" value="{{ old('name', $user->name) }}">
+                                    <input type="text" name="name" id="name" placeholder="Nom de famille" value="{{ old('name', $user->name) }}">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">first name *</label>
-                                    <input type="text" name="first_name" id="first_name" placeholder="First_name" value="{{old('first_name', $user->first_name)}}">
+                                    <input type="text" name="first_name" id="Prénom" placeholder="First_name" value="{{old('first_name', $user->first_name)}}">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -143,7 +143,7 @@
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">Email *</label>
-                                    <input type="email" name="email" id="email" placeholder="https://alithemes.com" value="{{ old('email', $user->email)}}">
+                                    <input type="email" name="email" id="email" placeholder="yourMail@gmail.com" value="{{ old('email', $user->email)}}">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -155,13 +155,13 @@
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">username</label>
-                                    <input type="text" name="username" id="username" placeholder="User_Name" value="{{old('username', $user->username)}}">
+                                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" value="{{old('username', $user->username)}}">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                   <div class="form-group mb-30">
                                     <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                    <input type="text" name="company_name" id="company_name" placeholder="Company_Name" value="{{old('company_name', $user->shipper->company_name)}}">
+                                    <input type="text" name="company_name" id="company_name" placeholder="nom de l'entreprise" value="{{old('company_name', $user->shipper->company_name)}}">
                                   </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">

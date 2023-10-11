@@ -271,7 +271,7 @@
 @section('script')
 
                     {{--PARTIE SOUS COMMENTAIRE--}}
-{{--<script>
+{{-- <script>
 
             $(document).ready(function() {
                 $("#ModalConducteur form").submit(function(e) {

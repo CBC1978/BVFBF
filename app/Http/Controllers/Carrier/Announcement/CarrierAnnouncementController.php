@@ -184,7 +184,8 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         return view('carrier.contract.index');
 
     }
-
+    
+    
 
     // Méthode pour ajouter un driver
    // public function adddriver(Request $request)

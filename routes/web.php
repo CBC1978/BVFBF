@@ -109,6 +109,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Route::get('/carrier/announcements/create', [CarrierAnnouncementController::class, 'create'])->name('carrier.announcements.create');
 //Route::get('/carrier/announcements/{id}', [CarrierAnnouncementController::class, 'show'])->name('carrier.announcements.show');
 
+
+
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [CarrierAnnouncementController::class, 'displayTransportAnnouncement'])->name('index');
     Route::get('user', [CarrierAnnouncementController::class, 'userConnectedAnnouncement'])->name('user');

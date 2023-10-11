@@ -62,26 +62,25 @@
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
                                                                 <label class="font-sm color-text-mutted mb-10">Nombre de vehicule<l<span class="required">*</span></label>
- <span class="required">*</span></label>
                                                                 <input class="form-control" type="text" placeholder="Nombre de vehicule disponible pour l'offre">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Volume</label>
-                                                                <input class="form-control" type="text" placeholder="En metre cube">
+                                                                <label class="font-sm color-text-mutted mb-10">Volume<span class="required">*</span><span>(En Volume)</span></label>
+                                                                <input class="form-control" type="text" placeholder="le volume">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
-                                                                <input class="form-control" type="text" placeholder="En Tonne(T)">
+                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span><span>(En Tonne)</span></label>
+                                                                <input class="form-control" type="text" placeholder="le poids(T)">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span></label>
-                                                                <input class="form-control" type="text" placeholder="">
+                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span><span>(En FCFA)</span></label>
+                                                                <input class="form-control" type="text" placeholder="le montant de l'offre">
                                                             </div>
                                                         </div>
                                                         {{-- <div class="col-lg-6 col-md-6">
