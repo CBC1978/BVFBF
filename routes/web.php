@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarController;
+
 use App\Http\Controllers\Admin\profile\AdminProfileController1;
 use App\Http\Controllers\shipper\profile\ShipperProfileController1;
 use Illuminate\Support\Facades\Route;
@@ -88,7 +90,7 @@ use App\Http\Controllers\Chat\ShipperChatController;
     Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
     Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
     Route::get('/carrier/offers/offer', [C_OfferController::class, 'index'])->name('c_offer');
-    Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
+   
     // ... Autres routes spécifiques au carrier ...
 //});
 
@@ -229,19 +231,13 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
 
 
-// Route pour ajouter un conducteur
-Route::post('/conducteurs', [ConducteurController::class, 'addConducteur']);
+Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
 
-// Route pour récupérer tous les conducteurs
-Route::get('/conducteurs', [ConducteurController::class, 'getAllConducteurs']);
 
-// Route pour récupérer un conducteur spécifique
-Route::get('/conducteurs/{id_driver}', [ConducteurController::class, 'getConducteur']);
+Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegistrations'])->name('car.registrations');
 
-// Route pour mettre à jour un conducteur
-Route::put('/conducteurs/{id_driver}', [ConducteurController::class, 'updateConducteur']);
 
-// Route pour supprimer un conducteur
-Route::delete('/conducteurs/{id_driver}', [ConducteurController::class, 'deleteConducteur']);
 
+Route::get('/car-registrations', [CarController::class, 'showCarRegistrations'])
+    ->name('car-registrations');
 
