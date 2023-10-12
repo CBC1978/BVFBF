@@ -110,6 +110,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Route::get('/carrier/announcements/create', [CarrierAnnouncementController::class, 'create'])->name('carrier.announcements.create');
 //Route::get('/carrier/announcements/{id}', [CarrierAnnouncementController::class, 'show'])->name('carrier.announcements.show');
 
+
+
 Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(function () {
     Route::get('/', [CarrierAnnouncementController::class, 'displayTransportAnnouncement'])->name('index');
     Route::get('user', [CarrierAnnouncementController::class, 'userConnectedAnnouncement'])->name('user');
@@ -230,8 +232,6 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
 
 
-Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
-
 
 Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegistrations'])->name('car.registrations');
 
@@ -239,4 +239,5 @@ Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegi
 
 Route::get('/car-registrations', [CarController::class, 'showCarRegistrations'])
     ->name('car-registrations');
+    Route::post('/add-car', 'CarController@addCar')->name('add-car');
 
