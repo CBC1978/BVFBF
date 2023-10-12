@@ -67,20 +67,20 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Volume</label>
-                                                                <input class="form-control" type="text" placeholder="En metre cube">
+                                                                <label class="font-sm color-text-mutted mb-10">Volume<span class="required">*</span><span>(En Mètre cube)</span></label>
+                                                                <input class="form-control" type="text" placeholder="Volume de fret">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span></label>
-                                                                <input class="form-control" type="text" placeholder="En kilogramme">
+                                                                <label class="font-sm color-text-mutted mb-10">Poids<span class="required">*</span><span>(En Tonne)</span></label>
+                                                                <input class="form-control" type="text" placeholder="Poids de fret">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
-                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span></label>
-                                                                <input class="form-control" type="text" placeholder="">
+                                                                <label class="font-sm color-text-mutted mb-10">Prix<span class="required">*</span><span>(En FCFA)</span></label>
+                                                                <input class="form-control" type="text" placeholder="votre meilleure offre!!!">
                                                             </div>
                                                         </div>
                                                         {{-- <div class="col-lg-6 col-md-6">

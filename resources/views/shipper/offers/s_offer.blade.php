@@ -54,7 +54,7 @@
                                                                 <p class="font-sm color-text-paragraph mt-15">{{ $offer->description }}</p>
                                                                 <div class="mt-30">
                                                                     <a class="btn btn-grey-small mr-5" href="">{{ $offer->weight }} Tonnes</a>
-                                                                    <a class="btn btn-grey-small mr-5" href="">{{ $offer->volume }} m3</a>
+                                                                    <a class="btn btn-grey-small mr-5" href="">{{ $offer->volume }} M^3</a>
                                                                 </div>
                                                                 <div class="card-2-bottom mt-30">
                                                                     <div class="row">

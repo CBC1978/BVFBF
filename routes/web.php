@@ -232,6 +232,9 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
 
 
+Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
+
+>>>>>>> 0ec5451014a34a8b52432a3d81800c719875a896
 
 Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegistrations'])->name('car.registrations');
 

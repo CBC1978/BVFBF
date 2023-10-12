@@ -293,6 +293,165 @@
 
 @section('script')
 
+<<<<<<< HEAD:resources/views/carrier/contract/index.blade.php
+                    {{--PARTIE SOUS COMMENTAIRE--}}
+{{-- <script>
+
+            $(document).ready(function() {
+                $("#ModalConducteur form").submit(function(e) {
+                    e.preventDefault();
+                    var driverId = $("#driver_id").val(); // Récupère l'ID du conducteur saisi
+                    var driverName = $("#driver_name").val(); // Récupère le nom du conducteur saisi
+                    var driverLicense = $("#licence_id").val(); // Récupère le numéro de permis du conducteur saisi
+
+                    // Mettre à jour la table des conducteurs
+                    $('#driver_table tbody').append(`
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="id_name_driver" id="id_name_driver" value="${driverId}" class="form-check"/>
+                            </td>
+                            <td>
+                                <input type="readonly" value="${driverName}" id="name_driver" class="form-control">
+                            </td>
+                            <td>
+                                <input type="readonly" value="${driverLicense}" id="license_driver" class="form-control">
+                            </td>
+                            <td>
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                    `);
+
+                    // Réinitialiser les champs du formulaire
+                    $("#driver_id").val("");
+                    $("#driver_name").val("");
+                    $("#driver_license").val("");
+                });
+            });
+
+
+    
+
+                $(document).ready(function() {
+                    $("#ModalConducteur form").submit(function(e) {
+                        e.preventDefault();
+                        var driverName = $("#name").val(); // Récupère le nom du conducteur saisi
+                        var driverLicence = $("#licence_id").val(); // Récupère le numero de permis du conducteur
+                        console.log(driverName)
+                        console.log(driverLicence)
+
+                        var newRow = `
+                            <div class="col-md-12">
+                                <div class="form-group input-group mb-3">
+                                    <span class="input-group-text" id="remove_field_driver">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </span>
+                                    <input class="form-control" type="hidden" value="${driverName}" name="name[]">
+                                    <input class="form-control" type="text" value="${driverName}" readonly>
+                                    <input class="form-control" type="hidden" value="${driverLicence}" name="licence_id[]">
+                                    <input class="form-control" type="text" value="${driverLicence}" readonly>
+                                </div>
+                            </div>
+                        `;
+                        $("#wrapper_driver").append(newRow); // Ajoute la nouvelle ligne à l'élément avec l'ID "wrapper_driver"
+                        $('#ModalConducteur').modal('hide'); // Ferme la modal "Modalconducteur"
+                    });
+                    
+                    var wrapper_driver = $("#wrapper_driver"); //Fields wrapper
+                    var z = 1; //initlal text box count
+
+                    $(add_button_driver).click(function(e){ //on add input button click
+                        e.preventDefault();
+                        z++; //text box increment
+                        $(wrapper_driver).append(
+                            `
+                                <div class="col-md-12" >
+                                    <div class="form-group input-group mb-3">
+                                        <span class="input-group-text" id="remove_field_driver">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                            </svg>
+                                        </span>
+                                        <input class="form-control" type="text" id="name[]" name="name[]" placeholder="Nom du conducteur" required>
+                                        <input class="form-control" type="text" id="licence_id[]" name="licence_id[]" placeholder="Permis du conducteur" required>
+
+                                    </div>
+                                </div>
+                                `
+                        ); //add input box
+                    });
+
+                    $(wrapper_driver).on("click","#remove_field_driver", function(e){ //user click on remove text
+                        e.preventDefault(); $(this).parent('div').remove(); z--;
+                    })
+                });
+
+
+                var btn_driver_modal = $("#add_driver_modal");
+                    $(btn_driver_modal).click(function (e){
+                    $("#ModalContrat1").modal('hide');
+                });
+
+                var data_driver = []
+                var btn_save_driver = $("#btn_save_driver");
+
+                $(btn_save_driver).click(function (){
+                    data_driver = [];
+                    var checkedBoxesDriver = document.querySelectorAll('input[name=id_driver]');
+                    var id_name_driver = document.querySelectorAll('input[id=id_name_driver]');
+
+                    for(i = 0; i < checkedBoxesDriver.length; i++){
+                        if(checkedBoxesDriver[i].checked){
+                            data_driver.push({
+                                id: checkedBoxesDriver[i].value,
+                                name: id_name_driver[i].value,
+                            })
+                        }
+                    }
+                    console.log(data_driver);
+                    data_driver.forEach(item => {
+                        $(wrapper_driver).append(
+                            `
+                            <div class="col-md-12" >
+                                <div class="form-group input-group mb-3">
+                                    <span class="input-group-text" id="remove_field_driver">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </span>
+                                    <input class="form-control" type="hidden" value="${item.id}" id="id_name_driver[]" name="id_name_driver[]" >
+                                    <input class="form-control" type="text" value="${item.name}" id="name_driver[]" name="name_driver[]" readonly>
+                                    <input class="form-control" type="text" value="${item.licence_id}" id="licence_id[]" name="licence_id[]" readonly>
+
+                                </div>
+                            </div>
+                            `
+                        );
+                        checkedBoxesDriver.forEach(check=>{
+                            if(check.checked){
+                                check.checked = false;
+                            }
+                        });
+                    });
+                    $("#btn_driver_add").show();
+                    $('#ModalContrat1').modal('hide');
+                });
+
+                $(wrapper_driver).on("click","#remove_field_driver", function(e){
+                    e.preventDefault(); $(this).parent('div').remove();
+                });
+
+    </script>
+--}}
+=======
+>>>>>>> 0ec5451014a34a8b52432a3d81800c719875a896:resources/views/carrier/contract/contract_carrier.blade.php
 
 
     <script>

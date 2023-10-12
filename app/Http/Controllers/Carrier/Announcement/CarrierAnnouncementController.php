@@ -223,7 +223,8 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         return view('carrier.contract.contract_carrier');
 
     }
-
+    
+    
 
 
 }
