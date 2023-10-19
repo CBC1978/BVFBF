@@ -27,9 +27,15 @@ class TransportAnnouncement extends Model
         'created_by',
     ];
 
-    public function carrier()
-{
-    return $this->belongsTo(Carrier::class, 'fk_carrier_id');
-}
+        public function carrier()
+    {
+        return $this->belongsTo(Carrier::class, 'fk_carrier_id');
+    } 
+    
+        public function freightOffers()
+    {
+        return $this->hasMany(FreightOffer::class, 'fk_transport_announcement_id');
+    }
+
 
 }

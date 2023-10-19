@@ -74,10 +74,11 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <div class="paginations">
-                                                <!--  pagination  -->
-                                                <!-- ... -->
-                                            </div>
+
+                                            <!-- Affichage de la pagination -->
+
+                                            {{ $announcements->links('pagination::bootstrap-4') }}
+
                                         </div>
                                     </div>
                                 </div>

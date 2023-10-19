@@ -70,6 +70,11 @@
                         </td>
                     </tr>
                 @endforeach
+
+                <!-- Affichage de la pagination -->
+
+                {{ $offers->links('pagination::bootstrap-4') }}
+
             </tbody>
         </table>
     </div>

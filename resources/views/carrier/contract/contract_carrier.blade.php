@@ -308,7 +308,7 @@
                     }
                 });
                 });
-            });
+
             //car table
             new DataTable('#registration_table', {
                 responsive:true,
@@ -550,7 +550,7 @@
 
             $(wrapper_driver).on("click","#remove_field_driver", function(e){ //user click on remove text
             e.preventDefault(); $(this).parent('div').remove();
-        });
+            });
     });
     </script>
 

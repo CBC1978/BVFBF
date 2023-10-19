@@ -91,18 +91,6 @@
                                                                 <input class="form-control" type="text" placeholder="">
                                                             </div>
                                                         </div>
-                                                        {{-- <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30">
-                                                                <div class="box-upload">
-                                                                    <div class="add-file-upload">
-                                                                        <input class="fileupload" type="file" name="file">
-                                                                    </div><a class="btn btn-default">Ajouter un fichier</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <div class="form-group mb-30 box-file-uploaded d-flex align-items-center"><span>ajouter fichier.pdf</span><a class="btn btn-delete">Delete</a></div>
-                                                        </div>--}}
                                                         <div class="col-lg-12">
                                                             <div class="form-group mt-10">
                                                                 <button class="btn btn-default btn-brand icon-tick">Ajouter nouvelle offre</button>
@@ -122,6 +110,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -151,6 +140,7 @@
       </div>
     </div>
   </div>
+
   <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">

@@ -22,7 +22,15 @@ use App\Models\TransportOffers;
 use App\Models\Car;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+<<<<<<< HEAD
 use PHPUnit\Exception;
+=======
+use Opcodes\LogViewer\Log;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
+
+>>>>>>> a9037bdae684322f339d50da6c7cc166963ef230
 
 class CarrierAnnouncementController extends Controller
 {
@@ -34,7 +42,7 @@ class CarrierAnnouncementController extends Controller
                        carrier.company_name")
                 ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
                 ->orderBy('transport_announcement.id', 'DESC')
-                ->get();
+                ->paginate(10);
 
 
         return view('carrier.announcements.index', ['announcements' => $announcements]);
@@ -46,37 +54,32 @@ class CarrierAnnouncementController extends Controller
 
     //Obtenir les infos
     $user = User::find(session()->get('userId'));
-    $announcesObject = TransportAnnouncement::where('fk_carrier_id',intval($user->fk_carrier_id))
-                                        ->orderBy('created_at', 'DESC')
-                                        ->get();
-    //Recupérer les annonces et les offres émises
-    $announces = [];
-    foreach ($announcesObject as $announce){
-        $item = array(
-            'origin'=>$announce->origin,
-            'destination'=>$announce->destination,
-            'description'=>$announce->description,
-            'limit_date'=>$announce->limit_date,
-            'weight'=>$announce->weight,
-            'volume'=>$announce->volume,
-            'vehicule_type'=>$announce->vehicule_type,
-            'id'=>$announce->id,
-            'offre'=>0,
-        );
-        $offre = FreightOffer::where('fk_transport_announcement_id', $announce->id)
-                                ->get();
-        if (count($offre) > 0){
-            $item['offre'] = count($offre);
-        }
+    $announces = TransportAnnouncement::where('fk_carrier_id', intval($user->fk_carrier_id))
+    ->orderBy('created_at', 'DESC')
+    ->paginate(10);
 
-        array_push($announces, $item);
+       // Traiter les annonces et compter les offres
+       foreach ($announces as $announce) {
+        $announce->offre = $announce->freightOffers->count();
     }
+
+
     return view('carrier.announcements.user', compact('announces'));
+
 }
+<<<<<<< HEAD
     //  Méthode pour  gérer l'acceptation ou le refus d'une offre
     public function offerManagementHandleOffer(Request $request, $offerId)
     {
         $offer = Offer::findOrFail($offerId);
+=======
+
+
+//  Méthode pour  gérer l'acceptation ou le refus d'une offre
+public function offerManagementHandleOffer(Request $request, $offerId)
+{
+    $offer = Offer::findOrFail($offerId);
+>>>>>>> a9037bdae684322f339d50da6c7cc166963ef230
 
         return redirect()->back()->with('message', 'Offre traitée avec succès.');
     }
@@ -137,7 +140,7 @@ class CarrierAnnouncementController extends Controller
         ")
         ->join('shipper', 'freight_offer.fk_shipper_id', '=', 'shipper.id')
         ->where('freight_offer.fk_transport_announcement_id', $id) // Filtre par l'annonce de transport spécifique
-        ->get();
+        ->paginate(10);
        return view('carrier.offers.c_myoffer', compact(['transportAnnouncement', 'freightOffers']));
    }
 
@@ -189,7 +192,12 @@ class CarrierAnnouncementController extends Controller
         $carrierId = session('fk_carrier_id');
 
         // Récupérez toutes les offres de transport liées à ce transporteur
+<<<<<<< HEAD
         $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
+=======
+        $offers = TransportOffer::where('fk_carrier_id', $carrierId)->paginate(10);
+//        dd($offers);
+>>>>>>> a9037bdae684322f339d50da6c7cc166963ef230
         return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }
 
@@ -303,6 +311,10 @@ class CarrierAnnouncementController extends Controller
         return json_encode($car);
 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9037bdae684322f339d50da6c7cc166963ef230
 
     public function addDriver(Request $request)
     {
