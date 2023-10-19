@@ -30,7 +30,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>00</span><span class="font-sm status up">00<span>%</span></span>
+                  <h3>{{ $countAnnouncements }}</span><span class="font-sm status up">0.15<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de d'annonce</p>
@@ -42,7 +42,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3> <span id="count-offres"></span><span class="font-sm status up">00<span>%</span></span>
+                  <h3>{{ $count}}<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de offres</p>
@@ -54,7 +54,7 @@
               <div class="card-image"> <img src="imgs/page/dashboard/computer.svg" alt="jobBox"></div>
               <div class="card-info">
                 <div class="card-title">
-                  <h3>00<span class="font-sm status up">00<span>%</span></span>
+                  <h3>{{$countContractTransport}}<span class="font-sm status up">00<span>%</span></span>
                   </h3>
                 </div>
                 <p class="color-text-paragraph-2">Nombre de contrat</p>
@@ -93,12 +93,16 @@
                               <h3>Annonces de fret récentes</h3>
                           </div>
                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                              <input type="text" id="recherche" placeholder="Recherchez une annonce">
+                          <input type="text" id="recherche" placeholder="Recherchez une annonce">---
                           </div>
+                          <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                       </div>
                   </div>
-              </div>
-              <div class="row">
+                </div>
+
+              <div id="search-results"> </div>
+
+              <div class="row" id="annoncesContainer">
                   @foreach($announcements as $announce)
                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" id="card_annonce">
                           <div class="card-grid-2 hover-up">
@@ -116,7 +120,8 @@
                                   <div class="card-2-bottom mt-30">
                                       <div class="row">
 
-                                          {{-- <div class="col-lg-7 col-7"><span class="card-text-price">{{$announce->price}}.FCFA</span><span class="text-muted"></span></div> --}}                                          <div class="col-lg-5 col-5 text-end">
+                                          {{-- <div class="col-lg-7 col-7"><span class="card-text-price">{{$announce->price}}.FCFA</span><span class="text-muted"></span></div> --}}                                          
+                                          <div class="col-lg-5 col-5 text-end">
                                               <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm{{$announce->id}}">Postuler</div>
                                           </div>
                                       </div>
@@ -124,6 +129,9 @@
                               </div>
                           </div>
                       </div>
+                    @endforeach
+                    <!-- Affichage de la pagination -->
+                      {{ $announcements->links('pagination::bootstrap-4') }}
 
                       <div class="modal fade" id="ModalApplyJobForm{{$announce->id}}" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
@@ -138,8 +146,7 @@
                                       <form class="login-register text-start mt-20 pb-30" action="{{ route('carrier.announcements.postuler') }}"  method="post" id="formPostuler">
                                           @csrf
                                           <div class="form-group">
-                                              <label class="form-label" for="price">Prix<span class="required">*</span><span>(En FCFA)</span></label>
-</label>
+                                              <label class="form-label" for="price">Prix<span class="required">*</span><span>(En FCFA)</span></label></label>
                                               <input class="form-control" type="number" name="price" id="price" placeholder="votre meilleur offre">
                                           </div>
 
@@ -164,13 +171,12 @@
                           </div>
                       </div>
                       <style>
-        .required {
-            color: red;
-            margin-left: 4px; /* Espacement entre le texte et l'étoile */
-        }
+                      .required {
+                        color: red;
+                        margin-left: 4px; /* Espacement entre le texte et l'étoile */
+                      }
 
-    </style>
-                  @endforeach
+                    </style>
             </div>
           </div>
         </div>
@@ -184,16 +190,7 @@
           <div class="box-swiper">
             <div class="swiper-container swiper-group-10 swiper-initialized swiper-horizontal swiper-pointer-events">
               <div class="swiper-wrapper" style="transform: translate3d(-2114px, 0px, 0px); transition-duration: 0ms;" id="swiper-wrapper-f69737219ea2a57d" aria-live="off"><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="1 / 10"> <img src="imgs/page/dashboard/microsoft.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="2 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="3 / 10"> <img src="imgs/page/dashboard/acer.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="4 / 10"> <img src="imgs/page/dashboard/nokia.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="5 / 10"> <img src="imgs/page/dashboard/asus.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="6 / 10"> <img src="imgs/page/dashboard/casio.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="7 / 10"> <img src="imgs/page/dashboard/dell.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="8 / 10"> <img src="imgs/page/dashboard/panasonic.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="9 / 10"> <img src="imgs/page/dashboard/vaio.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="9" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="10 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div>
-                <div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="1 / 10"> <img src="imgs/page/dashboard/microsoft.svg" alt="jobBox"></div>
-                <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="1" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="2 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="2" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="3 / 10"> <img src="imgs/page/dashboard/acer.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="3" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="4 / 10"> <img src="imgs/page/dashboard/nokia.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="4" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="5 / 10"> <img src="imgs/page/dashboard/asus.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="5" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="6 / 10"> <img src="imgs/page/dashboard/casio.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="6" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="7 / 10"> <img src="imgs/page/dashboard/dell.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="7" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="8 / 10"> <img src="imgs/page/dashboard/panasonic.svg" alt="jobBox"></div>
-                <div class="swiper-slide" data-swiper-slide-index="8" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="9 / 10"> <img src="imgs/page/dashboard/vaio.svg" alt="jobBox"></div>
-                <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="9" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="10 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div>
+
               <div class="swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="1 / 10"> <img src="imgs/page/dashboard/microsoft.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="1" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="2 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="3 / 10"> <img src="imgs/page/dashboard/acer.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="4 / 10"> <img src="imgs/page/dashboard/nokia.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="5 / 10"> <img src="imgs/page/dashboard/asus.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="6 / 10"> <img src="imgs/page/dashboard/casio.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="6" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="7 / 10"> <img src="imgs/page/dashboard/dell.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="7" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="8 / 10"> <img src="imgs/page/dashboard/panasonic.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="8" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="9 / 10"> <img src="imgs/page/dashboard/vaio.svg" alt="jobBox"></div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="9" style="width: 85.7px; margin-right: 20px;" role="group" aria-label="10 / 10"> <img src="imgs/page/dashboard/sony.svg" alt="jobBox"></div></div>
             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
           </div>
@@ -225,6 +222,30 @@
 @endsection
 
 @section('script')
+    
+    <script>
+        document.getElementById('refreshButton').addEventListener('click', function() {
+            location.reload();
+        });
+    </script>
+
+
+    <script>
+      function loadAnnonces(page) {
+          $.ajax({
+              url: '/carrier_home', // Mettez à jour avec votre URL appropriée
+              type: 'GET',
+              data: { page: page },
+              success: function(data) {
+                  $('#annonces-container').html(data);
+              },
+              error: function(xhr, status, error) {
+                  console.error(xhr.responseText);
+              }
+          });
+      }
+
+    </script>
 
     <script>
         // Exécute une requête pour récupérer le nombre d'annonces
@@ -243,27 +264,56 @@
     </script>
     
     <script>
-        $(document).ready(function (){
-            setTimeout(function(){
-                $("div.alert").remove();
-            }, 3000 ); //3s
+             
+             $(document).ready(function () {
+          setTimeout(function () {
+              $("div.alert").remove();
+          }, 3000); //3s
 
-        });
-        var searchInput = document.querySelector('input[id^="recherche"]');
-        $(searchInput).keyup(function (){
-            var filter, allAnnonces;
+          var searchInput = document.querySelector('input[id^="recherche"]');
+          $(searchInput).keyup(function () {
+              var filter, allAnnonces;
 
-            filter = searchInput.value.toUpperCase();
-            allAnnonces = document.querySelectorAll('#card_annonce');
-            allAnnonces.forEach( item =>{
-               itemValue = item.innerText;
-                console.log(item);
-               if(itemValue.toUpperCase().indexOf(filter) > -1){
-                   item.style.display = 'flex';
-               }else{
-                   item.style.display = 'none';
-               }
-            });
-        });
+              filter = searchInput.value.toUpperCase();
+              allAnnonces = document.querySelectorAll('#card_annonce');
+              allAnnonces.forEach(item => {
+                  itemValue = item.innerText;
+                  console.log(item);
+                  if (itemValue.toUpperCase().indexOf(filter) > -1) {
+                      item.style.display = 'flex';
+                  } else {
+                      item.style.display = 'none';
+                  }
+              });
+          });
+      });
+
     </script>
+
+    <script>
+
+      $(document).ready(function () {
+          var annoncesContainer = $('#annoncesContainer');
+
+          var searchInput = document.querySelector('input[id^="recherche"]');
+          $(searchInput).keyup(function () {
+              var filter = searchInput.value.toUpperCase();
+
+              // Réinitialiser les résultats de la recherche
+              $('#search-results').empty();
+
+              annoncesContainer.find('.card-block-info').each(function () {
+                  var itemValue = $(this).text().toUpperCase();
+
+                  if (itemValue.indexOf(filter) > -1) {
+                      // Ajouter l'annonce correspondante aux résultats de la recherche
+                      $('#search-results').append($(this).parent().clone());
+                  }
+              });
+          });
+      });
+
+    </script>
+
+
 @endsection

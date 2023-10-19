@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\Mailer\Transport;
 
 class FreightAnnouncement extends Model
 {
@@ -47,6 +48,12 @@ class FreightAnnouncement extends Model
     {
         return $this->belongsTo(Shipper::class, 'fk_shipper_id');
     }
+
+    public function transportOffer()
+    {
+        return $this->hasMany(TransportOffer::class, 'fk_freight_announcement_id');
+    }
+
 
 }
 

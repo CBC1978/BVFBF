@@ -27,7 +27,14 @@
                                 <div class="container">
                                     <div class="panel-white mb-30">
                                         <div class="box-padding">
-                                            <div class="row">
+                            
+                                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                <input type="text" id="recherche" placeholder="Recherchez une annonce">
+                                            </div>
+                                            <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
+
+                                          <div id="search-results"> </div>
+                                            <div class="row" id="annoncesContainer">
                                                 @foreach($announcements as $announce)
                                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                                                         <div class="card-grid-2 hover-up">
@@ -97,9 +104,11 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            </div>
-                                            <div class="paginations">
-                                                <!-- Pagination section -->
+
+                                                <!-- Affichage de la pagination -->
+                                                
+                                            {{ $announcements->links('pagination::bootstrap-4') }}
+
                                             </div>
                                         </div>
                                     </div>
@@ -161,3 +170,59 @@
         });
     </script>
 @endsection
+@section('script')
+
+    <script>
+        document.getElementById('refreshButton').addEventListener('click', function() {
+            location.reload();
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchInput = document.querySelector('input[id^="recherche"]');
+            searchInput.addEventListener('keyup', function() {
+                var filter = searchInput.value.toUpperCase();
+                var allAnnonces = document.querySelectorAll('.card-grid-2');
+
+                allAnnonces.forEach(function(item) {
+                    var itemValue = item.innerText.toUpperCase();
+                    if (itemValue.includes(filter)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            var annoncesContainer = $('#annoncesContainer');
+
+            var searchInput = document.querySelector('input[id^="recherche"]');
+            $(searchInput).keyup(function () {
+                var filter = searchInput.value.toUpperCase();
+
+                // Réinitialiser les résultats de la recherche
+                $('#search-results').empty();
+
+                annoncesContainer.find('.card-block-info').each(function () {
+                    var itemValue = $(this).text().toUpperCase();
+
+                    if (itemValue.indexOf(filter) > -1) {
+                        // Ajouter l'annonce correspondante aux résultats de la recherche
+                        $('#search-results').append($(this).parent().clone());
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
+
+@endsection
+

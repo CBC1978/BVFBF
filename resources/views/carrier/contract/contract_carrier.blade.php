@@ -248,8 +248,6 @@
 @endsection
 
 @section('script')
-
-<<<<<<< HEAD:resources/views/carrier/contract/index.blade.php
                     {{--PARTIE SOUS COMMENTAIRE--}}
 {{-- <script>
 
@@ -406,9 +404,7 @@
 
     </script>
 --}}
-=======
->>>>>>> 0ec5451014a34a8b52432a3d81800c719875a896:resources/views/carrier/contract/contract_carrier.blade.php
-
+=
 
     <script>
         $(document).ready(function() {

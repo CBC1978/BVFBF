@@ -30,10 +30,12 @@
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <input type="text" id="recherche" placeholder="Recherchez une annonce">
                                             </div>
+                                            <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div id="search-results"> </div>
+                                <div class="row" id="annoncesContainer">
                                     @foreach($announces as $announce)
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12" id="card_annonce">
                                             <div class="card-grid-2 hover-up">
@@ -68,6 +70,9 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                 <!-- Affichage de la pagination -->
+                
+                      {{ $announces->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>
@@ -78,23 +83,64 @@
 @endsection
 
 @section('script')
-    <script>
-        var searchInput = document.querySelector('input[id^="recherche"]');
-        $(searchInput).keyup(function (){
-            var filter, allAnnonces;
 
-            filter = searchInput.value.toUpperCase();
-            allAnnonces = document.querySelectorAll('#card_annonce');
-            allAnnonces.forEach( item =>{
-                itemValue = item.innerText;
-                console.log(item);
-                if(itemValue.toUpperCase().indexOf(filter) > -1){
-                    item.style.display = 'flex';
-                }else{
-                    item.style.display = 'none';
-                }
+    <script>
+            document.getElementById('refreshButton').addEventListener('click', function() {
+                location.reload();
             });
-        });
     </script>
 
+
+    <script>
+                
+                $(document).ready(function () {
+            setTimeout(function () {
+                $("div.alert").remove();
+            }, 3000); //3s
+
+            var searchInput = document.querySelector('input[id^="recherche"]');
+            $(searchInput).keyup(function () {
+                var filter, allAnnonces;
+
+                filter = searchInput.value.toUpperCase();
+                allAnnonces = document.querySelectorAll('#card_annonce');
+                allAnnonces.forEach(item => {
+                    itemValue = item.innerText;
+                    console.log(item);
+                    if (itemValue.toUpperCase().indexOf(filter) > -1) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+
+      $(document).ready(function () {
+          var annoncesContainer = $('#annoncesContainer');
+
+          var searchInput = document.querySelector('input[id^="recherche"]');
+          $(searchInput).keyup(function () {
+              var filter = searchInput.value.toUpperCase();
+
+              // Réinitialiser les résultats de la recherche
+              $('#search-results').empty();
+
+              annoncesContainer.find('.card-block-info').each(function () {
+                  var itemValue = $(this).text().toUpperCase();
+
+                  if (itemValue.indexOf(filter) > -1) {
+                      // Ajouter l'annonce correspondante aux résultats de la recherche
+                      $('#search-results').append($(this).parent().clone());
+                  }
+              });
+          });
+      });
+
+    </script>
+    
 @endsection

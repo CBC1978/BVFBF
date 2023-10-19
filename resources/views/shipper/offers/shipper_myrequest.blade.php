@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="requestTable">
                     <thead>
                         <tr>
                             <th scope="col">Numéro</th>
@@ -74,6 +74,11 @@
                         </td>
                             </tr>
                         @endforeach
+                        
+                        <!-- Affichage de la pagination -->
+
+                        {{ $offers->links('pagination::bootstrap-4') }}
+
                     </tbody>
                 </table>
             </div>
@@ -103,3 +108,35 @@
 </footer>
 
 @endsection
+
+@section('script')
+    <script>
+        new DataTable('#requestTable', {
+            responsive:true,
+            "ordering": false,
+            language:{
+                "decimal":        "",
+                "emptyTable":     "Pas de données disponible",
+                "info":           "Affichage _START_ sur _END_ de _TOTAL_ éléments",
+                "infoEmpty":      "Affichage 0 sur 0 de 0 entries",
+                "infoFiltered":   "(filtrage de _MAX_ total éléments)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Afficher _MENU_ éléments",
+                "loadingRecords": "Chargement...",
+                "processing":     "",
+                "search":         "Recherche:",
+                "zeroRecords":    "Pas de correspondance trouvé",
+                "paginate": {
+                    "first":      "Premier",
+                    "last":       "Dernier",
+                    "next":       "Suivant",
+                    "previous":   "Précédent"
+                },
+            }
+        } );
+
+    </script>
+
+@endsection
+

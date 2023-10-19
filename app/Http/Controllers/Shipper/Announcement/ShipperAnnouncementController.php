@@ -31,7 +31,7 @@ class ShipperAnnouncementController extends Controller
             freight_announcement.weight, freight_announcement.volume,freight_announcement.description,freight_announcement.price,shipper.company_name")
            ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
            ->orderBy('freight_announcement.id', 'DESC')
-           ->get();
+           ->paginate(10);
        return view('shipper.announcements.index', ['announcements' => $announcements]);
    }
 
@@ -82,30 +82,14 @@ class ShipperAnnouncementController extends Controller
            public function userConnectedAnnouncement()
        {
            $user = User::find(session()->get('userId'));
-           $announcesObject = FreightAnnouncement::where('fk_shipper_id',intval($user->fk_shipper_id))
+           $announces = FreightAnnouncement::where('fk_shipper_id',intval($user->fk_shipper_id))
                ->orderBy('created_at', 'DESC')
-               ->get();
-           $announces = [];
-           foreach ($announcesObject as $announce){
-               $item = array(
-                   'origin'=>$announce->origin,
-                   'destination'=>$announce->destination,
-                   'description'=>$announce->description,
-                   'limit_date'=>$announce->limit_date,
-                   'weight'=>$announce->weight,
-                   'price'=>$announce->price,
-                   'volume'=>$announce->volume,
-                   'id'=>$announce->id,
-                   'offre'=>0,
-               );
-               $offre = TransportOffer::where('fk_freight_announcement_id', $announce->id)
-                   ->get();
-               if (count($offre) > 0){
-                   $item['offre'] = count($offre);
-               }
+               ->paginate(10);
+          // Traiter les annonces et compter les offres
+       foreach ($announces as $announce) {
+        $announce->offre = $announce->transportOffer->count();
+    }
 
-               array_push($announces, $item);
-           }
            return view('shipper.announcements.user', compact('announces'));
        }
 
@@ -186,7 +170,7 @@ class ShipperAnnouncementController extends Controller
     $shipperId = session('fk_shipper_id');
 
     // Récupérez toutes les offres de chargeur liées à ce chargeur
-   $offers =FreightOffer::where('fk_shipper_id', $shipperId)->get();
+   $offers =FreightOffer::where('fk_shipper_id', $shipperId)->paginate(10);
    return view('shipper.offers.shipper_myrequest', ['offers' => $offers]);
    }
 
