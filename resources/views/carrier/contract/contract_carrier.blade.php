@@ -82,7 +82,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>registration</th>
+                                    <th>IMMATRICULATION</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -93,16 +93,9 @@
                                         <input type="checkbox" name="id_car" id="id_car" value="{{ $registration->id }}" class="form-check"/>
                                     </td>
                                     <td>
-                                        {{ $registration->registration }}
+                                        <input type="readonly" value="{{ $registration->registration }}" id="id_registration" class="form-control">
                                     </td>
-                                {{-- @foreach ($registrations as $registration)
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="id_car" id="id_car" value="{{ $registration->id }}" class="form-check"/>
-                                        </td>
-                                        <td>
-                                            <input type="readonly" value="{{ $registration->registration }}" id="id_registration" class="form-control">
-                                        </td> --}}
+                               
 
                                         <td>
                                             <span>
@@ -139,12 +132,13 @@
                 <div class="modal-content apply-job-form">
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="modal-body pl-30 pr-30 pt-50">
-                        <form action="">
+                        <form action="{{ route('add-car') }}" method="post"> 
+                            @csrf 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">registration<span class="required" >*</span></label>
-                                        <input class="form-control" type="text" id="registration" name="registration" placeholder="BF11GH0000" required>
+                                        <label class="font-sm color-text-muted mb-10">Nouvel enregistrement <span class="required">*</span></label>
+                                        <input class="form-control" type="text" name="registration" placeholder="BF11GH0000" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -157,63 +151,8 @@
 
                                       {{--PARTIE SOUS COMMENTAIRE--}}
 
-       {{--{{-- Search drivers --}}
-        <div class="modal fade" id="ModalContrat1" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content apply-job-form">
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="modal-body pl-30 pr-30 pt-50">
-                        <div class="text-center mb-10">
-                            <button id="add_driver_modal" class="btn font-sm text-brand-2" data-bs-toggle="modal" data-bs-target="#ModalConducteur">Ajouter</button>
-                        </div>
-                        <table class="table table-bordered table-responsive" id="driver_table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="id_driver" id="id_driver" value="1" class="form-check"/>
-                                    </td>
-                                    <td>
-                                        <input type="readonly" value="Doe"  id="id_last_name" class="form-control">
-                                    </td>
-                                    <td>
-                                        <input type="readonly" value="John"  id="id_first_name" class="form-control">
-                                    </td>
-                                    <td>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <!-- Ajoutez d'autres lignes de conducteurs de la même manière -->
-                            </tbody>
-                        </table>
-
-                        <button class="btn btn-primary" id="btn_save_driver">
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-                                    <path d="M11 2H9v3h2V2Z"/>
-                                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0ZM1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5Zm3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4v4.5ZM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V15Z"/>
-                                </svg>
-                            </span>
-                            Enregistrer
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    
+      
 
         {{--Add CONDUCTEUR--}}
         <div class="modal fade" id="ModalConducteur" tabindex="-1" aria-hidden="true">
@@ -239,6 +178,111 @@
                         </div>
                     </div>
                 </div>
+        </div>
+
+        {{--{{-- Search drivers --}}
+        <div class="modal fade" id="ModalContrat1" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content apply-job-form">
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body pl-30 pr-30 pt-50">
+                        <div class="text-center mb-10" >
+                            <button id="add_car_modal" class=" btn font-sm text-brand-2" data-bs-toggle="modal" data-bs-target="#ModalCar">Ajouter</button>
+                        </div>
+                        <table class="table table-bordered table-responsive" id="registration_table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>PERMIS DE CONDUIRE</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="id_car" id="id_car" value="1" class="form-check"/>
+                                    </td>
+                                    <td>
+                                        <input type="readonly" value="2009FDBGTFG875"  id="id_registration" class="form-control">
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            </svg>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="id_car" id="id_car" value="2" class="form-check"/>
+                                    </td>
+                                    <td>
+                                        <input type="readonly" value="2015FDBGT59RT"  id="id_registration" class="form-control">
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            </svg>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="id_car" id="id_car" value="3" class="form-check"/>
+                                    </td>
+                                    <td>
+                                        <input type="readonly" value="20109B7GDT"  id="id_registration" class="form-control">
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            </svg>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="btn btn-primary" id="btn_save_car">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                                  <path d="M11 2H9v3h2V2Z"/>
+                                  <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0ZM1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5Zm3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4v4.5ZM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V15Z"/>
+                                </svg>
+                            </span>
+                            Enregistrer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--Add car--}}
+        <div class="modal fade" id="ModalCar" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content apply-job-form">
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body pl-30 pr-30 pt-50">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">registration<span class="required" >*</span></label>
+                                        <input class="form-control" type="text" id="registration" name="registration" placeholder="BF11GH0000" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
