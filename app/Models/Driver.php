@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Driver extends Model
 {
-    protected $table = 'driver'; 
+    protected $table = 'driver';
 
     protected $fillable = [
-        'name',
-        'license_id',
+        'first_name',
+        'last_name',
+        'licence',
         'date_issue',
         'place_issue',
-        'fk_carrier_id'
+        'fk_carrier_id',
+        'created_by',
     ];
 }

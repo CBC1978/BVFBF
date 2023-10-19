@@ -7,17 +7,17 @@
             <h3 class="mb-35">Ajouter une offre</h3>
             @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-              
+
                 <h5>  {{ session('success') }}</h5>
                     <span aria-hidden="true">&times;</span>
-              
+
             </div>
             @endif
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
                 <ul>
-                    <li> <a class="icon-home" href="index.html">OFFRE</a></li>
+                    <li> <a class="icon-home" href="#">OFFRE</a></li>
                     <li><span>Ajoute d'offre</span></li>
                 </ul>
             </div>
@@ -57,7 +57,7 @@
                                                                 <textarea class="form-control" name="message" rows="8"> </textarea>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30">
                                                                 <label class="font-sm color-text-mutted mb-10">Type de vehicule <span class="required">*</span></label>
@@ -99,7 +99,7 @@
                                                                     </div><a class="btn btn-default">Ajouter un fichier</a>
                                                                 </div>
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group mb-30 box-file-uploaded d-flex align-items-center"><span>ajouter fichier.pdf</span><a class="btn btn-delete">Delete</a></div>
                                                         </div>--}}
@@ -129,7 +129,7 @@
 
   <div class="mt-10">
     <div class="section-box">
-      <div class="container"> 
+      <div class="container">
         <div class="panel-white pt-30 pb-30 pl-15 pr-15">
           <div class="box-swiper">
             <div class="swiper-container swiper-group-10 swiper-initialized swiper-horizontal swiper-pointer-events">
@@ -183,7 +183,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         $('.alert').delay(2000).fadeOut(400, function() {
             $(this).alert('close');
         });

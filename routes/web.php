@@ -89,7 +89,7 @@ use App\Http\Controllers\Chat\ShipperChatController;
     Route::get('/carrier/offers/myoffer', [C_MyOfferController::class, 'index'])->name('c_myoffer');
     Route::get('/carrier/offers/offerdetail', [C_OfferDetailController::class, 'index'])->name('c_offerdetail');
     Route::get('/carrier/offers/offer', [C_OfferController::class, 'index'])->name('c_offer');
-   
+
     // ... Autres routes spécifiques au carrier ...
 //});
 
@@ -117,17 +117,17 @@ Route::prefix('carrier/announcements')->name('carrier.announcements.')->group(fu
     Route::get('user', [CarrierAnnouncementController::class, 'userConnectedAnnouncement'])->name('user');
     Route::get('create', [CarrierAnnouncementController::class, 'displayAnnouncementForm'])->name('create');
     Route::post('store', [CarrierAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
-
-   // Route::post('offer.manage/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
+    Route::post('offer.manage/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
    //Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
 
-   Route::post('manage-offer/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
+//   Route::post('manage-offer/{id}', [CarrierAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
     Route::get('myoffer/{id}', [CarrierAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');;
     Route::get('myrequest', [CarrierAnnouncementController::class, 'myrequest'])->name('carrier_myrequest');
     Route::post('postuler', [CarrierAnnouncementController::class, 'positOffer'])->name('postuler');
     Route::get('{id}', [CarrierAnnouncementController::class, 'show'])->name('show');
+    Route::get('contract/home', [CarrierAnnouncementController::class, 'contractHome'])->name('contract');
 
 });
 //Route::post('manage-offer/{id}', 'CarrierAnnouncementController@manageOffer')->name('offer.manage');
@@ -143,7 +143,7 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::post('manage-offer/{id}', [ShipperAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
 
 
-    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
+//    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');
     Route::post('store', [ShipperAnnouncementController::class, 'handleSubmittedAnnouncement'])->name('store');
 
 
@@ -233,8 +233,9 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 
 
 Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
-
-
+Route::post('/carrier/car/add', [CarrierAnnouncementController::class, 'addCar'])->name('add-car');
+Route::post('/carrier/driver/add', [CarrierAnnouncementController::class, 'addDriver'])->name('add-driver');
+Route::post('/carrier/contract/info', [CarrierAnnouncementController::class, 'contractDetails'])->name('add-contract-details');
 
 Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegistrations'])->name('car.registrations');
 
@@ -242,5 +243,5 @@ Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegi
 
 Route::get('/car-registrations', [CarController::class, 'showCarRegistrations'])
     ->name('car-registrations');
-    Route::post('/add-car', 'CarController@addCar')->name('add-car');
+//    Route::post('/add-car', 'CarController@addCar')->name('add-car');
 
