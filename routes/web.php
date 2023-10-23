@@ -231,17 +231,14 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
 
-<<<<<<< HEAD
 Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
 
-=======
 
 Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
 Route::post('/carrier/car/add', [CarrierAnnouncementController::class, 'addCar'])->name('add-car');
 Route::post('/carrier/driver/add', [CarrierAnnouncementController::class, 'addDriver'])->name('add-driver');
 Route::post('/carrier/contract/info', [CarrierAnnouncementController::class, 'contractDetails'])->name('add-contract-details');
 
->>>>>>> 97db25d85c742575a0571efa3aab62d4fcd8d743
 Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegistrations'])->name('car.registrations');
 
 
