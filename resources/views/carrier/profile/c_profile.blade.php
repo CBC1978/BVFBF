@@ -7,11 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>carrier-profil</title>
-    <style>
-        body {
-            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-        }
-    </style>
 
 </head>
 <body>
