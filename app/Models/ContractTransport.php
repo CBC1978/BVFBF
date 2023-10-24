@@ -28,11 +28,10 @@ class ContractTransport extends Model
      * @var array
      */
     protected $fillable = [
-        'agreement_date',
         'created_by',
         'fk_freight_offert_id',
         'fk_transport_offer_id',
-        
+
 
     ];
 

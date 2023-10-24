@@ -47,9 +47,9 @@
                         <td>
                             @if($offer->status == 1)
                             <a
-                            href="{{ route('car-registrations') }}"
+                            href="{{ route('c_contract', ['id'=>$offer->id]) }}"
                             class="btn btn-primary">Contrat</a>
-                            
+
                             @endif
                         </td>
                         <td>
@@ -125,6 +125,13 @@
             }
         } );
 
+        $(document).ready(function (){
+            var btn_create_contract = $('#btn_create_contract');
+            $(btn_create_contract).click( function (){
+                alert('test');
+                console.log('test')
+            })
+        });
     </script>
 
 @endsection

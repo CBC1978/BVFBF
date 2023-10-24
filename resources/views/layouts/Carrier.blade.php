@@ -27,18 +27,17 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-{{--    <script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>--}}
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/carrier/contract.js') }}"></script>
 
-{{--    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>--}}
-{{--    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>--}}
     @yield('styles')
 </head>
 <body>
@@ -66,5 +65,6 @@
 <script src="{{asset('js/plugins/charts/Animated.js')}}"></script>
 <script src="{{asset('js/plugins/armcharts5-script.js')}}"></script>
 <script src="{{asset('js/main.js?v=4.1')}}"></script>
+<script src="asset('js/carrier/contract.js')"></script>
 @yield('script')
 </html>

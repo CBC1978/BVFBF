@@ -7,6 +7,7 @@ use App\Mail\Email\AnnouncementOffer;
 use App\Mail\Email\OfferReceive;
 use App\Mail\Email\OfferSend;
 use App\Models\Carrier;
+use App\Models\ContractTransport;
 use App\Models\FreightOffer;
 use App\Models\Shipper;
 use App\Models\TransportAnnouncement;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Support\Facades\Mail;
+use mysql_xdevapi\Exception;
 use Opcodes\LogViewer\Log;
 
 class ShipperAnnouncementController extends Controller
@@ -37,17 +39,21 @@ class ShipperAnnouncementController extends Controller
 
    public function positOffer (Request $request)
    {
+
        $request->validate([
+
            'price' => [ 'max:2555', 'numeric'],
+
+           'price' => [ 'max:255'],
            'description' => ['string']
        ]);
-       $user = User::find($request->idUser);
+       $user = User::find(intval(session('userId')));
 
        $announce = TransportAnnouncement::find(intval($request->announce));
-       $carrierName = Carrier::find(intval($user->fk_carrier_id));
-       $shipperName = Shipper::find($announce->fk_shipper_id);
-       $shipperUsers = User::where([['fk_shipper_id', $announce->fk_shipper_id],['status', '2']])->get();
-       $carrierUsers = User::where([['fk_carrier_id', $user->fk_carrier_id],['status', '2']])->get();
+       $carrierName = Carrier::find(intval($announce->fk_carrier_id));
+       $shipperName = Shipper::find($user->fk_shipper_id);
+       $shipperUsers = User::where([['fk_shipper_id', $user->fk_shipper_id ],['status', '2']])->get();
+       $carrierUsers = User::where([['fk_carrier_id',$announce->fk_carrier_id],['status', '2']])->get();
 
        $freightOffer = new FreightOffer();
        $freightOffer->price = floatval($request->price);
@@ -65,7 +71,6 @@ class ShipperAnnouncementController extends Controller
        $data['receiver'] = $carrierName->company_name;
        $data['sender'] = $shipperName->company_name;
 
-
        //Send mail
        foreach ($shipperUsers as $shipper){
            Mail::to($shipper->email)->send(new OfferSend($data));
@@ -73,13 +78,12 @@ class ShipperAnnouncementController extends Controller
        foreach ($carrierUsers as $carrier){
            Mail::to($carrier->email)->send(new OfferReceive($data));
        }
-
        return redirect('home')->with('success', "Offre ajouté avec succès");
 
    }
 
-           // Afficher les annonces de l'utilisateur
-           public function userConnectedAnnouncement()
+       // Afficher les annonces de l'utilisateur
+       public function userConnectedAnnouncement()
        {
            $user = User::find(session()->get('userId'));
            $announces = FreightAnnouncement::where('fk_shipper_id',intval($user->fk_shipper_id))
@@ -183,6 +187,12 @@ class ShipperAnnouncementController extends Controller
 
        if ($action === 'accept') {
 
+           $contract = new ContractTransport();
+           $contract->created_by = session("userId");
+           $contract->fk_freight_offert_id = 0;
+           $contract->fk_transport_offer_id = $request->input('offer');
+
+           $contract->save();
            $transportOffer->status = 1;
        } elseif ($action === 'refuse') {
 

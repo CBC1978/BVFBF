@@ -53,24 +53,25 @@
                             </div>
                               <form action="{{ route('shipper.announcements.offer.manage', ['id' => $transportOffer->id]) }}" method="POST">
                                 @csrf
-                              
+
                                 <input type="hidden" name="action" value="accept">
+                                  <input type="hidden" name="offer" value="{{ $transportOffer->id }}">
                                 <button type="submit" class="btn btn-tag btn-success">Accepter</button>
                             </form>
 
                             <form action="{{ route('shipper.announcements.offer.manage', ['id' => $transportOffer->id]) }}" method="POST">
                                 @csrf
-                                
+
                                 <input type="hidden" name="action" value="refuse">
                                 <button type="submit" class="btn btn-tag btn-danger">Refuser</button>
                             </form>
 
                             <div class="card-tags"> <a href="{{ route('shipper-chat', ['offer_id' => $transportOffer->id]) }}" class="btn btn-tag btn-info">Echanger</a> </div>
-                            
+
                             <div class="card-price"><strong>{{$transportOffer->price}} FCFA</strong><span class="hour"></span></div>
                         </div>
                     </div>
-        
+
                     @endforeach
             </div>
             <div class="paginations">
@@ -110,7 +111,7 @@
 </div></div>
   <script>
       $(document).ready(function() {
-          
+
           $('.alert').delay(2000).fadeOut(400, function() {
               $(this).alert('close');
           });
