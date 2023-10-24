@@ -95,7 +95,6 @@
                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                           <input type="text" id="recherche" placeholder="Recherchez une annonce">---
                           </div>
-                          <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                       </div>
                   </div>
                 </div>
@@ -130,8 +129,6 @@
                           </div>
                       </div>
                     @endforeach
-                    <!-- Affichage de la pagination -->
-                      {{ $announcements->links('pagination::bootstrap-4') }}
 
                       <div class="modal fade" id="ModalApplyJobForm{{$announce->id}}" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
@@ -223,11 +220,6 @@
 
 @section('script')
     
-    <script>
-        document.getElementById('refreshButton').addEventListener('click', function() {
-            location.reload();
-        });
-    </script>
 
 
     <script>
@@ -246,23 +238,6 @@
       }
 
     </script>
-
-    <script>
-        // Exécute une requête pour récupérer le nombre d'annonces
-        fetch('/count-annonces')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('count-annonces').innerText = data.count;
-            });
-
-        // Exécute une requête pour récupérer le nombre d'offres
-        fetch('/count-offres')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('count-offres').innerText = data.count;
-            });
-    </script>
-    
     <script>
              
              $(document).ready(function () {
@@ -289,8 +264,7 @@
       });
 
     </script>
-
-    <script>
+<!-- <script>
 
       $(document).ready(function () {
           var annoncesContainer = $('#annoncesContainer');
@@ -313,7 +287,22 @@
           });
       });
 
-    </script>
+    </script>   
+  <script>
+        // Exécute une requête pour récupérer le nombre d'annonces
+        fetch('/count-annonces')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('count-annonces').innerText = data.count;
+            });
 
+        // Exécute une requête pour récupérer le nombre d'offres
+        fetch('/count-offres')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('count-offres').innerText = data.count;
+            });
+    </script>
+  -->
 
 @endsection

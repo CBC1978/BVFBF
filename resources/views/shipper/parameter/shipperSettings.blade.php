@@ -219,7 +219,7 @@
                               </div>
                               <div class="col-lg-12"> 
                                 <div class="form-group mt-10">
-                                  <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
+                                  <button type="submit" class="btn btn-default btn-brand icon-tick">Save </button>
                                 </div>
                               </div>
                             </div>
@@ -265,7 +265,7 @@
                       </div>
                       <div class="col-lg-12"> 
                         <div class="form-group mt-0">
-                          <button class="btn btn-default btn-brand icon-tick">Save Change</button>
+                          <button class="btn btn-default btn-brand icon-tick">Save </button>
                         </div>
                       </div>
                     </div>

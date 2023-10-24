@@ -38,7 +38,7 @@ class CarrierAnnouncementController extends Controller
                        carrier.company_name")
                 ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
                 ->orderBy('transport_announcement.id', 'DESC')
-                ->paginate(10);
+                ->get();
 
 
         return view('carrier.announcements.index', ['announcements' => $announcements]);
@@ -52,7 +52,7 @@ class CarrierAnnouncementController extends Controller
     $user = User::find(session()->get('userId'));
     $announces = TransportAnnouncement::where('fk_carrier_id', intval($user->fk_carrier_id))
     ->orderBy('created_at', 'DESC')
-    ->paginate(10);
+    ->get();
 
        // Traiter les annonces et compter les offres
        foreach ($announces as $announce) {
@@ -131,7 +131,7 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         ")
         ->join('shipper', 'freight_offer.fk_shipper_id', '=', 'shipper.id')
         ->where('freight_offer.fk_transport_announcement_id', $id) // Filtre par l'annonce de transport spécifique
-        ->paginate(10);
+        ->get();
        return view('carrier.offers.c_myoffer', compact(['transportAnnouncement', 'freightOffers']));
    }
 
@@ -183,7 +183,7 @@ public function offerManagementHandleOffer(Request $request, $offerId)
         $carrierId = session('fk_carrier_id');
 
         // Récupérez toutes les offres de transport liées à ce transporteur
-        $offers = TransportOffer::where('fk_carrier_id', $carrierId)->paginate(10);
+        $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
 //        dd($offers);
         return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }

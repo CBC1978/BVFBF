@@ -31,14 +31,14 @@ class ShipperAnnouncementController extends Controller
             freight_announcement.weight, freight_announcement.volume,freight_announcement.description,freight_announcement.price,shipper.company_name")
            ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
            ->orderBy('freight_announcement.id', 'DESC')
-           ->paginate(10);
+           ->get();
        return view('shipper.announcements.index', ['announcements' => $announcements]);
    }
 
    public function positOffer (Request $request)
    {
        $request->validate([
-           'price' => [ 'max:255', 'number'],
+           'price' => [ 'max:2555', 'numeric'],
            'description' => ['string']
        ]);
        $user = User::find($request->idUser);
@@ -84,7 +84,7 @@ class ShipperAnnouncementController extends Controller
            $user = User::find(session()->get('userId'));
            $announces = FreightAnnouncement::where('fk_shipper_id',intval($user->fk_shipper_id))
                ->orderBy('created_at', 'DESC')
-               ->paginate(10);
+               ->get();
           // Traiter les annonces et compter les offres
        foreach ($announces as $announce) {
         $announce->offre = $announce->transportOffer->count();
@@ -170,7 +170,7 @@ class ShipperAnnouncementController extends Controller
     $shipperId = session('fk_shipper_id');
 
     // Récupérez toutes les offres de chargeur liées à ce chargeur
-   $offers =FreightOffer::where('fk_shipper_id', $shipperId)->paginate(10);
+   $offers =FreightOffer::where('fk_shipper_id', $shipperId)->get();
    return view('shipper.offers.shipper_myrequest', ['offers' => $offers]);
    }
 

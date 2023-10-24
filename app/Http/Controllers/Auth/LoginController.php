@@ -44,38 +44,45 @@ class LoginController extends Controller
             'email' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
         ]);
+       
         $userId = User::where(['email'=>$request->email])->pluck('id')->first();
         $user = User::find($userId);
-        if($user){
-            if (Hash::check($request->password, $user->password)){
-                $request->session()->put('userId', $userId);
-                $request->session()->put('userId', $user->id);
-                $request->session()->put('username', $user->username);
-                $request->session()->put('role', $user->role);
-                $request->session()->put('status', $user->status);
-                $request->session()->put('fk_carrier_id', $user->fk_carrier_id);
-                $request->session()->put('fk_shipper_id', $user->fk_shipper_id);
-                
-                // Récupérer le nom de l'entreprise à partir de la table 'carrier' ou 'shipper'
-                if ($user->fk_carrier_id) {
-                    $carrier = Carrier::find($user->fk_carrier_id);
-                    if ($carrier) {
-                        $request->session()->put('company_name', $carrier->company_name);
-                    }
-                } elseif ($user->fk_shipper_id) {
-                    $shipper = Shipper::find($user->fk_shipper_id);
-                    if ($shipper) {
-                        $request->session()->put('company_name', $shipper->company_name);
-                    }
-                }
-                
-                return redirect('home');
-            } else {
-                return back()->with('fail', "Les mots de passe ne correspondent pas ");
-            }
+        if ($user->status=0) {
+            // renvoyer vers une verification
+            return redirect()->route('otpLogin');
         } else {
-            return back()->with('fail', "L'email n'existe pas ");
+            if($user){
+                if (Hash::check($request->password, $user->password)){
+                    $request->session()->put('userId', $userId);
+                    $request->session()->put('userId', $user->id);
+                    $request->session()->put('username', $user->username);
+                    $request->session()->put('role', $user->role);
+                    $request->session()->put('status', $user->status);
+                    $request->session()->put('fk_carrier_id', $user->fk_carrier_id);
+                    $request->session()->put('fk_shipper_id', $user->fk_shipper_id);
+                    
+                    // Récupérer le nom de l'entreprise à partir de la table 'carrier' ou 'shipper'
+                    if ($user->fk_carrier_id) {
+                        $carrier = Carrier::find($user->fk_carrier_id);
+                        if ($carrier) {
+                            $request->session()->put('company_name', $carrier->company_name);
+                        }
+                    } elseif ($user->fk_shipper_id) {
+                        $shipper = Shipper::find($user->fk_shipper_id);
+                        if ($shipper) {
+                            $request->session()->put('company_name', $shipper->company_name);
+                        }
+                    }
+                    
+                    return redirect('home');
+                } else {
+                    return back()->with('fail', "Les mots de passe ne correspondent pas ");
+                }
+            } else {
+                return back()->with('fail', "L'email n'existe pas ");
+            }
         }
+        
     }
     
     

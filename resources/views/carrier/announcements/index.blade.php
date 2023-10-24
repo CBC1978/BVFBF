@@ -31,8 +31,6 @@
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <input type="text" id="recherche" placeholder="Recherchez une annonce">
                                             </div>
-                                            <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
-
                                           <div id="search-results"> </div>
                                             <div class="row" id="annoncesContainer">
                                                 @foreach($announcements as $announce)
@@ -105,10 +103,6 @@
                                                     </div>
                                                 @endforeach
 
-                                                <!-- Affichage de la pagination -->
-                                                
-                                            {{ $announcements->links('pagination::bootstrap-4') }}
-
                                             </div>
                                         </div>
                                     </div>
@@ -172,32 +166,36 @@
 @endsection
 @section('script')
 
-    <script>
-        document.getElementById('refreshButton').addEventListener('click', function() {
-            location.reload();
-        });
+
+
+<script>
+             
+             $(document).ready(function () {
+          setTimeout(function () {
+              $("div.alert").remove();
+          }, 3000); //3s
+
+          var searchInput = document.querySelector('input[id^="recherche"]');
+          $(searchInput).keyup(function () {
+              var filter, allAnnonces;
+
+              filter = searchInput.value.toUpperCase();
+              allAnnonces = document.querySelectorAll('#card_annonce');
+              allAnnonces.forEach(item => {
+                  itemValue = item.innerText;
+                  console.log(item);
+                  if (itemValue.toUpperCase().indexOf(filter) > -1) {
+                      item.style.display = 'flex';
+                  } else {
+                      item.style.display = 'none';
+                  }
+              });
+          });
+      });
+
     </script>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var searchInput = document.querySelector('input[id^="recherche"]');
-            searchInput.addEventListener('keyup', function() {
-                var filter = searchInput.value.toUpperCase();
-                var allAnnonces = document.querySelectorAll('.card-grid-2');
-
-                allAnnonces.forEach(function(item) {
-                    var itemValue = item.innerText.toUpperCase();
-                    if (itemValue.includes(filter)) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
+    <!--script>
 
         $(document).ready(function () {
             var annoncesContainer = $('#annoncesContainer');
@@ -220,7 +218,7 @@
             });
         });
 
-    </script>
+    </script-->
 
 
 

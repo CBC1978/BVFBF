@@ -31,7 +31,6 @@
                                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                             <input type="text" id="recherche" placeholder="Recherchez une annonce">
                                         </div>
-                                        <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +99,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                                <!-- Affichage de la pagination -->
-                                {{ $announcements->links('pagination::bootstrap-4') }}
-                                
                             </div>
                         </div>
                     </div>
@@ -149,7 +144,7 @@
         });
     </script>
 
-    <script>
+    <!--script>
         $(document).ready(function () {
             var annoncesContainer = $('#annoncesContainer');
 
@@ -173,11 +168,6 @@
 
     </script>
 
-    <script>
-        document.getElementById('refreshButton').addEventListener('click', function() {
-            location.reload();
-        });
-    </script>
 
     <script>
         var searchInput = document.querySelector('input[id^="recherche"]');
@@ -196,6 +186,6 @@
                 }
             });
         });
-    </script>
+    </script  -->
 
 @endsection

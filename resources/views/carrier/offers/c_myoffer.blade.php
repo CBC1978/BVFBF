@@ -73,9 +73,6 @@
                     </div>
         
                     @endforeach
-                    
-                    <!-- Affichage de la pagination -->
-                    {{ $freightOffers->links('pagination::bootstrap-4') }}
             </div>
             <div class="paginations">
 

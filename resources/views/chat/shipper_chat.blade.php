@@ -57,7 +57,7 @@
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
-            
+            <h3 class="mb-35">Messagerie</h3> 
         </div>
         <div class="box-breadcrumb">
             <div class="breadcrumbs">
@@ -87,8 +87,9 @@
                     <div class="card-title">
                         <h5> Itinéraire: {{ $freightAnnouncement->origin.'--'.$freightAnnouncement->destination }}</h5>
                         <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($freightAnnouncement->limit_date)) }}</span>
+                        <h2>Informations sur l'offre de Transport</h2>
                         <p>Prix de l'offre : {{ $transportOffer->price }} FCFA</p>
-                        {{-- <p>Expéditeur: {{ $shipper->company_name }}</p> --}}
+                         <p>Expéditeur: {{ $carrier->company_name }}</p>
                     </div>
                 </div>
                 <div class="position-relative">
