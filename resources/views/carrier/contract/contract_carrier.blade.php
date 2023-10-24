@@ -16,8 +16,6 @@
                 </div>
             </div>
         </div>
-        <div id="alertMsg" role="alert">
-        </div>
         <div class="row">
         <form id="form_contrat" action="{{ route('add-contract-details') }}">
             <input type="hidden" name="contract" id="contract" value="{{ $contract_id }}">
@@ -61,7 +59,22 @@
                     </div>
                     <div class="card-body">
                         <div class="row" id="wrapper" >
-
+                            @if(!empty($details))
+                                @foreach($details as $detail)
+                                    <div class="col-md-12" >
+                                        <div class="form-group input-group mb-3">
+                                            <span class="input-group-text" id="remove_field">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                </svg>
+                                            </span>
+                                            <input class="form-control" type="hidden" value="{{ $detail->details_id }}" name="details_id[]" >
+                                            <input class="form-control" type="hidden" value="{{ $detail->car_id }}" id="id_car_contract[]" name="id_car_contract[]" >
+                                            <input class="form-control" type="text" value="{{ $detail->car_registration}}" id="car_registration" name="car_registration[]"  readonly>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -77,7 +90,21 @@
                     </div>
                     <div class="card-body">
                         <div class="row" id="wrapper_driver" >
-
+                            @if(!empty($details))
+                                @foreach($details as $detail)
+                                    <div class="col-md-12" >
+                                        <div class="form-group input-group mb-3">
+                                            <span class="input-group-text" id="remove_field_driver">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                </svg>
+                                            </span>
+                                            <input class="form-control" type="hidden" value="{{ $detail->driver_id }}" id="id_driver_contract" name="id_driver_contract[]" >
+                                            <input class="form-control" type="text" value="{{ $detail->licence.' - '.$detail->driver_first.' - '.$detail->driver_last }}" id="driver_registration" name="driver_registration[]"  readonly>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
 
@@ -268,11 +295,10 @@
     <script>
         $(document).ready(function() {
 
-
             $('#form_contrat').submit( function (e){
                 e.preventDefault();
                 var formData = new FormData(this);
-                var msg = document.querySelector('#alertMsg');
+
                 fetch(this.action, {
                     method: 'POST',
                     body: formData,
@@ -281,11 +307,12 @@
                     }
                 })
                 .then(response => response.json())
-                .then(data =>{
+                    .then(data =>{
+                        console.log(data);
                     if(data == 0){
                         Swal.fire({
                                 icon: 'success',
-                                title: 'Oops...',
+                                title: 'Bravo',
                                 text: 'les camions et les conducteurs sont ajoutés au contrat de transport',
                             }
                         );
@@ -306,7 +333,7 @@
                             }
                         );
                     }
-                });
+                    });
                 });
 
             //car table
@@ -493,9 +520,7 @@
                     `;
                         $(wrapper_driver).append(newRow); // Ajoute la nouvelle ligne à l'élément avec l'ID "wrapper"
                     });
-                    // .catch(error => {
-                    //     console.error('Error:', error);
-                    // });
+
 
                 $('#ModalDriver').modal('hide'); // Ferme la modal "Modalcar"
             });
@@ -510,7 +535,6 @@
                 var licence = document.querySelectorAll('#driver_licence');
                 var first = document.querySelectorAll('#driver_first');
                 var last = document.querySelectorAll('#driver_last');
-
 
                 for (i = 0; i < checkedBoxes.length; i++) {
                     if (checkedBoxes[i].checked) {

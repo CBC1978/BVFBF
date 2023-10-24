@@ -48,10 +48,9 @@
                                             <td>{{ $contract->description }}</td>
                                             <td>{{ $contract->origin.' - '.$contract->destination }}</td>
                                             <td>
-                                                <a href=""><button class="btn btn-outline-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                                                <a href="{{ route('c_contract_view',[$contract->id]) }}"><button class="btn btn-outline-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                                 <a href="{{ route('c_contract',[ $contract->id]) }}"> <button class="btn btn-outline-success" type="button"><i class="fa fa-pencil-square-o"></i></button></a>
-                                                <a href=""><button class="btn btn-outline-danger" type="button"><i class="fa fa-trash-o"></i></button></a>
-
+{{--                                                <a href=""><button class="btn btn-outline-danger" type="button"><i class="fa fa-trash-o"></i></button></a>--}}
                                             </td>
                                         </tr>
                                         @php
@@ -65,9 +64,9 @@
                                             <td>{{ $contract->description }}</td>
                                             <td>{{ $contract->origin.' - '.$contract->destination }}</td>
                                             <td>
-                                                <a href=""><button class="btn btn-outline-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                                                <a href="{{ route('c_contract_view',[$contract->id]) }}"><button class="btn btn-outline-primary" type="button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
                                                 <a href="{{ route('c_contract',[$contract->id]) }}"> <button class="btn btn-outline-success" type="button"><i class="fa fa-pencil-square-o"></i></button></a>
-                                                <a href=""><button class="btn btn-outline-danger" type="button"><i class="fa fa-trash-o"></i></button></a>
+{{--                                                <a href=""><button class="btn btn-outline-danger" type="button"><i class="fa fa-trash-o"></i></button></a>--}}
 
                                             </td>
                                         </tr>
@@ -77,7 +76,6 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -99,9 +97,9 @@
                 language:{
                     "decimal":        "",
                     "emptyTable":     "Pas de données disponible",
-                    "info":           "Affichage _START_ sur _END_ de _TOTAL_ éléments",
-                    "infoEmpty":      "Affichage 0 sur 0 de 0 entries",
-                    "infoFiltered":   "(filtrage de _MAX_ total éléments)",
+                    "info":           "Afficher _START_ sur _END_ de _TOTAL_ éléments",
+                    "infoEmpty":      "Afficher 0 sur 0 de 0 entries",
+                    "infoFiltered":   "(filtrer de _MAX_ total éléments)",
                     "infoPostFix":    "",
                     "thousands":      ",",
                     "lengthMenu":     "Afficher _MENU_ éléments",

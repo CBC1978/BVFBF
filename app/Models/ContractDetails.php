@@ -17,7 +17,7 @@ class ContractDetails extends Model
     protected $fillable = [
         'driver_id',
         'contract_id',
-        'car_id',
+        'cars_id',
         'created_by',
     ];
 }
