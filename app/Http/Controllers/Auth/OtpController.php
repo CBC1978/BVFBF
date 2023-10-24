@@ -37,6 +37,7 @@ class OtpController extends Controller
             return view('auth.VerifiedAccount');
         } else {
             // Si le code OTP ne correspond pas alors le compte n'est pas vérifié, rediriger vers la page d'envoi de code OTP avec un message d'erreur
+            
             return redirect()->route('otp')->with('error_message', 'Le code OTP est incorrect.');
         }
     }
