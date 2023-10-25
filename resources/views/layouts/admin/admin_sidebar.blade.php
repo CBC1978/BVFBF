@@ -1,7 +1,42 @@
        <!----------------------------------------------------------------------------
 | SECTION NAV
-|--------------------------------------------------------------------------------
-         -->
+|---------------------------------------------------------------------------------->
+
+
+        <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+        <!-- Mobile menu (hidden by default) -->
+        <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+            <div class="mobile-header-wrapper-inner">
+                <div class="mobile-header-content-area">
+                    <div class="perfect-scroll">
+                        <!-- Mobile search -->
+                        <div class="mobile-search mobile-header-border mb-30">
+                            <form action="#">
+                                <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+                            </form>
+                        </div>
+                        <div class="mobile-menu-wrap mobile-header-border">
+                          <nav>
+                            <ul class="main-menu">
+                              <li>
+                                  <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">A_Accueil</span></a>
+                              <li>
+                                  <a class="dashboard2 {{ request()->routeIs('a_user_gestion') ? 'active' : '' }}" href="{{ route('a_user_gestion') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">User Gestion </span></a>
+                              <li>
+                                  <a class="dashboard2 {{ request()->routeIs('admin.entreprise') ? 'active' : '' }}" href="{{ route('admin.entreprise') }}"><img src="{{ asset('imgs/page/dashboard/candidates.svg') }}" alt="jobBox"><span class="name">entreprise </span></a>
+                              <li>
+                                  <a class="dashboard2 {{ request()->routeIs('annonces.a_annonce') ? 'active' : '' }}" href="{{ route('annonces.a_annonce') }}"><img src="{{ asset('imgs/page/dashboard/tasks.svg') }}" alt="jobBox"><span class="name">Annonces Gestion </span></a>
+                              <li>
+                                  <a class="dashboard2 {{ request()->routeIs('admin.parameter.displayAdminSettings') ? 'active' : '' }}" href="{{ route('admin.parameter.displayAdminSettings') }}"><img src="{{ asset('imgs/page/dashboard/tasks.svg') }}" alt="jobBox"><span class="name">Paramètres </span></a>
+                            </ul>
+                          </nav>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+         </div>
+
          <div class="nav"><a class="btn btn-expanded"></a>
 
             <nav class="nav-main-menu">
@@ -31,4 +66,9 @@
             </div> --}}
           </div>
         </div>
-
+        
+        <div class="burger-icon burger-icon-white">
+    <span class="burger-icon-top"></span>
+    <span class="burger-icon-mid"></span>
+    <span class="burger-icon-bottom"></span>
+</div>
