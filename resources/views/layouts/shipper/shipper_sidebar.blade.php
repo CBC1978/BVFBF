@@ -1,5 +1,6 @@
        <!----------------------------------------------------------------------------
 | SECTION NAV
+<<<<<<< HEAD
 |--------------------------------------------------------------------------------
          --><style>
   .menu-box {
@@ -27,6 +28,44 @@
     left: 0; z-index: 100;
   }
 </style>
+      
+
+      <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+        <!-- Mobile menu (hidden by default) -->
+        <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+            <div class="mobile-header-wrapper-inner">
+                <div class="mobile-header-content-area">
+                    <div class="perfect-scroll">
+                        <!-- Mobile search -->
+                        <div class="mobile-search mobile-header-border mb-30">
+                            <form action="#">
+                                <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+                            </form>
+                        </div>
+                        <div class="mobile-menu-wrap mobile-header-border">
+                          <nav>
+                            <ul class="main-menu">
+                              <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
+                              </li>
+                              <li> <a class="dashboard2 {{ request()->routeIs('carrier.announcements.index') ? 'active' : '' }}" href="{{ route('carrier.announcements.index') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Annonces</span></a>
+                              </li>
+                              <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.user') ? 'active' : '' }}" href="{{ route('shipper.announcements.user') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Annonces</span></a>
+                              </li>
+                              <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.shipperMyrequest') ? 'active' : '' }}" href="{{ route('shipper.announcements.shipperMyrequest') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes demandes</span></a>
+                              </li>
+                              <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
+                              </li>
+                              
+                              <li> <a class="dashboard2 {{request()->routeIs('shipper.parameter.displayShipperSettings')? 'active' : '' }}" href="{{ route('shipper.parameter.displayShipperSettings') }}"><img src="{{ asset('imgs/page/dashboard/settings.svg') }}" alt="jobBox"><span class="name">Paramètres</span></a>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+         </div>
 
          <div class="nav"><a class="btn btn-expanded"></a>
         
