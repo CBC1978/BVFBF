@@ -1,6 +1,26 @@
 @extends('layouts.shipper')
 
 @section('content')
+<script>
+    function returnToPreviousPage() {
+    window.history.back(); // Revenir à la page précédente
+}
+</script> 
+<button type="submit" onclick="returnToPreviousPage()">Retour</button> <style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
@@ -118,7 +138,7 @@
 
 
 
-
+{{--
   
   <footer class="footer mt-20">
     <div class="container">
@@ -145,7 +165,7 @@
         }
 
     </style>
-  </footer>
+  </footer> --}}
 </div>
 </div></div>
 @endsection

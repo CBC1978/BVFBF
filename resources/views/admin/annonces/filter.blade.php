@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <button><a href="/annonces">Retour</a></button> 
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
     <div class="chargeurAnnonces mt-2">
             <h3>La liste des annonces des Chargeurs</h3>
             <table>
@@ -63,55 +68,55 @@
     </div>
     
     <style>
-    body {
-        font-family: Arial, sans-serif;
-    }
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    button a {
-        text-decoration: none;
-        color: white;
-        padding: 5px 10px;
-        background-color: #007bff;
-        border-radius: 5px;
-    }
+        button a {
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
 
-    .chargeurAnnonces,
-    .transporteurAnnonces {
-        margin-top: 20px;
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f5f5f5;
-    }
+        .chargeurAnnonces,
+        .transporteurAnnonces {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
 
-    h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ccc;
-    }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
 
-    th {
-        background-color: #f0f0f0;
-    }
+        th {
+            background-color: #f0f0f0;
+        }
 
-    li {
-        list-style-type: none;
-    }
+        li {
+            list-style-type: none;
+        }
 
-    .text-info {
-        color: #17a2b8;
-    }
-</style>
+        .text-info {
+            color: #17a2b8;
+        }
+    </style>
 
 
 @endsection
