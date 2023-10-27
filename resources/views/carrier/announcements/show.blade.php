@@ -1,7 +1,27 @@
 @extends('layouts.carrier')
 
 @section('content')
+<style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
@@ -137,7 +157,7 @@
       </div>
     </div>
   </div>
-  <footer class="footer mt-20">
+ {{-- <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">
         <div class="row">
@@ -155,7 +175,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
 </div>
 </div></div>
 @endsection

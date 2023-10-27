@@ -21,7 +21,12 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
+    <style>
+      body {
+          background-color: white;
+          margin-top: -150px;
+      }
+    </style>
 </head>
 <body>
     <div id="preloader-active">
@@ -58,10 +63,9 @@
             <div class="col-lg-12">
               <div class="section-box">
                 <div class="container">
-                  <div class="panel-white mb-10">
                     <div class="box-padding">
                       <div class="login-register">
-                        <div class="row login-register-cover pb-250">
+                        <div class="row login-register-cover">
                           <div class="col-lg-6 col-md-4 col-sm-12 mx-auto">
                             <div class="form-login-cover">
                               <div class="text-center">
@@ -116,7 +120,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> 
                             <div class="form-group">
                                 <label class="form-label" for="password">Mot de passe <span class="required">*</span></label>
                                 <input class="form-control @error('password') is-invalid @enderror" id="password" type="password" required="" name="password" placeholder="************">
@@ -155,7 +159,6 @@
                         </form>
                     </div>
                     <div class="img-2"><img src="imgs/page/login-register/img-3.svg" alt="JobBox"></div>
-                  </div>
                 </div>
               </div>
             </div>

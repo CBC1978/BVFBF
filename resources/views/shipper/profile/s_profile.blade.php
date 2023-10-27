@@ -7,10 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>carrier-profil</title>
-
+    <script>
+            function returnToPreviousPage() {
+            window.history.back(); // Revenir à la page précédente
+        }
+    </script> 
 </head>
 <body>
-        @if(session('success'))
+    <button type="submit" onclick="returnToPreviousPage()">Retour</button>
+    @if(session('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
@@ -20,7 +25,7 @@
                     <div class="profile-img">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""/>
                         <div class="file btn btn-lg btn-primary">
-                            Change Photo
+                            Change la Photo
                         <input type="file" name="file"/>
                         </div>
                     </div>
@@ -31,7 +36,7 @@
                     <div class="card-body">
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">last Name: </h5>
+                        <h5 class="mb-0">Nom: </h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                             <h5>{{$user->name}}</h5>
@@ -40,7 +45,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">first name:</h5>
+                        <h5 class="mb-0">Prenom:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5> {{$user->first_name }}</h5>
@@ -49,7 +54,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">username:</h5>
+                        <h5 class="mb-0">Nom d'utilisateur:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5>{{ $user->username}}</h5>
@@ -67,7 +72,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">Mail:</h5>
+                        <h5 class="mb-0">Email:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5>{{$user->email }}</h5>
@@ -85,7 +90,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">company name:</h5>
+                        <h5 class="mb-0">Nom d'entreprise:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                           <h5> 
@@ -104,7 +109,7 @@
          <a href="{{ route('shipper.profile.affichage') }}"><button type="submit">Refresh</button></a>
         </div>
 
-        <a id="edit-profile-button" href="#">Edit Profile</a>
+        <a id="edit-profile-button" href="#">Modifier</a>
 
         <div id="edit-profile-form" style="display: none;">
             <form id="" method="post" action="{{ route('shipper.profile.update') }}">
@@ -115,8 +120,8 @@
                     <input type="text" name="username" id="username" value="{{old('username', $user->username)}}">
                     <input type="tel" name="user_phone" id="user_phone" value="{{old('user_phone', $user->user_phone) }}">
                     <input type="email" name="email" id="email" value="{{ old('email', $user->email)}}">
-                    <input type="text" name="company_name" id="company_name" value="{{old('company_name', $user->shipper->company_name)}}">
-                <button type="submit">Update Profile</button>
+                    <input type="text" name="company_name" id="company_name" value="{{old('company_name', $user->shipper ? $user->shipper->company_name : '')}}">
+                    <button type="submit">Update Profile</button>
             </form>
         </div>
     </div>

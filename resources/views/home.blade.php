@@ -65,7 +65,7 @@
                                             <div class="form-login-cover">
                                                 <div class="text-center">
                                                     <p class="font-sm text-brand-2"> </p>
-                                                    <h2 class="mt-10 mb-5 text-brand-1">Veuillez    creer un compte ou vous connecter </h2>
+                                                    <h2 class="mt-10 mb-5 text-brand-1">Veuillez creer un compte ou vous connecter </h2>
                                                     <p class="font-sm text-muted mb-30"></p>
                                                 </div>
                                                 <div class="text-muted text-center"><a  href="{{ route('login') }}">Connexion</a></div>

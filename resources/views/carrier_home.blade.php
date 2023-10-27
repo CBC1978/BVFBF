@@ -5,10 +5,14 @@
 @section('content')
 <div class="box-heading">
     <div class="box-title">
+<<<<<<< HEAD
       <!--h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3-->
+=======
+     {{-- <h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3> --}}
+>>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
     </div>
     <div class="box-breadcrumb">
-      <div class="breadcrumbs">
+      <div class="breadcrumbs mb-2">
         <ul>
           <li> <a class="icon-home" href="index.html">Tableau de bord</a></li>
           <li><span>Dashboard</span></li>
@@ -195,7 +199,7 @@
       </div>
     </div>
   </div>
-  <footer class="footer mt-20">
+ {{-- <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">
         <div class="row">
@@ -213,7 +217,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
 </div>
 </div></div>
 @endsection
