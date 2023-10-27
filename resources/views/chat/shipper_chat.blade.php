@@ -84,12 +84,15 @@
         <div class="row g-0">
             <div class="col-12 col-lg-12 col-xl-12 col-md-12">
                 <div class="py-2 px-4 border-bottom d-flex d-lg-block d-md-block d-sm-block">
-                    <div class="card-title">
-                        <h5> Itinéraire: {{ $freightAnnouncement->origin.'--'.$freightAnnouncement->destination }}</h5>
-                        <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($freightAnnouncement->limit_date)) }}</span>
-                        <h2>Informations sur l'offre de Transport</h2>
+                    <div class="card-header">
+                        <div class="card-body">
+                        <h4>Informations sur l'offre de Transport</h4>
                         <p>Prix de l'offre : {{ $transportOffer->price }} FCFA</p>
-                         <p>Expéditeur: {{ $carrier->company_name }}</p>
+                        <p>Expéditeur: {{ $carrier->company_name }}</p>
+                        <p><h5> Itinéraire:</h5> {{ $freightAnnouncement->origin.'--'.$freightAnnouncement->destination }}</p>
+                        <p class="job-type"> <h5>Date d'expiration:</h5> {{ date("d/m/Y", strtotime($freightAnnouncement->limit_date)) }}</p>
+                        
+                        </div>
                     </div>
                 </div>
                 <div class="position-relative">

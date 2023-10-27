@@ -57,7 +57,7 @@
     <div class="box-breadcrumb">
         <div class="breadcrumbs">
             <ul>
-                <li><a class="icon-home" href="index.html">Tableau de bord</a></li>
+                <li><a class="icon-home" href="index.html">$chatMessagesS</a></li>
                 <li><span>Messagerie</span></li>
             </ul>
         </div>
