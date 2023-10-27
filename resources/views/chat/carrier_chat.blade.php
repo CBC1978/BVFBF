@@ -66,13 +66,18 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card-head">
-            <div class="card-title">
-                <h5> Itinéraire: {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</h5>
-                <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</span>
-                <h2>Informations sur l'offre de fret</h2>
-                <p>Montant de l'offre : {{ $freightOffer->price }}</p>
-                <p>Nom de l'entreprise : {{ $shipper->company_name}}</p>
+        <div class="card-header">
+            <div class="col-12 col-lg-12 col-xl-12 col-md-12">
+                <div class="card-head">
+                    <div class class="card-body" style="background-color: #fff;">
+                    <h4>Informations sur l'offre de fret</h4>
+                    <p>Montant de l'offre : {{ $freightOffer->price }}</p>
+                    <p>Nom de l'entreprise : {{ $shipper->company_name}}</p>    
+                    <p><h5> Itinéraire:</h5> {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</p>
+                    <p class="job-type"><h5>Date d'expiration:</h5> {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</p>
+                    </div>
+                </div>
+                
 
             </div>
         </div>
@@ -80,7 +85,7 @@
     </div>
     @if(Session::has('success'))
     <div class="alert alert-success">
-        {{ Session::get('success') }}
+        {{ Session::get('success')}}
     </div>
 @endif
 
@@ -113,10 +118,10 @@
                         </div>
                     @endforeach
                     </div>
-                    <div class="flex-grow-0 py-3 px-4 border-top">
+                    <div class="form-group">
                         <form action="{{ route('sendMessage', ['offer_id' => $freightOffer->id]) }}" method="post">
                             @csrf
-                            <input type="text" class="form-control" placeholder="Entrez votre message" name="message">
+                            <input type="text" class="form-controle" placeholder="Entrez votre message" name="message">
                             <button type="submit" class="btn btn-primary">Send</button>
                         </form>
                     </div>
@@ -124,6 +129,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
         

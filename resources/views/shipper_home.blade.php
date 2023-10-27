@@ -7,7 +7,8 @@
 
 <div class="box-heading">
     <div class="box-title">
-     {{-- <h3 class="mb-35">CHARGEUR :Tableau de Bord</h3> --}}
+      <!--h3 class="mb-35">CHARGEUR :Tableau de Bord</h3-->
+
     </div>
     <div class="box-breadcrumb">
       <div class="breadcrumbs mb-2">

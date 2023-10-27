@@ -61,7 +61,11 @@
                                                 <div class="col-lg-9">
                                                     <div class="row">
                                                         <div class="col-lg-12">
+<<<<<<< HEAD
+                                                            <h5 class="">Fait une Annonce de Transport</h5>
+=======
                                                             <h5 class="icon-edu">Faites une Annonce de Transport</h5>
+>>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
                                                             <form method="POST" action="{{ route('carrier.announcements.store') }}">
                                                                 @csrf
                                                             
@@ -178,7 +182,13 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 {{--
+=======
+
+<<<<<<< HEAD
+=======
+>>>>>>> 137b583329315af3bc506971d04b10d742e57db8
   <div class="mt-10">
     <div class="section-box">
       <div class="container"> 
@@ -227,6 +237,7 @@
 </div>
 </div></div>
 
+>>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
     <style>
         .required {
             color: red;

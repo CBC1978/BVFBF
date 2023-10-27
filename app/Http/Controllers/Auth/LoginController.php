@@ -59,6 +59,8 @@ class LoginController extends Controller
                     $request->session()->put('status', $user->status);
                     $request->session()->put('fk_carrier_id', $user->fk_carrier_id);
                     $request->session()->put('fk_shipper_id', $user->fk_shipper_id);
+                    $request->session()->put('first_name', $user->first_name);
+
     
                     // Récupérer le nom de l'entreprise à partir de la table 'carrier' ou 'shipper'
                     if ($user->fk_carrier_id) {

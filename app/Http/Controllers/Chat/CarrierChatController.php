@@ -100,7 +100,7 @@ class CarrierChatController extends Controller
     
         // Mettre à jour le champ "status_message" de la table "freight_offer" à 1
         if ($freightOffer) {
-            $freightOffer->status_message = 1;
+            $freightOffer->status = 1;
             $freightOffer->save();
         }
     

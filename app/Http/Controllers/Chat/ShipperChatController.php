@@ -116,7 +116,7 @@ class ShipperChatController extends Controller
          // Mettre à jour le champ "status_message" de la table "transport_offer" à 2
         $transportOffer = TransportOffer::find($offer_id);
           if ($transportOffer) {
-           $transportOffer->status_message = 2;
+           $transportOffer->status = 2;
            $transportOffer->save();
     }
 

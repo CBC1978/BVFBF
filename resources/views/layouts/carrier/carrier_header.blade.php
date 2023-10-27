@@ -79,8 +79,8 @@
           <div class="member-login"><img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
             <div class="info-member">
               <strong class="color-brand-1">
-                  @if(Session::has('username'))
-                      <p>{{ Session::get('username') }}</p>
+                  @if(Session::has('first_name'))
+                      <p>{{ Session::get('first_name') }}</p>
                   @endif
               </strong>
               <div class="dropdown">
