@@ -178,7 +178,7 @@
     </div>
 </div>
 
-
+{{--
   <div class="mt-10">
     <div class="section-box">
       <div class="container"> 
@@ -203,7 +203,7 @@
       </div>
     </div>
   </div>
-
+--}}
  {{-- <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">

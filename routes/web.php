@@ -251,4 +251,3 @@ Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegi
 Route::get('/car-registrations', [CarController::class, 'showCarRegistrations'])
     ->name('car-registrations');
 //    Route::post('/add-car', 'CarController@addCar')->name('add-car');
-
