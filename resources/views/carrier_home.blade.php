@@ -5,11 +5,7 @@
 @section('content')
 <div class="box-heading">
     <div class="box-title">
-<<<<<<< HEAD
       <!--h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3-->
-=======
-     {{-- <h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3> --}}
->>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
     </div>
     <div class="box-breadcrumb">
       <div class="breadcrumbs mb-2">
