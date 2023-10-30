@@ -1,6 +1,6 @@
        <!----------------------------------------------------------------------------
 | SECTION NAV
-<<<<<<< HEAD
+
 |--------------------------------------------------------------------------------
          --><style>
   .menu-box {
@@ -13,7 +13,7 @@
 
   .menu-box a {
       text-decoration: none;
-      color: #333; 
+      color: #333;
       display: block;
   }
 
@@ -21,14 +21,14 @@
       font-weight: bold;
   }
   .nav-main-menu{
-    position: fixed; 
-    width: 280px; 
-    top: 105px; 
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/ 
+    position: fixed;
+    width: 280px;
+    top: 105px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
     left: 0; z-index: 100;
   }
 </style>
-      
+
 
       <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
         <!-- Mobile menu (hidden by default) -->
@@ -55,23 +55,23 @@
                               </li>
                               <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
                               </li>
-                              
+
                               <li> <a class="dashboard2 {{request()->routeIs('shipper.parameter.displayShipperSettings')? 'active' : '' }}" href="{{ route('shipper.parameter.displayShipperSettings') }}"><img src="{{ asset('imgs/page/dashboard/settings.svg') }}" alt="jobBox"><span class="name">Paramètres</span></a>
                               </li>
                             </ul>
                           </nav>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
          </div>
 
          <div class="nav"><a class="btn btn-expanded"></a>
-        
+
             <nav class="nav-main-menu">
               <ul class="main-menu">
-                <li> 
+                <li>
                   <div class="menu-box {{ request()->routeIs('home') ? 'active' : '' }}"></div>
                   <a class="" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
                 </li>
@@ -86,22 +86,32 @@
                    <a class="" href="{{ route('shipper.announcements.user') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes Annonces</span></a>
                 </li>
 
-                <li> 
+                <li>
                   <div class="menu-box {{ request()->routeIs('shipper.announcements.shipperMyrequest') ? 'active' : '' }}"></div>
                   <a class="" href="{{ route('shipper.announcements.shipperMyrequest') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes demandes</span></a>
                 </li>
+
+                  <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.contract') ? 'active' : '' }}" href="{{ route('shipper.announcements.contract') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Contrat</span></a>
+                  </li>
+                <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
+                </li>
+
+                <li> <a class="dashboard2 {{request()->routeIs('shipper.parameter.displayShipperSettings')? 'active' : '' }}" href="{{ route('shipper.parameter.displayShipperSettings') }}"><img src="{{ asset('imgs/page/dashboard/settings.svg') }}" alt="jobBox"><span class="name">Paramètres</span></a>
+                </li>
+
+
 {{--
                 <li>
                   <div class="menu-box"></div>
                    <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
                 </li>
-                
+
                 <li>
                   <div class="menu-box {{request()->routeIs('shipper.parameter.displayShipperSettings')? 'active' : '' }}"></div>
                    <a class="" href="{{ route('shipper.parameter.displayShipperSettings') }}"><img src="{{ asset('imgs/page/dashboard/settings.svg') }}" alt="jobBox"><span class="name">Paramètres</span></a>
                 </li>
                 --}}
-                
+
               </ul>
             </nav>
             {{-- <div class="border-bottom mb-20 mt-20"></div>
@@ -115,7 +125,6 @@
               <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
             </div> --}}
           </div>
-          
+
         </div>
-        
-   
+
