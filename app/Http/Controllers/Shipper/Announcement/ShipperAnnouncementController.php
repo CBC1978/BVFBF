@@ -204,4 +204,47 @@ class ShipperAnnouncementController extends Controller
 
        return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
    }
+
+    public function contractHome()
+    {
+        $user = User::find(intval(session('userId')));
+        try {
+            $contracts = DB::table('contract_transport')
+                ->selectRaw("
+                    contract_transport.id,
+                    freight_announcement.origin,
+                    freight_announcement.destination,
+                    freight_announcement.description,
+                    shipper.company_name
+                    ")
+                ->join('transport_offer', 'contract_transport.fk_transport_offer_id', '=', 'transport_offer.id')
+                ->join('freight_announcement', 'transport_offer.fk_freight_announcement_id', '=', 'freight_announcement.id')
+                ->join('shipper', 'freight_announcement.fk_shipper_id', '=', 'shipper.id')
+                ->where('transport_offer.status', 1)
+                ->where('transport_offer.fk_carrier_id', $user->fk_carrier_id)
+                ->orderBy('contract_transport.id','desc')
+                ->get();
+
+            $contractsFromShipper = DB::table('contract_transport')
+                ->selectRaw("
+                    contract_transport.id,
+                    transport_announcement.origin,
+                    transport_announcement.destination,
+                    transport_announcement.description,
+                    shipper.company_name
+                    ")
+                ->join('freight_offer', 'contract_transport.fk_freight_offert_id', '=', 'freight_offer.id')
+                ->join('transport_announcement', 'freight_offer.fk_transport_announcement_id', '=', 'transport_announcement.id')
+                ->join('shipper', 'freight_offer.fk_shipper_id', '=', 'shipper.id')
+                ->where('freight_offer.status', 1)
+                ->where('transport_announcement.fk_carrier_id', $user->fk_carrier_id)
+                ->orderBy('contract_transport.id','desc')
+                ->get();
+        } catch (\PHPUnit\Exception $e){
+            $contracts = [];
+            $contractsFromShipper = [];
+        }
+        return view('carrier.contract.home',compact(['contracts', 'contractsFromShipper']));
+
+   }
 }
