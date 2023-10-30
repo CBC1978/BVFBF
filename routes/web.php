@@ -141,6 +141,8 @@ Route::prefix('shipper/announcements')->name('shipper.announcements.')->group(fu
     Route::get('{id}', [ShipperAnnouncementController::class, 'show'])->name('show');
     Route::post('postuler', [ShipperAnnouncementController::class, 'positOffer'])->name('postuler');
     Route::post('manage-offer/{id}', [ShipperAnnouncementController::class, 'manageOffer'])->name('offer.manage')->where('id', '[0-9]+');
+    Route::get('contract', [ShipperAnnouncementController::class, 'contractHome'])->name('contract');
+
 
 
 //    Route::get('myoffer/{id}', [ShipperAnnouncementController::class, 'offer'])->name('myoffer')->where('id', '[0-9]+');

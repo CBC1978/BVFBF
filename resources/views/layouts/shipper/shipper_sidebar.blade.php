@@ -3,7 +3,7 @@
 |--------------------------------------------------------------------------------
          -->
          <div class="nav"><a class="btn btn-expanded"></a>
-        
+
             <nav class="nav-main-menu">
               <ul class="main-menu">
                 <li> <a class="dashboard2 {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"><img src="{{ asset('imgs/page/dashboard/dashboard.svg') }}" alt="jobBox"><span class="name">Accueil</span></a>
@@ -14,13 +14,15 @@
                 </li>
                 <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.shipperMyrequest') ? 'active' : '' }}" href="{{ route('shipper.announcements.shipperMyrequest') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Mes demandes</span></a>
                 </li>
+                  <li> <a class="dashboard2 {{ request()->routeIs('shipper.announcements.contract') ? 'active' : '' }}" href="{{ route('shipper.announcements.contract') }}"><img src="{{ asset('imgs/page/dashboard/recruiters.svg') }}" alt="jobBox"><span class="name">Contrat</span></a>
+                  </li>
                 <li> <a class="dashboard2" href="stat.html"><img src="{{ asset('imgs/page/dashboard/jobs.svg') }}" alt="jobBox"><span class="name">Statistiques</span></a>
                 </li>
-                
+
                 <li> <a class="dashboard2 {{request()->routeIs('shipper.parameter.displayShipperSettings')? 'active' : '' }}" href="{{ route('shipper.parameter.displayShipperSettings') }}"><img src="{{ asset('imgs/page/dashboard/settings.svg') }}" alt="jobBox"><span class="name">Paramètres</span></a>
                 </li>
-                
-                
+
+
               </ul>
             </nav>
             {{-- <div class="border-bottom mb-20 mt-20"></div>
@@ -34,7 +36,6 @@
               <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
             </div> --}}
           </div>
-          
+
         </div>
-        
-   
+
