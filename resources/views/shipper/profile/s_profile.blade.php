@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.shipper')
 
 @section('content')
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>carrier-profil</title>
+    <title>shipper-profil</title>
     <script>
             function returnToPreviousPage() {
             window.history.back(); // Revenir à la page précédente
@@ -20,8 +20,8 @@
                         {{ session('success') }}
                     </div>
         @endif
-    <div class="container2">
-        <h1>  {{ $user->username}} Profile</h1>
+        <div class="container2">
+            <h1>  {{ $user->first_name}} Profile</h1>
                     <div class="profile-img">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""/>
                         <div class="file btn btn-lg btn-primary">
@@ -29,6 +29,7 @@
                         <input type="file" name="file"/>
                         </div>
                     </div>
+        
         <div class="affichage">
             <ul>
                 <div class="col-md-15">

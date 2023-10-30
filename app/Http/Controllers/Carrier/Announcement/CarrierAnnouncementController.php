@@ -209,11 +209,12 @@ class CarrierAnnouncementController extends Controller
 
         // Récupérer l'offre en fonction de l'ID
         $freightOffer = FreightOffer::findOrFail($id);
-        $emailUtilisateur = $freightOffer->user->email;
+        
+       // $emailUtilisateur = $freightOffer->user->email;
 
         if ($action === 'accept') {
 
-            Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
+           // Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
             $freightOffer->status = 1;
 
@@ -227,7 +228,7 @@ class CarrierAnnouncementController extends Controller
 
         } elseif ($action === 'refuse') {
 
-            Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
+          //  Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
             $freightOffer->status = 2;
         }

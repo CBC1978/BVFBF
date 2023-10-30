@@ -185,12 +185,12 @@ class ShipperAnnouncementController extends Controller
        
        // Récupérer l'offre en fonction de l'ID
        $transportOffer = TransportOffer::findOrFail($id);
-       $emailUtilisateur = $transportOffer->user->email;
+      // $emailUtilisateur = $transportOffer->user->email;
 
 
        if ($action === 'accept') {
 
-           Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
+          // Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
            $contract = new ContractTransport();
            $contract->created_by = session("userId");

@@ -24,7 +24,7 @@ class OtpController extends Controller
             'otp' => ['required', 'string', 'min:4', 'max:255'],
         ]);
     
-        $user = User::where('code', $request->otp)->pluck('id')->first();
+        $user = User::where('code', $request->otp)->first();
     
         if ($user && $user->code === $request->otp) {
             // Si le code OTP est vérifié, mettez le statut à 1
@@ -46,7 +46,7 @@ class OtpController extends Controller
     {
         
             // Si le compte n'est pas vérifié, générer et envoyer un nouveau code OTP
-            $userId = User::where(['email'=>$request->email])->pluck('id')->first();
+            $userId = User::where(['email'=>$request->email])->first();
             $user = User::find($userId);
             Mail::to($user->email)->send(new RegisterEmail($user->first_name,'Valider votre inscription',  $user->code));;
 
