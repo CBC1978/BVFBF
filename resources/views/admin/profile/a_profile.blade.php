@@ -261,10 +261,6 @@ a[href="#"]:hover {
 
 </style>
 
-
-
-
-
 </body>
 </html>
 @endsection
