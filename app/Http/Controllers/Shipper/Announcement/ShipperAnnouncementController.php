@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shipper\Announcement;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Email\AcceptedOffer;
 use App\Mail\Email\AnnouncementOffer;
 use App\Mail\Email\OfferReceive;
 use App\Mail\Email\OfferSend;
@@ -181,11 +182,15 @@ class ShipperAnnouncementController extends Controller
    public function manageOffer(Request $request, $id)
    {
        $action = $request->input('action');
-
+       
        // Récupérer l'offre en fonction de l'ID
        $transportOffer = TransportOffer::findOrFail($id);
+       $emailUtilisateur = $transportOffer->user->email;
+
 
        if ($action === 'accept') {
+
+           Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
            $contract = new ContractTransport();
            $contract->created_by = session("userId");

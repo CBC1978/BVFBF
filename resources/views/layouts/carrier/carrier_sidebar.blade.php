@@ -30,8 +30,6 @@
     left: 0; z-index: 100;
   }
 </style>
-         <div class="nav"><a class="btn btn-expanded"></a>
-   
       
 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
         <!-- Mobile menu (hidden by default) -->

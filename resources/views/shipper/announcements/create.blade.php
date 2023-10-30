@@ -58,7 +58,7 @@
                                                 <div class="col-lg-9">
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <h5 class="icon-edu">Fait une Annonce de Fret</h5>
+                                                            <h5 class="">Fait une Annonce de Fret</h5>
                                                             <form method="POST" action="{{ route('shipper.announcements.store') }}">
                                                                 @csrf
                                                                 

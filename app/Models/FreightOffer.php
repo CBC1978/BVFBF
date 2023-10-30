@@ -42,4 +42,10 @@ class FreightOffer extends Model
     {
         return $this->belongsTo(Shipper::class, 'fk_shipper_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

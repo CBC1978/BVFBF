@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\Email\AnnouncementOffer;
 use App\Mail\Email\OfferReceive;
 use App\Mail\Email\OfferSend;
+use App\Mail\Email\AcceptedOffer;
 use App\Models\Carrier;
 use App\Models\ContractDetails;
 use App\Models\ContractTransport;
@@ -105,8 +106,7 @@ class CarrierAnnouncementController extends Controller
 
        $carrierName = Carrier::find(session('fk_carrier_id'));
        $data['fk_carrier_id'] = session('fk_carrier_id');
-
-       $data['created_by'] = session('');
+       $data['created_by'] = $carrierName->name;
        $data['name'] = $carrierName->company_name;
        TransportAnnouncement::create($data);
 
@@ -195,14 +195,25 @@ class CarrierAnnouncementController extends Controller
         return view('carrier.offers.carrier_myrequest', ['offers' => $offers]);
     }
 
+    public function traiterAction(Request $request){
+        $action = $request->input('action');
+        if($action === 'accept'){
+
+
+        }
+    }
+
     public function manageOffer(Request $request, $id)
     {
         $action = $request->input('action');
 
         // Récupérer l'offre en fonction de l'ID
         $freightOffer = FreightOffer::findOrFail($id);
+        $emailUtilisateur = $freightOffer->user->email;
 
         if ($action === 'accept') {
+
+            Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
             $freightOffer->status = 1;
 
@@ -213,7 +224,10 @@ class CarrierAnnouncementController extends Controller
 
             $contract->save();
 
+
         } elseif ($action === 'refuse') {
+
+            Mail::to($emailUtilisateur->email)->send(new AcceptedOffer($emailUtilisateur->first_name));
 
             $freightOffer->status = 2;
         }
@@ -222,6 +236,8 @@ class CarrierAnnouncementController extends Controller
 
         return redirect()->back()->with('success', 'Statut de l\'offre mis à jour avec succès.');
     }
+    
+    
 
     public function contract_view($id)
     {
