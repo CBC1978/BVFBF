@@ -106,7 +106,7 @@ class CarrierAnnouncementController extends Controller
 
        $carrierName = Carrier::find(session('fk_carrier_id'));
        $data['fk_carrier_id'] = session('fk_carrier_id');
-       $data['created_by'] = $carrierName->name;
+       $data['created_by'] = $carrierName->created_by;
        $data['name'] = $carrierName->company_name;
        TransportAnnouncement::create($data);
 
