@@ -98,7 +98,8 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('loginUser');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/otp', [OtpController::class, 'index'])->name('otp');
-Route::post('/otp', [OtpController::class, 'otpVerify'])->name('otpVerify');
+Route::post('/otp-verify', [OtpController::class, 'otpVerify'])->name('otpVerify');
+Route::post('/otp', [OtpController::class, 'login'])->name('otpLogin');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('registerUser');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -233,6 +234,7 @@ Route::get('/shipper-reply-chat/{offer_id}', [ShipperChatController::class, 'rep
 
 //Route::post('/sendMessage/{offer_id}b', 'CarrierChatController@sendMessage')->name('sendMessage');
 
+
 Route::get('/carrier/contract/{id}', [CarrierAnnouncementController::class, 'contract_carrier'])->name('c_contract');
 
 
@@ -251,4 +253,3 @@ Route::get('/car-registrations/{carrierId}', [CarController::class, 'showCarRegi
 Route::get('/car-registrations', [CarController::class, 'showCarRegistrations'])
     ->name('car-registrations');
 //    Route::post('/add-car', 'CarController@addCar')->name('add-car');
-

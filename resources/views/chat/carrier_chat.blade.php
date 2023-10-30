@@ -66,20 +66,26 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card-head">
-            <div class="card-title">
-                <h5> Itinéraire: {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</h5>
-                <span class="job-type">Date d'expiration: {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</span>
-                <h2>Informations sur l'offre de fret</h2>
-                <p>Nom de l'entreprise : {{ $freightOffer->nom_de_l_entreprise }}</p>
-                <p>Montant de l'offre : {{ $freightOffer->montant }}</p>
+        <div class="card-header">
+            <div class="col-12 col-lg-12 col-xl-12 col-md-12">
+                <div class="card-head">
+                    <div class class="card-body" style="background-color: #fff;">
+                    <h4>Informations sur l'offre de fret</h4>
+                    <p>Montant de l'offre : {{ $freightOffer->price }}</p>
+                    <p>Nom de l'entreprise : {{ $shipper->company_name}}</p>    
+                    <p><h5> Itinéraire:</h5> {{ $transportAnnouncement->origin.'--'.$transportAnnouncement->destination }}</p>
+                    <p class="job-type"><h5>Date d'expiration:</h5> {{ date("d/m/Y", strtotime($transportAnnouncement->limit_date)) }}</p>
+                    </div>
+                </div>
+                
+
             </div>
         </div>
         </div>
     </div>
     @if(Session::has('success'))
     <div class="alert alert-success">
-        {{ Session::get('success') }}
+        {{ Session::get('success')}}
     </div>
 @endif
 
@@ -90,33 +96,40 @@
                 <!-- titre conversation -->
             </div>
             <div class="position-relative">
-                <div class="chat-messages p-4">
-                    @foreach($chatMessages as $message)
-                    <div class="chat-message-{{ $message->fk_user_id === session('user_id') ? 'right' : 'left' }} pb-4">
-                        <div>
+                    <div class="chat-messages p-4">
+                        @foreach($chatMessages as $message)
+                        <div class="chat-message-{{ $message->fk_user_id === session('userId') ? 'right' : 'left' }} pb-4">
                             <div>
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                                <div class="text-muted small text-nowrap mt-2">{{ $message->created_at }}</div>
-                            </div>
-                            <div class="flex-shrink-1 bg-light rounded py-2 px-3 {{ $message->fk_user_id === session('userId') ? 'mr-3' : 'ml-3' }}">
-                                <div class="font-weight-bold mb-1">{{ $message->fk_user_id === session('user_id') ? 'Vous' : 'Transporteur' }}</div>
-                                {{ $message->message }}
+                                <div>
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                    <div class="text-muted small text-nowrap mt-2">{{ $message->created_at }}</div>
+                                </div>
+                                <div class="font-weight-bold mb-1">
+                                    @if($message->fk_user_id === session('userId'))
+                                        Vous,
+                                    @else
+                                        {{ $message->username }}
+                                    @endif
+                                </div>
+                                <div class="flex-shrink-1 bg-light rounded py-2 px-3">
+                                    {{ $message->message }}
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
+                    </div>
+                    <div class="form-group">
+                        <form action="{{ route('sendMessage', ['offer_id' => $freightOffer->id]) }}" method="post">
+                            @csrf
+                            <input type="text" class="form-controle" placeholder="Entrez votre message" name="message">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="flex-grow-0 py-3 px-4 border-top">
-                    <form action="{{ route('sendMessage', ['offer_id' => $freightOffer->id]) }}" method="post">
-                        @csrf
-                        <input type="text" class="form-control" placeholder="Entrez votre message" name="message">
-                        <button type="submit" class="btn btn-primary">Send</button>
-                    </form> 
-                </div>
-            </div>
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
         

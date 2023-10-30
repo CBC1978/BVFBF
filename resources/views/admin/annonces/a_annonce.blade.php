@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-<a href="/home"><button type="submit"> Retour</button> </a>
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
     <div class="container1">
         <h1>Annonces de Fret</h1>
         @if(session('success'))

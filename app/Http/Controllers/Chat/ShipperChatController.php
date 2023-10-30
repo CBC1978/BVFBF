@@ -28,7 +28,7 @@ class ShipperChatController extends Controller
           // Récupérer le nom de l'entreprise du transporteur associé à l'offre de transport
         $carrier = Carrier::find($transportOffer->fk_carrier_id);
             // Récupérer le nom de l'entreprise du transporteur associé à l'offre de fret
-            $shipper = Shipper::find($transportOffer->fk_shipper_id);
+           // $shipper = Shipper::find($transportOffer->fk_shipper_id);
         
             // Récupérer les détails de l'annonce  liée à cette offre
             $freightAnnouncement = FreightAnnouncement::find($transportOffer->fk_freight_announcement_id);
@@ -46,7 +46,7 @@ class ShipperChatController extends Controller
             return view('chat.shipper_chat', [
                 'transportOffer' => $transportOffer,
                 'freightAnnouncement' => $freightAnnouncement,
-                'shipper' => $shipper,
+                //'shipper' => $shipper,
                 'carrier' => $carrier,
                 'chatMessages' => $chatMessages, // Passer la liste des messages à la vue
             ]);
@@ -116,7 +116,7 @@ class ShipperChatController extends Controller
          // Mettre à jour le champ "status_message" de la table "transport_offer" à 2
         $transportOffer = TransportOffer::find($offer_id);
           if ($transportOffer) {
-           $transportOffer->status_message = 2;
+           $transportOffer->status = 2;
            $transportOffer->save();
     }
 

@@ -89,6 +89,25 @@
                             </div>
 
                         </form>
+                        @if(session('error_message'))
+                            <div class="alert alert-danger mt-3">
+                                {{ session('error_message') }}
+                            </div>
+                            <script>
+                              // JavaScript pour faire disparaître le message d'erreur après un délai
+                              window.addEventListener('DOMContentLoaded', function () {
+                                  var errorMessage = document.getElementById('error-message');
+
+                                  // Vérifiez si le message d'erreur est présent
+                                  if (errorMessage) {
+                                      setTimeout(function() {
+                                          errorMessage.style.display = 'none';
+                                      }, 6000); // Disparaître après 6 secondes (6000 millisecondes)
+                                  }
+                              });
+                            </script>
+
+                        @endif
                     </div>
                     <div class="img-2"><img src="imgs/page/login-register/img-3.svg" alt="JobBox"></div>
                   </div>
@@ -100,8 +119,6 @@
       </div>
     </div>
   </div>
-
-
 
 </div>
 </main>

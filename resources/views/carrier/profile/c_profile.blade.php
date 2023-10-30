@@ -7,9 +7,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>carrier-profil</title>
-
+    <script>
+        function returnToPreviousPage() {
+        window.history.back(); // Revenir à la page précédente
+    }
+</script> 
 </head>
 <body>
+    <button type="submit" onclick="returnToPreviousPage()">Retour</button>
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -21,7 +27,7 @@
         <div class="profile-img">
              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""/>
             <div class="file btn btn-lg btn-primary">
-                Change Photo
+                Change de Photo
                 <input type="file" name="file"/>
             </div>
         </div>
@@ -33,7 +39,7 @@
                     <div class="card-body">
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">last Name: </h5>
+                        <h5 class="mb-0">Nom: </h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                             <h5>{{$user->name}}</h5>
@@ -42,7 +48,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">first name:</h5>
+                        <h5 class="mb-0">Prenom:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5> {{$user->first_name }}</h5>
@@ -51,7 +57,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">username:</h5>
+                        <h5 class="mb-0">Nom d'utilisateur:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5>{{ $user->username}}</h5>
@@ -69,7 +75,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">Mail:</h5>
+                        <h5 class="mb-0">Email:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                          <h5>{{$user->email }}</h5>
@@ -87,7 +93,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-5">
-                        <h5 class="mb-0">company name:</h5>
+                        <h5 class="mb-0">Nom d'entreprise:</h5>
                         </div>
                         <div class="col-sm-5 text-secondary">
                           <h5> 
@@ -103,41 +109,66 @@
                 </div>
                 </div>
             </ul>
-        <a href="{{ route('carrier.profile.affichage') }}"><button type="submit">Refresh</button></a>
+     {{--   <a href="{{ route('carrier.profile.affichage') }}"><button type="submit">Refresh</button></a> --}}
         </div>
 
-        <a id="edit-profile-button" href="#">Edit Profile</a>
-        <div id="edit-profile-form" style="display: none;">
-                <form id="" action="{{ route('carrier.profile.update') }}" method="post">
-                    @csrf
-                    @method('post') 
+        <a id="edit-profile-button" href="#">Modifier</a>
 
-                    <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
-                    <input type="text" name="first_name" id="first_name" value="{{old('first_name', $user->first_name)}}">
-                    <input type="text" name="username" id="username" value="{{old('username', $user->username)}}">
-                    <input type="tel" name="user_phone" id="user_phone" value="{{old('user_phone', $user->user_phone) }}">
-                    <input type="email" name="email" id="email" value="{{ old('email', $user->email)}}">
-                    <input type="text" name="company_name" id="company_name" value="{{old('company_name', $user->carrier->company_name)}}">
-                    <button type="submit">Update Profile</button>
-                </form>
+        <div id="edit-profile-modal" style="display: none;" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="text-align: center;">Modifier Votre profil</h5>
+                        <button style="padding: 5px 5px;" type="button" id="close-modal-button" class="btn btn-secondary small-button" data-dismiss="modal">X</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('carrier.profile.update') }}" method="post">
+                            @csrf
+                            @method('post')
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">Prénom</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name', $user->first_name) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ old('username', $user->username) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="user_phone">Contact</label>
+                                <input type="tel" class="form-control" id="user_phone" name="user_phone" value="{{ old('user_phone', $user->user_phone) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="company_name">Nom d'entreprise</label>
+                                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ old('company_name', $user->carrier ? $user->carrier->company_name : '') }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Modifier</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-</div>
-         <script>
-                $(document).ready(function () {
-                    $("#edit-profile-button").click(function () {
-                        $("#edit-profile-form").toggle();
-                    });
+        
+        <script>
+            $(document).ready(function () {
+                $("#edit-profile-button").click(function () {
+                    $("#edit-profile-modal").modal('show');
                 });
-                
-                $(document).ready(function (){
-                setTimeout(function(){
-                    $("div.alert").remove();
-                }, 3000 ); //3s
-
+                $("#close-modal-button").click(function () {
+                    $("#edit-profile-modal").modal('hide');
+                });
             });
+            
         </script>
+
+        
 
     <style>
   /* Style pour le conteneur principal */

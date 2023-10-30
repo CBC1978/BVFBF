@@ -37,7 +37,7 @@ class CarrierAnnouncementController extends Controller
                        carrier.company_name")
                 ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
                 ->orderBy('transport_announcement.id', 'DESC')
-                ->paginate(10);
+                ->get();
 
 
         return view('carrier.announcements.index', ['announcements' => $announcements]);
@@ -51,7 +51,7 @@ class CarrierAnnouncementController extends Controller
     $user = User::find(session()->get('userId'));
     $announces = TransportAnnouncement::where('fk_carrier_id', intval($user->fk_carrier_id))
     ->orderBy('created_at', 'DESC')
-    ->paginate(10);
+    ->get();
 
        // Traiter les annonces et compter les offres
        foreach ($announces as $announce) {
@@ -133,7 +133,7 @@ class CarrierAnnouncementController extends Controller
         ")
         ->join('shipper', 'freight_offer.fk_shipper_id', '=', 'shipper.id')
         ->where('freight_offer.fk_transport_announcement_id', $id) // Filtre par l'annonce de transport spécifique
-        ->paginate(10);
+        ->get();
        return view('carrier.offers.c_myoffer', compact(['transportAnnouncement', 'freightOffers']));
    }
 
@@ -185,6 +185,9 @@ class CarrierAnnouncementController extends Controller
         $carrierId = session('fk_carrier_id');
 
         // Récupérez toutes les offres de transport liées à ce transporteur
+        $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
+//        dd($offers);
+
 
         $offers = TransportOffer::where('fk_carrier_id', $carrierId)->get();
 
@@ -573,7 +576,7 @@ class CarrierAnnouncementController extends Controller
             'details'=>$contractDetails,
             'info'=>$contractInfos
         ];
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('carrier.contract.print_contract',$data);
+        $pdf = Pdf::loadView('carrier.contract.print_contract',$data);
 
         return $pdf->stream('Contrat_de_transport.pdf');
 

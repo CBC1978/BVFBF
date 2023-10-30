@@ -30,17 +30,4 @@ class CheckRole
         return redirect()->route('home'); // Rediriger vers une page spécifique si le rôle n'est pas autorisé
     }
 
-//     $userRole = session('role'); // 
-
-//     if (!$userRole) {
-//         return redirect()->route('login'); // Rediriger vers la page de connexion si le rôle n'est pas défini dans la session
-//     }
-
-//     if (in_array($userRole, $roles)) {
-//         return $next($request);
-//     }
-
-//     return redirect()->route('home'); // Rediriger vers une page spécifique si le rôle n'est pas autorisé
-// }
-
 }

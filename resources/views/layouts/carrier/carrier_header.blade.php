@@ -79,12 +79,12 @@
           <div class="member-login"><img alt="" src="{{ asset('imgs/page/dashboard/profile.png') }}">
             <div class="info-member">
               <strong class="color-brand-1">
-                  @if(Session::has('username'))
-                      <p>{{ Session::get('username') }}</p>
+                  @if(Session::has('first_name'))
+                      <p>{{ Session::get('first_name') }}</p>
                   @endif
               </strong>
               <div class="dropdown">
-                  <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Compte transporteur</a>
+                  <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Transporteur</a>
                   <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
                       <li><a class="dropdown-item" href="{{ route('carrier.profile.affichage') }}">Profil</a></li>
                       <form action="{{ route('logout') }}" method="POST">

@@ -73,7 +73,7 @@ class HomeController extends Controller
              ->join('shipper','freight_announcement.fk_shipper_id' ,"=",'shipper.id')
              ->orderBy('freight_announcement.id', 'DESC')
              ->limit(10)
-             ->paginate(10);
+             ->get();
 
          $transports = DB::table('transport_announcement')
                         ->selectRaw("transport_announcement.id, transport_announcement.origin, transport_announcement.destination, transport_announcement.limit_date,
@@ -82,7 +82,7 @@ class HomeController extends Controller
              ->join('carrier', 'transport_announcement.fk_carrier_id','=', 'carrier.id')
              ->orderBy('transport_announcement.id', 'DESC')
              ->limit(10)
-             ->paginate(10);
+             ->get();
 //         dd($transports);
 
          $role = session('role'); // Récupérer le rôle depuis la session

@@ -1,6 +1,27 @@
 @extends('layouts.carrier')
 
 @section('content')
+<style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
     <div class="box-heading mb-35">
         <div class="box-title">
             <h3 class="mb-3"></h3>
@@ -30,7 +51,6 @@
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <input type="text" id="recherche" placeholder="Recherchez une annonce">
                                             </div>
-                                            <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                                         </div>
                                     </div>
                                 </div>
@@ -68,9 +88,6 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                 <!-- Affichage de la pagination -->
-                
-                      {{ $announces->links('pagination::bootstrap-4') }}
                             </div>
                         </div>
                     </div>
@@ -81,12 +98,6 @@
 @endsection
 
 @section('script')
-
-    <script>
-            document.getElementById('refreshButton').addEventListener('click', function() {
-                location.reload();
-            });
-    </script>
 
 
     <script>
@@ -116,7 +127,7 @@
 
     </script>
 
-    <script>
+    <!--script>
 
       $(document).ready(function () {
           var annoncesContainer = $('#annoncesContainer');
@@ -139,6 +150,6 @@
           });
       });
 
-    </script>
+    </script -->
     
 @endsection

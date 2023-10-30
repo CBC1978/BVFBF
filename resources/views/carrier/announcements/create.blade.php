@@ -1,6 +1,27 @@
 @extends('layouts.carrier')
 
 @section('content')
+<style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
@@ -40,7 +61,11 @@
                                                 <div class="col-lg-9">
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <h5 class="icon-edu">Fait une Annonce de Transport</h5>
+<<<<<<< HEAD
+                                                            <h5 class="">Fait une Annonce de Transport</h5>
+=======
+                                                            <h5 class="icon-edu">Faites une Annonce de Transport</h5>
+>>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
                                                             <form method="POST" action="{{ route('carrier.announcements.store') }}">
                                                                 @csrf
                                                             
@@ -157,7 +182,13 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+{{--
+=======
 
+<<<<<<< HEAD
+=======
+>>>>>>> 137b583329315af3bc506971d04b10d742e57db8
   <div class="mt-10">
     <div class="section-box">
       <div class="container"> 
@@ -182,8 +213,8 @@
       </div>
     </div>
   </div>
-
-  <footer class="footer mt-20">
+--}}
+ {{-- <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">
         <div class="row">
@@ -202,10 +233,11 @@
       </div>
     </div>
 
-  </footer>
+  </footer> --}}
 </div>
 </div></div>
 
+>>>>>>> d7b5d5afbe10bee5e0d2d47b49212d2b24507953
     <style>
         .required {
             color: red;

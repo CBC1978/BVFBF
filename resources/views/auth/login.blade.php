@@ -22,8 +22,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <style>
       body {
-          margin: 0;
-          padding: 0;
+          background-color: white;
+          margin-top: -150px;
       }
   </style>
 
@@ -64,14 +64,13 @@
             <div class="col-lg-12">
               <div class="section-box">
                 <div class="container">
-                  <div class="panel-white mb-10">
                     <div class="box-padding">
                       <div class="login-register">
-                        <div class="row login-register-cover pb-250">
+                        <div class="row login-register-cover">
                           <div class="col-lg-6 col-md-4 col-sm-12 mx-auto">
                             <div class="form-login-cover">
                               <div class="text-center">
-                                <p class="font-sm text-brand-2">Bienvenu </p>
+                                <p class="font-sm text-brand-2">Bienvenue</p>
                                 <h2 class="mt-10 mb-5 text-brand-1">CONNEXION</h2>
                                 <p class="font-sm text-muted mb-30">Connectez vous et faites de bonnes affaires.</p>
                                 <form class="login-register text-start mt-20" method="post" action="{{ route('loginUser') }}">
@@ -117,14 +116,13 @@
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
 
 
 
-        </div>
+    </div>
       </main>
 </body>
 <script src="{{ asset('js/vendor/modernizr-3.6.0.min.js') }}"></script>

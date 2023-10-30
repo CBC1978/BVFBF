@@ -1,7 +1,27 @@
 @extends('layouts.shipper')
 
 @section('content')
+<style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+<script>
+  function returnToPreviousPage() {
+  window.history.back(); // Revenir à la page précédente
+}
+</script>
+<button type="submit" onclick="returnToPreviousPage()">Retour</button>
 <div class="box-content">
     <div class="box-heading">
         <div class="box-title">
@@ -31,8 +51,6 @@
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                 <input type="text" id="recherche" placeholder="Recherchez une annonce">
                                             </div>
-                                            <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
-
                                           <div id="search-results"> </div>
                                             <div class="row" id="annoncesContainer">
                                                 @foreach($announcements as $announce)
@@ -105,10 +123,6 @@
                                                     </div>
                                                 @endforeach
 
-                                                <!-- Affichage de la pagination -->
-                                                
-                                            {{ $announcements->links('pagination::bootstrap-4') }}
-
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +148,7 @@
         </div>
     </div>
 
-    <footer class="footer mt-20">
+  {{--  <footer class="footer mt-20">
         <div class="container">
             <div class="box-footer">
                 <div class="row">
@@ -159,7 +173,7 @@
             }
 
         </style>
-    </footer>
+    </footer> --}}
 </div>
     <script>
         $(document).ready(function() {
@@ -172,32 +186,36 @@
 @endsection
 @section('script')
 
-    <script>
-        document.getElementById('refreshButton').addEventListener('click', function() {
-            location.reload();
-        });
+
+
+<script>
+             
+             $(document).ready(function () {
+          setTimeout(function () {
+              $("div.alert").remove();
+          }, 3000); //3s
+
+          var searchInput = document.querySelector('input[id^="recherche"]');
+          $(searchInput).keyup(function () {
+              var filter, allAnnonces;
+
+              filter = searchInput.value.toUpperCase();
+              allAnnonces = document.querySelectorAll('#card_annonce');
+              allAnnonces.forEach(item => {
+                  itemValue = item.innerText;
+                  console.log(item);
+                  if (itemValue.toUpperCase().indexOf(filter) > -1) {
+                      item.style.display = 'flex';
+                  } else {
+                      item.style.display = 'none';
+                  }
+              });
+          });
+      });
+
     </script>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var searchInput = document.querySelector('input[id^="recherche"]');
-            searchInput.addEventListener('keyup', function() {
-                var filter = searchInput.value.toUpperCase();
-                var allAnnonces = document.querySelectorAll('.card-grid-2');
-
-                allAnnonces.forEach(function(item) {
-                    var itemValue = item.innerText.toUpperCase();
-                    if (itemValue.includes(filter)) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
+    <!--script>
 
         $(document).ready(function () {
             var annoncesContainer = $('#annoncesContainer');
@@ -220,7 +238,7 @@
             });
         });
 
-    </script>
+    </script-->
 
 
 

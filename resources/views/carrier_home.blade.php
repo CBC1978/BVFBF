@@ -5,10 +5,10 @@
 @section('content')
 <div class="box-heading">
     <div class="box-title">
-      <h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3>
+      <!--h3 class="mb-35">TRANSPORTEUR :Tableau de Bord</h3-->
     </div>
     <div class="box-breadcrumb">
-      <div class="breadcrumbs">
+      <div class="breadcrumbs mb-2">
         <ul>
           <li> <a class="icon-home" href="index.html">Tableau de bord</a></li>
           <li><span>Dashboard</span></li>
@@ -92,10 +92,9 @@
                           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-10">
                               <h3>Annonces de fret récentes</h3>
                           </div>
-                          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                          <input type="text" id="recherche" placeholder="Recherchez une annonce">---
+                          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                          <input type="text" id="recherche" placeholder="Recherchez une annonce">
                           </div>
-                          <button id="refreshButton" class="btn btn-primary">Rafraîchir la page</button>
                       </div>
                   </div>
                 </div>
@@ -130,8 +129,6 @@
                           </div>
                       </div>
                     @endforeach
-                    <!-- Affichage de la pagination -->
-                      {{ $announcements->links('pagination::bootstrap-4') }}
 
                       <div class="modal fade" id="ModalApplyJobForm{{$announce->id}}" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
@@ -198,7 +195,7 @@
       </div>
     </div>
   </div>
-  <footer class="footer mt-20">
+ {{-- <footer class="footer mt-20">
     <div class="container">
       <div class="box-footer">
         <div class="row">
@@ -216,13 +213,12 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
 </div>
 </div></div>
 @endsection
 
 @section('script')
-
     <script>
         document.getElementById('refreshButton').addEventListener('click', function() {
             location.reload();
@@ -289,8 +285,7 @@
       });
 
     </script>
-
-    <script>
+<!-- <script>
 
       $(document).ready(function () {
           var annoncesContainer = $('#annoncesContainer');
@@ -313,7 +308,22 @@
           });
       });
 
-    </script>
+    </script>   
+  <script>
+        // Exécute une requête pour récupérer le nombre d'annonces
+        fetch('/count-annonces')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('count-annonces').innerText = data.count;
+            });
 
+        // Exécute une requête pour récupérer le nombre d'offres
+        fetch('/count-offres')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('count-offres').innerText = data.count;
+            });
+    </script>
+  -->
 
 @endsection

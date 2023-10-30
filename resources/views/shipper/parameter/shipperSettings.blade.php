@@ -18,8 +18,29 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon.svg">
     <link href="assets/css/style.css?version=4.1" rel="stylesheet">
     <title>Shipper Settings</title>
+<style>
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+<script>
+    function returnToPreviousPage() {
+    window.history.back(); // Revenir à la page précédente
+  }
+</script>
   </head>
   <body>
+    <button type="submit" onclick="returnToPreviousPage()">Retour</button>
     <header class="header sticky-bar"> 
     <div class="box-heading">
         <div class="box-title">
@@ -219,7 +240,7 @@
                               </div>
                               <div class="col-lg-12"> 
                                 <div class="form-group mt-10">
-                                  <button type="submit" class="btn btn-default btn-brand icon-tick">Save Change</button>
+                                  <button type="submit" class="btn btn-default btn-brand icon-tick">Save </button>
                                 </div>
                               </div>
                             </div>
@@ -265,7 +286,7 @@
                       </div>
                       <div class="col-lg-12"> 
                         <div class="form-group mt-0">
-                          <button class="btn btn-default btn-brand icon-tick">Save Change</button>
+                          <button class="btn btn-default btn-brand icon-tick">Save </button>
                         </div>
                       </div>
                     </div>
@@ -306,7 +327,7 @@
             });
         });
         </script>
-
+{{--
         <footer class="footer mt-20">
           <div class="container">
             <div class="box-footer">
@@ -325,7 +346,7 @@
               </div>
             </div>
           </div>
-        </footer>
+        </footer> --}}
       </div>
    </main>
     <script src="{{ asset('js/vendor/modernizr-3.6.0.min.js') }}"></script>
