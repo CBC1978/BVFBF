@@ -23,36 +23,34 @@ class OtpController extends Controller
         $request->validate([
             'otp' => ['required', 'string', 'min:4', 'max:255'],
         ]);
-    
-        $user = User::where('code', $request->otp)->pluck('id')->first();
-    
+
+        $user = User::whereCode($request->otp)->first();
+
         if ($user && $user->code === $request->otp) {
             // Si le code OTP est vérifié, mettez le statut à 1
             $user->status = 1;
             $user->save();
-    
+
             // Envoyez un e-mail pour informer de la vérification
             Mail::to($user->email)->send(new ValidatedRegisterEmail($user->first_name));
-    
+
             return view('auth.VerifiedAccount');
         } else {
             // Si le code OTP ne correspond pas alors le compte n'est pas vérifié, rediriger vers la page d'envoi de code OTP avec un message d'erreur
-            
+
             return redirect()->route('otp')->with('error_message', 'Le code OTP est incorrect.');
         }
     }
 
     public function otpLogin(Request $request)
     {
-        
-            // Si le compte n'est pas vérifié, générer et envoyer un nouveau code OTP
-            $userId = User::where(['email'=>$request->email])->pluck('id')->first();
-            $user = User::find($userId);
-            Mail::to($user->email)->send(new RegisterEmail($user->first_name,'Valider votre inscription',  $user->code));;
+        // Si le compte n'est pas vérifié, générer et envoyer un nouveau code OTP
+        $user = User::whereEmail($request->email)->first();
+        Mail::to($user->email)->send(new RegisterEmail($user->first_name,'Valider votre inscription',  $user->code));;
 
-            return redirect()->route('otp')->with('success_message', 'Un nouveau code OTP a été envoyé.');
+        return redirect()->route('otp')->with('success_message', 'Un nouveau code OTP a été envoyé.');
 
     }
-    
+
 
 }
