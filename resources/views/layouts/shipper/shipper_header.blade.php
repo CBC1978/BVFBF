@@ -81,8 +81,6 @@
                       @endif
                   </strong>
                   <div class="dropdown">
-                      <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"> Chargeur</a>
-
                       <a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Chargeur</a>
                       <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
                           <li><a class="dropdown-item" href="{{ route('shipper.profile.affichage') }}">Profil</a></li>
